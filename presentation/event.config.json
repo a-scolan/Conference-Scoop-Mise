@@ -1,0 +1,23 @@
+{
+  "event": {
+    "name": "Quickie 15 min",
+    "edition": "2026",
+    "theme": "google-blueprint-light",
+    "subtitle": "Installer ses outils de dev avec Scoop et Mise"
+  },
+  "speaker": {
+    "name": "Alexis Scolan",
+    "role": "Architecte technique",
+    "company": "onepoint",
+    "bio": "TODO : bio orientée outillage du poste de développement."
+  },
+  "support": {
+    "title": "Support de présentation",
+    "url": "https://github.com/a-scolan/TODO-repo",
+    "qrImage": "./assets/presentation-qr.png"
+  },
+  "feedback": {
+    "caption": "OpenFeedback",
+    "qrImage": "./assets/presentation-qr.png"
+  }
+}

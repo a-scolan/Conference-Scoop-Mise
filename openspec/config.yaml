@@ -1,0 +1,24 @@
+schema: spec-driven
+githubCopilot:
+  cloudAgent: false
+
+context: |
+  Projet : support de la conférence quickie (15 min) « Installer ses outils de dev avec Scoop et Mise ».
+  Speaker : Alexis Scolan, architecte technique onepoint. Langue : français (artefacts OpenSpec en français, identifiants techniques en anglais).
+  Public cible : développeurs et tech leads travaillant sur postes Windows d'entreprise (UAC, PATH verrouillé, proxys).
+  Fil rouge : REX de DevRecipe (https://github.com/a-scolan/DevRecipe), bootstrapper user-space qui orchestre Scoop (paquets) et Mise (runtimes) depuis un manifeste TOML relu en PR.
+  Stack du deck : site HTML statique assemblé par presentation/build-deck.js depuis presentation/src/ (slides HTML + slides.json, scripts vanilla JS, CSS tokens/thèmes), servi par Express (server.js, port 4000), publié sur GitHub Pages.
+  Sources de vérité alignées : presentation/src/slides/slides.json, deroule-conference-slides.md (notes présentateur extraites au build), vérifiées par `npm run verify`.
+  Moteur hérité de la conférence « Diagram as Code » : snap-scroll, étapes [data-step], vue présentateur BroadcastChannel (touche P), mode confort (touche C), thèmes (touche T), laser, Mermaid.
+  Contrainte salle : vidéoprojecteur souvent délavé, lisibilité fond de salle prioritaire, démos fiables hors réseau.
+
+rules:
+  proposal:
+    - Inclure une section « Hors périmètre ».
+    - Relier chaque objectif à un résultat observable par le public ou l'orateur.
+  design:
+    - Comparer au moins deux options pour toute décision technique et justifier le choix.
+    - Signaler explicitement les hypothèses non vérifiées à confirmer par un spike.
+  tasks:
+    - Découper en tâches de 2 h maximum.
+    - Prévoir une tâche de vérification (`npm run verify` + contrôle navigateur) par groupe touchant au deck.

@@ -1,0 +1,42 @@
+[
+  {
+    "index": 0,
+    "title": "Titre",
+    "duration": "20 s",
+    "action": "Accueil, regard salle, attendre le silence.",
+    "checklist": [],
+    "keywords": [
+      "UAC, Command not found, Required node version"
+    ],
+    "beat": "Accroche.",
+    "substance": "À définir.",
+    "verbatim": "« TODO : accroche d'ouverture. »"
+  },
+  {
+    "index": 1,
+    "title": "Speaker",
+    "duration": "15 s",
+    "action": "Transition rapide (15 s).",
+    "checklist": [],
+    "keywords": [
+      "Alexis Scolan · Architecte technique onepoint",
+      "DevRecipe : retour d'expérience"
+    ],
+    "beat": "Praticien parlant à des praticiens.",
+    "substance": "Légitimité terrain (DevRecipe).",
+    "verbatim": "« TODO : présentation speaker. »"
+  },
+  {
+    "index": 2,
+    "title": "Merci",
+    "duration": "10 s",
+    "action": "Ouvrir les questions, montrer le QR code.",
+    "checklist": [],
+    "keywords": [
+      "Questions / Réponses"
+    ],
+    "beat": "Clôture.",
+    "substance": "Ressources et support en ligne.",
+    "verbatim": "« Merci ! Place à vos questions. »"
+  }
+]

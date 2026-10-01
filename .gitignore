@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / agents
+.idea/
+.claude/
+.playwright-mcp/
+*.swp
+*.swo
+
+# Obsidian (vault metadata)
+.space/
+.obsidian/
+
+# Temporary files
+*.tmp
+*.bak
