@@ -26,9 +26,17 @@
 - [ ] 4.3 Ajouter les commandes de chaque démo dans les notes présentateur des slides concernées. Vérifier : visibles dans la vue présentateur (touche P).
 - [ ] 4.4 Figer la version DevRecipe utilisée (tag ou commit) dans `demos/devrecipe-dryrun/README.md`. Vérifier : la commande `-DryRun -Review` produit le rapport attendu.
 
-## 5. Vérification
+## 5. Thème CLI/Terminal
 
-- [ ] 5.1 Lancer `npm run build` puis `npm run verify` dans `presentation/`. Vérifier : code de sortie 0.
-- [ ] 5.2 Contrôle navigateur sur `http://localhost:4000/presentation.html` : navigation, vue présentateur, thèmes (T), confort (C). Vérifier : 0 erreur console.
-- [ ] 5.3 Répétition chronométrée complète. Vérifier : durée entre 13 min 30 et 14 min 30, aucun acte au-delà de +30 s.
-- [ ] 5.4 `openspec validate bootstrap-scoop-mise-talk --strict`. Vérifier : aucune erreur.
+- [ ] 5.1 Créer `src/styles/themes/cli-light.css` et `cli-dark.css` : tokens de base, palette `--ansi-*`, couleurs des 6 parties. Vérifier : contraste ≥ 4,5:1 pour le texte et le code sur les deux variantes (outil de contraste ou Lighthouse).
+- [ ] 5.2 Mettre à jour `theme-controller.js` : défaut `cli-dark`, familles de thèmes, T dans la famille active, `?theme=` pour les 4 thèmes. Vérifier : chacun des 4 thèmes se charge par URL ; T alterne `cli-dark` ↔ `cli-light`.
+- [ ] 5.3 Ajouter les motifs terminal (titres en JetBrains Mono, prompt `❯`, curseur) et masquer les ornements blueprint sous les thèmes CLI. Vérifier : rendu des slides titre, contenu et clôture ; curseur fixe avec `prefers-reduced-motion`.
+- [ ] 5.4 Faire suivre les 4 thèmes à la vue présentateur (habillage, bascule T dans la famille). Vérifier : T depuis la console et depuis le deck, les deux fenêtres restent synchronisées.
+- [ ] 5.5 Test de projection (ou capture réduite au quart) des deux variantes CLI. Vérifier : choix du thème par défaut consigné dans `design.md` (H5).
+
+## 6. Vérification
+
+- [ ] 6.1 Lancer `npm run build` puis `npm run verify` dans `presentation/`. Vérifier : code de sortie 0.
+- [ ] 6.2 Contrôle navigateur sur `http://localhost:4000/presentation.html` : navigation, vue présentateur, les 4 thèmes (T et `?theme=`), confort (C). Vérifier : 0 erreur console.
+- [ ] 6.3 Répétition chronométrée complète. Vérifier : durée entre 13 min 30 et 14 min 30, aucun acte au-delà de +30 s.
+- [ ] 6.4 `openspec validate bootstrap-scoop-mise-talk --strict`. Vérifier : aucune erreur.

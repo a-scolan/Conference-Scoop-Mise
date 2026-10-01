@@ -43,6 +43,12 @@ Choix final après le spike S1 (voir tâches). Les caches Scoop et Mise doivent 
 ### D5. Dossier `demos/` à la racine
 Chaque démo a son dossier : `README.md` (preuve, commandes, sortie attendue, durée), fichiers d'exemple (`mise.toml`, manifeste DevRecipe), et un script de vérification optionnel. `demos/reset.ps1` et `demos/prepare-admin.ps1` gèrent le cycle de vie.
 
+### D6. Famille de thèmes « CLI/Terminal » par défaut
+Objectif : une ambiance dev, simple et élégante, sans perdre en lisibilité. La famille CLI devient le défaut ; T bascule entre ses variantes claire et sombre. Blueprint et Slate restent accessibles via `?theme=`.
+- **Option A (retenue)** : deux nouvelles feuilles `cli-light.css` et `cli-dark.css`, construites sur les tokens existants (`--bg`, `--surface`, `--text`, `--accent*`). On y ajoute une palette `--ansi-*` et quelques motifs CSS (prompt `❯`, curseur). Avantages : pas de changement du balisage des slides ; contraste et couleurs de partie maîtrisés ; palette ANSI partagée avec les futurs blocs terminal (change `terminal-demo-rendering`).
+- **Option B** : reprendre tel quel un schéma connu (Catppuccin, GitHub, Dracula). Avantage : identité reconnue. Inconvénients : licence et attribution à vérifier ; couleurs pas toujours assez contrastées en projection ; signalétique par partie difficile à caser.
+- Le contrôleur passe d'une bascule fixe (Blueprint ↔ Slate) à des **familles** : T reste dans la famille active. Le thème par défaut devient `cli-dark`.
+
 ## Risks / Trade-offs
 
 - [Le réseau de la salle est absent ou filtré] → caches préchargés et repli enregistré (spec `demo-scenarios`).
@@ -50,6 +56,8 @@ Chaque démo a son dossier : `README.md` (preuve, commandes, sortie attendue, du
 - [La démo `path-shadowing` demande un droit admin pour préparer HKLM] → préparation unique avant la session, jamais sur scène.
 - [Trop de contenu pour 15 min] → les budgets par acte sont mesurés en répétition. Si un acte déborde, couper d'abord `mise-tasks`, puis la slide comparatif.
 - [Effet « pitch produit » sur DevRecipe] → présenter DevRecipe comme REX open source et montrer d'abord les commandes Scoop/Mise natives.
+- [Le thème CLI sombre ou clair est peu lisible sur un vidéoprojecteur délavé] → contrôle de contraste 4,5:1, mode confort (C) et bascule T disponibles en séance.
+- [Le thème « terminal » fait gadget] → motifs limités au prompt et au curseur, pas d'effet CRT ni de scanlines.
 
 ## Hypothèses à confirmer par spike
 
@@ -57,6 +65,7 @@ Chaque démo a son dossier : `README.md` (preuve, commandes, sortie attendue, du
 - **H2** : les caches Scoop (`~/scoop/cache`) et Mise permettent une installation hors ligne des outils choisis. → Spike S2.
 - **H3** : un `C:\Python3xx` ajouté au PATH machine masque bien le shim Mise de Python dans un nouveau terminal, et le correctif DevRecipe inverse l'ordre. → Spike S3.
 - **H4** : `mise` sous Windows bascule bien la version de Node au `cd` dans PowerShell 7 avec `mise activate pwsh`. → Spike S2.
+- **H5** : `cli-dark` est la meilleure variante par défaut en salle. → Test de projection (tâche 5.5) ; si la salle est très éclairée, passer le défaut à `cli-light`.
 
 ## Migration Plan
 

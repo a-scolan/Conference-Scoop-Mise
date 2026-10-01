@@ -25,16 +25,50 @@ Chaque grande partie de la conférence DOIT (SHALL) posséder un code couleur d'
   - **Partie 5 (Clôture) :** Framboise (`--accent4`, `#f43f5e`).
 
 ### Requirement: Thèmes visuels interchangeables et sélecteur interactif
-Le moteur de présentation DOIT (SHALL) supporter la sélection dynamique ou par configuration d'un thème visuel parmi plusieurs feuilles de style prédéfinies (dont un thème neutre par défaut), et fournir un mécanisme de bascule (*theme switch*) interactif dans le code (raccourci clavier `T`, paramètre d'URL `?theme=` ou sélecteur discret d'interface).
+Le moteur de présentation DOIT (SHALL) supporter la sélection dynamique ou par configuration d'un thème visuel parmi plusieurs feuilles de style prédéfinies : `cli-dark` (par défaut), `cli-light`, `google-blueprint-light` et `slate-architect`. Il DOIT fournir un mécanisme de bascule (*theme switch*) interactif (raccourci clavier `T`, paramètre d'URL `?theme=` ou sélecteur discret d'interface). La touche `T` DOIT (SHALL) basculer entre les variantes claire et sombre de la famille active : `cli-light` ↔ `cli-dark`, ou `google-blueprint-light` ↔ `slate-architect`.
 
 #### Scenario: Sélection d'un thème alternatif en cours de session
 - **WHEN** L'utilisateur presse la touche `T` ou sélectionne un thème dans le sélecteur d'interface
 - **THEN** Le diaporama met à jour l'attribut `data-theme` sur l'élément racine `<html>`, applique instantanément la feuille de variables correspondante, mémorise le choix dans le `localStorage` et réinitialise les styles Mermaid et des blocs terminal.
 
+#### Scenario: Bascule dans la famille CLI
+- **WHEN** Le thème actif est `cli-dark` et l'utilisateur presse `T`
+- **THEN** Le thème `cli-light` est appliqué ; une nouvelle pression sur `T` revient à `cli-dark`
+
 #### Scenario: Chargement avec un paramètre d'URL explicite
 - **WHEN** L'URL contient un paramètre de thème (ex: `?theme=slate-architect`)
 - **THEN** Le diaporama applique directement ce thème au chargement sans recourir au thème par défaut.
 
+#### Scenario: Premier chargement sans préférence
+- **WHEN** Le diaporama est ouvert sans paramètre `?theme=` et sans thème mémorisé dans le `localStorage`
+- **THEN** Le thème `cli-dark` est appliqué
+
 #### Scenario: Suppression de l'habillage décoratif propriétaire
 - **WHEN** La présentation charge avec le thème neutre par défaut
 - **THEN** L'injection des polygones décoratifs spécifiques à l'ancien événement est absente, laissant un fond sobre et texturé compatible avec tout type de salle.
+
+## ADDED Requirements
+
+### Requirement: Famille de thèmes CLI/Terminal
+Le deck SHALL fournir une famille de thèmes « CLI/Terminal », simple et élégante, en variantes claire (`cli-light`) et sombre (`cli-dark`). Elle donne une ambiance de terminal sans nuire à la lisibilité. Chaque variante MUST :
+- employer `JetBrains Mono` pour les titres, les étiquettes et les numéros de partie ; `Poppins` reste la police du texte courant ;
+- proposer des motifs de terminal discrets : prompt `❯` devant les titres de section, curseur clignotant sur la slide de titre ;
+- désactiver les ornements blueprint (coins, réglettes de calibration) ;
+- déclarer une palette ANSI en variables CSS (`--ansi-black` … `--ansi-white` et leurs variantes vives), réutilisable par les blocs terminal ;
+- conserver une couleur distincte par partie, prise dans la palette du thème.
+
+#### Scenario: Contraste
+- **WHEN** une slide de contenu ou un bloc de code est affiché en `cli-light` ou en `cli-dark`
+- **THEN** le texte et le code ont un contraste d'au moins 4,5:1 avec leur fond
+
+#### Scenario: Animation réduite
+- **WHEN** le système de l'utilisateur active `prefers-reduced-motion`
+- **THEN** le curseur ne clignote pas et reste affiché en continu
+
+#### Scenario: Pas d'ornements blueprint
+- **WHEN** une slide de contenu est affichée avec un thème CLI
+- **THEN** aucun élément `.blueprint-deco` ni `.card-calibration-strip` n'est visible
+
+#### Scenario: Palette ANSI partagée
+- **WHEN** un composant lit `var(--ansi-green)` sous un thème CLI
+- **THEN** il obtient la valeur définie par la variante active, et cette valeur change quand l'utilisateur presse `T`
