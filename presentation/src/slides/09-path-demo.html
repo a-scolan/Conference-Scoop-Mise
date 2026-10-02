@@ -1,0 +1,28 @@
+<section class="slide slide--content" data-part="3" data-nav="Démo PATH">
+  <div class="slide__header reveal">
+    <span class="slide__number">03</span>
+    <span class="slide__label">Démo PATH</span>
+    <h2 class="slide__heading">En direct : débusquer le masquage avec where.exe</h2>
+  </div>
+  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
+    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
+        <span>Diagnostic &middot; Ordre de résolution Windows</span>
+        <span style="color:var(--accent2);">HKLM vs HKCU</span>
+      </div>
+      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># Le piège : l'exécutable système passe en premier</span>
+<span style="color:var(--accent2); font-weight:700;">&gt;</span> where.exe python
+<span style="color:var(--red); font-weight:700;">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM (Machine legacy)</span>
+<span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU (Ignoré !)</span>
+
+<span style="color:var(--text-dim);"># La parade DevRecipe : shims_prepend.cmd via AutoRun cmd.exe</span>
+<span style="color:var(--text-dim);"># et injection au début du PATH dans le profil PowerShell ($env:PATH)</span>
+<span style="color:var(--accent2); font-weight:700;">&gt;</span> devrecipe -Review
+<span style="color:var(--green); font-weight:700;">[OK] User shims prepended at index 0 of current PATH</span>
+
+<span style="color:var(--accent2); font-weight:700;">&gt;</span> where.exe python
+<span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- Prioritaire !</span>
+<span style="color:var(--text-dim);">C:\Python39\python.exe</span></code></pre>
+    </div>
+  </div>
+</section>

@@ -92,12 +92,23 @@
 }
 
 /* Typographie & Motifs spécifiques au thème CLI Dark */
+[data-theme="cli-dark"] .slide__display,
 [data-theme="cli-dark"] .slide__heading,
-[data-theme="terminal-dark"] .slide__heading,
 [data-theme="cli-dark"] .slide__title,
+[data-theme="terminal-dark"] .slide__display,
+[data-theme="terminal-dark"] .slide__heading,
 [data-theme="terminal-dark"] .slide__title {
   font-family: var(--font-mono);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+[data-theme="cli-dark"] .slide--title .slide__display,
+[data-theme="terminal-dark"] .slide--title .slide__display {
+  font-family: var(--font-mono);
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  line-height: 1.12;
 }
 
 [data-theme="cli-dark"] .slide__label::before,

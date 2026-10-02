@@ -1,0 +1,21 @@
+<section class="slide slide--content slide--concept-cards" data-part="3" data-nav="Le piège du PATH Windows">
+  <div class="slide__header reveal">
+    <span class="slide__number">03</span>
+    <span class="slide__label">Windows Internals</span>
+    <h2 class="slide__heading">Le piège du PATH : HKLM passe toujours avant HKCU</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--2 reveal">
+      <div class="concept-card concept-card--orange">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">LA RÈGLE WINDOWS</span>
+        <h3 class="concept-card__title">Fusion descendante obligatoire</h3>
+        <p class="concept-card__desc">À la création de session (<code>CreateEnvironmentBlock</code>), Windows concatène le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
+      </div>
+      <div class="concept-card concept-card--orange">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">LA CONSÉQUENCE CACHÉE</span>
+        <h3 class="concept-card__title">Le masquage (Shadowing)</h3>
+        <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> déclaré au niveau Machine, votre Python 3.12 installé proprement via Mise ne sera <strong>jamais appelé</strong> par défaut dans vos scripts !</p>
+      </div>
+    </div>
+  </div>
+</section>

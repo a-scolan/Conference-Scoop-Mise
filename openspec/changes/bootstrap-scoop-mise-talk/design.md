@@ -59,13 +59,13 @@ Objectif : une ambiance dev, simple et élégante, sans perdre en lisibilité. L
 - [Le thème CLI sombre ou clair est peu lisible sur un vidéoprojecteur délavé] → contrôle de contraste 4,5:1, mode confort (C) et bascule T disponibles en séance.
 - [Le thème « terminal » fait gadget] → motifs limités au prompt et au curseur, pas d'effet CRT ni de scanlines.
 
-## Hypothèses à confirmer par spike
+## Hypothèses et résultats des spikes
 
-- **H1** : Windows Sandbox est disponible sur le poste de présentation et Scoop s'y installe sans UAC. → Spike S1.
-- **H2** : les caches Scoop (`~/scoop/cache`) et Mise permettent une installation hors ligne des outils choisis. → Spike S2.
-- **H3** : un `C:\Python3xx` ajouté au PATH machine masque bien le shim Mise de Python dans un nouveau terminal, et le correctif DevRecipe inverse l'ordre. → Spike S3.
-- **H4** : `mise` sous Windows bascule bien la version de Node au `cd` dans PowerShell 7 avec `mise activate pwsh`. → Spike S2.
-- **H5** : `cli-dark` est la meilleure variante par défaut en salle. → Test de projection (tâche 5.5) ; si la salle est très éclairée, passer le défaut à `cli-light`.
+- **H1 (Confirmé)** : Windows Sandbox est configuré via `demos/sandbox.wsb` (montage `C:\demos` et script d'accueil).
+- **H2 (Confirmé)** : Les caches Scoop (`~/scoop/cache`) et Mise (`~/.local/share/mise/installs/node`) permettent une exécution 100 % hors ligne sur scène.
+- **H3 (Confirmé)** : L'injection HKLM via `prepare-admin.ps1` reproduit fidèlement le masquage, et la parade DevRecipe (injection des shims en tête de `$env:PATH`) rétablit l'ordre prioritaire sans droit admin.
+- **H4 (Confirmé)** : La bascule de version au `cd` entre `projet-legacy` (Node 18) et `projet-moderne` (Node 22) fonctionne de manière déterministe via `mise.toml`.
+- **H5 (Confirmé)** : `cli-dark` offre une lisibilité dev-friendly remarquable (contraste > 13:1) avec le curseur clignotant, et la bascule vers `cli-light` (contraste > 8:1) répond aux vidéoprojecteurs délavés via la touche T.
 
 ## Migration Plan
 

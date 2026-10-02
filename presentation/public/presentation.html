@@ -18,7 +18,7 @@
   --font-body: 'Poppins', system-ui, -apple-system, sans-serif;
   --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
   --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'SF Mono', Consolas, monospace;
   --font-bump: 4px;
 
   /* Assets graphiques réutilisables */
@@ -309,12 +309,23 @@
 }
 
 /* Typographie & Motifs spécifiques au thème CLI Light */
+[data-theme="cli-light"] .slide__display,
 [data-theme="cli-light"] .slide__heading,
-[data-theme="terminal-light"] .slide__heading,
 [data-theme="cli-light"] .slide__title,
+[data-theme="terminal-light"] .slide__display,
+[data-theme="terminal-light"] .slide__heading,
 [data-theme="terminal-light"] .slide__title {
   font-family: var(--font-mono);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+[data-theme="cli-light"] .slide--title .slide__display,
+[data-theme="terminal-light"] .slide--title .slide__display {
+  font-family: var(--font-mono);
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  line-height: 1.12;
 }
 
 [data-theme="cli-light"] .slide__label::before,
@@ -450,12 +461,23 @@
 }
 
 /* Typographie & Motifs spécifiques au thème CLI Dark */
+[data-theme="cli-dark"] .slide__display,
 [data-theme="cli-dark"] .slide__heading,
-[data-theme="terminal-dark"] .slide__heading,
 [data-theme="cli-dark"] .slide__title,
+[data-theme="terminal-dark"] .slide__display,
+[data-theme="terminal-dark"] .slide__heading,
 [data-theme="terminal-dark"] .slide__title {
   font-family: var(--font-mono);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+[data-theme="cli-dark"] .slide--title .slide__display,
+[data-theme="terminal-dark"] .slide--title .slide__display {
+  font-family: var(--font-mono);
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  line-height: 1.12;
 }
 
 [data-theme="cli-dark"] .slide__label::before,
@@ -5868,34 +5890,382 @@
     </div>
   </section>
 
-  <!-- Slide 2: Merci -->
-<section class="slide slide--content slide--outro" data-nav="Merci">
-    <div class="slide__inner">
-      <div class="outro-main">
-        <p class="slide__label reveal">Questions / R&eacute;ponses</p>
-        <h2 class="slide__heading reveal">Merci !</h2>
-        <p class="slide__subtitle reveal">Installer ses outils de dev avec Scoop &amp; Mise</p>
-        <div class="reveal outro-tags">
-          <span class="badge badge--accent">Scoop</span>
-          <span class="badge badge--blue">Mise</span>
-          <span class="badge badge--green">DevRecipe</span>
-          <span class="badge badge--orange">PATH Windows</span>
-        </div>
-        <div class="reveal outro-speaker">
-          <p>Alexis Scolan &mdash; <strong style="color:var(--accent);">Architecte technique</strong></p>
-        </div>
+  <!-- Slide 2: Les 4 erreurs du quotidien -->
+<section class="slide slide--content slide--concept-cards" data-part="0" data-nav="Les 4 erreurs du quotidien">
+  <div class="slide__header reveal">
+    <span class="slide__number">00</span>
+    <span class="slide__label">Accroche</span>
+    <h2 class="slide__heading">Les 4 blocages que tout dev Windows a vécus</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--2 reveal">
+      <div class="concept-card concept-card--orange">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">ERREUR #1 &middot; LE MUR DU VENDREDI</span>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« Voulez-vous autoriser cette application ? »</h3>
+        <p class="concept-card__desc">Un simple outil CLI exige les droits administrateur (UAC). Billet DSI ouvert, ticket en attente 3 jours.</p>
       </div>
-      <div class="outro-qr-pane reveal">
-        <div class="outro-qr-card">
-          <h3 class="outro-qr__title">Support de pr&eacute;sentation</h3>
-          <div class="qr-spotlight">
-            <img src="assets/presentation-qr.png" alt="QR code vers le support de la pr&eacute;sentation" loading="eager">
-          </div>
-          <!-- TODO : URL GitHub Pages du nouveau repo -->
+      <div class="concept-card concept-card--orange">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">ERREUR #2 &middot; LE FANTÔME DU PATH</span>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« 'node' n'est pas reconnu en tant que commande »</h3>
+        <p class="concept-card__desc">L'outil a été installé via un installeur MSI... mais le PATH n'a pas été rechargé, ou pointe sur un binaire inexistant.</p>
+      </div>
+      <div class="concept-card concept-card--cyan">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">ERREUR #3 &middot; LE CONFLIT DE RUNTIMES</span>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« Required node version "20", current is "18.2" »</h3>
+        <p class="concept-card__desc">Projet A en Node 18, Projet B en Node 22. Le dev passe son temps à jongler avec nvm ou à casser son poste.</p>
+      </div>
+      <div class="concept-card concept-card--purple">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">ERREUR #4 &middot; LA CLAQUE MULTIPLATEFORME</span>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« This script is only supported on Linux/macOS »</h3>
+        <p class="concept-card__desc">Un README rédigé sur Mac par le lead dev. Sur Windows, les outils manquent, les scripts bash échouent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 3: La promesse -->
+<section class="slide slide--content slide--concept-cards" data-part="0" data-nav="La promesse">
+  <div class="slide__header reveal">
+    <span class="slide__number">00</span>
+    <span class="slide__label">Accroche</span>
+    <h2 class="slide__heading">La promesse : 4 erreurs, 4 réponses concrètes</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--2 reveal">
+      <div class="concept-card concept-card--blue">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PAS DE DROIT ADMIN &rarr; SCOOP</span>
+        <h3 class="concept-card__title">User Space pur</h3>
+        <p class="concept-card__desc">Tous les outils de dev s'installent dans votre dossier utilisateur. Aucune invite UAC, aucune modification des dossiers système.</p>
+      </div>
+      <div class="concept-card concept-card--cyan">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">VERSIONS PAR PROJET &rarr; MISE</span>
+        <h3 class="concept-card__title">Activation contextuelle</h3>
+        <p class="concept-card__desc">Un simple <code>mise.toml</code> versionné dans le dépôt Git. Quand vous entrez dans le dossier, les bons runtimes s'activent immédiatement.</p>
+      </div>
+      <div class="concept-card concept-card--orange">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">COMMAND NOT FOUND &rarr; SHIMS &amp; PRECEDENCE</span>
+        <h3 class="concept-card__title">Maîtrise du PATH</h3>
+        <p class="concept-card__desc">Comprendre comment Windows résout les exécutables (HKLM avant HKCU) pour éviter que les vieux outils système ne masquent vos versions.</p>
+      </div>
+      <div class="concept-card concept-card--green">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">L'ONBOARDING D'ÉQUIPE &rarr; DEVRECIPE</span>
+        <h3 class="concept-card__title">Manifeste déclaratif en PR</h3>
+        <p class="concept-card__desc">Orchestrer Scoop et Mise dans un manifeste TOML partagé, testé en preflight, avec détection de conflits avant installation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 4: Scoop : Le User Space -->
+<section class="slide slide--content slide--concept-cards" data-part="1" data-nav="Scoop : Le User Space">
+  <div class="slide__header reveal">
+    <span class="slide__number">01</span>
+    <span class="slide__label">Scoop &middot; User Space</span>
+    <h2 class="slide__heading">Scoop : vos outils dans votre profil, sans admin</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--3 reveal">
+      <div class="concept-card concept-card--blue">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #1</span>
+        <h3 class="concept-card__title">Zéro UAC</h3>
+        <p class="concept-card__desc">Scoop décompresse les binaires dans <code>~/scoop/apps</code>. Aucun installeur MSI ne pollue le registre machine ni n'exige de droit élévé.</p>
+      </div>
+      <div class="concept-card concept-card--blue">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #2</span>
+        <h3 class="concept-card__title">Les Shims</h3>
+        <p class="concept-card__desc">Un seul dossier dans votre PATH : <code>~/scoop/shims</code>. Chaque outil y dépose un petit proxy (.exe / .cmd) pointant sur la version active.</p>
+      </div>
+      <div class="concept-card concept-card--blue">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #3</span>
+        <h3 class="concept-card__title">Buckets Git</h3>
+        <p class="concept-card__desc">Les catalogues d'applications sont de simples dépôts Git de manifests JSON (<code>main</code>, <code>extras</code>, <code>versions</code> ou votre bucket interne d'entreprise).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 5: Démo Scoop -->
+<section class="slide slide--content" data-part="1" data-nav="Démo Scoop">
+  <div class="slide__header reveal">
+    <span class="slide__number">01</span>
+    <span class="slide__label">Démo Scoop</span>
+    <h2 class="slide__heading">En direct : installer un outil CLI en 15 secondes</h2>
+  </div>
+  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
+    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
+        <span>PowerShell 7 &middot; Profil Utilisateur Standard</span>
+        <span style="color:var(--accent);">User Space &middot; Zéro UAC</span>
+      </div>
+      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># 1. Vérification : aucun droit administrateur requis</span>
+<span style="color:var(--accent); font-weight:700;">&gt;</span> scoop install lazygit
+<span style="color:var(--ansi-bright-black);">Installing 'lazygit' (0.44.1) [64bit] from 'extras' bucket</span>
+<span style="color:var(--ansi-green);">Checking hash of lazygit_0.44.1_Windows_x86_64.zip ... ok.</span>
+<span style="color:var(--ansi-bright-black);">Extracting lazygit_0.44.1_Windows_x86_64.zip ... done.</span>
+<span style="color:var(--ansi-blue);">Linking ~\scoop\apps\lazygit\current =&gt; ~\scoop\apps\lazygit\0.44.1</span>
+<span style="color:var(--ansi-yellow);">Creating shim for 'lazygit' in ~\scoop\shims\lazygit.exe</span>
+<span style="color:var(--green); font-weight:700;">'lazygit' (0.44.1) was installed successfully!</span>
+
+<span style="color:var(--accent); font-weight:700;">&gt;</span> where.exe lazygit
+<span style="color:var(--ansi-bright-white);">C:\Users\alexis\scoop\shims\lazygit.exe</span></code></pre>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 6: Mise : Runtimes par projet -->
+<section class="slide slide--content slide--concept-cards" data-part="2" data-nav="Mise : Runtimes par projet">
+  <div class="slide__header reveal">
+    <span class="slide__number">02</span>
+    <span class="slide__label">Mise-en-place</span>
+    <h2 class="slide__heading">Mise : la version du runtime suit le projet, pas le poste</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--3 reveal">
+      <div class="concept-card concept-card--cyan">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">POLYGLOTTE</span>
+        <h3 class="concept-card__title">Un seul outil</h3>
+        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Écrit en Rust, ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
+      </div>
+      <div class="concept-card concept-card--cyan">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">DÉCLARATIF</span>
+        <h3 class="concept-card__title">mise.toml</h3>
+        <p class="concept-card__desc">Le fichier de configuration vit dans le dépôt Git. Quand vous changez de branche ou de dossier, les versions basculent automatiquement.</p>
+      </div>
+      <div class="concept-card concept-card--cyan">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">ENV &amp; TASKS</span>
+        <h3 class="concept-card__title">Au-delà des runtimes</h3>
+        <p class="concept-card__desc">Charge des variables d'environnement (<code>[env]</code>) et des tâches d'équipe (<code>[tasks]</code>) pour standardiser les scripts sans dépendre de Makefile ou bash.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 7: Démo Mise -->
+<section class="slide slide--content" data-part="2" data-nav="Démo Mise">
+  <div class="slide__header reveal">
+    <span class="slide__number">02</span>
+    <span class="slide__label">Démo Mise</span>
+    <h2 class="slide__heading">En direct : bascule de version automatique au « cd »</h2>
+  </div>
+  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
+    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
+        <span>PowerShell 7 + mise activate --shims</span>
+        <span style="color:var(--accent3);">Zero-friction runtime switch</span>
+      </div>
+      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--accent3); font-weight:700;">&gt;</span> cd C:\workspace\projet-legacy
+<span style="color:var(--accent3); font-weight:700;">&gt;</span> node --version
+<span style="color:var(--ansi-yellow); font-weight:700;">v18.20.4</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "18")</span>
+
+<span style="color:var(--accent3); font-weight:700;">&gt;</span> cd C:\workspace\projet-moderne
+<span style="color:var(--accent3); font-weight:700;">&gt;</span> node --version
+<span style="color:var(--green); font-weight:700;">v22.14.0</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "22")</span>
+
+<span style="color:var(--text-dim);"># Lance la tâche d'équipe déclarée dans [tasks.dev]</span>
+<span style="color:var(--accent3); font-weight:700;">&gt;</span> mise run dev
+<span style="color:var(--ansi-bright-black);">[dev] API_URL=http://localhost:8080 npm run start</span></code></pre>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 8: Le piège du PATH Windows -->
+<section class="slide slide--content slide--concept-cards" data-part="3" data-nav="Le piège du PATH Windows">
+  <div class="slide__header reveal">
+    <span class="slide__number">03</span>
+    <span class="slide__label">Windows Internals</span>
+    <h2 class="slide__heading">Le piège du PATH : HKLM passe toujours avant HKCU</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--2 reveal">
+      <div class="concept-card concept-card--orange">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">LA RÈGLE WINDOWS</span>
+        <h3 class="concept-card__title">Fusion descendante obligatoire</h3>
+        <p class="concept-card__desc">À la création de session (<code>CreateEnvironmentBlock</code>), Windows concatène le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
+      </div>
+      <div class="concept-card concept-card--orange">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">LA CONSÉQUENCE CACHÉE</span>
+        <h3 class="concept-card__title">Le masquage (Shadowing)</h3>
+        <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> déclaré au niveau Machine, votre Python 3.12 installé proprement via Mise ne sera <strong>jamais appelé</strong> par défaut dans vos scripts !</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 9: Démo PATH -->
+<section class="slide slide--content" data-part="3" data-nav="Démo PATH">
+  <div class="slide__header reveal">
+    <span class="slide__number">03</span>
+    <span class="slide__label">Démo PATH</span>
+    <h2 class="slide__heading">En direct : débusquer le masquage avec where.exe</h2>
+  </div>
+  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
+    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
+        <span>Diagnostic &middot; Ordre de résolution Windows</span>
+        <span style="color:var(--accent2);">HKLM vs HKCU</span>
+      </div>
+      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># Le piège : l'exécutable système passe en premier</span>
+<span style="color:var(--accent2); font-weight:700;">&gt;</span> where.exe python
+<span style="color:var(--red); font-weight:700;">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM (Machine legacy)</span>
+<span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU (Ignoré !)</span>
+
+<span style="color:var(--text-dim);"># La parade DevRecipe : shims_prepend.cmd via AutoRun cmd.exe</span>
+<span style="color:var(--text-dim);"># et injection au début du PATH dans le profil PowerShell ($env:PATH)</span>
+<span style="color:var(--accent2); font-weight:700;">&gt;</span> devrecipe -Review
+<span style="color:var(--green); font-weight:700;">[OK] User shims prepended at index 0 of current PATH</span>
+
+<span style="color:var(--accent2); font-weight:700;">&gt;</span> where.exe python
+<span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- Prioritaire !</span>
+<span style="color:var(--text-dim);">C:\Python39\python.exe</span></code></pre>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 10: DevRecipe : L'onboarding en PR -->
+<section class="slide slide--content slide--concept-cards" data-part="4" data-nav="DevRecipe : L'onboarding en PR">
+  <div class="slide__header reveal">
+    <span class="slide__number">04</span>
+    <span class="slide__label">REX &middot; DevRecipe</span>
+    <h2 class="slide__heading">DevRecipe : l'onboarding d'équipe devient une PR</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--3 reveal">
+      <div class="concept-card concept-card--green">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">MANIFESTE TOML</span>
+        <h3 class="concept-card__title">Code Review</h3>
+        <p class="concept-card__desc">Fini le wiki obsolète de 15 pages. La liste des outils requis (Scoop) et des runtimes (Mise) est déclarée en code et validée en équipe.</p>
+      </div>
+      <div class="concept-card concept-card--green">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">PREFLIGHT CHECK</span>
+        <h3 class="concept-card__title">Détection des conflits</h3>
+        <p class="concept-card__desc">Avant de toucher au poste, DevRecipe inspecte les désinstalleurs Windows, AppX et le PATH pour alerter si un outil tiers entre en collision.</p>
+      </div>
+      <div class="concept-card concept-card--green">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">DRY-RUN &amp; PROFILS</span>
+        <h3 class="concept-card__title">Zéro effet de bord</h3>
+        <p class="concept-card__desc"><code>-DryRun</code> montre exactement les actions qui seront exécutées. Les profils (<code>default</code>, <code>ai-agents</code>, <code>cloud</code>) ciblent les besoins réels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 11: Démo DevRecipe -->
+<section class="slide slide--content" data-part="4" data-nav="Démo DevRecipe">
+  <div class="slide__header reveal">
+    <span class="slide__number">04</span>
+    <span class="slide__label">Démo DevRecipe</span>
+    <h2 class="slide__heading">En direct : validation et simulation d'un manifeste d'équipe</h2>
+  </div>
+  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
+    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
+        <span>devrecipe.ps1 &middot; Mode Preflight &amp; Dry-Run</span>
+        <span style="color:var(--green);">0 risque &middot; Zéro surprise</span>
+      </div>
+      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># 1. Validation de la syntaxe du manifeste devrecipe.toml</span>
+<span style="color:var(--green); font-weight:700;">&gt;</span> .\devrecipe.ps1 -Validate
+<span style="color:var(--ansi-green);">[OK] Manifest syntax valid (profile: default)</span>
+
+<span style="color:var(--text-dim);"># 2. Simulation avec preflight check des conflits existants</span>
+<span style="color:var(--green); font-weight:700;">&gt;</span> .\devrecipe.ps1 -DryRun -Review
+<span style="color:var(--ansi-bright-black);">[Preflight] Scanning system software and registry paths...</span>
+<span style="color:var(--ansi-yellow);">[WARN] Existing system Git found at 'C:\Program Files\Git\cmd' (version 2.38)</span>
+<span style="color:var(--ansi-blue);">[DryRun] Plan:</span>
+<span style="color:var(--text-dim);">  + Scoop packages to install : [ripgrep, fzf, jq, lazygit]</span>
+<span style="color:var(--text-dim);">  + Mise runtimes to install  : [node@22.14.0, python@3.12.2]</span>
+<span style="color:var(--text-dim);">  + Environment actions      : Prepend user shims in PowerShell &amp; cmd AutoRun</span>
+<span style="color:var(--ansi-green); font-weight:700;">[OK] DryRun complete (exit code 0). No system changes applied.</span></code></pre>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 12: Gouvernance & Sécurité -->
+<section class="slide slide--content slide--concept-cards" data-part="4" data-nav="Gouvernance &amp; Sécurité">
+  <div class="slide__header reveal">
+    <span class="slide__number">04</span>
+    <span class="slide__label">Sécurité &middot; Entreprise</span>
+    <h2 class="slide__heading">Gouvernance : User Space &ne; Shadow IT</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--3 reveal">
+      <div class="concept-card concept-card--green">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">CONTRÔLE</span>
+        <h3 class="concept-card__title">EDR &amp; AppLocker actifs</h3>
+        <p class="concept-card__desc">Installer en User Space ne contourne aucun antivirus d'entreprise, ni WDAC ni les restrictions d'exécution. Tout binaire non autorisé reste bloqué.</p>
+      </div>
+      <div class="concept-card concept-card--green">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">PROCURATION</span>
+        <h3 class="concept-card__title">Buckets approuvés</h3>
+        <p class="concept-card__desc">L'entreprise peut héberger son propre bucket Git privé avec des manifests validés par les équipes cybersécurité et des miroirs internes.</p>
+      </div>
+      <div class="concept-card concept-card--green">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">TRANSPARENCE</span>
+        <h3 class="concept-card__title">Auditabilité complète</h3>
+        <p class="concept-card__desc"><code>scoop export</code> et <code>mise ls --json</code> permettent de générer un inventaire machine instantané pour la conformité et les revues sécurité.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 13: Démarrer dès aujourd'hui -->
+<section class="slide slide--content slide--concept-cards" data-part="5" data-nav="Démarrer dès aujourd'hui">
+  <div class="slide__header reveal">
+    <span class="slide__number">05</span>
+    <span class="slide__label">Conclusion</span>
+    <h2 class="slide__heading">3 réflexes à retenir &middot; Votre 1ère action dès aujourd'hui</h2>
+  </div>
+  <div class="slide__inner">
+    <div class="concept-grid concept-grid--3 reveal" style="margin-bottom:20px;">
+      <div class="concept-card concept-card--purple">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">RÉFLEXE #1</span>
+        <h3 class="concept-card__title">User Space first</h3>
+        <p class="concept-card__desc">Scoop pour tous vos outils en ligne de commande. Ne demandez plus les droits admin pour un simple binaire CLI.</p>
+      </div>
+      <div class="concept-card concept-card--purple">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">RÉFLEXE #2</span>
+        <h3 class="concept-card__title">Mise dans le repo</h3>
+        <p class="concept-card__desc">Figez les runtimes dans un <code>mise.toml</code> versionné. Vos collègues démarrent le projet en 1 seconde.</p>
+      </div>
+      <div class="concept-card concept-card--purple">
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">RÉFLEXE #3</span>
+        <h3 class="concept-card__title">Shims prioritaires</h3>
+        <p class="concept-card__desc">Vérifiez vos shims avec <code>where.exe</code> pour vous assurer que les outils HKLM système ne prennent pas le pas.</p>
+      </div>
+    </div>
+    <div class="slide__code-block reveal" style="max-width:860px; margin:0 auto; width:100%;">
+      <pre style="padding:14px 18px; font-family:var(--font-mono); font-size:clamp(13px,1.2vw,16px); line-height:1.45; margin:0; text-align:center;"><code><span style="color:var(--text-dim);"># Votre première commande ce soir en rentrant du talk :</span>
+<span style="color:var(--accent4); font-weight:700;">&gt;</span> irm get.scoop.sh | iex ; scoop install mise</code></pre>
+    </div>
+  </div>
+</section>
+
+  <!-- Slide 14: Merci -->
+<section class="slide slide--content slide--outro" data-part="5" data-nav="Merci">
+  <div class="slide__inner">
+    <div class="outro-main">
+      <p class="slide__label reveal">Questions / R&eacute;ponses</p>
+      <h2 class="slide__heading reveal">Merci !</h2>
+      <p class="slide__subtitle reveal">Installer ses outils de dev avec Scoop &amp; Mise</p>
+      <div class="reveal outro-tags">
+        <span class="badge badge--accent">Scoop</span>
+        <span class="badge badge--blue">Mise</span>
+        <span class="badge badge--green">DevRecipe</span>
+        <span class="badge badge--orange">PATH Windows</span>
+      </div>
+      <div class="reveal outro-speaker">
+        <p>Alexis Scolan &mdash; <strong style="color:var(--accent);">Architecte technique</strong> chez onepoint</p>
+      </div>
+    </div>
+    <div class="outro-qr-pane reveal">
+      <div class="outro-qr-card">
+        <h3 class="outro-qr__title">Support de pr&eacute;sentation</h3>
+        <div class="qr-spotlight">
+          <img src="assets/presentation-qr.png" alt="QR code vers le support de la pr&eacute;sentation" loading="eager">
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </div>
 
 <div class="laser-pointer" aria-hidden="true"></div>

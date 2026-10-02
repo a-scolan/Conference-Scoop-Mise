@@ -2,41 +2,204 @@
   {
     "index": 0,
     "title": "Titre",
-    "duration": "20 s",
-    "action": "Accueil, regard salle, attendre le silence.",
+    "duration": "25 s",
+    "action": "Accueil de la salle, regard direct vers le public, attendre le calme avant de déclencher le chrono.",
     "checklist": [],
     "keywords": [
-      "UAC, Command not found, Required node version"
+      "Quickie 15 min · Outillage dev Windows",
+      "Scoop · Mise · DevRecipe"
     ],
-    "beat": "Accroche.",
-    "substance": "À définir.",
-    "verbatim": "« TODO : accroche d'ouverture. »"
+    "beat": "Accroche bienveillante et promesse concrète.",
+    "substance": "Promesse d'autonomie complète en User Space.",
+    "verbatim": "« Bonjour à toutes et à tous ! Bienvenue à ce quickie de 15 minutes. Aujourd'hui, on va parler d'un sujet qui nous concerne tous au quotidien quand on développe sous Windows en entreprise : comment installer, versionner et partager ses outils de dev sans jamais avoir besoin d'appeler la DSI ni d'ouvrir un ticket administrateur. »"
   },
   {
     "index": 1,
     "title": "Speaker",
-    "duration": "15 s",
-    "action": "Transition rapide (15 s).",
+    "duration": "30 s",
+    "action": "Rythme vif, posture de praticien terrain.",
     "checklist": [],
     "keywords": [
       "Alexis Scolan · Architecte technique onepoint",
-      "DevRecipe : retour d'expérience"
+      "Créateur de DevRecipe"
     ],
     "beat": "Praticien parlant à des praticiens.",
-    "substance": "Légitimité terrain (DevRecipe).",
-    "verbatim": "« TODO : présentation speaker. »"
+    "substance": "Crédibilité terrain et confrontation aux contraintes réelles.",
+    "verbatim": "« Je m'appelle Alexis Scolan, je suis architecte technique chez onepoint. J'accompagne des équipes de développement sur des postes Windows souvent très verrouillés par des politiques de sécurité strictes. Tout ce que je vous présente aujourd'hui est issu de retours d'expérience réels et de l'outil DevRecipe qu'on utilise pour fluidifier l'onboarding des développeurs. »"
   },
   {
     "index": 2,
-    "title": "Merci",
-    "duration": "10 s",
-    "action": "Ouvrir les questions, montrer le QR code.",
+    "title": "Les 4 erreurs du quotidien",
+    "duration": "45 s",
+    "action": "Faire lever la main dans la salle sur les messages affichés.",
     "checklist": [],
     "keywords": [
-      "Questions / Réponses"
+      "UAC · Command not found · Conflit de versions · Linux only",
+      "Identification immédiate de la douleur"
     ],
-    "beat": "Clôture.",
-    "substance": "Ressources et support en ligne.",
-    "verbatim": "« Merci ! Place à vos questions. »"
+    "beat": "Diagnostic partagé, connivence avec la salle.",
+    "substance": "4 messages d'erreur textuels issus du vécu de chaque développeur.",
+    "verbatim": "« Levez la main si vous avez déjà vu au moins deux de ces quatre écrans : la fameuse popup UAC jaune demandant un compte admin le vendredi à 17h, la commande installée qui reste introuvable dans le terminal, le conflit de version Node entre deux projets, ou le script bash qui refuse de tourner sous Windows. On a tous perdu des heures entières là-dessus. »"
+  },
+  {
+    "index": 3,
+    "title": "La promesse",
+    "duration": "40 s",
+    "action": "Balayer les 4 réponses d'un geste clair de la main.",
+    "checklist": [],
+    "keywords": [
+      "Scoop (User Space) · Mise (Projet) · Shims (PATH) · DevRecipe (PR)"
+    ],
+    "beat": "Bascule du problème vers la solution.",
+    "substance": "Contrat de la conférence : 4 problèmes, 4 solutions.",
+    "verbatim": "« La bonne nouvelle, c'est qu'il existe un écosystème moderne pour régler définitivement chacun de ces 4 points : Scoop pour installer sans admin dans son profil, Mise pour switcher automatiquement de version au 'cd', la maîtrise des shims pour dompter le PATH Windows, et DevRecipe pour formaliser tout ça dans une Pull Request relue en équipe. Voyons comment ça marche. »"
+  },
+  {
+    "index": 4,
+    "title": "Scoop : Le User Space",
+    "duration": "60 s",
+    "action": "Insister sur la simplicité des shims et l'absence d'élévation de privilèges.",
+    "checklist": [],
+    "keywords": [
+      "Scoop · User Space · Zéro UAC · Shims · Buckets Git",
+      "« Mes outils s'installent dans mon profil, sans admin. »"
+    ],
+    "beat": "Découverte du premier pilier d'émancipation.",
+    "substance": "Démonstration du mécanisme d'isolation en espace utilisateur.",
+    "verbatim": "« Premier réflexe : Scoop. Contrairement aux installeurs traditionnels ou aux gestionnaires système, Scoop part d'un principe radical : installer vos outils dans votre dossier utilisateur, typiquement ~/scoop/apps. Aucun droit administrateur n'est requis. Pour rendre les exécutables disponibles partout, Scoop utilise des 'shims', des petits proxys légers regroupés dans un dossier unique ajouté à votre PATH utilisateur. Et les paquets viennent de simples manifests JSON hébergés sur Git. »"
+  },
+  {
+    "index": 5,
+    "title": "Démo Scoop",
+    "duration": "50 s",
+    "action": "Montrer l'exécution de la commande et la création instantanée du shim.",
+    "checklist": [],
+    "keywords": [
+      "scoop install · lazygit · where.exe · shim vérifié"
+    ],
+    "beat": "Preuve par l'exemple en direct.",
+    "substance": "Démo concrète d'installation sans popup UAC.",
+    "verbatim": "« Regardez en direct : je lance un simple 'scoop install lazygit' dans mon PowerShell standard. Scoop télécharge l'archive, vérifie son empreinte SHA256, extrait les binaires dans mon profil, et crée automatiquement le shim dans ~/scoop/shims/lazygit.exe. La commande where.exe le confirme immédiatement : lazygit est prêt à l'emploi, sans que Windows n'ait jamais demandé un mot de passe administrateur. »"
+  },
+  {
+    "index": 6,
+    "title": "Mise : Runtimes par projet",
+    "duration": "60 s",
+    "action": "Opposer la gestion globale manuelle et la gestion contextuelle par dossier.",
+    "checklist": [],
+    "keywords": [
+      "Mise · Runtimes polyglottes · mise.toml · env & tasks",
+      "« La version du runtime suit le projet, pas le poste. »"
+    ],
+    "beat": "Deuxième pilier : fin du casse-tête multi-versions.",
+    "substance": "Fichier de configuration déclaratif traçable dans Git.",
+    "verbatim": "« Maintenant qu'on a nos outils CLI, comment gère-t-on les langages ? Pendant des années, on a empilé nvm pour Node, pyenv pour Python, sdkman pour Java. Mise regroupe tout cela en un seul binaire écrit en Rust, ultra-performant. Le secret ? Un fichier 'mise.toml' placé à la racine du dépôt Git. Quand vous naviguez dans vos dossiers, Mise ajuste instantanément les versions de vos runtimes et vos variables d'environnement, sans aucune friction. »"
+  },
+  {
+    "index": 7,
+    "title": "Démo Mise",
+    "duration": "55 s",
+    "action": "Pointer la commande 'cd' et le changement de version automatique de Node.",
+    "checklist": [],
+    "keywords": [
+      "cd projet · node --version · mise.toml · mise run dev"
+    ],
+    "beat": "L'effet 'magique' mais robuste pour le développeur.",
+    "substance": "Bascule instantanée en 5 ms au changement de répertoire.",
+    "verbatim": "« Démonstration : je suis dans projet-legacy, node --version m'affiche Node 18. Je fais simplement 'cd projet-moderne', et sans rien toucher, node --version bascule automatiquement sur Node 22.14. Mieux encore : la commande 'mise run dev' lit notre bloc [tasks] pour exécuter le serveur de dev avec les bonnes variables d'environnement. Tout est transparent et standardisé pour l'équipe. »"
+  },
+  {
+    "index": 8,
+    "title": "Le piège du PATH Windows",
+    "duration": "60 s",
+    "action": "Hausser le ton sur le piège HKLM vs HKCU, moment révélateur pour la salle.",
+    "checklist": [],
+    "keywords": [
+      "CreateEnvironmentBlock · HKLM avant HKCU · Shadowing · Masquage",
+      "« Le PATH machine passe avant le PATH utilisateur. »"
+    ],
+    "beat": "Révélation de l'obstacle caché.",
+    "substance": "Règle interne de Windows documentée et méconnue.",
+    "verbatim": "« Mais attention, sous Windows, il y a un piège que beaucoup ignorent : la priorité du PATH. Lors de la création d'une session, Windows appelle CreateEnvironmentBlock qui fusionne toujours le PATH Machine (dans HKLM) AVANT le PATH Utilisateur (dans HKCU). Si votre poste d'entreprise a un vieux Python système ou un vieux Git déployé dans C:\\Python, vos shims utilisateur seront silencieusement masqués ! »"
+  },
+  {
+    "index": 9,
+    "title": "Démo PATH",
+    "duration": "55 s",
+    "action": "Montrer la sortie de where.exe avant et après la parade des shims.",
+    "checklist": [],
+    "keywords": [
+      "where.exe · masquage identifié · AutoRun cmd · $env:PATH prepend"
+    ],
+    "beat": "Victoire technique sur la contrainte système.",
+    "substance": "Inversion prouvée de l'ordre de résolution par injection en début de session.",
+    "verbatim": "« Observons ce masquage avec where.exe : le Python machine apparaît en première ligne, notre version Mise est ignorée en deuxième ligne. Pour contourner cette fatalité sans modifier HKLM, la solution consiste à préfixer nos shims au tout début du PATH de session : dans le profil PowerShell, et via la clé AutoRun de cmd.exe. Après injection, where.exe confirme que notre runtime moderne reprend immédiatement la priorité absolue. »"
+  },
+  {
+    "index": 10,
+    "title": "DevRecipe : L'onboarding en PR",
+    "duration": "55 s",
+    "action": "Présenter DevRecipe comme le liant d'industrialisation d'équipe.",
+    "checklist": [],
+    "keywords": [
+      "DevRecipe · devrecipe.toml · Code Review · Preflight · Dry-Run",
+      "« L'onboarding devient une commande relue en PR. »"
+    ],
+    "beat": "Passage de l'astuce individuelle à la pratique d'équipe.",
+    "substance": "Retour d'expérience d'industrialisation collaborative.",
+    "verbatim": "« Pour ne pas demander à chaque nouvel arrivant d'exécuter ces étapes à la main, nous avons créé DevRecipe. C'est un orchestrateur open-source léger. Dans devrecipe.toml, vous déclarez vos paquets Scoop, vos runtimes Mise, vos profils. Le gros avantage ? Quand un projet a besoin d'un nouvel outil, le dev fait une Pull Request sur le manifeste. Ses pairs la relisent, la valident, et toute l'équipe met à jour son poste en une seule commande. »"
+  },
+  {
+    "index": 11,
+    "title": "Démo DevRecipe",
+    "duration": "50 s",
+    "action": "Montrer le scan preflight et l'absence d'altération en mode dry-run.",
+    "checklist": [],
+    "keywords": [
+      "devrecipe -Validate · -DryRun -Review · Preflight scan · 0 surprise"
+    ],
+    "beat": "Sérénité et professionnalisme de l'outillage.",
+    "substance": "Preflight déterministe avec rapport d'impact avant exécution.",
+    "verbatim": "« Regardons le preflight check : avant toute installation, DevRecipe inspecte le poste. Il détecte par exemple un vieux Git système déjà installé et émet un avertissement. Avec le commutateur -DryRun, il affiche le plan complet d'exécution sans toucher à votre machine. Zéro surprise, zéro régression, vous gardez la maîtrise intégrale de votre environnement. »"
+  },
+  {
+    "index": 12,
+    "title": "Gouvernance & Sécurité",
+    "duration": "50 s",
+    "action": "Rassurer fermement sur la sécurité d'entreprise, désamorcer l'objection du 'Shadow IT'.",
+    "checklist": [],
+    "keywords": [
+      "User Space != Shadow IT · EDR & AppLocker respectés · Buckets approuvés · Audit"
+    ],
+    "beat": "Légitimité institutionnelle et sérénité DSI.",
+    "substance": "Compatibilité totale avec les règles de cybersécurité d'entreprise.",
+    "verbatim": "« Une question revient souvent : est-ce que cette approche contourne la DSI ? Absolument pas. L'espace utilisateur respecte scrupuleusement les politiques de sécurité : l'EDR, l'antivirus et AppLocker restent 100 % actifs et bloqueront tout binaire suspect. Mieux : l'entreprise peut héberger son propre bucket Git privé avec des manifests audités, et scoop export fournit un inventaire complet pour les revues de conformité. »"
+  },
+  {
+    "index": 13,
+    "title": "Démarrer dès aujourd'hui",
+    "duration": "40 s",
+    "action": "Pointer la commande de démarrage en bas de slide, donner une impulsion d'action.",
+    "checklist": [],
+    "keywords": [
+      "3 réflexes · User Space first · Mise dans le repo · irm get.scoop.sh",
+      "« Commencez dès aujourd'hui : une ligne de commande. »"
+    ],
+    "beat": "Passage à l'action immédiat.",
+    "substance": "Commande d'installation vérifiée exécutable immédiatement sans admin.",
+    "verbatim": "« Pour récapituler : adoptez le User Space pour tous vos outils en ligne de commande, versionnez vos runtimes dans vos dépôts avec Mise, et surveillez la priorité de vos shims. Votre première action dès ce soir : une seule ligne PowerShell pour installer Scoop et Mise, et commencer à vous simplifier la vie. »"
+  },
+  {
+    "index": 14,
+    "title": "Merci",
+    "duration": "20 s",
+    "action": "Afficher le QR code, remercier la salle, inviter chaleureusement aux questions.",
+    "checklist": [],
+    "keywords": [
+      "Questions / Réponses · QR Code · Support complet en ligne"
+    ],
+    "beat": "Clôture élégante et ouverture des échanges.",
+    "substance": "Support et ressources disponibles en ligne immédiatement.",
+    "verbatim": "« Merci infiniment pour votre attention ! Retrouvez l'intégralité du support de présentation, les manifests et le code source via le QR code affiché à l'écran. Je suis à votre écoute pour toutes vos questions ! »"
   }
 ]

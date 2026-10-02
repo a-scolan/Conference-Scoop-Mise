@@ -91,12 +91,23 @@
 }
 
 /* Typographie & Motifs spécifiques au thème CLI Light */
+[data-theme="cli-light"] .slide__display,
 [data-theme="cli-light"] .slide__heading,
-[data-theme="terminal-light"] .slide__heading,
 [data-theme="cli-light"] .slide__title,
+[data-theme="terminal-light"] .slide__display,
+[data-theme="terminal-light"] .slide__heading,
 [data-theme="terminal-light"] .slide__title {
   font-family: var(--font-mono);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+[data-theme="cli-light"] .slide--title .slide__display,
+[data-theme="terminal-light"] .slide--title .slide__display {
+  font-family: var(--font-mono);
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  line-height: 1.12;
 }
 
 [data-theme="cli-light"] .slide__label::before,
