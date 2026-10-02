@@ -259,6 +259,14 @@
   font-weight: 700;
 }
 
+/* En-tête de carte calé exactement dans les coins supérieurs */
+.concept-card .petscii-card-header {
+  margin: calc(-1 * clamp(14px, 2.2vh, 22px)) calc(-1 * clamp(18px, 2.2vw, 26px)) clamp(10px, 1.4vh, 16px);
+  padding: 6px 14px;
+  background: var(--surface2);
+  border-bottom: 1.5px solid var(--border);
+}
+
 .petscii-hatch-strip {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -315,79 +323,6 @@
   font-feature-settings: "liga" 0, "calt" 0 !important;
   letter-spacing: 0 !important;
   font-kerning: none !important;
-}
-
-/* ==========================================================================
-   RETRO WINDOWS 98 COLOR ASCII LOGO WATERMARK (Excentré à droite)
-   ========================================================================== */
-.petscii-bg-win98 {
-  position: absolute;
-  top: 50%;
-  right: clamp(16px, 3.5vw, 64px);
-  left: auto;
-  transform: translateY(-50%);
-  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
-  font-size: clamp(11.5px, 1.4vw, 19px);
-  line-height: 1.05;
-  white-space: pre;
-  opacity: 0.15;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  text-align: right;
-  font-variant-ligatures: none !important;
-  letter-spacing: 0 !important;
-  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.4));
-}
-[data-theme="cli-light"] .petscii-bg-win98 {
-  opacity: 0.11;
-}
-
-/* ==========================================================================
-   RETRO JAVA COFFEE CUP ASCII LOGO WATERMARK (Slides Mise & Runtimes)
-   ========================================================================== */
-.petscii-bg-java {
-  position: absolute;
-  top: 50%;
-  right: clamp(16px, 3.5vw, 64px);
-  left: auto;
-  transform: translateY(-50%);
-  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
-  font-size: clamp(11px, 1.35vw, 18px);
-  line-height: 1.12;
-  white-space: pre;
-  opacity: 0.16;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  text-align: center;
-  font-variant-ligatures: none !important;
-  letter-spacing: 0 !important;
-  filter: drop-shadow(0 0 14px rgba(88, 166, 255, 0.35));
-}
-[data-theme="cli-light"] .petscii-bg-java {
-  opacity: 0.12;
-}
-
-/* ==========================================================================
-   WATERMARK RETRO MATRIX (En fond de slide)
-   ========================================================================== */
-.petscii-bg-watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
-  font-size: clamp(18px, 3.5vw, 42px);
-  line-height: 1.1;
-  letter-spacing: 4px;
-  color: var(--text-subtitle);
-  opacity: 0.045;
-  pointer-events: none;
-  z-index: 0;
-  user-select: none;
-  white-space: pre;
-  text-align: center;
 }
 
 /* ==========================================================================
@@ -503,41 +438,10 @@
 }
 
 /* ==========================================================================
-   MINIMALIST "OREGON TRAIL" RETRO ASCII LANDSCAPE
-   ========================================================================== */
-.petscii-bg-landscape {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  font-family: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace !important;
-  font-size: clamp(8px, 0.85vw, 11px);
-  line-height: 1.15;
-  white-space: pre;
-  color: var(--text-subtitle);
-  opacity: 0.08;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  text-align: center;
-  overflow: hidden;
-  font-variant-ligatures: none !important;
-  letter-spacing: 0 !important;
-}
-[data-theme="cli-light"] .petscii-bg-landscape {
-  opacity: 0.05;
-}
-
-/* ==========================================================================
    MOBILE & RESPONSIVE RULES POUR L'ART PETSCII
    ========================================================================== */
 @media (max-width: 860px), (max-height: 580px) {
   .petscii-slide-frame {
-    display: none !important;
-  }
-  .petscii-bg-watermark,
-  .petscii-bg-landscape {
     display: none !important;
   }
   .ansi-art--title {

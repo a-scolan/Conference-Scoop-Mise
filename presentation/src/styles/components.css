@@ -1876,50 +1876,50 @@
     .slide--concept-cards .slide__inner {
       grid-template-columns: 1fr;
       width: 100%;
-      max-width: min(100%, 1160px);
+      max-width: min(100%, 1240px);
       margin: 0 auto;
-      gap: clamp(14px, 2.4vh, 28px);
+      gap: clamp(18px, 3vh, 36px);
     }
 
     .slide--concept-cards .slide__heading,
     .slide__heading {
-      font-size: calc(clamp(24px, 3.2vw, 42px) + var(--font-bump));
-      line-height: 1.15;
+      font-size: calc(clamp(26px, 3.5vw, 46px) + var(--font-bump));
+      line-height: 1.12;
       margin-top: 0;
-      margin-bottom: clamp(10px, 1.8vh, 18px);
+      margin-bottom: clamp(12px, 2vh, 22px);
       max-width: 100%;
       text-wrap: balance;
     }
 
     .slide__label {
       font-family: var(--font-mono);
-      font-size: calc(clamp(12px, 1.1vw, 15px) + var(--font-bump));
+      font-size: calc(clamp(13px, 1.2vw, 16.5px) + var(--font-bump));
       font-weight: 700;
       letter-spacing: 0.12em;
       color: var(--accent);
-      margin-bottom: clamp(4px, 0.8vh, 8px);
+      margin-bottom: clamp(6px, 1vh, 10px);
       text-transform: uppercase;
     }
 
     .concept-grid {
       display: grid;
-      gap: clamp(14px, 1.8vw, 26px);
+      gap: clamp(16px, 2.2vw, 32px);
       width: 100%;
       align-items: stretch;
-      margin-top: clamp(8px, 1.5vh, 16px);
+      margin-top: clamp(10px, 1.8vh, 20px);
     }
     .concept-grid--2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      max-width: min(100%, 960px);
-      margin: clamp(12px, 2vh, 22px) auto 0 auto;
+      max-width: min(100%, 1060px);
+      margin: clamp(14px, 2.4vh, 26px) auto 0 auto;
     }
     .concept-grid--3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      max-width: min(100%, 1120px);
+      max-width: min(100%, 1200px);
     }
     .concept-grid--6 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(12px, 1.6vh, 20px);
+      gap: clamp(14px, 1.8vh, 24px);
     }
     @media (max-width: 900px) {
       .concept-grid--3,
@@ -1934,10 +1934,10 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: clamp(10px, 1.6vh, 16px);
-      min-height: clamp(140px, 18vh, 220px);
-      padding: clamp(18px, 2.6vh, 28px) clamp(18px, 2.2vw, 28px);
-      border-radius: 6px;
+      gap: clamp(12px, 1.8vh, 18px);
+      min-height: clamp(150px, 20vh, 230px);
+      padding: clamp(20px, 2.8vh, 32px) clamp(20px, 2.4vw, 32px);
+      border-radius: 4px;
       border: 1.5px solid var(--border-bright);
       background: var(--surface);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
@@ -1962,43 +1962,43 @@
 
     .concept-card__title {
       font-family: var(--font-mono);
-      font-size: calc(clamp(15px, 1.55vw, 21px) + var(--font-bump));
+      font-size: calc(clamp(16px, 1.7vw, 23px) + var(--font-bump));
       line-height: 1.25;
       font-weight: 700;
       color: var(--text);
       margin: 0;
     }
     .concept-card__desc {
-      font-size: calc(clamp(12px, 1.15vw, 15px) + var(--font-bump));
-      line-height: 1.5;
+      font-size: calc(clamp(13px, 1.25vw, 16.5px) + var(--font-bump));
+      line-height: 1.52;
       color: var(--text-dim);
       margin: 0;
     }
 
-    /* Couleurs de cartes diversifiées et vibrantes */
+    /* Couleurs d'accentuation des cartes (sans dégradé de fond) */
     .concept-card--blue {
       --card-accent: var(--accent);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--accent) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--cyan {
       --card-accent: var(--accent3);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--accent3) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--orange {
       --card-accent: var(--accent2);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--accent2) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--green {
       --card-accent: var(--green);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--green) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--purple {
       --card-accent: var(--accent4, #db2777);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--accent4, #db2777) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--teal {
       --card-accent: #0f766e;
-      background: linear-gradient(175deg, color-mix(in srgb, #0f766e 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
 
     .concept-card__step {

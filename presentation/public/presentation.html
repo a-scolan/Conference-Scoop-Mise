@@ -3430,50 +3430,50 @@
     .slide--concept-cards .slide__inner {
       grid-template-columns: 1fr;
       width: 100%;
-      max-width: min(100%, 1160px);
+      max-width: min(100%, 1240px);
       margin: 0 auto;
-      gap: clamp(14px, 2.4vh, 28px);
+      gap: clamp(18px, 3vh, 36px);
     }
 
     .slide--concept-cards .slide__heading,
     .slide__heading {
-      font-size: calc(clamp(24px, 3.2vw, 42px) + var(--font-bump));
-      line-height: 1.15;
+      font-size: calc(clamp(26px, 3.5vw, 46px) + var(--font-bump));
+      line-height: 1.12;
       margin-top: 0;
-      margin-bottom: clamp(10px, 1.8vh, 18px);
+      margin-bottom: clamp(12px, 2vh, 22px);
       max-width: 100%;
       text-wrap: balance;
     }
 
     .slide__label {
       font-family: var(--font-mono);
-      font-size: calc(clamp(12px, 1.1vw, 15px) + var(--font-bump));
+      font-size: calc(clamp(13px, 1.2vw, 16.5px) + var(--font-bump));
       font-weight: 700;
       letter-spacing: 0.12em;
       color: var(--accent);
-      margin-bottom: clamp(4px, 0.8vh, 8px);
+      margin-bottom: clamp(6px, 1vh, 10px);
       text-transform: uppercase;
     }
 
     .concept-grid {
       display: grid;
-      gap: clamp(14px, 1.8vw, 26px);
+      gap: clamp(16px, 2.2vw, 32px);
       width: 100%;
       align-items: stretch;
-      margin-top: clamp(8px, 1.5vh, 16px);
+      margin-top: clamp(10px, 1.8vh, 20px);
     }
     .concept-grid--2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      max-width: min(100%, 960px);
-      margin: clamp(12px, 2vh, 22px) auto 0 auto;
+      max-width: min(100%, 1060px);
+      margin: clamp(14px, 2.4vh, 26px) auto 0 auto;
     }
     .concept-grid--3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      max-width: min(100%, 1120px);
+      max-width: min(100%, 1200px);
     }
     .concept-grid--6 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(12px, 1.6vh, 20px);
+      gap: clamp(14px, 1.8vh, 24px);
     }
     @media (max-width: 900px) {
       .concept-grid--3,
@@ -3488,10 +3488,10 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: clamp(10px, 1.6vh, 16px);
-      min-height: clamp(140px, 18vh, 220px);
-      padding: clamp(18px, 2.6vh, 28px) clamp(18px, 2.2vw, 28px);
-      border-radius: 6px;
+      gap: clamp(12px, 1.8vh, 18px);
+      min-height: clamp(150px, 20vh, 230px);
+      padding: clamp(20px, 2.8vh, 32px) clamp(20px, 2.4vw, 32px);
+      border-radius: 4px;
       border: 1.5px solid var(--border-bright);
       background: var(--surface);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
@@ -3516,43 +3516,43 @@
 
     .concept-card__title {
       font-family: var(--font-mono);
-      font-size: calc(clamp(15px, 1.55vw, 21px) + var(--font-bump));
+      font-size: calc(clamp(16px, 1.7vw, 23px) + var(--font-bump));
       line-height: 1.25;
       font-weight: 700;
       color: var(--text);
       margin: 0;
     }
     .concept-card__desc {
-      font-size: calc(clamp(12px, 1.15vw, 15px) + var(--font-bump));
-      line-height: 1.5;
+      font-size: calc(clamp(13px, 1.25vw, 16.5px) + var(--font-bump));
+      line-height: 1.52;
       color: var(--text-dim);
       margin: 0;
     }
 
-    /* Couleurs de cartes diversifiées et vibrantes */
+    /* Couleurs d'accentuation des cartes (sans dégradé de fond) */
     .concept-card--blue {
       --card-accent: var(--accent);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--accent) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--cyan {
       --card-accent: var(--accent3);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--accent3) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--orange {
       --card-accent: var(--accent2);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--accent2) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--green {
       --card-accent: var(--green);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--green) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--purple {
       --card-accent: var(--accent4, #db2777);
-      background: linear-gradient(175deg, color-mix(in srgb, var(--accent4, #db2777) 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
     .concept-card--teal {
       --card-accent: #0f766e;
-      background: linear-gradient(175deg, color-mix(in srgb, #0f766e 8%, var(--surface)) 0%, var(--surface) 38%);
+      background: var(--surface);
     }
 
     .concept-card__step {
@@ -6401,6 +6401,14 @@
   font-weight: 700;
 }
 
+/* En-tête de carte calé exactement dans les coins supérieurs */
+.concept-card .petscii-card-header {
+  margin: calc(-1 * clamp(14px, 2.2vh, 22px)) calc(-1 * clamp(18px, 2.2vw, 26px)) clamp(10px, 1.4vh, 16px);
+  padding: 6px 14px;
+  background: var(--surface2);
+  border-bottom: 1.5px solid var(--border);
+}
+
 .petscii-hatch-strip {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -6457,79 +6465,6 @@
   font-feature-settings: "liga" 0, "calt" 0 !important;
   letter-spacing: 0 !important;
   font-kerning: none !important;
-}
-
-/* ==========================================================================
-   RETRO WINDOWS 98 COLOR ASCII LOGO WATERMARK (Excentré à droite)
-   ========================================================================== */
-.petscii-bg-win98 {
-  position: absolute;
-  top: 50%;
-  right: clamp(16px, 3.5vw, 64px);
-  left: auto;
-  transform: translateY(-50%);
-  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
-  font-size: clamp(11.5px, 1.4vw, 19px);
-  line-height: 1.05;
-  white-space: pre;
-  opacity: 0.15;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  text-align: right;
-  font-variant-ligatures: none !important;
-  letter-spacing: 0 !important;
-  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.4));
-}
-[data-theme="cli-light"] .petscii-bg-win98 {
-  opacity: 0.11;
-}
-
-/* ==========================================================================
-   RETRO JAVA COFFEE CUP ASCII LOGO WATERMARK (Slides Mise & Runtimes)
-   ========================================================================== */
-.petscii-bg-java {
-  position: absolute;
-  top: 50%;
-  right: clamp(16px, 3.5vw, 64px);
-  left: auto;
-  transform: translateY(-50%);
-  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
-  font-size: clamp(11px, 1.35vw, 18px);
-  line-height: 1.12;
-  white-space: pre;
-  opacity: 0.16;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  text-align: center;
-  font-variant-ligatures: none !important;
-  letter-spacing: 0 !important;
-  filter: drop-shadow(0 0 14px rgba(88, 166, 255, 0.35));
-}
-[data-theme="cli-light"] .petscii-bg-java {
-  opacity: 0.12;
-}
-
-/* ==========================================================================
-   WATERMARK RETRO MATRIX (En fond de slide)
-   ========================================================================== */
-.petscii-bg-watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
-  font-size: clamp(18px, 3.5vw, 42px);
-  line-height: 1.1;
-  letter-spacing: 4px;
-  color: var(--text-subtitle);
-  opacity: 0.045;
-  pointer-events: none;
-  z-index: 0;
-  user-select: none;
-  white-space: pre;
-  text-align: center;
 }
 
 /* ==========================================================================
@@ -6645,41 +6580,10 @@
 }
 
 /* ==========================================================================
-   MINIMALIST "OREGON TRAIL" RETRO ASCII LANDSCAPE
-   ========================================================================== */
-.petscii-bg-landscape {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  font-family: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace !important;
-  font-size: clamp(8px, 0.85vw, 11px);
-  line-height: 1.15;
-  white-space: pre;
-  color: var(--text-subtitle);
-  opacity: 0.08;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  text-align: center;
-  overflow: hidden;
-  font-variant-ligatures: none !important;
-  letter-spacing: 0 !important;
-}
-[data-theme="cli-light"] .petscii-bg-landscape {
-  opacity: 0.05;
-}
-
-/* ==========================================================================
    MOBILE & RESPONSIVE RULES POUR L'ART PETSCII
    ========================================================================== */
 @media (max-width: 860px), (max-height: 580px) {
   .petscii-slide-frame {
-    display: none !important;
-  }
-  .petscii-bg-watermark,
-  .petscii-bg-landscape {
     display: none !important;
   }
   .ansi-art--title {
@@ -6724,51 +6628,36 @@
     </div>
   </div>
 
-  <!-- Filigrane matriciel PETSCII en arrière-plan -->
-  <div class="petscii-bg-watermark" aria-hidden="true">░▒▓█ SCOOP &amp; MISE // ZERO UAC █▓▒░
-╱╲╱╲╱╲ 64K RAM SYSTEM ╱╲╱╲╱╲</div>
-
-  <div class="reveal" style="margin-bottom:clamp(16px, 2.5vh, 28px);">
+  <div class="reveal" style="margin-bottom:clamp(12px, 2vh, 24px);">
     <div class="ansi-art ansi-art--title">
-<span class="c-scoop">  ▄████████    ▄████████  ▄████████  ▄████████  ████████▄ </span>         <span class="c-mise"> ███      ███  ███   ▄████████  ████████ </span>
-<span class="c-scoop"> ███    ███   ███    ███ ███    ███ ███    ███ ███   ▀███</span>         <span class="c-mise"> ████    ████  ███  ███    ███  ███      </span>
-<span class="c-scoop"> ███    █▀    ███    █▀  ███    ███ ███    ███ ███    ███</span>   <span class="c-and">▄▄</span>   <span class="c-mise"> █████  █████  ███  ███    █▀   ███      </span>
-<span class="c-scoop"> ▄███▄▄▄      ███        ███    ███ ███    ███ ███    ███</span>  <span class="c-and">▀▀▀</span>   <span class="c-mise"> ███▀████▀███  ███  ▄███▄▄▄     ████████ </span>
-<span class="c-scoop">▀▀███▀▀▀      ███        ███    ███ ███    ███ ███    ███</span>         <span class="c-mise"> ███  ▀▀  ███  ███ ▀▀███▀▀▀     ███      </span>
-<span class="c-scoop">  ███    █▄   ███    █▄  ███    ███ ███    ███ ███   ▄███</span>         <span class="c-mise"> ███      ███  ███   ███    █▄  ███      </span>
-<span class="c-scoop">  ██████████   ▀████████  ▀████████  ▀████████  ████████▀ </span>         <span class="c-mise"> ███      ███  ███   ██████████ ████████ </span></div>
+<span style="color:var(--text-subtitle);">╔═[ ░▒▓█ WINDOWS USER-SPACE ENVIRONMENT █▓▒░ ]═════════════════════════════════════════════╗
+║                                                                                          ║</span>
+<span style="color:var(--text-subtitle);">║</span>   <span class="c-scoop">▄██████   ▄██████   ▄██████   ▄██████   ▄█████</span>       <span class="c-mise">▄▄   ▄▄  ▄▄   ▄██████  ▄██████</span>    <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>   <span class="c-scoop">██        ██        ██   ██   ██   ██   ██  ██</span>   <span class="c-and">▄</span>   <span class="c-mise">███ ███  ██   ██       ██     </span>    <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>   <span class="c-scoop">██████▄   ██        ██   ██   ██   ██   █████▀</span>  <span class="c-and">▀▄▀</span>  <span class="c-mise">██ █ ██  ██   ██████▄  █████  </span>    <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>        <span class="c-scoop">██   ██        ██   ██   ██   ██   ██    </span>       <span class="c-mise">██   ██  ██        ██  ██     </span>    <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>   <span class="c-scoop">██████▀   ▀██████   ▀██████   ▀██████   ██    </span>       <span class="c-mise">██   ██  ██   ██████▀  ▀██████</span>    <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║                                                                                          ║
+╚══════════════════════════════════════════════════════════[ ░▒▓█ 64K RAM · QUICKIE █▓▒░ ]═╝</span></div>
   </div>
 
-  <h1 class="slide__display reveal" style="font-size:clamp(26px,5vw,56px); margin:0; line-height:1.15; font-family:var(--font-mono); letter-spacing:-0.02em;">
-    Installer ses outils de dev
-  </h1>
-  <p class="slide__subtitle reveal" style="color:var(--accent); margin-top:10px; font-size:clamp(15px,2vw,24px); letter-spacing:0.02em;">
-    sans droits administrateur &middot; runtimes par projet &middot; configuration d'&eacute;quipe en code
-  </p>
-
-  <div class="reveal" style="margin-top:clamp(14px, 2vh, 22px); display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center;">
-    <p class="slide__subtitle" style="color:var(--text-dim); margin:0; font-size:clamp(13px,1.4vw,17px);">
-      <strong>Alexis Scolan</strong> &middot; Architecte technique chez onepoint
+  <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+    <h1 class="slide__display reveal" style="font-size:clamp(30px, 5.2vw, 64px); margin:0; line-height:1.1; font-family:var(--font-mono); letter-spacing:-0.02em;">
+      Installer ses outils de dev
+    </h1>
+    <p class="slide__subtitle reveal" style="color:var(--accent); margin-top:8px; font-size:clamp(16px, 2vw, 24px); letter-spacing:0.02em;">
+      sans droits administrateur &middot; runtimes par projet &middot; configuration d'&eacute;quipe en code
     </p>
-  </div>
 
-  <!-- Console MS-DOS plaquée plus bas et centrée -->
-  <div class="terminal-window reveal" style="max-width:760px; margin:clamp(16px, 2.8vh, 32px) auto 0 auto; text-align:left;">
-    <div class="terminal-window__titlebar">
-      <div class="terminal-window__titlebar-left">
-        <div class="terminal-block__controls">
-          <span class="terminal-block__ctrl">_</span>
-          <span class="terminal-block__ctrl">□</span>
-          <span class="terminal-block__ctrl">✕</span>
-        </div>
-        <span>MS-DOS Prompt &middot; Scoop &amp; Mise Environment</span>
+    <div class="reveal" style="margin-top:clamp(20px, 3.5vh, 36px); display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <span class="slide__accent-line" style="width:80px; height:3px; background:var(--accent);"></span>
+      <p class="slide__subtitle" style="color:var(--text-dim); margin-top:8px; font-size:clamp(13px, 1.4vw, 17px);">
+        <strong>Alexis Scolan</strong> &middot; Architecte technique chez onepoint
+      </p>
+      <div style="font-family:Consolas, monospace; font-size:13px; color:var(--green); margin-top:6px;">
+        <code>C:\DEV&gt; READY. <span class="petscii-cursor">█</span></code>
       </div>
-      <span class="terminal-window__badge" style="color:var(--accent);">C:\&gt;</span>
     </div>
-    <pre style="padding:10px 16px; font-family:var(--font-mono); font-size:clamp(11.5px,1.15vw,14px); line-height:1.42; margin:0; background:var(--code-bg);"><code><span style="color:var(--text-subtitle);">Microsoft(R) MS-DOS 7.0 &middot; Windows User-Space CLI</span>
-<span style="color:var(--accent); font-weight:700;">C:\DEV&gt;</span> scoop status &amp;&amp; mise current
-<span style="color:var(--green);">[OK] 0 admin rights required &middot; Runtimes isolated per repository</span>
-<span style="color:var(--accent); font-weight:700;">C:\DEV&gt;</span> READY. <span class="petscii-cursor">█</span></code></pre>
   </div>
 </section>
 
@@ -7209,12 +7098,12 @@
       </div>
     </div>
 
-    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
-      <pre><code><span style="color:var(--text-subtitle);">╔═ [ORDRE DE RÉSOLUTION DES EXÉCUTABLES SOUS WINDOWS] ═════════════════════════════════════════╗
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:clamp(10px, 1.4vh, 18px) auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔══ [ORDRE DE RÉSOLUTION DES EXÉCUTABLES SOUS WINDOWS] ════════════════════════════════════════╗
 ║ <span style="color:var(--red); font-weight:700;">[1] HKLM (Machine PATH)</span>  <span style="color:var(--red);">████████████████████████████████</span>  <span style="color:var(--ansi-bright-white); font-weight:700;">ÉVALUÉ EN PREMIER</span>                 ║
-║     > <span style="color:var(--red);">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- [!] MASQUE VOS VERSIONS RÉCENTES !</span>       ║
+║     &gt; <span style="color:var(--red);">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- [!] MASQUE VOS VERSIONS RÉCENTES !</span>       ║
 ║ <span style="color:var(--accent3); font-weight:700;">[2] HKCU (User PATH)</span>     <span style="color:var(--text-subtitle);">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>  <span style="color:var(--text-dim);">ÉVALUÉ EN SECOND</span>                  ║
-║     > <span style="color:var(--text-dim);">~\AppData\Local\mise\shims\python.exe</span>     <span style="color:var(--ansi-yellow);">&lt;-- [X] JAMAIS ATTEINT PAR DÉFAUT !</span>          ║
+║     &gt; <span style="color:var(--text-dim);">~\AppData\Local\mise\shims\python.exe</span>     <span style="color:var(--ansi-yellow);">&lt;-- [X] JAMAIS ATTEINT PAR DÉFAUT !</span>          ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
@@ -8166,10 +8055,6 @@
       var targetTop=this.getSlideTop(initIdx);
       this.deck.scrollTo({top:targetTop,behavior:'instant'});
     }
-    this.injectCrystals();
-    this.injectCardHatchStrips();
-    this.injectBackgroundArt();
-    this.injectLandscape();
     this.initPresenterSync();
     this.buildSectionMap();this.buildChrome();this.bindEvents();this.observe();this.update();
     if(initIdx>0){
@@ -8178,182 +8063,7 @@
     }
     this.broadcastDeckReloaded();
   }
-  SlideEngine.prototype.injectCrystals=function(){
-    // 1. Haut gauche : Mire circulaire de registre d'angle avec réticule étendu et micro-repères
-    var svgTopLeft =
-      '<svg viewBox="0 0 64 64" width="64" height="64" class="blueprint-deco blueprint-deco--tl" aria-hidden="true" focusable="false">' +
-        '<g transform="translate(32, 32)">' +
-          '<circle cx="0" cy="0" r="22" fill="none" stroke="var(--accent)" stroke-width="1.2" opacity="0.6"/>' +
-          '<circle cx="0" cy="0" r="10" fill="none" stroke="var(--accent)" stroke-width="0.8" opacity="0.45"/>' +
-          '<path d="M0,0 L-22,0 A22,22 0 0,1 0,-22 Z" fill="var(--accent)" opacity="0.2"/>' +
-          '<path d="M0,0 L22,0 A22,22 0 0,1 0,22 Z" fill="var(--accent)" opacity="0.2"/>' +
-          '<line x1="-30" y1="0" x2="30" y2="0" stroke="var(--accent)" stroke-width="1.2" opacity="0.8"/>' +
-          '<line x1="0" y1="-30" x2="0" y2="30" stroke="var(--accent)" stroke-width="1.2" opacity="0.8"/>' +
-          '<circle cx="0" cy="0" r="1.5" fill="var(--accent)" opacity="0.95"/>' +
-        '</g>' +
-      '</svg>';
-
-    // 2. Haut droite : Échelle de calibration quadrichromie CMYK avec pastilles et repères fins
-    var svgTopRight =
-      '<svg viewBox="0 0 130 26" width="130" height="26" class="blueprint-deco blueprint-deco--tr" aria-hidden="true" focusable="false">' +
-        '<g transform="translate(0, 4)">' +
-          '<rect x="0" y="0" width="14" height="12" rx="2" fill="var(--accent3)" opacity="0.85"/>' +
-          '<rect x="18" y="0" width="14" height="12" rx="2" fill="var(--accent4, #db2777)" opacity="0.85"/>' +
-          '<rect x="36" y="0" width="14" height="12" rx="2" fill="var(--accent2)" opacity="0.85"/>' +
-          '<rect x="54" y="0" width="14" height="12" rx="2" fill="var(--text)" opacity="0.75"/>' +
-          '<text x="7" y="10" font-family="var(--font-mono)" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">C</text>' +
-          '<text x="25" y="10" font-family="var(--font-mono)" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">M</text>' +
-          '<text x="43" y="10" font-family="var(--font-mono)" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">Y</text>' +
-          '<text x="61" y="10" font-family="var(--font-mono)" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">K</text>' +
-          '<line x1="74" y1="6" x2="120" y2="6" stroke="var(--border-bright)" stroke-width="1.2" stroke-dasharray="3 3"/>' +
-          '<circle cx="124" cy="6" r="2" fill="none" stroke="var(--accent)" stroke-width="1"/>' +
-        '</g>' +
-      '</svg>';
-
-    // 3. Bas gauche : Barrette de hachures biseautées \\\\\\\\\\\\\\\\ bicolore (2 intensités alternées, PJ 1)
-    var svgBottomLeft =
-      '<svg viewBox="0 0 180 32" width="180" height="32" class="blueprint-deco blueprint-deco--bl" aria-hidden="true" focusable="false">' +
-        '<g transform="translate(4, 2)">' +
-          '<line x1="0" y1="20" x2="12" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="11" y1="20" x2="23" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.25"/>' +
-          '<line x1="22" y1="20" x2="34" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="33" y1="20" x2="45" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.25"/>' +
-          '<line x1="44" y1="20" x2="56" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="55" y1="20" x2="67" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.25"/>' +
-          '<line x1="66" y1="20" x2="78" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="77" y1="20" x2="89" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.25"/>' +
-          '<line x1="88" y1="20" x2="100" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="99" y1="20" x2="111" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.25"/>' +
-          '<line x1="110" y1="20" x2="122" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="121" y1="20" x2="133" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.25"/>' +
-          '<line x1="132" y1="20" x2="144" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="143" y1="20" x2="155" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.25"/>' +
-          '<line x1="154" y1="20" x2="166" y2="2" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="0" y1="26" x2="168" y2="26" stroke="var(--accent)" stroke-width="1.2" opacity="0.45" stroke-dasharray="3 3"/>' +
-        '</g>' +
-      '</svg>';
-
-    // 4. Bas droite : Cible stellaire technique / mire de précision circulaire
-    var svgBottomRight =
-      '<svg viewBox="0 0 54 54" width="54" height="54" class="blueprint-deco blueprint-deco--br" aria-hidden="true" focusable="false">' +
-        '<g transform="translate(27, 27)">' +
-          '<circle cx="0" cy="0" r="20" fill="none" stroke="var(--accent)" stroke-width="1.2" opacity="0.6"/>' +
-          '<circle cx="0" cy="0" r="10" fill="none" stroke="var(--accent2)" stroke-width="1" stroke-dasharray="2 2" opacity="0.65"/>' +
-          '<line x1="-25" y1="0" x2="25" y2="0" stroke="var(--accent)" stroke-width="1.2" opacity="0.75"/>' +
-          '<line x1="0" y1="-25" x2="0" y2="25" stroke="var(--accent)" stroke-width="1.2" opacity="0.75"/>' +
-          '<circle cx="0" cy="0" r="2" fill="var(--accent)" opacity="0.9"/>' +
-        '</g>' +
-      '</svg>';
-
-    var self = this;
-    this.slides.forEach(function(slide, idx) {
-      // Décorations périphériques réparties sur toutes les diapos où l'espace le permet (titres, dividers, citations, splits légers...)
-      // On exclut les diapos denses de code, diagrammes, schémas larges, comparatifs chargés et portail pour éviter toute superposition
-      var isDense = slide.classList.contains('slide--code-preview') ||
-                    slide.classList.contains('slide--diagram') ||
-                    slide.classList.contains('slide--c4-zoom') ||
-                    slide.classList.contains('slide--portal-vivant') ||
-                    (slide.getAttribute('data-nav') && (
-                      slide.getAttribute('data-nav').indexOf('Ressources') > -1 ||
-                      slide.getAttribute('data-nav') === 'V1 vs V2' ||
-                      slide.getAttribute('data-nav') === 'Avant / Après' ||
-                      slide.getAttribute('data-nav') === 'Portail vivant'
-                    ));
-      if (isDense) return;
-      if (slide.querySelector('.blueprint-deco-frame')) return;
-
-      var frame = document.createElement('div');
-      frame.className = 'blueprint-deco-frame';
-      frame.innerHTML = svgTopLeft + svgTopRight + svgBottomLeft + svgBottomRight;
-      slide.appendChild(frame);
-    });
-  };
-  SlideEngine.prototype.injectCardHatchStrips=function(){
-    var hatchContent = '<span class="card-modscene-hatch" aria-hidden="true">[ ░▒▓█▓▒░ ]</span>';
-    var targets = document.querySelectorAll(
-      '.concept-card:not(.benefit-card), .review-questions__card, .lane-card, .key-card, .speaker-card, .speaker-panel, .slide--split .slide__panel'
-    );
-    targets.forEach(function(el) {
-      if (el.querySelector('.card-modscene-hatch, .card-hatch-strip')) return;
-      var div = document.createElement('div');
-      div.className = 'card-hatch-strip-wrap';
-      div.innerHTML = hatchContent;
-      el.appendChild(div);
-    });
-  };
-  SlideEngine.prototype.injectBackgroundArt=function(){
-    var win98Html =
-      '<span style="color:#8b949e;opacity:0.6;">           .:\n' +
-      '         .::\'\n' +
-      '       .::::\'      </span><span style="color:#ff4b4b;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>       <span style="color:#3ec950;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">     .::::::\'    </span><span style="color:#ff4b4b;">▄█████████████████████</span>    <span style="color:#3ec950;">▄█████████████████████</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">   .::::::::\'   </span><span style="color:#ff4b4b;">███████████████████████</span>   <span style="color:#3ec950;">███████████████████████</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">  .:::::::::\'   </span><span style="color:#ff4b4b;">███████████████████████</span>   <span style="color:#3ec950;">███████████████████████</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;"> :::::::::::\'   </span><span style="color:#ff4b4b;">██████████████████████▀</span>   <span style="color:#3ec950;">██████████████████████▀</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;"> :::::::::::\'    </span><span style="color:#ff4b4b;">▀██████████████████▀</span>      <span style="color:#3ec950;">▀██████████████████▀</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;"> :::::::::::\'\n' +
-      ' :::::::::::\'    </span><span style="color:#2e86de;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>       <span style="color:#ffb703;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">  .:::::::::\'   </span><span style="color:#2e86de;">▄█████████████████████</span>    <span style="color:#ffb703;">▄█████████████████████</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">   .::::::::\'  </span><span style="color:#2e86de;">███████████████████████</span>   <span style="color:#ffb703;">███████████████████████</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">     .::::::\'  </span><span style="color:#2e86de;">███████████████████████</span>   <span style="color:#ffb703;">███████████████████████</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">       .::::\'  </span><span style="color:#2e86de;">██████████████████████▀</span>   <span style="color:#ffb703;">██████████████████████▀</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">         .::\'   </span><span style="color:#2e86de;">▀██████████████████▀</span>      <span style="color:#ffb703;">▀██████████████████▀</span>\n' +
-      '<span style="color:#8b949e;opacity:0.6;">           .:</span>';
-
-    var javaHtml =
-      '<span style="color:#58a6ff;">                 )       (\n' +
-      '                (   )     ) )\n' +
-      '                 ) (     ( (\n' +
-      '                (   )   (   )\n' +
-      '                 ) (     ) (\n' +
-      '               .-----------.\n' +
-      '             .\'             \'.</span>\n' +
-      '<span style="color:#f0883e;">            /   _.._____.._   \\</span>\n' +
-      '<span style="color:#f43f5e;">           |  .\'           \'.  |____\n' +
-      '           |  |   J A V A   |  |    \\\n' +
-      '           |  |  JDK 17/21  |  |     |\n' +
-      '           |  \'.___________.\'  |    /\n' +
-      '            \\                 /____/\n' +
-      '             \'.             .\'\n' +
-      '               \'-----------\'</span>\n' +
-      '<span style="color:#d29922;">              (_______________)</span>';
-
-    this.slides.forEach(function(slide) {
-      if (slide.querySelector('.petscii-bg-win98, .petscii-bg-java')) return;
-      var nav = slide.getAttribute('data-nav') || '';
-      var div = document.createElement('div');
-      if (nav.indexOf('Mise') > -1) {
-        div.className = 'petscii-bg-java';
-        div.setAttribute('aria-hidden', 'true');
-        div.innerHTML = javaHtml;
-      } else {
-        div.className = 'petscii-bg-win98';
-        div.setAttribute('aria-hidden', 'true');
-        div.innerHTML = win98Html;
-      }
-      slide.appendChild(div);
-    });
-  };
-  SlideEngine.prototype.injectLandscape=function(){
-    var landscapeAscii =
-      '                 .                 *                 .                  *                 .                  *                 .\n' +
-      '        /\\                /\\                 /\\                 /\\                 /\\                 /\\                 /\\\n' +
-      '       /  \\              /  \\               /  \\               /  \\               /  \\               /  \\               /  \\\n' +
-      '      /    \\    /\\      /    \\    /\\       /    \\    /\\       /    \\    /\\       /    \\    /\\       /    \\    /\\       /    \\\n' +
-      ' /\\  /      \\  /  \\    /      \\  /  \\     /      \\  /  \\     /      \\  /  \\     /      \\  /  \\     /      \\  /  \\     /      \\  /\\\n' +
-      '/  \\/________\\/____\\__/_/\\_____\\/____\\___/_/\\_____\\/____\\___/________\\/____\\___/________\\/____\\___/________\\/____\\___/________\\/__\\_\n' +
-      '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^';
-
-    this.slides.forEach(function(slide) {
-      if (slide.querySelector('.petscii-bg-landscape')) return;
-      var div = document.createElement('div');
-      div.className = 'petscii-bg-landscape';
-      div.setAttribute('aria-hidden', 'true');
-      div.textContent = landscapeAscii;
-      slide.appendChild(div);
-    });
-  };
-  SlideEngine.prototype.buildChrome=function(){
+    SlideEngine.prototype.buildChrome=function(){
     var bar=document.createElement('div');bar.className='deck-progress';document.body.appendChild(bar);this.bar=bar;
     var nav=document.createElement('div');nav.className='deck-nav';var self=this;
     var crumb=document.createElement('button');crumb.className='deck-breadcrumb';crumb.type='button';crumb.setAttribute('aria-haspopup','true');crumb.setAttribute('aria-expanded','false');crumb.setAttribute('aria-label','Afficher la navigation des slides près de la barre de progression');nav.appendChild(crumb);
