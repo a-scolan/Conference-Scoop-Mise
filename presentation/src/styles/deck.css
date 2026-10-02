@@ -180,12 +180,13 @@
   /* ============ SHARED ELEMENTS ============ */
   .slide__display {
     font-size: calc(clamp(48px, 10vw, 120px) + var(--font-bump));
-    font-weight: 900; letter-spacing: -2px; line-height: 0.95; text-wrap: balance;
+    font-weight: 900; letter-spacing: -2px; line-height: 0.95; text-wrap: pretty;
   }
 
   .slide__heading {
-    font-size: calc(clamp(28px, 5vw, 48px) + var(--font-bump));
-    font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; text-wrap: balance;
+    font-size: calc(clamp(26px, 4.2vw, 44px) + var(--font-bump));
+    font-weight: 700; letter-spacing: -0.5px; line-height: 1.18; text-wrap: pretty;
+    max-width: 100%;
     margin-bottom: clamp(8px, 1.6vh, 16px);
   }
 

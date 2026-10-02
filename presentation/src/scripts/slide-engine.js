@@ -27,6 +27,8 @@
     }
     this.injectCrystals();
     this.injectCardHatchStrips();
+    this.injectBackgroundArt();
+    this.injectLandscape();
     this.initPresenterSync();
     this.buildSectionMap();this.buildChrome();this.bindEvents();this.observe();this.update();
     if(initIdx>0){
@@ -136,6 +138,78 @@
       div.className = 'card-hatch-strip-wrap';
       div.innerHTML = hatchContent;
       el.appendChild(div);
+    });
+  };
+  SlideEngine.prototype.injectBackgroundArt=function(){
+    var win98Html =
+      '<span style="color:#8b949e;opacity:0.6;">           .:\n' +
+      '         .::\'\n' +
+      '       .::::\'      </span><span style="color:#ff4b4b;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>       <span style="color:#3ec950;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">     .::::::\'    </span><span style="color:#ff4b4b;">▄█████████████████████</span>    <span style="color:#3ec950;">▄█████████████████████</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">   .::::::::\'   </span><span style="color:#ff4b4b;">███████████████████████</span>   <span style="color:#3ec950;">███████████████████████</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">  .:::::::::\'   </span><span style="color:#ff4b4b;">███████████████████████</span>   <span style="color:#3ec950;">███████████████████████</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;"> :::::::::::\'   </span><span style="color:#ff4b4b;">██████████████████████▀</span>   <span style="color:#3ec950;">██████████████████████▀</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;"> :::::::::::\'    </span><span style="color:#ff4b4b;">▀██████████████████▀</span>      <span style="color:#3ec950;">▀██████████████████▀</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;"> :::::::::::\'\n' +
+      ' :::::::::::\'    </span><span style="color:#2e86de;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>       <span style="color:#ffb703;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">  .:::::::::\'   </span><span style="color:#2e86de;">▄█████████████████████</span>    <span style="color:#ffb703;">▄█████████████████████</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">   .::::::::\'  </span><span style="color:#2e86de;">███████████████████████</span>   <span style="color:#ffb703;">███████████████████████</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">     .::::::\'  </span><span style="color:#2e86de;">███████████████████████</span>   <span style="color:#ffb703;">███████████████████████</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">       .::::\'  </span><span style="color:#2e86de;">██████████████████████▀</span>   <span style="color:#ffb703;">██████████████████████▀</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">         .::\'   </span><span style="color:#2e86de;">▀██████████████████▀</span>      <span style="color:#ffb703;">▀██████████████████▀</span>\n' +
+      '<span style="color:#8b949e;opacity:0.6;">           .:</span>';
+
+    var javaHtml =
+      '<span style="color:#58a6ff;">                 )       (\n' +
+      '                (   )     ) )\n' +
+      '                 ) (     ( (\n' +
+      '                (   )   (   )\n' +
+      '                 ) (     ) (\n' +
+      '               .-----------.\n' +
+      '             .\'             \'.</span>\n' +
+      '<span style="color:#f0883e;">            /   _.._____.._   \\</span>\n' +
+      '<span style="color:#f43f5e;">           |  .\'           \'.  |____\n' +
+      '           |  |   J A V A   |  |    \\\n' +
+      '           |  |  JDK 17/21  |  |     |\n' +
+      '           |  \'.___________.\'  |    /\n' +
+      '            \\                 /____/\n' +
+      '             \'.             .\'\n' +
+      '               \'-----------\'</span>\n' +
+      '<span style="color:#d29922;">              (_______________)</span>';
+
+    this.slides.forEach(function(slide) {
+      if (slide.querySelector('.petscii-bg-win98, .petscii-bg-java')) return;
+      var nav = slide.getAttribute('data-nav') || '';
+      var div = document.createElement('div');
+      if (nav.indexOf('Mise') > -1) {
+        div.className = 'petscii-bg-java';
+        div.setAttribute('aria-hidden', 'true');
+        div.innerHTML = javaHtml;
+      } else {
+        div.className = 'petscii-bg-win98';
+        div.setAttribute('aria-hidden', 'true');
+        div.innerHTML = win98Html;
+      }
+      slide.appendChild(div);
+    });
+  };
+  SlideEngine.prototype.injectLandscape=function(){
+    var landscapeAscii =
+      '                 .                 *                 .                  *                 .                  *                 .\n' +
+      '        /\\                /\\                 /\\                 /\\                 /\\                 /\\                 /\\\n' +
+      '       /  \\              /  \\               /  \\               /  \\               /  \\               /  \\               /  \\\n' +
+      '      /    \\    /\\      /    \\    /\\       /    \\    /\\       /    \\    /\\       /    \\    /\\       /    \\    /\\       /    \\\n' +
+      ' /\\  /      \\  /  \\    /      \\  /  \\     /      \\  /  \\     /      \\  /  \\     /      \\  /  \\     /      \\  /  \\     /      \\  /\\\n' +
+      '/  \\/________\\/____\\__/_/\\_____\\/____\\___/_/\\_____\\/____\\___/________\\/____\\___/________\\/____\\___/________\\/____\\___/________\\/__\\_\n' +
+      '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^';
+
+    this.slides.forEach(function(slide) {
+      if (slide.querySelector('.petscii-bg-landscape')) return;
+      var div = document.createElement('div');
+      div.className = 'petscii-bg-landscape';
+      div.setAttribute('aria-hidden', 'true');
+      div.textContent = landscapeAscii;
+      slide.appendChild(div);
     });
   };
   SlideEngine.prototype.buildChrome=function(){

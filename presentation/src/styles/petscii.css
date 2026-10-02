@@ -163,7 +163,7 @@
    ========================================================================== */
 .terminal-window {
   position: relative;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid var(--border-bright);
   background: var(--code-bg, #030712);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
@@ -284,23 +284,89 @@
    BLOCK DIAGRAM COMPONENT (Pour le PATH et l'Architecture)
    ========================================================================== */
 .ansi-diagram-block {
-  font-family: var(--font-mono);
-  font-size: clamp(11px, 1.25vw, 15px);
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
+  font-size: clamp(10px, 1.1vw, 13.5px);
   line-height: 1.45;
   background: var(--surface2);
   border: 1.5px solid var(--border-bright);
   border-radius: 4px;
-  padding: 14px 18px;
+  padding: 10px 14px;
   color: var(--text);
   overflow-x: auto;
   user-select: none;
+  font-variant-ligatures: none !important;
+  font-feature-settings: "liga" 0, "calt" 0 !important;
+  letter-spacing: 0 !important;
 }
 
-.ansi-diagram-block pre {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+.ansi-diagram-block pre,
+.ansi-diagram-block code,
+.ansi-art,
+.terminal-window pre,
+.terminal-block pre,
+.slide__code-block pre,
+.terminal-block,
+.terminal-block__content,
+.terminal-cmd,
+.terminal-out,
+.terminal-window {
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
+  font-variant-ligatures: none !important;
+  font-feature-settings: "liga" 0, "calt" 0 !important;
+  letter-spacing: 0 !important;
+  font-kerning: none !important;
+}
+
+/* ==========================================================================
+   RETRO WINDOWS 98 COLOR ASCII LOGO WATERMARK (Excentré à droite)
+   ========================================================================== */
+.petscii-bg-win98 {
+  position: absolute;
+  top: 50%;
+  right: clamp(16px, 3.5vw, 64px);
+  left: auto;
+  transform: translateY(-50%);
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
+  font-size: clamp(11.5px, 1.4vw, 19px);
+  line-height: 1.05;
+  white-space: pre;
+  opacity: 0.15;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  text-align: right;
+  font-variant-ligatures: none !important;
+  letter-spacing: 0 !important;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.4));
+}
+[data-theme="cli-light"] .petscii-bg-win98 {
+  opacity: 0.11;
+}
+
+/* ==========================================================================
+   RETRO JAVA COFFEE CUP ASCII LOGO WATERMARK (Slides Mise & Runtimes)
+   ========================================================================== */
+.petscii-bg-java {
+  position: absolute;
+  top: 50%;
+  right: clamp(16px, 3.5vw, 64px);
+  left: auto;
+  transform: translateY(-50%);
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
+  font-size: clamp(11px, 1.35vw, 18px);
+  line-height: 1.12;
+  white-space: pre;
+  opacity: 0.16;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  text-align: center;
+  font-variant-ligatures: none !important;
+  letter-spacing: 0 !important;
+  filter: drop-shadow(0 0 14px rgba(88, 166, 255, 0.35));
+}
+[data-theme="cli-light"] .petscii-bg-java {
+  opacity: 0.12;
 }
 
 /* ==========================================================================
@@ -311,7 +377,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: var(--font-mono);
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
   font-size: clamp(18px, 3.5vw, 42px);
   line-height: 1.1;
   letter-spacing: 4px;
@@ -353,10 +419,24 @@
 .concept-card {
   border-radius: 4px !important;
   border: 1px solid var(--border-bright) !important;
-  border-top: 3px solid var(--card-accent, var(--accent)) !important;
-  background: var(--surface) !important;
+  border-top: 3.5px solid var(--card-accent, var(--accent)) !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 14%, var(--surface)) 0%, var(--surface) 42%) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
-  padding: clamp(14px, 2vh, 20px) clamp(14px, 1.8vw, 22px) clamp(22px, 2.6vh, 30px) !important;
+  padding: clamp(10px, 1.4vh, 14px) clamp(12px, 1.3vw, 16px) clamp(14px, 1.8vh, 20px) !important;
+  gap: 4px !important;
+}
+
+.concept-card__title {
+  font-size: clamp(12.5px, 1.2vw, 15px) !important;
+  line-height: 1.25 !important;
+  min-height: auto !important;
+  margin-bottom: 2px !important;
+}
+
+.concept-card__desc {
+  font-size: clamp(11px, 1vw, 12.5px) !important;
+  line-height: 1.36 !important;
+  color: var(--text-dim) !important;
 }
 
 .concept-card::before {
@@ -365,6 +445,7 @@
 
 .concept-card:hover {
   border-color: var(--card-accent, var(--accent)) !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 22%, var(--surface)) 0%, var(--surface) 42%) !important;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45) !important;
   transform: translateY(-2px) !important;
 }
@@ -422,13 +503,41 @@
 }
 
 /* ==========================================================================
+   MINIMALIST "OREGON TRAIL" RETRO ASCII LANDSCAPE
+   ========================================================================== */
+.petscii-bg-landscape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  font-family: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace !important;
+  font-size: clamp(8px, 0.85vw, 11px);
+  line-height: 1.15;
+  white-space: pre;
+  color: var(--text-subtitle);
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  text-align: center;
+  overflow: hidden;
+  font-variant-ligatures: none !important;
+  letter-spacing: 0 !important;
+}
+[data-theme="cli-light"] .petscii-bg-landscape {
+  opacity: 0.05;
+}
+
+/* ==========================================================================
    MOBILE & RESPONSIVE RULES POUR L'ART PETSCII
    ========================================================================== */
 @media (max-width: 860px), (max-height: 580px) {
   .petscii-slide-frame {
     display: none !important;
   }
-  .petscii-bg-watermark {
+  .petscii-bg-watermark,
+  .petscii-bg-landscape {
     display: none !important;
   }
   .ansi-art--title {

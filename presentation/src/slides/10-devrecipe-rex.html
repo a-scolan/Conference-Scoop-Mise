@@ -13,49 +13,42 @@
   </div>
 
   <div class="slide__header reveal">
-    <span class="slide__number">04</span>
-    <span class="slide__label">REX &middot; DevRecipe &middot; Combler les manques</span>
+    <p class="slide__label">&gt; 04 // DEVRECIPE &middot; L'ORCHESTRATION D'&Eacute;QUIPE</p>
     <h2 class="slide__heading">DevRecipe : combler les limites de Scoop et Mise</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ ░▒▓ ORCHESTRATION ▓▒░ ]</span>
-          <span class="petscii-hatch-strip">UN_SEUL_FICHIER</span>
-          <span>[ ■ ]</span>
+          <span>[ 01 // UNIFICATION ]</span>
+          <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">LA LIMITE : 2 OUTILS SÉPARÉS</span>
-        <h3 class="concept-card__title">Manifeste unifié &amp; PR</h3>
-        <p class="concept-card__desc">Scoop et Mise s'ignorent mutuellement. DevRecipe les rassemble dans un fichier <code>devrecipe.toml</code> partagé, versionné et relu en équipe.</p>
+        <h3 class="concept-card__title">Manifeste devrecipe.toml partag&eacute;</h3>
+        <p class="concept-card__desc">Scoop et Mise s'ignorent mutuellement. DevRecipe les rassemble dans un fichier partag&eacute;, versionn&eacute; et relu en PR pour r&eacute;pondre aux besoins collectifs de l'&eacute;quipe.</p>
       </div>
-      <div class="concept-card concept-card--green">
-        <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ ░▒▓ AUDIT_PREALABLE ▓▒░ ]</span>
-          <span class="petscii-hatch-strip">PREFLIGHT_CHECK</span>
-          <span>[ ■ ]</span>
+      <div class="concept-card concept-card--orange">
+        <div class="petscii-card-header" style="color:var(--accent2);">
+          <span>[ 02 // PREFLIGHT ]</span>
+          <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">LA LIMITE : INSTALLATIONS AVEUGLES</span>
-        <h3 class="concept-card__title">Contrôle préalable des conflits</h3>
-        <p class="concept-card__desc">Ni Scoop ni Mise n'inspectent les logiciels déjà présents. DevRecipe scanne le registre, AppX et le PATH pour alerter avant d'installer.</p>
+        <h3 class="concept-card__title">Contr&ocirc;le pr&eacute;alable des conflits</h3>
+        <p class="concept-card__desc">Ni Scoop ni Mise n'inspectent les logiciels d&eacute;j&agrave; pr&eacute;sents. DevRecipe scanne le registre, AppX et le PATH pour alerter avant toute modification.</p>
       </div>
-      <div class="concept-card concept-card--green">
-        <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ ░▒▓ COHÉRENCE_SHELL ▓▒░ ]</span>
-          <span class="petscii-hatch-strip">PRECEDENCE_FIX</span>
-          <span>[ ■ ]</span>
+      <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ 03 // PRECEDENCE ]</span>
+          <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">LA LIMITE : LE PATH HKLM &amp; CMD</span>
-        <h3 class="concept-card__title">Précédence garantie partout</h3>
-        <p class="concept-card__desc">DevRecipe injecte les shims en priorité dans PowerShell <em>et</em> dans <code>cmd.exe</code> via <code>AutoRun</code>, neutralisant le masquage machine sans admin.</p>
+        <h3 class="concept-card__title">Pr&eacute;c&eacute;dence du PATH garantie</h3>
+        <p class="concept-card__desc">DevRecipe injecte les shims en priorit&eacute; 0 dans PowerShell et dans <code>cmd.exe</code> (via <code>AutoRun</code>), neutralisant le masquage machine HKLM.</p>
       </div>
     </div>
 
-    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
-      <pre><code><span style="color:var(--text-subtitle);">╔═ [DEVRECIPE : LA PASSERELLE ENTRE LE CODE ET LE POSTE WINDOWS] ═════════════════════════════════╗</span>
-<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent); font-weight:700;">SCOOP (Outils CLI)</span>  &plus;  <span style="color:var(--accent3); font-weight:700;">MISE (Runtimes)</span>  &plus;  <span style="color:var(--accent2); font-weight:700;">CONTRÔLE DU PATH</span>  &plus;  <span style="color:var(--green); font-weight:700;">PR D'ÉQUIPE (devrecipe.toml)</span> <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>  ↳ 1 commande de validation (<code>-Validate</code>)  &rarr;  1 simulation sans risque (<code>-DryRun -Review</code>) <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">╚════════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
+    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(14px, 2vh, 24px) auto 0 auto; width:100%; display:flex; justify-content:center;">
+      <pre style="margin:0 auto; text-align:left;"><code><span style="color:var(--text-subtitle);">╔═ [DEVRECIPE : LA PASSERELLE ENTRE LE CODE ET LE POSTE WINDOWS] ══════════════════════════════════╗
+║ <span style="color:var(--accent); font-weight:700;">SCOOP (Outils CLI)</span>  +  <span style="color:var(--accent3); font-weight:700;">MISE (Runtimes)</span>  +  <span style="color:var(--accent2); font-weight:700;">CONTRÔLE DU PATH</span>  +  <span style="color:var(--green); font-weight:700;">PR COLLECTIVE (devrecipe.toml)</span>   ║
+║ > Validation syntaxique (-Validate)    -->  Simulation sans risque (-DryRun -Review)             ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>

@@ -54,8 +54,15 @@
     el.classList.remove('is-typed');
     el.textContent = '';
 
+    // Masquer la sortie pendant que la commande est en cours de frappe
+    var out = el.nextElementSibling;
+    if (out && out.classList.contains('terminal-out')) {
+      out.style.opacity = '0';
+      out.style.transition = 'opacity 0.25s ease';
+    }
+
     var idx = 0;
-    var speed = Math.max(15, Math.min(35, Math.floor(600 / Math.max(fullText.length, 1))));
+    var speed = Math.max(8, Math.min(22, Math.floor(380 / Math.max(fullText.length, 1))));
 
     function tick() {
       if (idx < fullText.length) {
@@ -66,9 +73,10 @@
         el._typeTimer = null;
         el.classList.remove('is-typing');
         el.classList.add('is-typed');
-        var out = el.nextElementSibling;
         if (out && out.classList.contains('terminal-out')) {
-          out.style.opacity = '1';
+          setTimeout(function() {
+            out.style.opacity = '1';
+          }, 40);
         }
       }
     }

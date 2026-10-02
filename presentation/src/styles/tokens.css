@@ -3,11 +3,12 @@
    ========================================================================== */
 
 :root {
-  --font-body: 'Poppins', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
-  --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'SF Mono', Consolas, monospace;
-  --font-bump: 4px;
+  --font-terminal: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, 'Courier New', monospace;
+  --font-body: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace;
+  --font-heading: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace;
+  --font-sans: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace;
+  --font-mono: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, 'Courier New', monospace;
+  --font-bump: 3px;
 
   /* Assets graphiques réutilisables */
   --quote-bg: url("./assets/quote.png");

@@ -13,50 +13,43 @@
   </div>
 
   <div class="slide__header reveal">
-    <span class="slide__number">04</span>
-    <span class="slide__label">Sécurité &middot; Entreprise</span>
+    <p class="slide__label">&gt; 04 // GOUVERNANCE &middot; S&Eacute;CURIT&Eacute; D'ENTREPRISE</p>
     <h2 class="slide__heading">Gouvernance : Espace Utilisateur &ne; Shadow IT</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ ░▒▓ EDR / WDAC ▓▒░ ]</span>
-          <span class="petscii-hatch-strip">ACTIVE DEFENSE</span>
-          <span>[ ■ ]</span>
+          <span>[ 01 // DEFENSE ]</span>
+          <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">CONTR&Ocirc;LE SYST&Egrave;ME</span>
-        <h3 class="concept-card__title">EDR &amp; AppLocker actifs</h3>
-        <p class="concept-card__desc">Installer en espace utilisateur ne contourne aucun antivirus d'entreprise, ni WDAC ni les restrictions d'ex&eacute;cution. Tout binaire non autoris&eacute; reste bloqu&eacute;.</p>
+        <h3 class="concept-card__title">EDR &amp; AppLocker restent actifs</h3>
+        <p class="concept-card__desc">Installer en espace utilisateur ne contourne aucun antivirus d'entreprise, ni WDAC ni restrictions. Tout binaire non autoris&eacute; reste bloqu&eacute;.</p>
       </div>
-      <div class="concept-card concept-card--green">
-        <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ ░▒▓ PRIVATE_GIT ▓▒░ ]</span>
-          <span class="petscii-hatch-strip">SEC_APPROVED</span>
-          <span>[ ■ ]</span>
+      <div class="concept-card concept-card--blue">
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ 02 // REPO_GIT ]</span>
+          <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">MAÎTRISE DES SOURCES</span>
-        <h3 class="concept-card__title">Catalogues approuv&eacute;s</h3>
-        <p class="concept-card__desc">L'entreprise peut h&eacute;berger son propre d&eacute;p&ocirc;t Git priv&eacute; de recettes valid&eacute;es par les &eacute;quipes cybers&eacute;curit&eacute; et des miroirs internes.</p>
+        <h3 class="concept-card__title">Catalogues d'entreprise approuv&eacute;s</h3>
+        <p class="concept-card__desc">L'entreprise peut h&eacute;berger son propre bucket Git priv&eacute; de manifests valid&eacute;s par la cybers&eacute;curit&eacute; et des miroirs internes d'artifactory.</p>
       </div>
-      <div class="concept-card concept-card--green">
-        <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ ░▒▓ AUDIT_JSON ▓▒░ ]</span>
-          <span class="petscii-hatch-strip">TRACEABILITY</span>
-          <span>[ ■ ]</span>
+      <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ 03 // AUDIT ]</span>
+          <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">TRANSPARENCE</span>
-        <h3 class="concept-card__title">Auditabilit&eacute; compl&egrave;te</h3>
-        <p class="concept-card__desc"><code>scoop export</code> et <code>mise ls --json</code> permettent de g&eacute;n&eacute;rer un inventaire machine instantan&eacute; pour la conformit&eacute; et les revues s&eacute;curit&eacute;.</p>
+        <h3 class="concept-card__title">Auditabilit&eacute; &amp; inventaire complet</h3>
+        <p class="concept-card__desc"><code>scoop export</code> et <code>mise ls --json</code> g&eacute;n&egrave;rent un inventaire machine instantan&eacute; pour la conformit&eacute; et les revues s&eacute;curit&eacute;.</p>
       </div>
     </div>
 
-    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
-      <pre><code><span style="color:var(--text-subtitle);">╔═ [CONFORMITÉ &amp; SÉCURITÉ ENTREPRISE : CONTRÔLE PLEIN ET ENTIER] ═════════════════════════════════╗</span>
-<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[✔] EDR &amp; Antivirus</span> : Analyse temps réel de tout binaire décompressé dans ~/scoop/apps         <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[✔] AppLocker / WDAC</span>: Les règles de signature et de hash bloquent tout exécutable illégitime    <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[✔] Inventaire CI/CD</span>: <span style="color:var(--accent);">scoop export &gt; tools.json</span> exporte l'état complet du poste en 1 commande  <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">╚════════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
+    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [CONFORMITÉ & SÉCURITÉ ENTREPRISE : CONTRÔLE PLEIN ET ENTIER] ══════════════════════════════╗
+║ <span style="color:var(--green); font-weight:700;">[OK] EDR &amp; Antivirus</span> : Analyse temps réel de tout binaire décompressé dans ~/scoop/apps      ║
+║ <span style="color:var(--green); font-weight:700;">[OK] AppLocker / WDAC</span>: Les règles de hash bloquent tout exécutable illégitime                ║
+║ <span style="color:var(--green); font-weight:700;">[OK] Inventaire CI/CD</span>: scoop export &gt; tools.json exporte l'état complet en 1 commande        ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>

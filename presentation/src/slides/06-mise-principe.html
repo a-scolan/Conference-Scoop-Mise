@@ -13,9 +13,8 @@
   </div>
 
   <div class="slide__header reveal">
-    <span class="slide__number">02</span>
-    <span class="slide__label">Mise</span>
-    <h2 class="slide__heading">Mise : la version du runtime suit le projet, pas le poste</h2>
+    <p class="slide__label">&gt; 02 // MISE &middot; RUNTIMES PAR PROJET</p>
+    <h2 class="slide__heading">La version du runtime suit le projet, pas le poste</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
@@ -27,16 +26,16 @@
         <h3 class="concept-card__title">Un seul outil en Rust</h3>
         <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
-        <div class="petscii-card-header" style="color:var(--accent3);">
+      <div class="concept-card concept-card--blue">
+        <div class="petscii-card-header" style="color:var(--accent);">
           <span>[ 02 // REPO_CONFIG ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Fichier mise.toml versionn&eacute;</h3>
         <p class="concept-card__desc">La configuration vit dans le d&eacute;p&ocirc;t Git. Quand vous changez de branche ou de dossier, les versions basculent imm&eacute;diatement.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
-        <div class="petscii-card-header" style="color:var(--accent3);">
+      <div class="concept-card concept-card--purple">
+        <div class="petscii-card-header" style="color:var(--accent4);">
           <span>[ 03 // ENV_TASKS ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
@@ -45,13 +44,13 @@
       </div>
     </div>
 
-    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
-      <pre><code><span style="color:var(--text-subtitle);">╔═ [EXEMPLE MISE.TOML DANS LE DÉPÔT GIT] ═════════════════════════════════════════════════════════╗</span>
-<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent3); font-weight:700;">[tools]</span>                                  <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[tasks.dev]</span>                                    <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>  node   = <span style="color:var(--green);">"22.14.0"</span>                        <span style="color:var(--text-subtitle);">║</span>  description = <span style="color:var(--green);">"Démarrer l'application locale"</span>   <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>  python = <span style="color:var(--green);">"3.12.2"</span>                         <span style="color:var(--text-subtitle);">║</span>  run         = <span style="color:var(--green);">"npm run dev"</span>                     <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>  ripgrep= <span style="color:var(--green);">"14.1.0"</span>                         <span style="color:var(--text-subtitle);">║</span>  env         = { NODE_ENV = <span style="color:var(--green);">"development"</span> }     <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">╚═══════════════════════════════════════════╩════════════════════════════════════════════════════╝</span></code></pre>
+    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [EXEMPLE MISE.TOML DANS LE DÉPÔT GIT] ═══════╦═ [TÂCHES D'ÉQUIPE ET ENVIRONNEMENT] ═══════════╗
+║ <span style="color:var(--accent3); font-weight:700;">[tools]</span>                                        ║ <span style="color:var(--green); font-weight:700;">[tasks.dev]</span>                                   ║
+║ java   = <span style="color:var(--green);">"temurin-17"</span>                          ║ description = <span style="color:var(--green);">"Lancer l'application Spring"</span>   ║
+║ node   = <span style="color:var(--green);">"22.14.0"</span>                             ║ run         = <span style="color:var(--green);">"./mvnw spring-boot:run"</span>        ║
+║ python = <span style="color:var(--green);">"3.12.2"</span>                              ║ env         = { SPRING_PROFILES = <span style="color:var(--green);">"local"</span> }   ║
+╚════════════════════════════════════════════════╩═══════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
