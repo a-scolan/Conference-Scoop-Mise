@@ -158,6 +158,43 @@
 }
 
 /* ==========================================================================
+   WATERMARK LOGO WINDOWS PLEINE HAUTEUR (Fond de slide titre)
+   ========================================================================== */
+.title-bg-win-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0.18;
+  overflow: hidden;
+}
+
+[data-theme="cli-light"] .title-bg-win-logo {
+  opacity: 0.14;
+}
+
+.title-bg-win-logo pre {
+  margin: 0;
+  font-family: Consolas, 'Cascadia Code', monospace !important;
+  font-size: clamp(16px, 2.9vh, 32px);
+  line-height: 1.02;
+  letter-spacing: 0;
+  text-align: center;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
    AUTHENTIC DOS / BBS TERMINAL WINDOW FRAME
    Remplace les fenêtres simples par un véritable cadre ANSI double ligne
    ========================================================================== */
@@ -259,12 +296,57 @@
   font-weight: 700;
 }
 
-/* En-tête de carte calé exactement dans les coins supérieurs */
+/* En-tête de carte façon barre de titre active Windows 98 */
 .concept-card .petscii-card-header {
-  margin: calc(-1 * clamp(14px, 2.2vh, 22px)) calc(-1 * clamp(18px, 2.2vw, 26px)) clamp(10px, 1.4vh, 16px);
-  padding: 6px 14px;
-  background: var(--surface2);
-  border-bottom: 1.5px solid var(--border);
+  margin: calc(-1 * var(--card-pad-top, 12px)) calc(-1 * var(--card-pad-x, 14px)) clamp(8px, 1.2vh, 12px) calc(-1 * var(--card-pad-x, 14px)) !important;
+  padding: 5px 12px !important;
+  width: calc(100% + 2 * var(--card-pad-x, 14px)) !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(90deg, var(--titlebar-start, #000080) 0%, var(--titlebar-end, #1084d0) 100%) !important;
+  border-bottom: 1.5px solid var(--card-accent, #1084d0) !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-family: var(--font-mono) !important;
+  font-size: clamp(10.5px, 0.95vw, 12px) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="cli-light"] .concept-card .petscii-card-header {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--titlebar-start, #000080) 65%, #000) 0%, color-mix(in srgb, var(--titlebar-end, #1084d0) 25%, #eaeef2) 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Palette Windows 98 canonique */
+.concept-card--red,
+.concept-card--orange {
+  --card-accent: #ff3333;
+  --titlebar-start: #800000;
+  --titlebar-end: #ff3333;
+}
+.concept-card--green {
+  --card-accent: #00aa00;
+  --titlebar-start: #004d00;
+  --titlebar-end: #00aa00;
+}
+.concept-card--blue,
+.concept-card--cyan {
+  --card-accent: #1084d0;
+  --titlebar-start: #000080;
+  --titlebar-end: #1084d0;
+}
+.concept-card--yellow {
+  --card-accent: #ffb900;
+  --titlebar-start: #805500;
+  --titlebar-end: #ffb900;
+}
+.concept-card--purple {
+  --card-accent: #b03a8a;
+  --titlebar-start: #5a1846;
+  --titlebar-end: #b03a8a;
 }
 
 .petscii-hatch-strip {
@@ -353,25 +435,12 @@
    ========================================================================== */
 .concept-card {
   border-radius: 4px !important;
-  border: 1px solid var(--border-bright) !important;
-  border-top: 3.5px solid var(--card-accent, var(--accent)) !important;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 14%, var(--surface)) 0%, var(--surface) 42%) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
-  padding: clamp(10px, 1.4vh, 14px) clamp(12px, 1.3vw, 16px) clamp(14px, 1.8vh, 20px) !important;
-  gap: 4px !important;
-}
-
-.concept-card__title {
-  font-size: clamp(12.5px, 1.2vw, 15px) !important;
-  line-height: 1.25 !important;
-  min-height: auto !important;
-  margin-bottom: 2px !important;
-}
-
-.concept-card__desc {
-  font-size: clamp(11px, 1vw, 12.5px) !important;
-  line-height: 1.36 !important;
-  color: var(--text-dim) !important;
+  border: 1.5px solid color-mix(in srgb, var(--card-accent, var(--accent)) 45%, var(--border-bright)) !important;
+  border-top: 4px solid var(--card-accent, var(--accent)) !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 12%, var(--surface)) 0%, var(--surface) 40%) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+  overflow: hidden !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .concept-card::before {
@@ -380,9 +449,60 @@
 
 .concept-card:hover {
   border-color: var(--card-accent, var(--accent)) !important;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 22%, var(--surface)) 0%, var(--surface) 42%) !important;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45) !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 20%, var(--surface)) 0%, var(--surface) 40%) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4), 0 0 12px color-mix(in srgb, var(--card-accent, var(--accent)) 30%, transparent) !important;
   transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
+   RETRO LATERAL ASCII ART (Excentré pour admirer sans gêner le contenu)
+   ========================================================================== */
+.petscii-bg-art {
+  position: absolute;
+  top: 50%;
+  right: clamp(16px, 3.2vw, 68px);
+  transform: translateY(-50%);
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
+  font-size: clamp(9px, 0.95vw, 13.5px);
+  line-height: 1.12;
+  white-space: pre;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  text-align: left !important;
+  opacity: 0.28;
+  font-variant-ligatures: none !important;
+  letter-spacing: 0 !important;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5));
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="cli-light"] .petscii-bg-art {
+  opacity: 0.22;
+}
+
+@media (max-width: 960px) {
+  .petscii-bg-art {
+    display: none !important;
+  }
+}
+
+/* Texture de trame matricielle rétro en fond de slide */
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  background-image: radial-gradient(rgba(88, 166, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.65;
+}
+
+[data-theme="cli-light"] .slide::after {
+  background-image: radial-gradient(rgba(0, 0, 128, 0.05) 1px, transparent 1px);
+  opacity: 0.5;
 }
 
 /* Speaker intro card */

@@ -1195,9 +1195,9 @@
   /* ============ SLIDE TYPE: CONTENT ============ */
 
   .slide--content {
-    justify-content: flex-start;
-    padding-top: clamp(24px, 4.5vh, 48px);
-    padding-bottom: clamp(20px, 3.5vh, 40px);
+    justify-content: center;
+    padding-top: clamp(16px, 3vh, 36px);
+    padding-bottom: clamp(16px, 3vh, 36px);
   }
 
   .slide--content .slide__inner {
@@ -3431,25 +3431,24 @@
 
     /* ============ UNIFIED CONCEPT CARDS (Slides 6, 14, 25, 31) ============ */
     .slide--concept-cards {
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
-      padding-top: clamp(24px, 4.5vh, 48px);
-      padding-bottom: clamp(20px, 3.5vh, 40px);
+      padding: clamp(16px, 2.5vh, 32px) clamp(20px, 3vw, 48px);
     }
     .slide--concept-cards .slide__inner {
       grid-template-columns: 1fr;
       width: 100%;
       max-width: min(100%, 1240px);
       margin: 0 auto;
-      gap: clamp(14px, 2vh, 24px);
+      gap: clamp(10px, 1.6vh, 18px);
     }
 
     .slide--concept-cards .slide__heading,
     .slide__heading {
-      font-size: calc(clamp(26px, 3.5vw, 46px) + var(--font-bump));
-      line-height: 1.12;
+      font-size: calc(clamp(24px, 3.2vw, 42px) + var(--font-bump));
+      line-height: 1.15;
       margin-top: 0;
-      margin-bottom: clamp(12px, 2vh, 22px);
+      margin-bottom: clamp(8px, 1.5vh, 16px);
       max-width: 100%;
       text-wrap: balance;
     }
@@ -3460,7 +3459,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       color: var(--accent);
-      margin-bottom: clamp(6px, 1vh, 10px);
+      margin-bottom: clamp(4px, 0.8vh, 8px);
       text-transform: uppercase;
     }
 
@@ -3494,41 +3493,39 @@
     }
 
     .concept-card {
+      --card-pad-x: clamp(14px, 1.8vw, 22px);
+      --card-pad-top: clamp(12px, 1.5vh, 18px);
+      --card-pad-bottom: clamp(16px, 2vh, 24px);
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: clamp(8px, 1.4vh, 14px);
+      gap: clamp(8px, 1.2vh, 12px);
       min-height: auto;
       height: 100%;
-      padding: clamp(16px, 2.2vh, 26px) clamp(16px, 2vw, 26px);
+      padding: var(--card-pad-top) var(--card-pad-x) var(--card-pad-bottom);
       border-radius: 4px;
-      border: 1.5px solid var(--border-bright);
-      background: var(--surface);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
-      overflow: visible;
+      border: 1.5px solid color-mix(in srgb, var(--card-accent, var(--accent)) 45%, var(--border-bright));
+      border-top: 4px solid var(--card-accent, var(--accent));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 12%, var(--surface)) 0%, var(--surface) 40%);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .concept-card:hover {
       border-color: var(--card-accent, var(--accent));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 20%, var(--surface)) 0%, var(--surface) 40%);
       transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4), 0 0 12px color-mix(in srgb, var(--card-accent, var(--accent)) 30%, transparent);
     }
     .concept-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--card-accent, var(--accent));
-      opacity: 1;
+      display: none;
     }
 
     .concept-card__title {
       font-family: var(--font-mono);
-      font-size: calc(clamp(14px, 1.35vw, 18.5px) + var(--font-bump));
-      line-height: 1.3;
+      font-size: calc(clamp(13.5px, 1.25vw, 17.5px) + var(--font-bump));
+      line-height: 1.28;
       font-weight: 700;
       color: var(--text);
       margin: 0;
@@ -3536,41 +3533,34 @@
       text-wrap: pretty;
       overflow-wrap: break-word;
       word-break: normal;
-      overflow: visible;
     }
     .concept-card__desc {
-      font-size: calc(clamp(12px, 1.1vw, 14.5px) + var(--font-bump));
-      line-height: 1.48;
+      font-size: calc(clamp(11.5px, 1.05vw, 13.5px) + var(--font-bump));
+      line-height: 1.45;
       color: var(--text-dim);
       margin: 0;
       white-space: normal !important;
       overflow-wrap: break-word;
     }
 
-    /* Couleurs d'accentuation des cartes (sans dégradé de fond) */
+    /* Couleurs d'accentuation des cartes (bordures et dégradés dédiés) */
     .concept-card--blue {
       --card-accent: var(--accent);
-      background: var(--surface);
     }
     .concept-card--cyan {
       --card-accent: var(--accent3);
-      background: var(--surface);
     }
     .concept-card--orange {
       --card-accent: var(--accent2);
-      background: var(--surface);
     }
     .concept-card--green {
       --card-accent: var(--green);
-      background: var(--surface);
     }
     .concept-card--purple {
-      --card-accent: var(--accent4, #db2777);
-      background: var(--surface);
+      --card-accent: var(--accent4, #f43f5e);
     }
     .concept-card--teal {
       --card-accent: #0f766e;
-      background: var(--surface);
     }
 
     .concept-card__step {
@@ -6318,6 +6308,43 @@
 }
 
 /* ==========================================================================
+   WATERMARK LOGO WINDOWS PLEINE HAUTEUR (Fond de slide titre)
+   ========================================================================== */
+.title-bg-win-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0.18;
+  overflow: hidden;
+}
+
+[data-theme="cli-light"] .title-bg-win-logo {
+  opacity: 0.14;
+}
+
+.title-bg-win-logo pre {
+  margin: 0;
+  font-family: Consolas, 'Cascadia Code', monospace !important;
+  font-size: clamp(16px, 2.9vh, 32px);
+  line-height: 1.02;
+  letter-spacing: 0;
+  text-align: center;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
    AUTHENTIC DOS / BBS TERMINAL WINDOW FRAME
    Remplace les fenêtres simples par un véritable cadre ANSI double ligne
    ========================================================================== */
@@ -6419,12 +6446,57 @@
   font-weight: 700;
 }
 
-/* En-tête de carte calé exactement dans les coins supérieurs */
+/* En-tête de carte façon barre de titre active Windows 98 */
 .concept-card .petscii-card-header {
-  margin: calc(-1 * clamp(14px, 2.2vh, 22px)) calc(-1 * clamp(18px, 2.2vw, 26px)) clamp(10px, 1.4vh, 16px);
-  padding: 6px 14px;
-  background: var(--surface2);
-  border-bottom: 1.5px solid var(--border);
+  margin: calc(-1 * var(--card-pad-top, 12px)) calc(-1 * var(--card-pad-x, 14px)) clamp(8px, 1.2vh, 12px) calc(-1 * var(--card-pad-x, 14px)) !important;
+  padding: 5px 12px !important;
+  width: calc(100% + 2 * var(--card-pad-x, 14px)) !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(90deg, var(--titlebar-start, #000080) 0%, var(--titlebar-end, #1084d0) 100%) !important;
+  border-bottom: 1.5px solid var(--card-accent, #1084d0) !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-family: var(--font-mono) !important;
+  font-size: clamp(10.5px, 0.95vw, 12px) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="cli-light"] .concept-card .petscii-card-header {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--titlebar-start, #000080) 65%, #000) 0%, color-mix(in srgb, var(--titlebar-end, #1084d0) 25%, #eaeef2) 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Palette Windows 98 canonique */
+.concept-card--red,
+.concept-card--orange {
+  --card-accent: #ff3333;
+  --titlebar-start: #800000;
+  --titlebar-end: #ff3333;
+}
+.concept-card--green {
+  --card-accent: #00aa00;
+  --titlebar-start: #004d00;
+  --titlebar-end: #00aa00;
+}
+.concept-card--blue,
+.concept-card--cyan {
+  --card-accent: #1084d0;
+  --titlebar-start: #000080;
+  --titlebar-end: #1084d0;
+}
+.concept-card--yellow {
+  --card-accent: #ffb900;
+  --titlebar-start: #805500;
+  --titlebar-end: #ffb900;
+}
+.concept-card--purple {
+  --card-accent: #b03a8a;
+  --titlebar-start: #5a1846;
+  --titlebar-end: #b03a8a;
 }
 
 .petscii-hatch-strip {
@@ -6513,25 +6585,12 @@
    ========================================================================== */
 .concept-card {
   border-radius: 4px !important;
-  border: 1px solid var(--border-bright) !important;
-  border-top: 3.5px solid var(--card-accent, var(--accent)) !important;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 14%, var(--surface)) 0%, var(--surface) 42%) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
-  padding: clamp(10px, 1.4vh, 14px) clamp(12px, 1.3vw, 16px) clamp(14px, 1.8vh, 20px) !important;
-  gap: 4px !important;
-}
-
-.concept-card__title {
-  font-size: clamp(12.5px, 1.2vw, 15px) !important;
-  line-height: 1.25 !important;
-  min-height: auto !important;
-  margin-bottom: 2px !important;
-}
-
-.concept-card__desc {
-  font-size: clamp(11px, 1vw, 12.5px) !important;
-  line-height: 1.36 !important;
-  color: var(--text-dim) !important;
+  border: 1.5px solid color-mix(in srgb, var(--card-accent, var(--accent)) 45%, var(--border-bright)) !important;
+  border-top: 4px solid var(--card-accent, var(--accent)) !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 12%, var(--surface)) 0%, var(--surface) 40%) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+  overflow: hidden !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .concept-card::before {
@@ -6540,9 +6599,60 @@
 
 .concept-card:hover {
   border-color: var(--card-accent, var(--accent)) !important;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 22%, var(--surface)) 0%, var(--surface) 42%) !important;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45) !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 20%, var(--surface)) 0%, var(--surface) 40%) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4), 0 0 12px color-mix(in srgb, var(--card-accent, var(--accent)) 30%, transparent) !important;
   transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
+   RETRO LATERAL ASCII ART (Excentré pour admirer sans gêner le contenu)
+   ========================================================================== */
+.petscii-bg-art {
+  position: absolute;
+  top: 50%;
+  right: clamp(16px, 3.2vw, 68px);
+  transform: translateY(-50%);
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
+  font-size: clamp(9px, 0.95vw, 13.5px);
+  line-height: 1.12;
+  white-space: pre;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  text-align: left !important;
+  opacity: 0.28;
+  font-variant-ligatures: none !important;
+  letter-spacing: 0 !important;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5));
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="cli-light"] .petscii-bg-art {
+  opacity: 0.22;
+}
+
+@media (max-width: 960px) {
+  .petscii-bg-art {
+    display: none !important;
+  }
+}
+
+/* Texture de trame matricielle rétro en fond de slide */
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  background-image: radial-gradient(rgba(88, 166, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.65;
+}
+
+[data-theme="cli-light"] .slide::after {
+  background-image: radial-gradient(rgba(0, 0, 128, 0.05) 1px, transparent 1px);
+  opacity: 0.5;
 }
 
 /* Speaker intro card */
@@ -6633,6 +6743,25 @@
 <div class="deck">
   <!-- Slide 0: Titre -->
 <section class="slide slide--title" data-nav="Titre">
+  <!-- Logo Windows plein écran en fond ASCII (watermark mod scene) -->
+  <div class="title-bg-win-logo" aria-hidden="true"><pre><code><span style="color:#ff5f56;">                   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>       <span style="color:#27c93f;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>
+<span style="color:#ff5f56;">                 ▄███████████████████████████</span>    <span style="color:#27c93f;">▄███████████████████████████</span>
+<span style="color:#ff5f56;">               ▄█████████████████████████████</span>   <span style="color:#27c93f;">▄█████████████████████████████</span>
+<span style="color:#ff5f56;">             ▄███████████████████████████████</span>  <span style="color:#27c93f;">▄███████████████████████████████</span>
+<span style="color:#ff5f56;">            █████████████████████████████████</span>  <span style="color:#27c93f;">█████████████████████████████████</span>
+<span style="color:#ff5f56;">           █████████████████████████████████▀</span>  <span style="color:#27c93f;">█████████████████████████████████▀</span>
+<span style="color:#ff5f56;">          ████████████████████████████████▀  </span>  <span style="color:#27c93f;">████████████████████████████████▀  </span>
+<span style="color:#ff5f56;">          ▀█████████████████████████████▀    </span>  <span style="color:#27c93f;">▀█████████████████████████████▀    </span>
+
+<span style="color:#0969da;">                   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>       <span style="color:#e3b341;">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span>
+<span style="color:#0969da;">                 ▄███████████████████████████</span>    <span style="color:#e3b341;">▄███████████████████████████</span>
+<span style="color:#0969da;">               ▄█████████████████████████████</span>   <span style="color:#e3b341;">▄█████████████████████████████</span>
+<span style="color:#0969da;">             ▄███████████████████████████████</span>  <span style="color:#e3b341;">▄███████████████████████████████</span>
+<span style="color:#0969da;">            █████████████████████████████████</span>  <span style="color:#e3b341;">█████████████████████████████████</span>
+<span style="color:#0969da;">           █████████████████████████████████▀</span>  <span style="color:#e3b341;">█████████████████████████████████▀</span>
+<span style="color:#0969da;">          ████████████████████████████████▀  </span>  <span style="color:#e3b341;">████████████████████████████████▀  </span>
+<span style="color:#0969da;">          ▀█████████████████████████████▀    </span>  <span style="color:#e3b341;">▀█████████████████████████████▀    </span></code></pre></div>
+
   <!-- Cadre décoratif périphérique PETSCII -->
   <div class="petscii-slide-frame" aria-hidden="true">
     <div class="petscii-slide-frame__tl">
@@ -6649,7 +6778,7 @@
     </div>
   </div>
 
-  <div class="reveal" style="margin-bottom:clamp(16px, 2.5vh, 28px);">
+  <div class="reveal" style="margin-bottom:clamp(24px, 4.2vh, 44px);">
     <div class="ansi-art ansi-art--title">
 <span style="color:var(--text-subtitle);">╔═[ ░▒▓█ WINDOWS USER-SPACE ENVIRONMENT █▓▒░ ]═════════════════════════════════════════════════════╗
 ║                                                                                                          ║</span>
@@ -6666,16 +6795,16 @@
 
   <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
     <h1 class="slide__display reveal" style="font-size:clamp(30px, 5.2vw, 64px); margin:0; line-height:1.1; font-family:var(--font-mono); letter-spacing:-0.02em;">
-      Installer ses outils de dev
+      Configuration de poste dev
     </h1>
-    <p class="slide__subtitle reveal" style="color:var(--accent); margin-top:8px; font-size:clamp(16px, 2vw, 24px); letter-spacing:0.02em;">
-      sans droits administrateur &middot; runtimes par projet &middot; configuration d'&eacute;quipe en code
+    <p class="slide__subtitle reveal" style="color:var(--accent); margin-top:clamp(12px, 2vh, 20px); font-size:clamp(16px, 2vw, 24px); letter-spacing:0.02em;">
+      Installer ses outils avec Scoop &amp; Mise &middot; sans droits admin &middot; runtimes par projet
     </p>
 
-    <div class="reveal" style="margin-top:clamp(20px, 3.5vh, 36px); display:flex; flex-direction:column; align-items:center; gap:6px;">
+    <div class="reveal" style="margin-top:clamp(28px, 4.8vh, 48px); display:flex; flex-direction:column; align-items:center; gap:8px;">
       <span class="slide__accent-line" style="width:80px; height:3px; background:var(--accent);"></span>
       <p class="slide__subtitle" style="color:var(--text-dim); margin-top:8px; font-size:clamp(13px, 1.4vw, 17px);">
-        <strong>Alexis Scolan</strong> &middot; Architecte technique chez onepoint
+        <strong>Alexis Scolan</strong> &middot; Architecte technique @Onepoint
       </p>
       <div style="font-family:Consolas, monospace; font-size:13px; color:var(--green); margin-top:6px;">
         <code>C:\DEV&gt; READY. <span class="petscii-cursor">█</span></code>
@@ -6711,7 +6840,7 @@
         <div>
           <p class="slide__label reveal">Speaker</p>
           <h2 class="slide__heading reveal" style="font-size:clamp(36px,5vw,64px); line-height:0.95; margin:0;">Alexis Scolan</h2>
-          <p class="speaker-intro__role reveal" style="margin-top:8px;">Architecte technique chez <strong style="color:var(--accent);">onepoint</strong></p>
+          <p class="speaker-intro__role reveal" style="margin-top:8px;">Architecte technique <strong style="color:var(--accent);">@Onepoint</strong></p>
           <p class="speaker-intro__lead reveal" style="margin-top:14px; font-size:clamp(15px,1.6vw,20px); color:var(--text-dim); line-height:1.45;">
             Passionn&eacute; d'outillage de dev, d'automatisation locale et d'environnements reproductibles sans friction. Auteur de <strong>DevRecipe</strong> pour r&eacute;aliser un onboarding d'&eacute;quipe partag&eacute; en code.
           </p>
@@ -6761,7 +6890,7 @@
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
-      <div class="concept-card concept-card--orange">
+      <div class="concept-card concept-card--red">
         <div class="petscii-card-header" style="color:var(--red);">
           <span>[ ERR.01 // UAC_BLOCKED ]</span>
           <span class="petscii-hatch-strip">[!]</span>
@@ -6769,15 +6898,15 @@
         <h3 class="concept-card__title">&laquo; Voulez-vous autoriser cette application ? &raquo;</h3>
         <p class="concept-card__desc">Un simple outil CLI exige les droits administrateur (UAC). Billet DSI ouvert, poste bloqu&eacute; 3 jours.</p>
       </div>
-      <div class="concept-card concept-card--blue">
-        <div class="petscii-card-header" style="color:var(--accent);">
+      <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
           <span>[ ERR.02 // PATH_NOT_FOUND ]</span>
           <span class="petscii-hatch-strip">[!]</span>
         </div>
         <h3 class="concept-card__title">&laquo; 'node' n'est pas reconnu en tant que commande &raquo;</h3>
         <p class="concept-card__desc">L'outil a &eacute;t&eacute; install&eacute; via un installeur MSI... mais le PATH n'a pas &eacute;t&eacute; recharg&eacute;, ou pointe sur un binaire inexistant.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ ERR.03 // VERSION_COLLISION ]</span>
           <span class="petscii-hatch-strip">[!]</span>
@@ -6785,8 +6914,8 @@
         <h3 class="concept-card__title">&laquo; Required node version "20", current is "18.2" &raquo;</h3>
         <p class="concept-card__desc">Projet A en Node 18, Projet B en Node 22. Le dev passe son temps &agrave; jongler avec nvm ou &agrave; casser son poste.</p>
       </div>
-      <div class="concept-card concept-card--purple">
-        <div class="petscii-card-header" style="color:var(--accent4);">
+      <div class="concept-card concept-card--yellow">
+        <div class="petscii-card-header" style="color:var(--accent);">
           <span>[ ERR.04 // OS_UNSUPPORTED ]</span>
           <span class="petscii-hatch-strip">[!]</span>
         </div>
@@ -6818,37 +6947,37 @@
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
-      <div class="concept-card concept-card--blue">
-        <div class="petscii-card-header" style="color:var(--accent);">
+      <div class="concept-card concept-card--red">
+        <div class="petscii-card-header" style="color:var(--red);">
           <span>[ SOL.01 // SCOOP ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">User Space pur (Z&eacute;ro UAC)</h3>
         <p class="concept-card__desc">Tous les outils s'installent dans votre profil (<code>~/scoop</code>). Aucune invite UAC ni alt&eacute;ration du syst&egrave;me.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ SOL.02 // DEVRECIPE ]</span>
+          <span class="petscii-hatch-strip">[OK]</span>
+        </div>
+        <h3 class="concept-card__title">Orchestration d'&eacute;quipe en code</h3>
+        <p class="concept-card__desc">Scoop et Mise coordonn&eacute;s dans un manifeste TOML partag&eacute;, valid&eacute; en code review et test&eacute; en preflight.</p>
+      </div>
+      <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
-          <span>[ SOL.02 // MISE ]</span>
+          <span>[ SOL.03 // MISE ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Runtimes par projet</h3>
         <p class="concept-card__desc">Un <code>mise.toml</code> dans le d&eacute;p&ocirc;t Git active automatiquement les bons runtimes d&egrave;s que vous entrez dans le dossier.</p>
       </div>
-      <div class="concept-card concept-card--orange">
-        <div class="petscii-card-header" style="color:var(--accent2);">
-          <span>[ SOL.03 // SHIMS ]</span>
+      <div class="concept-card concept-card--yellow">
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ SOL.04 // SHIMS ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Ma&icirc;trise du PATH Windows</h3>
         <p class="concept-card__desc">Comprendre et corriger la fusion HKLM / HKCU pour emp&ecirc;cher les vieux binaires machine de masquer vos versions.</p>
-      </div>
-      <div class="concept-card concept-card--green">
-        <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ SOL.04 // DEVRECIPE ]</span>
-          <span class="petscii-hatch-strip">[OK]</span>
-        </div>
-        <h3 class="concept-card__title">Orchestration d'&eacute;quipe en code</h3>
-        <p class="concept-card__desc">Scoop et Mise coordonn&eacute;s dans un manifeste TOML partag&eacute;, valid&eacute; en code review et test&eacute; en preflight.</p>
       </div>
     </div>
   </div>
@@ -6875,7 +7004,7 @@
   </div>
   <div class="slide__inner" style="max-width:980px; margin:0 auto; width:100%;">
     <div class="concept-grid concept-grid--3 reveal">
-      <div class="concept-card concept-card--blue">
+      <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
           <span>[ 01 // PROFIL USER ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -6883,7 +7012,7 @@
         <h3 class="concept-card__title">Z&eacute;ro UAC</h3>
         <p class="concept-card__desc">Scoop d&eacute;compresse les binaires dans <code>~/scoop/apps</code>. Aucun installeur MSI ne pollue la machine ni n'exige de droit.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ 02 // SHIMS ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -6987,7 +7116,7 @@
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ 01 // POLYGLOTTE ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -6995,7 +7124,7 @@
         <h3 class="concept-card__title">Un seul outil en Rust</h3>
         <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
       </div>
-      <div class="concept-card concept-card--blue">
+      <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
           <span>[ 02 // REPO_CONFIG ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -7003,8 +7132,8 @@
         <h3 class="concept-card__title">Fichier mise.toml versionn&eacute;</h3>
         <p class="concept-card__desc">La configuration vit dans le d&eacute;p&ocirc;t Git. Quand vous changez de branche ou de dossier, les versions basculent imm&eacute;diatement.</p>
       </div>
-      <div class="concept-card concept-card--purple">
-        <div class="petscii-card-header" style="color:var(--accent4);">
+      <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
           <span>[ 03 // ENV_TASKS ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
@@ -7104,10 +7233,18 @@
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--orange">
+        <div class="petscii-card-header" style="color:var(--red);">
+          <span>[ 01 // REGISTRY ]</span>
+          <span class="petscii-hatch-strip">[!]</span>
+        </div>
         <h3 class="concept-card__title">Fusion descendante obligatoire (HKLM &gt; HKCU)</h3>
         <p class="concept-card__desc">&Agrave; la cr&eacute;ation de session (<code>CreateEnvironmentBlock</code>), Windows concat&egrave;ne le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--blue">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ 02 // COLLISION ]</span>
+          <span class="petscii-hatch-strip">[!]</span>
+        </div>
         <h3 class="concept-card__title">Le masquage silencieux (Shadowing)</h3>
         <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> d&eacute;clar&eacute; au niveau Machine, votre Python 3.12 install&eacute; proprement via Mise ne sera <strong>jamais appel&eacute;</strong> par d&eacute;faut dans vos scripts !</p>
       </div>
@@ -7208,15 +7345,15 @@
         <h3 class="concept-card__title">Manifeste devrecipe.toml partag&eacute;</h3>
         <p class="concept-card__desc">Scoop et Mise s'ignorent mutuellement. DevRecipe les rassemble dans un fichier partag&eacute;, versionn&eacute; et relu en PR pour r&eacute;pondre aux besoins collectifs de l'&eacute;quipe.</p>
       </div>
-      <div class="concept-card concept-card--orange">
-        <div class="petscii-card-header" style="color:var(--accent2);">
+      <div class="concept-card concept-card--yellow">
+        <div class="petscii-card-header" style="color:var(--accent);">
           <span>[ 02 // PREFLIGHT ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Contr&ocirc;le pr&eacute;alable des conflits</h3>
         <p class="concept-card__desc">Ni Scoop ni Mise n'inspectent les logiciels d&eacute;j&agrave; pr&eacute;sents. DevRecipe scanne le registre, AppX et le PATH pour alerter avant toute modification.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ 03 // PRECEDENCE ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -7319,7 +7456,7 @@
         <h3 class="concept-card__title">EDR &amp; AppLocker restent actifs</h3>
         <p class="concept-card__desc">Installer en espace utilisateur ne contourne aucun antivirus d'entreprise, ni WDAC ni restrictions. Tout binaire non autoris&eacute; reste bloqu&eacute;.</p>
       </div>
-      <div class="concept-card concept-card--blue">
+      <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
           <span>[ 02 // REPO_GIT ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -7327,7 +7464,7 @@
         <h3 class="concept-card__title">Catalogues d'entreprise approuv&eacute;s</h3>
         <p class="concept-card__desc">L'entreprise peut h&eacute;berger son propre bucket Git priv&eacute; de manifests valid&eacute;s par la cybers&eacute;curit&eacute; et des miroirs internes d'artifactory.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ 03 // AUDIT ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -7368,7 +7505,7 @@
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal" style="margin-bottom:16px;">
-      <div class="concept-card concept-card--blue">
+      <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
           <span>[ 01 // SCOOP ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -7376,7 +7513,7 @@
         <h3 class="concept-card__title">Espace utilisateur d'abord</h3>
         <p class="concept-card__desc">Scoop pour tous vos outils en ligne de commande. Ne demandez plus les droits admin pour un simple binaire CLI.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ 02 // MISE ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
@@ -7384,8 +7521,8 @@
         <h3 class="concept-card__title">Runtimes dans le d&eacute;p&ocirc;t Git</h3>
         <p class="concept-card__desc">Figez les runtimes dans un <code>mise.toml</code> versionn&eacute;. Vos coll&egrave;gues d&eacute;marrent le projet en 1 seconde.</p>
       </div>
-      <div class="concept-card concept-card--orange">
-        <div class="petscii-card-header" style="color:var(--accent2);">
+      <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
           <span>[ 03 // SHIMS ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
@@ -7446,7 +7583,7 @@
         <span class="petscii-tag"><span class="petscii-glyph-orange">■</span> PATH Windows</span>
       </div>
       <div class="reveal outro-speaker" style="margin-top:10px;">
-        <p>Alexis Scolan &mdash; <strong style="color:var(--accent);">Architecte technique</strong> chez onepoint</p>
+        <p>Alexis Scolan &mdash; <strong style="color:var(--accent);">Architecte technique @Onepoint</strong></p>
       </div>
 
       <div class="ansi-diagram-block reveal" style="padding:10px 14px; font-size:clamp(10px,1vw,12.5px); line-height:1.45; margin-top:12px; border-color:var(--accent); background:var(--code-bg); text-align:left;">
@@ -8068,6 +8205,8 @@
       var targetTop=this.getSlideTop(initIdx);
       this.deck.scrollTo({top:targetTop,behavior:'instant'});
     }
+    this.injectCardHatchStrips();
+    this.injectBackgroundArt();
     this.initPresenterSync();
     this.buildSectionMap();this.buildChrome();this.bindEvents();this.observe();this.update();
     if(initIdx>0){
@@ -8076,7 +8215,86 @@
     }
     this.broadcastDeckReloaded();
   }
-    SlideEngine.prototype.buildChrome=function(){
+  SlideEngine.prototype.injectCardHatchStrips=function(){
+    var hatchContent = '<span class="card-modscene-hatch" aria-hidden="true">[ ░▒▓█▓▒░ ]</span>';
+    var targets = document.querySelectorAll(
+      '.concept-card:not(.benefit-card), .review-questions__card, .lane-card, .key-card, .speaker-card, .speaker-panel, .slide--split .slide__panel'
+    );
+    targets.forEach(function(el) {
+      if (el.querySelector('.card-modscene-hatch, .card-hatch-strip')) return;
+      var div = document.createElement('div');
+      div.className = 'card-hatch-strip-wrap';
+      div.innerHTML = hatchContent;
+      el.appendChild(div);
+    });
+  };
+  SlideEngine.prototype.injectBackgroundArt=function(){
+    var win98Html =
+      '<span style="background:#000080;padding:2px 8px;border-radius:3px 3px 0 0;font-weight:700;color:#ffffff;font-size:11px;display:inline-block;letter-spacing:0.04em;">[ ■ ] Microsoft Windows 98</span>\n' +
+      '<span style="color:#8b949e;">╔═══════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">      ,.=:!!t3Z3z.,                          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">     :tt:::tt333EE3                          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">     Et:::ztt33EEEL</span> <span style="color:#00aa00;">@Ee.,      ..,           </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">    ;tt:::tt333EE7</span> <span style="color:#00aa00;">;EEEEEEttttt33#           </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">   :Et:::zt333EEQ.</span> <span style="color:#00aa00;">$EEEEEttttt33QL           </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">   it::::tt333EEF</span> <span style="color:#00aa00;">@EEEEEEttttt33F            </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">  ;3=*^```"*4EEV</span> <span style="color:#00aa00;">:EEEEEEttttt33@.            </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">  ,.=::::!t=., `</span> <span style="color:#00aa00;">@EEEEEEtttz33QF             </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;"> ;::::::::zt33)</span>   <span style="color:#00aa00;">"4EEEtttji3P*              </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">:t::::::::tt33.</span> <span style="color:#ffb900;">:Z3z..</span>  <span style="color:#00aa00;">``</span> <span style="color:#ffb900;">,..g.             </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">i::::::::zt33F</span> <span style="color:#ffb900;">AEEEtttt::::ztF               </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">;:::::::::t33V</span> <span style="color:#ffb900;">;EEEttttt::::t3               </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">E::::::::zt33L</span> <span style="color:#ffb900;">@EEEtttt::::z3F               </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">{3=*^```"*4E3)</span> <span style="color:#ffb900;">;EEEtttt:::::tZ`              </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">            `</span> <span style="color:#ffb900;">:EEEEtttt::::z7                </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ffb900;">                "VEzjt:;;z>*`                </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║                                               ║\n' +
+      '║ [ MICROSOFT WINDOWS 98 // WIN32 USER-SPACE ]  ║\n' +
+      '╚═══════════════════════════════════════════════╝</span>';
+
+    var javaHtml =
+      '<span style="background:#000080;padding:2px 8px;border-radius:3px 3px 0 0;font-weight:700;color:#ffffff;font-size:11px;display:inline-block;letter-spacing:0.04em;">[ ☕ ] Java(TM) Platform</span>\n' +
+      '<span style="color:#8b949e;">╔═══════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
+      '<span style="color:#8b949e;">║</span>                                               <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                          <span style="color:#58a6ff;">:--=</span>    <span style="color:#58a6ff;">.:</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                     <span style="color:#58a6ff;">:--:</span> <span style="color:#58a6ff;">-===:</span> <span style="color:#58a6ff;">.===-.</span>         <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#58a6ff;">..</span>           <span style="color:#58a6ff;">-===---===::===.</span>          <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">.-=-:.</span>         <span style="color:#ff3333;">.-============</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.====-:.</span>        <span style="color:#ff3333;">:-==========-</span>          <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.=======-:.</span>  <span style="color:#ff3333;">.:--===========.</span>         <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.==========-====----========:</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.=============:.</span>      <span style="color:#ff3333;">.-=-.</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.======-=========-.</span>     <span style="color:#ff3333;">:=:</span>             <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.==-</span> <span style="color:#ff3333;">.-------=-:::</span>   <span style="color:#ff3333;">-.</span>              <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">:===-=========</span> <span style="color:#ff3333;">.-=--</span>                <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">:-.:-========--.</span>     <span style="color:#ff3333;">:=-</span>                <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>      <span style="color:#ff3333;">:-:</span>    <span style="color:#ff3333;">......</span>          <span style="color:#ff3333;">.=.</span>               <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>     <span style="color:#ffb900;">-=-.</span>                     <span style="color:#ffb900;">.-:</span>              <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>      <span style="color:#ffb900;">=.</span>                       <span style="color:#ffb900;">.::</span>             <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>      <span style="color:#ffb900;">-.</span>                        <span style="color:#ffb900;">.-.</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>     <span style="color:#ffb900;">=.</span>                          <span style="color:#ffb900;">.-</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║                                               ║\n' +
+      '║ [ JAVA RUNTIME // SWITCH AUTOMATIQUE AU CD ]  ║\n' +
+      '╚═══════════════════════════════════════════════╝</span>';
+
+    this.slides.forEach(function(slide) {
+      if (slide.querySelector('.petscii-bg-art')) return;
+      var nav = slide.getAttribute('data-nav') || '';
+      if (slide.classList.contains('slide--title') || slide.classList.contains('slide--speaker')) return;
+
+      var div = document.createElement('div');
+      div.className = 'petscii-bg-art';
+      div.setAttribute('aria-hidden', 'true');
+      if (nav.indexOf('Mise') > -1) {
+        div.innerHTML = javaHtml;
+        slide.appendChild(div);
+      } else if (nav.indexOf('PATH') > -1 || nav.indexOf('erreurs') > -1 || nav.indexOf('Scoop') > -1 || nav.indexOf('DevRecipe') > -1) {
+        div.innerHTML = win98Html;
+        slide.appendChild(div);
+      }
+    });
+  };
+  SlideEngine.prototype.buildChrome=function(){
     var bar=document.createElement('div');bar.className='deck-progress';document.body.appendChild(bar);this.bar=bar;
     var nav=document.createElement('div');nav.className='deck-nav';var self=this;
     var crumb=document.createElement('button');crumb.className='deck-breadcrumb';crumb.type='button';crumb.setAttribute('aria-haspopup','true');crumb.setAttribute('aria-expanded','false');crumb.setAttribute('aria-label','Afficher la navigation des slides près de la barre de progression');nav.appendChild(crumb);

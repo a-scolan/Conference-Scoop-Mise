@@ -19,10 +19,18 @@
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--orange">
+        <div class="petscii-card-header" style="color:var(--red);">
+          <span>[ 01 // REGISTRY ]</span>
+          <span class="petscii-hatch-strip">[!]</span>
+        </div>
         <h3 class="concept-card__title">Fusion descendante obligatoire (HKLM &gt; HKCU)</h3>
         <p class="concept-card__desc">&Agrave; la cr&eacute;ation de session (<code>CreateEnvironmentBlock</code>), Windows concat&egrave;ne le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
       </div>
-      <div class="concept-card concept-card--cyan">
+      <div class="concept-card concept-card--blue">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ 02 // COLLISION ]</span>
+          <span class="petscii-hatch-strip">[!]</span>
+        </div>
         <h3 class="concept-card__title">Le masquage silencieux (Shadowing)</h3>
         <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> d&eacute;clar&eacute; au niveau Machine, votre Python 3.12 install&eacute; proprement via Mise ne sera <strong>jamais appel&eacute;</strong> par d&eacute;faut dans vos scripts !</p>
       </div>

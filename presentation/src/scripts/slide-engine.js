@@ -25,6 +25,8 @@
       var targetTop=this.getSlideTop(initIdx);
       this.deck.scrollTo({top:targetTop,behavior:'instant'});
     }
+    this.injectCardHatchStrips();
+    this.injectBackgroundArt();
     this.initPresenterSync();
     this.buildSectionMap();this.buildChrome();this.bindEvents();this.observe();this.update();
     if(initIdx>0){
@@ -33,7 +35,86 @@
     }
     this.broadcastDeckReloaded();
   }
-    SlideEngine.prototype.buildChrome=function(){
+  SlideEngine.prototype.injectCardHatchStrips=function(){
+    var hatchContent = '<span class="card-modscene-hatch" aria-hidden="true">[ ░▒▓█▓▒░ ]</span>';
+    var targets = document.querySelectorAll(
+      '.concept-card:not(.benefit-card), .review-questions__card, .lane-card, .key-card, .speaker-card, .speaker-panel, .slide--split .slide__panel'
+    );
+    targets.forEach(function(el) {
+      if (el.querySelector('.card-modscene-hatch, .card-hatch-strip')) return;
+      var div = document.createElement('div');
+      div.className = 'card-hatch-strip-wrap';
+      div.innerHTML = hatchContent;
+      el.appendChild(div);
+    });
+  };
+  SlideEngine.prototype.injectBackgroundArt=function(){
+    var win98Html =
+      '<span style="background:#000080;padding:2px 8px;border-radius:3px 3px 0 0;font-weight:700;color:#ffffff;font-size:11px;display:inline-block;letter-spacing:0.04em;">[ ■ ] Microsoft Windows 98</span>\n' +
+      '<span style="color:#8b949e;">╔═══════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">      ,.=:!!t3Z3z.,                          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">     :tt:::tt333EE3                          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">     Et:::ztt33EEEL</span> <span style="color:#00aa00;">@Ee.,      ..,           </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">    ;tt:::tt333EE7</span> <span style="color:#00aa00;">;EEEEEEttttt33#           </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">   :Et:::zt333EEQ.</span> <span style="color:#00aa00;">$EEEEEttttt33QL           </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">   it::::tt333EEF</span> <span style="color:#00aa00;">@EEEEEEttttt33F            </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">  ;3=*^```"*4EEV</span> <span style="color:#00aa00;">:EEEEEEttttt33@.            </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">  ,.=::::!t=., `</span> <span style="color:#00aa00;">@EEEEEEtttz33QF             </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;"> ;::::::::zt33)</span>   <span style="color:#00aa00;">"4EEEtttji3P*              </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">:t::::::::tt33.</span> <span style="color:#ffb900;">:Z3z..</span>  <span style="color:#00aa00;">``</span> <span style="color:#ffb900;">,..g.             </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">i::::::::zt33F</span> <span style="color:#ffb900;">AEEEtttt::::ztF               </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">;:::::::::t33V</span> <span style="color:#ffb900;">;EEEttttt::::t3               </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">E::::::::zt33L</span> <span style="color:#ffb900;">@EEEtttt::::z3F               </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">{3=*^```"*4E3)</span> <span style="color:#ffb900;">;EEEtttt:::::tZ`              </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">            `</span> <span style="color:#ffb900;">:EEEEtttt::::z7                </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ffb900;">                "VEzjt:;;z>*`                </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║                                               ║\n' +
+      '║ [ MICROSOFT WINDOWS 98 // WIN32 USER-SPACE ]  ║\n' +
+      '╚═══════════════════════════════════════════════╝</span>';
+
+    var javaHtml =
+      '<span style="background:#000080;padding:2px 8px;border-radius:3px 3px 0 0;font-weight:700;color:#ffffff;font-size:11px;display:inline-block;letter-spacing:0.04em;">[ ☕ ] Java(TM) Platform</span>\n' +
+      '<span style="color:#8b949e;">╔═══════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
+      '<span style="color:#8b949e;">║</span>                                               <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                          <span style="color:#58a6ff;">:--=</span>    <span style="color:#58a6ff;">.:</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                     <span style="color:#58a6ff;">:--:</span> <span style="color:#58a6ff;">-===:</span> <span style="color:#58a6ff;">.===-.</span>         <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#58a6ff;">..</span>           <span style="color:#58a6ff;">-===---===::===.</span>          <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">.-=-:.</span>         <span style="color:#ff3333;">.-============</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.====-:.</span>        <span style="color:#ff3333;">:-==========-</span>          <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.=======-:.</span>  <span style="color:#ff3333;">.:--===========.</span>         <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.==========-====----========:</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.=============:.</span>      <span style="color:#ff3333;">.-=-.</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.======-=========-.</span>     <span style="color:#ff3333;">:=:</span>             <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.==-</span> <span style="color:#ff3333;">.-------=-:::</span>   <span style="color:#ff3333;">-.</span>              <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">:===-=========</span> <span style="color:#ff3333;">.-=--</span>                <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">:-.:-========--.</span>     <span style="color:#ff3333;">:=-</span>                <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>      <span style="color:#ff3333;">:-:</span>    <span style="color:#ff3333;">......</span>          <span style="color:#ff3333;">.=.</span>               <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>     <span style="color:#ffb900;">-=-.</span>                     <span style="color:#ffb900;">.-:</span>              <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>      <span style="color:#ffb900;">=.</span>                       <span style="color:#ffb900;">.::</span>             <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>      <span style="color:#ffb900;">-.</span>                        <span style="color:#ffb900;">.-.</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>     <span style="color:#ffb900;">=.</span>                          <span style="color:#ffb900;">.-</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║                                               ║\n' +
+      '║ [ JAVA RUNTIME // SWITCH AUTOMATIQUE AU CD ]  ║\n' +
+      '╚═══════════════════════════════════════════════╝</span>';
+
+    this.slides.forEach(function(slide) {
+      if (slide.querySelector('.petscii-bg-art')) return;
+      var nav = slide.getAttribute('data-nav') || '';
+      if (slide.classList.contains('slide--title') || slide.classList.contains('slide--speaker')) return;
+
+      var div = document.createElement('div');
+      div.className = 'petscii-bg-art';
+      div.setAttribute('aria-hidden', 'true');
+      if (nav.indexOf('Mise') > -1) {
+        div.innerHTML = javaHtml;
+        slide.appendChild(div);
+      } else if (nav.indexOf('PATH') > -1 || nav.indexOf('erreurs') > -1 || nav.indexOf('Scoop') > -1 || nav.indexOf('DevRecipe') > -1) {
+        div.innerHTML = win98Html;
+        slide.appendChild(div);
+      }
+    });
+  };
+  SlideEngine.prototype.buildChrome=function(){
     var bar=document.createElement('div');bar.className='deck-progress';document.body.appendChild(bar);this.bar=bar;
     var nav=document.createElement('div');nav.className='deck-nav';var self=this;
     var crumb=document.createElement('button');crumb.className='deck-breadcrumb';crumb.type='button';crumb.setAttribute('aria-haspopup','true');crumb.setAttribute('aria-expanded','false');crumb.setAttribute('aria-label','Afficher la navigation des slides près de la barre de progression');nav.appendChild(crumb);
