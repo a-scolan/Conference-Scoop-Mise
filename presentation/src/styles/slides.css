@@ -261,9 +261,9 @@
   /* ============ SLIDE TYPE: CONTENT ============ */
 
   .slide--content {
-    justify-content: flex-start;
-    padding-top: clamp(24px, 4.5vh, 48px);
-    padding-bottom: clamp(20px, 3.5vh, 40px);
+    justify-content: center;
+    padding-top: clamp(16px, 3vh, 36px);
+    padding-bottom: clamp(16px, 3vh, 36px);
   }
 
   .slide--content .slide__inner {

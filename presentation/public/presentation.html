@@ -2255,12 +2255,10 @@
     text-align: center;
     width: min(100%, 420px);
     padding: clamp(18px, 2.8vh, 32px) clamp(16px, 2.2vw, 32px);
-    border-radius: 20px;
+    border-radius: 4px;
     border: 1.5px solid var(--border-bright);
-    background: color-mix(in srgb, var(--surface) 88%, transparent 12%);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.08);
+    background: var(--surface);
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.25);
     position: relative;
     overflow: hidden;
     transition: border-color 0.18s ease, box-shadow 0.18s ease;
@@ -2271,8 +2269,8 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent3), var(--accent), var(--accent2));
+    height: 3px;
+    background: var(--accent);
   }
   .outro-qr__title {
     font-family: var(--font-heading);
@@ -2284,11 +2282,14 @@
     text-align: center;
   }
   .outro-qr-card .qr-spotlight {
-    width: clamp(130px, 14vw, 210px);
+    width: clamp(140px, 15vw, 220px);
     aspect-ratio: 1 / 1;
     margin: 0 auto;
     padding: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border: 1.5px solid var(--border-bright);
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
   .outro-qr-card .qr-spotlight img {
     width: 100%;
@@ -6643,19 +6644,24 @@
     <div class="petscii-slide-frame__bl">
       <span class="petscii-glyph-orange">╚═[</span> <span>HKCU: USER-SPACE</span> <span class="petscii-glyph-orange">]</span>
     </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
   </div>
 
-  <div class="reveal" style="margin-bottom:clamp(12px, 2vh, 24px);">
+  <div class="reveal" style="margin-bottom:clamp(16px, 2.5vh, 28px);">
     <div class="ansi-art ansi-art--title">
-<span style="color:var(--text-subtitle);">╔═[ ░▒▓█ WINDOWS USER-SPACE ENVIRONMENT █▓▒░ ]═════════════════════════════════════════════╗
-║                                                                                          ║</span>
-<span style="color:var(--text-subtitle);">║</span>   <span class="c-scoop">▄██████   ▄██████   ▄██████   ▄██████   ▄█████</span>       <span class="c-mise">▄▄   ▄▄  ▄▄   ▄██████  ▄██████</span>    <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>   <span class="c-scoop">██        ██        ██   ██   ██   ██   ██  ██</span>   <span class="c-and">▄</span>   <span class="c-mise">███ ███  ██   ██       ██     </span>    <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>   <span class="c-scoop">██████▄   ██        ██   ██   ██   ██   █████▀</span>  <span class="c-and">▀▄▀</span>  <span class="c-mise">██ █ ██  ██   ██████▄  █████  </span>    <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>        <span class="c-scoop">██   ██        ██   ██   ██   ██   ██    </span>       <span class="c-mise">██   ██  ██        ██  ██     </span>    <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║</span>   <span class="c-scoop">██████▀   ▀██████   ▀██████   ▀██████   ██    </span>       <span class="c-mise">██   ██  ██   ██████▀  ▀██████</span>    <span style="color:var(--text-subtitle);">║</span>
-<span style="color:var(--text-subtitle);">║                                                                                          ║
-╚══════════════════════════════════════════════════════════[ ░▒▓█ 64K RAM · QUICKIE █▓▒░ ]═╝</span></div>
+<span style="color:var(--text-subtitle);">╔═[ ░▒▓█ WINDOWS USER-SPACE ENVIRONMENT █▓▒░ ]═════════════════════════════════════════════════════╗
+║                                                                                                          ║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span class="c-scoop"> ▄██████▓▄   ▄██████▓▄  ▄██████▓▄   ▄██████▓▄  ████████▓▄ </span>      <span class="c-mise"> ███      ███ ███  ▄██████▓▄   ████████  </span><span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span class="c-scoop">███▀    ▀▓  ███▀    ▀▓ ███▀  ▀▓███ ███▀  ▀▓███ ███   ▀▓██ </span> <span class="c-and">░▒</span>   <span class="c-mise">████    ████ ███ ███▀    ▀▓   ███▀▀▀▀▀  </span><span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span class="c-scoop">███         ███        ███    ████ ███    ████ ███    ███ </span><span class="c-and">▓██▓</span>  <span class="c-mise">█████  █████ ███ ███         ███        </span><span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span class="c-scoop"> ▀██████▓▄  ███        ███    ████ ███    ████ ████████▀  </span> <span class="c-and">██</span>   <span class="c-mise">███▀████▀███ ███  ▀██████▓▄   ███████   </span><span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span class="c-scoop">     ▀▓███  ███        ███    ████ ███    ████ ███        </span> <span class="c-and">██</span>   <span class="c-mise">███  ▀▀  ███ ███      ▀▓███   ███       </span><span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span class="c-scoop">▄     ▓███  ███▄    ▄▓ ███▄  ▄▓███ ███▄  ▄▓███ ███        </span> <span class="c-and">░▒</span>   <span class="c-mise">███      ███ ███ ▄     ▓███   ███▄▄▄▄▄  </span><span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span class="c-scoop"> ▀██████▀░   ▀██████▀░  ▀██████▀░   ▀██████▀░  ███        </span>      <span class="c-mise">███      ███ ███  ▀██████▀░   ████████  </span><span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║                                                                                                          ║
+╚════════════════════════════════════════════════════════════════════════════[ ░▒▓█ QUICKIE 15 MIN █▓▒░ ]══╝</span></div>
   </div>
 
   <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
@@ -7098,18 +7104,10 @@
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--orange">
-        <div class="petscii-card-header" style="color:var(--red);">
-          <span>[ 01 // REGISTRY ]</span>
-          <span class="petscii-hatch-strip">[!]</span>
-        </div>
         <h3 class="concept-card__title">Fusion descendante obligatoire (HKLM &gt; HKCU)</h3>
         <p class="concept-card__desc">&Agrave; la cr&eacute;ation de session (<code>CreateEnvironmentBlock</code>), Windows concat&egrave;ne le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
       </div>
       <div class="concept-card concept-card--cyan">
-        <div class="petscii-card-header" style="color:var(--accent3);">
-          <span>[ 02 // COLLISION ]</span>
-          <span class="petscii-hatch-strip">[!]</span>
-        </div>
         <h3 class="concept-card__title">Le masquage silencieux (Shadowing)</h3>
         <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> d&eacute;clar&eacute; au niveau Machine, votre Python 3.12 install&eacute; proprement via Mise ne sera <strong>jamais appel&eacute;</strong> par d&eacute;faut dans vos scripts !</p>
       </div>
@@ -7478,7 +7476,10 @@
     </div>
     <div class="outro-qr-pane reveal">
       <div class="outro-qr-card" style="position:relative; text-align:center;">
-        <h3 class="outro-qr__title" style="color:var(--accent); font-family:var(--font-mono); font-size:15px; font-weight:700; margin-bottom:14px; text-transform:uppercase; letter-spacing:0.08em;">Support &amp; Code</h3>
+        <div class="petscii-card-header" style="color:var(--accent); width:100%; margin: -20px -20px 14px -20px; padding: 6px 14px;">
+          <span>[ QR // SUPPORT &amp; CODE ]</span>
+          <span class="petscii-hatch-strip">[SCAN]</span>
+        </div>
         <div class="qr-spotlight">
           <img src="assets/presentation-qr.png" alt="QR code vers le support de la pr&eacute;sentation" loading="eager">
         </div>
