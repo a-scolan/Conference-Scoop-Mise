@@ -1,0 +1,137 @@
+/* ==========================================================================
+   THEME: CLI Light (Dev-Friendly Terminal Theme - Light Mode)
+   Terminal clair moderne, sobre, lisibilité maximale pour vidéoprojecteurs.
+   ========================================================================== */
+
+[data-theme="cli-light"],
+[data-theme="terminal-light"] {
+  /* Surfaces & Fonds (Clair, net, esprit terminal papier / light editor) */
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --surface2: #eaeef2;
+  --surface-elevated: #ffffff;
+
+  /* Pas de papier millimétré blueprint : arrière-plan épuré */
+  --blueprint-grid: none;
+  --blueprint-grid-size: auto;
+
+  /* Bordures fines */
+  --border: #d0d7de;
+  --border-bright: #afb8c1;
+  --border-focus: #0969da;
+
+  /* Encres & Typographie (Contraste maximal > 8:1) */
+  --text: #1f2328;
+  --text-dim: #32383f;
+  --text-subtitle: #59636e;
+  --part0-neutral-gray: #59636e;
+
+  /* Accents des 6 parties (Couleurs contrastées > 4.5:1 sur fond blanc/clair) */
+  --accent: #9a6700;          /* Partie 1: Scoop (Ambre/Or sombre pour contraste AA) */
+  --accent-dim: rgba(154, 103, 0, 0.12);
+  --accent2: #bc4c00;         /* Partie 3: PATH (Orange brûlé) */
+  --accent2-dim: rgba(188, 76, 0, 0.12);
+  --accent3: #0969da;         /* Partie 2: Mise (Bleu cobalt / terminal) */
+  --accent3-dim: rgba(9, 105, 218, 0.12);
+  --accent4: #bf3989;         /* Partie 5: Clôture (Framboise sombre) */
+  --accent4-dim: rgba(191, 57, 137, 0.12);
+  --green: #1a7f37;           /* Partie 4: DevRecipe (Vert forêt) */
+  --green-dim: rgba(26, 127, 55, 0.12);
+  --red: #cf222e;
+  --red-dim: rgba(207, 34, 46, 0.12);
+  --blue: #0969da;
+  --blue-dim: rgba(9, 105, 218, 0.12);
+
+  /* Palette ANSI pour terminal sur fond clair */
+  --ansi-black: #24292f;
+  --ansi-red: #cf222e;
+  --ansi-green: #116329;
+  --ansi-yellow: #9a6700;
+  --ansi-blue: #0969da;
+  --ansi-magenta: #8250df;
+  --ansi-cyan: #1b7c83;
+  --ansi-white: #6e7781;
+
+  --ansi-bright-black: #57606a;
+  --ansi-bright-red: #a40e26;
+  --ansi-bright-green: #1a7f37;
+  --ansi-bright-yellow: #b08800;
+  --ansi-bright-blue: #218bff;
+  --ansi-bright-magenta: #a475f9;
+  --ansi-bright-cyan: #3192aa;
+  --ansi-bright-white: #8c959f;
+
+  /* Laser virtuel (Bleu électrique franc) */
+  --laser-core: #0969da;
+  --laser-hot: #0550ae;
+  --laser-ring: rgba(9, 105, 218, 0.55);
+  --laser-glow: rgba(9, 105, 218, 0.22);
+  --laser-glow-soft: rgba(9, 105, 218, 0.10);
+
+  /* Diagrammes */
+  --diagram-gold: #9a6700;
+  --diagram-gold-dim: #fff8c5;
+  --diagram-blue: #0969da;
+  --diagram-blue-dim: #ddf4ff;
+  --diagram-green: #1a7f37;
+  --diagram-green-dim: #dafbe1;
+
+  /* Blocs de code & terminal */
+  --code-bg: #f6f8fa;
+  --code-text: #1f2328;
+  --code-border: #d0d7de;
+
+  --quote-mark: #0969da;
+  --split-secondary: #eaeef2;
+  --split-secondary-elevated: #ffffff;
+  --split-secondary-muted: #59636e;
+  --hover-accent-soft: rgba(9, 105, 218, 0.08);
+  --hover-frame: rgba(9, 105, 218, 0.30);
+  --hover-frame-soft: rgba(9, 105, 218, 0.03);
+}
+
+/* Typographie & Motifs spécifiques au thème CLI Light */
+[data-theme="cli-light"] .slide__heading,
+[data-theme="terminal-light"] .slide__heading,
+[data-theme="cli-light"] .slide__title,
+[data-theme="terminal-light"] .slide__title {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+[data-theme="cli-light"] .slide__label::before,
+[data-theme="terminal-light"] .slide__label::before {
+  content: '❯ ';
+  color: var(--accent);
+  font-weight: 900;
+}
+
+/* Désactivation des décors blueprint */
+[data-theme="cli-light"] .blueprint-deco,
+[data-theme="terminal-light"] .blueprint-deco,
+[data-theme="cli-light"] .card-calibration-strip,
+[data-theme="terminal-light"] .card-calibration-strip {
+  display: none !important;
+}
+
+/* Curseur terminal clignotant sur la slide titre */
+[data-theme="cli-light"] .slide--title .slide__display:last-of-type::after,
+[data-theme="terminal-light"] .slide--title .slide__display:last-of-type::after {
+  content: ' ▋';
+  display: inline-block;
+  color: var(--accent);
+  animation: cli-cursor-blink 1s steps(2, start) infinite;
+  vertical-align: baseline;
+}
+
+@keyframes cli-cursor-blink {
+  to { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="cli-light"] .slide--title .slide__display:last-of-type::after,
+  [data-theme="terminal-light"] .slide--title .slide__display:last-of-type::after {
+    animation: none;
+    opacity: 1;
+  }
+}

@@ -5,8 +5,8 @@
 
 (function initThemeController() {
   var STORAGE_KEY = 'deck-theme';
-  var DEFAULT_THEME = 'google-blueprint-light';
-  var THEMES = ['google-blueprint-light', 'slate-architect'];
+  var DEFAULT_THEME = 'cli-dark';
+  var THEMES = ['cli-dark', 'cli-light', 'google-blueprint-light', 'slate-architect'];
 
   var isInIframe = false;
   try {
@@ -24,8 +24,10 @@
 
   function normalizeThemeName(themeName) {
     if (!themeName) return DEFAULT_THEME;
-    if (themeName === 'light' || themeName === 'google-blueprint-light') return 'google-blueprint-light';
-    if (themeName === 'dark' || themeName === 'slate-architect') return 'slate-architect';
+    if (themeName === 'cli-dark' || themeName === 'dark' || themeName === 'terminal-dark') return 'cli-dark';
+    if (themeName === 'cli-light' || themeName === 'light' || themeName === 'terminal-light') return 'cli-light';
+    if (themeName === 'google-blueprint-light' || themeName === 'blueprint') return 'google-blueprint-light';
+    if (themeName === 'slate-architect' || themeName === 'slate') return 'slate-architect';
     return themeName;
   }
 
@@ -90,8 +92,17 @@
   }
 
   function toggleTheme() {
-    var current = document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
-    var next = (current === 'google-blueprint-light' || current === 'light') ? 'slate-architect' : 'google-blueprint-light';
+    var current = normalizeThemeName(document.documentElement.getAttribute('data-theme') || DEFAULT_THEME);
+    var next = 'cli-dark';
+    if (current === 'cli-dark') {
+      next = 'cli-light';
+    } else if (current === 'cli-light') {
+      next = 'cli-dark';
+    } else if (current === 'google-blueprint-light') {
+      next = 'slate-architect';
+    } else if (current === 'slate-architect') {
+      next = 'google-blueprint-light';
+    }
     applyTheme(next);
   }
 

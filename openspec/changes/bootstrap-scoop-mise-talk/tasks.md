@@ -7,10 +7,10 @@
 
 ## 2. Nettoyage du moteur
 
-- [ ] 2.1 Retirer de `slide-engine.js` les branches `slide--live-coding`, `slide--c2-unified`, `slide--pr-review`, `slide--c2-evolution` et la modale diff LikeC4. Vérifier : `npm run build` sans erreur, navigation clavier OK, 0 erreur console.
-- [ ] 2.2 Retirer le CSS mort (LikeC4, anciennes slides) de `components.css` et `slides.css`. Vérifier : recherche `likec4|c2-|pr-review` sans résultat ; rendu visuel des 3 slides inchangé.
-- [ ] 2.3 Réécrire la checklist avant-scène de `presenter-view.html` selon la spec `presenter-view`. Vérifier : la checklist affiche les nouveaux points et le compteur `N/N`.
-- [ ] 2.4 Mettre à jour la table des sections (`buildSectionMap`) avec les 6 parties de la spec `content-theme`. Vérifier : couleur correcte sur le fil d'Ariane de chaque partie.
+- [x] 2.1 Retirer de `slide-engine.js` les branches `slide--live-coding`, `slide--c2-unified`, `slide--pr-review`, `slide--c2-evolution` et la modale diff LikeC4. Vérifier : `npm run build` sans erreur, navigation clavier OK, 0 erreur console.
+- [x] 2.2 Retirer le CSS mort (LikeC4, anciennes slides) de `components.css` et `slides.css`. Vérifier : recherche `likec4|c2-|pr-review` sans résultat ; rendu visuel des 3 slides inchangé.
+- [x] 2.3 Réécrire la checklist avant-scène de `presenter-view.html` selon la spec `presenter-view`. Vérifier : la checklist affiche les nouveaux points et le compteur `N/N`.
+- [x] 2.4 Mettre à jour la table des sections (`buildSectionMap`) avec les 6 parties de la spec `content-theme`. Vérifier : couleur correcte sur le fil d'Ariane de chaque partie.
 
 ## 3. Trame et slides squelettes
 
@@ -28,11 +28,11 @@
 
 ## 5. Thème CLI/Terminal
 
-- [ ] 5.1 Créer `src/styles/themes/cli-light.css` et `cli-dark.css` : tokens de base, palette `--ansi-*`, couleurs des 6 parties. Vérifier : contraste ≥ 4,5:1 pour le texte et le code sur les deux variantes (outil de contraste ou Lighthouse).
-- [ ] 5.2 Mettre à jour `theme-controller.js` : défaut `cli-dark`, familles de thèmes, T dans la famille active, `?theme=` pour les 4 thèmes. Vérifier : chacun des 4 thèmes se charge par URL ; T alterne `cli-dark` ↔ `cli-light`.
-- [ ] 5.3 Ajouter les motifs terminal (titres en JetBrains Mono, prompt `❯`, curseur) et masquer les ornements blueprint sous les thèmes CLI. Vérifier : rendu des slides titre, contenu et clôture ; curseur fixe avec `prefers-reduced-motion`.
-- [ ] 5.4 Faire suivre les 4 thèmes à la vue présentateur (habillage, bascule T dans la famille). Vérifier : T depuis la console et depuis le deck, les deux fenêtres restent synchronisées.
-- [ ] 5.5 Test de projection (ou capture réduite au quart) des deux variantes CLI. Vérifier : choix du thème par défaut consigné dans `design.md` (H5).
+- [x] 5.1 Créer `src/styles/themes/cli-light.css` et `cli-dark.css` : tokens de base, palette `--ansi-*`, couleurs des 6 parties. Vérifier : contraste ≥ 4,5:1 pour le texte et le code sur les deux variantes (outil de contraste ou Lighthouse).
+- [x] 5.2 Mettre à jour `theme-controller.js` : défaut `cli-dark`, familles de thèmes, T dans la famille active, `?theme=` pour les 4 thèmes. Vérifier : chacun des 4 thèmes se charge par URL ; T alterne `cli-dark` ↔ `cli-light`.
+- [x] 5.3 Ajouter les motifs terminal (titres en JetBrains Mono, prompt `❯`, curseur) et masquer les ornements blueprint sous les thèmes CLI. Vérifier : rendu des slides titre, contenu et clôture ; curseur fixe avec `prefers-reduced-motion`.
+- [x] 5.4 Faire suivre les 4 thèmes à la vue présentateur (habillage, bascule T dans la famille). Vérifier : T depuis la console et depuis le deck, les deux fenêtres restent synchronisées.
+- [x] 5.5 Test de projection (ou capture réduite au quart) des deux variantes CLI. Vérifier : choix du thème par défaut consigné dans `design.md` (H5).
 
 ## 6. Vérification
 

@@ -2,7 +2,7 @@
   "event": {
     "name": "Quickie 15 min",
     "edition": "2026",
-    "theme": "google-blueprint-light",
+    "theme": "cli-dark",
     "subtitle": "Installer ses outils de dev avec Scoop et Mise"
   },
   "speaker": {

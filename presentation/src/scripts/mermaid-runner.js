@@ -1,6 +1,6 @@
 function getMermaidConfig() {
-  const currentTheme = document.documentElement.getAttribute('data-theme') || 'google-blueprint-light';
-  const isDark = currentTheme === 'slate-architect' || currentTheme === 'dark';
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'cli-dark';
+  const isDark = currentTheme === 'cli-dark' || currentTheme === 'slate-architect' || currentTheme === 'dark';
 
   return {
     startOnLoad: false,
@@ -149,7 +149,6 @@ async function initMermaid() {
 
   autoFit();
   enforcePart0GrayMarkers();
-  adjustPrReviewTag();
   document.querySelectorAll('.mermaid-wrap').forEach(function(w){
     var t = w.querySelector('.mermaid');
     var z = getInitialZoom(w);
@@ -262,7 +261,6 @@ function updateMerciQrSpotlightPosition() {
       }
     });
     updateMerciQrSpotlightPosition();
-    adjustPrReviewTag();
   }
   window.autoFit = autoFit;
 
@@ -280,154 +278,6 @@ function updateMerciQrSpotlightPosition() {
     document.head.appendChild(style);
   }
 
-  function adjustPrReviewTag() {
-    var slide = document.querySelector('.slide--pr-review');
-    if (!slide) return;
-    var svg = slide.querySelector('.mermaid svg');
-    if (!svg) return;
-    var bkg = svg.querySelector('.tag-label-bkg');
-    var hole = svg.querySelector('.tag-hole');
-    var txt = svg.querySelector('.tag-label');
-    if (!bkg || !hole || !txt) return;
-
-    var g = svg.querySelector('.pr-tag-group');
-    if (!g) {
-      g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      g.setAttribute('class', 'pr-tag-group');
-      bkg.parentNode.insertBefore(g, bkg);
-      g.appendChild(bkg);
-      g.appendChild(hole);
-      g.appendChild(txt);
-    }
-
-    var pointsAttr = bkg.getAttribute('points');
-    if (!pointsAttr) return;
-    var points = pointsAttr.trim().split(/[\s\n,]+/).map(Number);
-    var minX = Infinity;
-    for (var i = 0; i < points.length; i += 2) {
-      if (points[i] < minX) minX = points[i];
-    }
-    var tipCenterY = parseFloat(hole.getAttribute('cy'));
-    if (isNaN(tipCenterY)) tipCenterY = 68.8;
-
-    // 1. Masquer la ligne droite en pointillés de la branche 1 qui commence à x=0 (trop tôt)
-    var b1 = svg.querySelector('line.branch1');
-    if (b1) b1.style.display = 'none';
-
-    var commitLabels = svg.querySelector('.commit-labels');
-
-    // 2. Déterminer la géométrie à partir des commits réels
-    // Commits sur main (cy ≈ -2)
-    var mainCircles = Array.from(svg.querySelectorAll('circle.commit0')).filter(function(c){
-      return Math.abs(parseFloat(c.getAttribute('cy')) - (-2)) < 5;
-    });
-    var lastMain = mainCircles[mainCircles.length - 1];
-    var lastMainCx = lastMain ? parseFloat(lastMain.getAttribute('cx')) : 160;
-
-    // Commits sur branch1 (alefest_coffee_v2)
-    var branch1Circles = Array.from(svg.querySelectorAll('circle.commit1'));
-    var lastBranch1 = branch1Circles[branch1Circles.length - 1];
-    var branch1Cx = lastBranch1 ? parseFloat(lastBranch1.getAttribute('cx')) : 60;
-    var branch1Cy = lastBranch1 ? parseFloat(lastBranch1.getAttribute('cy')) : 88;
-
-    // Point de rabattement sur main (1 pas régulier de 50px après le dernier commit de main)
-    var ghostCx = lastMainCx + 50;
-    var ghostCy = -2;
-    var ghostR = 10;
-
-    // 3. Créer le point en pointillés (ghost commit) marquant le lieu de merge de la Pull Request
-    var ghost = svg.querySelector('.pr-ghost-commit');
-    if (!ghost) {
-      ghost = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      ghost.setAttribute('class', 'pr-ghost-commit');
-      if (commitLabels) {
-        commitLabels.parentNode.insertBefore(ghost, commitLabels);
-      } else {
-        svg.appendChild(ghost);
-      }
-    }
-    ghost.setAttribute('cx', String(ghostCx));
-    ghost.setAttribute('cy', String(ghostCy));
-    ghost.setAttribute('r', String(ghostR));
-
-    var ghostInner = svg.querySelector('.pr-ghost-commit-inner');
-    if (!ghostInner) {
-      ghostInner = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      ghostInner.setAttribute('class', 'pr-ghost-commit-inner');
-      if (commitLabels) {
-        commitLabels.parentNode.insertBefore(ghostInner, commitLabels);
-      } else {
-        svg.appendChild(ghostInner);
-      }
-    }
-    ghostInner.setAttribute('cx', String(ghostCx));
-    ghostInner.setAttribute('cy', String(ghostCy));
-    ghostInner.setAttribute('r', '5');
-
-    // 4. Arrimage élégant de la pointe de l'étiquette de Pull Request sur ce point en pointillés
-    var targetX = ghostCx + ghostR - 1;
-    var targetY = ghostCy;
-    var dx = targetX - minX;
-    var dy = targetY - tipCenterY;
-
-    g.setAttribute('transform', 'translate(' + dx.toFixed(2) + ', ' + dy.toFixed(2) + ')');
-
-    // 5. Relier le dernier commit de main au flanc gauche du point en pointillés
-    var mainExt = svg.querySelector('.main-ext-arrow');
-    if (!mainExt) {
-      mainExt = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      mainExt.setAttribute('class', 'main-ext-arrow');
-      if (commitLabels) {
-        commitLabels.parentNode.insertBefore(mainExt, commitLabels);
-      } else {
-        svg.appendChild(mainExt);
-      }
-    }
-    mainExt.setAttribute('d', 'M ' + lastMainCx + ' -2 L ' + (ghostCx - ghostR) + ' -2');
-
-    // 6. Prolonger la ligne de main après le point en pointillés
-    var mainCont = svg.querySelector('.main-cont-arrow');
-    if (!mainCont) {
-      mainCont = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      mainCont.setAttribute('class', 'main-cont-arrow');
-      if (commitLabels) {
-        commitLabels.parentNode.insertBefore(mainCont, commitLabels);
-      } else {
-        svg.appendChild(mainCont);
-      }
-    }
-    mainCont.setAttribute('d', 'M ' + (ghostCx + ghostR) + ' -2 L ' + (ghostCx + ghostR + 35) + ' -2');
-
-    // 7. Trajectoire en pointillés de la PR qui se rabat depuis branch1Cx sous les fix jusqu'au flanc bas du ghost commit
-    var prFoldPath = svg.querySelector('.pr-fold-path');
-    if (!prFoldPath) {
-      prFoldPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      prFoldPath.setAttribute('class', 'pr-fold-path');
-      if (commitLabels) {
-        commitLabels.parentNode.insertBefore(prFoldPath, commitLabels);
-      } else {
-        svg.appendChild(prFoldPath);
-      }
-    }
-    // Départ du commit v2 (branch1Cx, branch1Cy), passe sous les fix jusqu'à ghostCx - 20, puis courbe vers ghostCy + ghostR
-    prFoldPath.setAttribute('d', 'M ' + branch1Cx + ' ' + branch1Cy + ' L ' + (ghostCx - 20) + ' ' + branch1Cy + ' A 20 20 0 0 0 ' + ghostCx + ' ' + (branch1Cy - 20) + ' L ' + ghostCx + ' ' + (ghostCy + ghostR));
-
-    // 8. Prolonger l'axe de main (branch0)
-    var b0 = svg.querySelector('line.branch0');
-    if (b0) {
-      b0.setAttribute('x2', String(ghostCx + ghostR + 40));
-    }
-
-    // 9. Ajuster le viewBox pour intégrer proprement l'étiquette et l'extrémité droite
-    var rawVp = svg.getAttribute('viewBox');
-    if (rawVp) {
-      var vp = rawVp.split(/[\s,]+/).map(Number);
-      if (vp.length === 4 && (vp[0] + vp[2]) < (targetX + 85)) {
-        vp[2] = (targetX + 85) - vp[0];
-        svg.setAttribute('viewBox', vp.join(' '));
-      }
-    }
-  }
   function setupMermaidListeners() {
     window.addEventListener('resize', function() {
       autoFit();
@@ -456,7 +306,6 @@ function updateMerciQrSpotlightPosition() {
     // L'adaptation de thème se fait donc instantanément et sans perte de géométrie via les variables CSS.
     autoFit();
     enforcePart0GrayMarkers();
-    adjustPrReviewTag();
     document.querySelectorAll('.mermaid-wrap').forEach(function(w){
       updateZoomState(w);
       updateZoomLayout(w);

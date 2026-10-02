@@ -1,18 +1,86 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="google-blueprint-light">
+<html lang="fr" data-theme="cli-dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Presenter View &middot; Diagram as Code</title>
+<title>Presenter View &middot; Scoop &amp; Mise</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ==========================================================================
-     THEME TOKENS: Dark / Slate Architect (Default)
+     THEME TOKENS: CLI Dark (Default)
      ========================================================================== */
   :root,
+  [data-theme="cli-dark"],
+  [data-theme="terminal-dark"] {
+    --pv-bg: #0d1117;
+    --pv-surface: #161b22;
+    --pv-surface-elevated: #21262d;
+    --pv-surface-alt: #161b22;
+    --pv-border: #30363d;
+    --pv-border-bright: #58a6ff;
+    --pv-text: #e6edf3;
+    --pv-text-bright: #ffffff;
+    --pv-text-dim: #c9d1d9;
+    --pv-text-muted: #8b949e;
+    --pv-accent: #f1e05a;
+    --pv-accent-hover: #fae868;
+    --pv-accent-contrast: #0d1117;
+    --pv-green: #3fb950;
+    --pv-amber: #d29922;
+    --pv-red: #f85149;
+    --pv-pause-bg: color-mix(in srgb, var(--pv-amber) 10%, var(--pv-surface) 90%);
+    --pv-pause-highlight: #f1e05a;
+    --pv-checklist-card-bg: color-mix(in srgb, var(--pv-green) 8%, var(--pv-surface) 92%);
+    --pv-checklist-item-hover: color-mix(in srgb, var(--pv-green) 14%, var(--pv-surface-alt) 86%);
+    --pv-checklist-item-checked: rgba(63, 185, 80, 0.12);
+    --pv-checklist-completed-bg: rgba(63, 185, 80, 0.08);
+    --pv-checklist-completed-item: rgba(13, 17, 23, 0.5);
+    --pv-btn-hover-bg: rgba(255, 255, 255, 0.08);
+    --pv-btn-hover-text: #ffffff;
+    --pv-status-bg: rgba(63, 185, 80, 0.15);
+    --pv-status-border: rgba(63, 185, 80, 0.35);
+  }
+
+  /* ==========================================================================
+     THEME TOKENS: CLI Light
+     ========================================================================== */
+  [data-theme="cli-light"],
+  [data-theme="terminal-light"] {
+    --pv-bg: #f6f8fa;
+    --pv-surface: #ffffff;
+    --pv-surface-elevated: #eaeef2;
+    --pv-surface-alt: #f6f8fa;
+    --pv-border: #d0d7de;
+    --pv-border-bright: #0969da;
+    --pv-text: #1f2328;
+    --pv-text-bright: #1f2328;
+    --pv-text-dim: #32383f;
+    --pv-text-muted: #59636e;
+    --pv-accent: #0969da;
+    --pv-accent-hover: #0550ae;
+    --pv-accent-contrast: #ffffff;
+    --pv-green: #1a7f37;
+    --pv-amber: #9a6700;
+    --pv-red: #cf222e;
+    --pv-pause-bg: color-mix(in srgb, var(--pv-amber) 8%, #ffffff 92%);
+    --pv-pause-highlight: #9a6700;
+    --pv-checklist-card-bg: color-mix(in srgb, var(--pv-green) 6%, #ffffff 94%);
+    --pv-checklist-item-hover: color-mix(in srgb, var(--pv-green) 8%, #ffffff 92%);
+    --pv-checklist-item-checked: rgba(26, 127, 55, 0.08);
+    --pv-checklist-completed-bg: rgba(26, 127, 55, 0.06);
+    --pv-checklist-completed-item: #f6f8fa;
+    --pv-btn-hover-bg: rgba(31, 35, 40, 0.06);
+    --pv-btn-hover-text: #1f2328;
+    --pv-status-bg: rgba(26, 127, 55, 0.12);
+    --pv-status-border: rgba(26, 127, 55, 0.35);
+  }
+
+  /* ==========================================================================
+     THEME TOKENS: Dark / Slate Architect
+     ========================================================================== */
   [data-theme="slate-architect"],
   [data-theme="dark"] {
     --pv-bg: #0b0f19;
@@ -1209,9 +1277,11 @@
 
   // --- GESTION DYNAMIQUE DU THÈME ---
   function normalizeThemeName(themeName) {
-    if (!themeName) return 'google-blueprint-light';
-    if (themeName === 'light' || themeName === 'google-blueprint-light') return 'google-blueprint-light';
-    if (themeName === 'dark' || themeName === 'slate-architect') return 'slate-architect';
+    if (!themeName) return 'cli-dark';
+    if (themeName === 'cli-dark' || themeName === 'dark' || themeName === 'terminal-dark') return 'cli-dark';
+    if (themeName === 'cli-light' || themeName === 'light' || themeName === 'terminal-light') return 'cli-light';
+    if (themeName === 'google-blueprint-light' || themeName === 'blueprint') return 'google-blueprint-light';
+    if (themeName === 'slate-architect' || themeName === 'slate') return 'slate-architect';
     return themeName;
   }
 
@@ -1223,11 +1293,16 @@
     state.theme = normalized;
     document.documentElement.setAttribute('data-theme', normalized);
 
-    var isDark = normalized === 'slate-architect';
+    var isDark = normalized === 'cli-dark' || normalized === 'slate-architect';
     var iconEl = document.getElementById('pv-theme-icon');
     var labelEl = document.getElementById('pv-theme-label');
     if (iconEl) iconEl.textContent = isDark ? '🌙' : '☀️';
-    if (labelEl) labelEl.textContent = isDark ? 'Sombre' : 'Clair';
+    if (labelEl) {
+      if (normalized === 'cli-dark') labelEl.textContent = 'CLI Dark';
+      else if (normalized === 'cli-light') labelEl.textContent = 'CLI Light';
+      else if (normalized === 'slate-architect') labelEl.textContent = 'Slate';
+      else labelEl.textContent = 'Blueprint';
+    }
 
     // Propager immédiatement aux iframes de prévisualisation
     [iframeCur, iframeNxt].forEach(function(iframe) {
@@ -1253,7 +1328,17 @@
   }
 
   function togglePresenterTheme() {
-    var nextTheme = (state.theme === 'google-blueprint-light') ? 'slate-architect' : 'google-blueprint-light';
+    var cur = state.theme;
+    var nextTheme = 'cli-dark';
+    if (cur === 'cli-dark') {
+      nextTheme = 'cli-light';
+    } else if (cur === 'cli-light') {
+      nextTheme = 'cli-dark';
+    } else if (cur === 'google-blueprint-light') {
+      nextTheme = 'slate-architect';
+    } else if (cur === 'slate-architect') {
+      nextTheme = 'google-blueprint-light';
+    }
     applyPresenterTheme(nextTheme, true);
   }
 
@@ -1280,7 +1365,7 @@
         }
       }
     } catch(e) {}
-    applyPresenterTheme('google-blueprint-light', false);
+    applyPresenterTheme('cli-dark', false);
   })();
 
   function handleDeckReloaded(data) {
@@ -1440,11 +1525,13 @@
 
   // 4b. Checklist avant-scène (persistance et rendu)
   var defaultChecklist = [
-    "Navigateur public : Plein écran réel (F11), résolution 16:9 sans rognage, blackout (.) testé",
-    "VS Code (Live coding) : Thème clair (LIGHT), police zoomée (+2/+3), arborescence gauche masquée",
-    "Onglets de secours : PR GitHub #1 et portail LikeC4 local (localhost:3000) ouverts en arrière-plan",
-    "Pas d'interruptions : Fermer Teams, Outlook, autres fenêtres..., désactiver la veille écran et PC",
-    "Matériel & Confort : Ordinateur branché sur secteur (ou batterie pleine), bouteille d'eau ouverte sur le pupitre"
+    "Navigateur public : Plein écran F11 (résolution 16:9 sans rognage, blackout testé)",
+    "Environnement démo : Réinitialisé via demos/reset.ps1 (outils et PATH nettoyés)",
+    "Terminal de démo : Profil « présentation » ouvert (gros corps ≥28px, prompt épuré >)",
+    "Réseau & Caches : Caches Scoop et Mise préchargés (ou connexion vérifiée)",
+    "Replis enregistrés : Scénarios testés dans le deck en cas d'aléa direct",
+    "Pas d'interruptions : Fermer Teams, Outlook..., désactiver la veille écran et PC",
+    "Matériel & Confort : Alimentation secteur branchée, bouteille d'eau ouverte sur le pupitre"
   ];
 
   function getSavedChecklistState() {

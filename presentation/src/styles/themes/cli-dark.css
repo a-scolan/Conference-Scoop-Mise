@@ -1,0 +1,138 @@
+/* ==========================================================================
+   THEME: CLI Dark (Default Dev-Friendly Terminal Theme)
+   Esthétique de terminal moderne, minimaliste, épurée et typographique.
+   ========================================================================== */
+
+[data-theme="cli-dark"],
+[data-theme="terminal-dark"],
+:root:not([data-theme]) {
+  /* Surfaces & Fonds (Terminal sobre type VS Code / Ghostty) */
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface2: #21262d;
+  --surface-elevated: #30363d;
+
+  /* Pas de papier millimétré blueprint : arrière-plan épuré */
+  --blueprint-grid: none;
+  --blueprint-grid-size: auto;
+
+  /* Bordures fines type terminal */
+  --border: #30363d;
+  --border-bright: #484f58;
+  --border-focus: #58a6ff;
+
+  /* Encres & Typographie (Contraste élevé > 7:1) */
+  --text: #e6edf3;
+  --text-dim: #c9d1d9;
+  --text-subtitle: #8b949e;
+  --part0-neutral-gray: #8b949e;
+
+  /* Accents des 6 parties du talk (Palette terminal claire et distincte) */
+  --accent: #f1e05a;          /* Partie 1: Scoop (Jaune vif) */
+  --accent-dim: rgba(241, 224, 90, 0.14);
+  --accent2: #f0883e;         /* Partie 3: PATH (Orange) */
+  --accent2-dim: rgba(240, 136, 62, 0.14);
+  --accent3: #58a6ff;         /* Partie 2: Mise (Bleu cyan) */
+  --accent3-dim: rgba(88, 166, 255, 0.14);
+  --accent4: #f43f5e;         /* Partie 5: Clôture (Framboise) */
+  --accent4-dim: rgba(244, 63, 94, 0.16);
+  --green: #3fb950;           /* Partie 4: DevRecipe (Vert) */
+  --green-dim: rgba(63, 185, 80, 0.14);
+  --red: #f85149;
+  --red-dim: rgba(248, 81, 73, 0.14);
+  --blue: #58a6ff;
+  --blue-dim: rgba(88, 166, 255, 0.14);
+
+  /* Palette ANSI native réutilisable par les blocs terminal */
+  --ansi-black: #484f58;
+  --ansi-red: #ff7b72;
+  --ansi-green: #3fb950;
+  --ansi-yellow: #d29922;
+  --ansi-blue: #58a6ff;
+  --ansi-magenta: #bc8cff;
+  --ansi-cyan: #39c5cf;
+  --ansi-white: #b1bac4;
+
+  --ansi-bright-black: #6e7681;
+  --ansi-bright-red: #ffa198;
+  --ansi-bright-green: #56d364;
+  --ansi-bright-yellow: #e3b341;
+  --ansi-bright-blue: #79c0ff;
+  --ansi-bright-magenta: #d2a8ff;
+  --ansi-bright-cyan: #56d4dd;
+  --ansi-bright-white: #f0f6fc;
+
+  /* Laser virtuel (Cyan terminal) */
+  --laser-core: #ffffff;
+  --laser-hot: #58a6ff;
+  --laser-ring: rgba(88, 166, 255, 0.60);
+  --laser-glow: rgba(88, 166, 255, 0.28);
+  --laser-glow-soft: rgba(88, 166, 255, 0.10);
+
+  /* Diagrammes */
+  --diagram-gold: #e3b341;
+  --diagram-gold-dim: rgba(227, 179, 65, 0.15);
+  --diagram-blue: #58a6ff;
+  --diagram-blue-dim: rgba(88, 166, 255, 0.15);
+  --diagram-green: #3fb950;
+  --diagram-green-dim: rgba(63, 185, 80, 0.15);
+
+  /* Blocs de code & terminal */
+  --code-bg: #030712;
+  --code-text: #e6edf3;
+  --code-border: #30363d;
+
+  --quote-mark: #58a6ff;
+  --split-secondary: #161b22;
+  --split-secondary-elevated: #21262d;
+  --split-secondary-muted: #8b949e;
+  --hover-accent-soft: rgba(88, 166, 255, 0.08);
+  --hover-frame: rgba(88, 166, 255, 0.30);
+  --hover-frame-soft: rgba(88, 166, 255, 0.03);
+}
+
+/* Typographie & Motifs spécifiques au thème CLI Dark */
+[data-theme="cli-dark"] .slide__heading,
+[data-theme="terminal-dark"] .slide__heading,
+[data-theme="cli-dark"] .slide__title,
+[data-theme="terminal-dark"] .slide__title {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+[data-theme="cli-dark"] .slide__label::before,
+[data-theme="terminal-dark"] .slide__label::before {
+  content: '❯ ';
+  color: var(--accent);
+  font-weight: 900;
+}
+
+/* Désactivation des décors blueprint */
+[data-theme="cli-dark"] .blueprint-deco,
+[data-theme="terminal-dark"] .blueprint-deco,
+[data-theme="cli-dark"] .card-calibration-strip,
+[data-theme="terminal-dark"] .card-calibration-strip {
+  display: none !important;
+}
+
+/* Curseur terminal clignotant sur la slide titre */
+[data-theme="cli-dark"] .slide--title .slide__display:last-of-type::after,
+[data-theme="terminal-dark"] .slide--title .slide__display:last-of-type::after {
+  content: ' ▋';
+  display: inline-block;
+  color: var(--accent);
+  animation: cli-cursor-blink 1s steps(2, start) infinite;
+  vertical-align: baseline;
+}
+
+@keyframes cli-cursor-blink {
+  to { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="cli-dark"] .slide--title .slide__display:last-of-type::after,
+  [data-theme="terminal-dark"] .slide--title .slide__display:last-of-type::after {
+    animation: none;
+    opacity: 1;
+  }
+}

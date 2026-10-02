@@ -29,6 +29,8 @@ function assembleDeck() {
     'tokens.css',
     path.join('themes', 'google-blueprint-light.css'),
     path.join('themes', 'slate-architect.css'),
+    path.join('themes', 'cli-light.css'),
+    path.join('themes', 'cli-dark.css'),
     'base.css',
     'deck.css',
     'slides.css',
@@ -52,7 +54,7 @@ function assembleDeck() {
     'slide-engine.js',
   ].map(file => `  // --- ${file} ---\n` + readSrcFile('scripts', file)).join('\n\n');
 
-  const defaultTheme = (eventConfig.event && eventConfig.event.defaultTheme) || 'google-blueprint-light';
+  const defaultTheme = (eventConfig.event && (eventConfig.event.defaultTheme || eventConfig.event.theme)) || 'cli-dark';
   const confTitle = (eventConfig.event && eventConfig.event.name) ? `Scoop & Mise | ${eventConfig.event.name}` : 'Scoop & Mise';
 
   // 5. Construire le gabarit HTML complet avec verrouillage d'orientation portrait
