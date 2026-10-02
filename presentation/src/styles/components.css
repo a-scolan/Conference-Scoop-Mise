@@ -1870,15 +1870,17 @@
 
     /* ============ UNIFIED CONCEPT CARDS (Slides 6, 14, 25, 31) ============ */
     .slide--concept-cards {
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
+      padding-top: clamp(24px, 4.5vh, 48px);
+      padding-bottom: clamp(20px, 3.5vh, 40px);
     }
     .slide--concept-cards .slide__inner {
       grid-template-columns: 1fr;
       width: 100%;
       max-width: min(100%, 1240px);
       margin: 0 auto;
-      gap: clamp(18px, 3vh, 36px);
+      gap: clamp(14px, 2vh, 24px);
     }
 
     .slide--concept-cards .slide__heading,
@@ -1903,19 +1905,20 @@
 
     .concept-grid {
       display: grid;
-      gap: clamp(16px, 2.2vw, 32px);
+      gap: clamp(14px, 1.8vw, 24px);
       width: 100%;
       align-items: stretch;
-      margin-top: clamp(10px, 1.8vh, 20px);
+      margin-top: clamp(6px, 1.2vh, 12px);
     }
     .concept-grid--2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       max-width: min(100%, 1060px);
-      margin: clamp(14px, 2.4vh, 26px) auto 0 auto;
+      margin: 0 auto;
     }
     .concept-grid--3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       max-width: min(100%, 1200px);
+      margin: 0 auto;
     }
     .concept-grid--6 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
