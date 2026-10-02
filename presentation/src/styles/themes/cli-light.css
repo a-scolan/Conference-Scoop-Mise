@@ -125,14 +125,10 @@
   display: none !important;
 }
 
-/* Curseur terminal clignotant sur la slide titre */
+/* Curseur terminal géré via .petscii-cursor */
 [data-theme="cli-light"] .slide--title .slide__display:last-of-type::after,
 [data-theme="terminal-light"] .slide--title .slide__display:last-of-type::after {
-  content: ' ▋';
-  display: inline-block;
-  color: var(--accent);
-  animation: cli-cursor-blink 1s steps(2, start) infinite;
-  vertical-align: baseline;
+  content: none !important;
 }
 
 @keyframes cli-cursor-blink {

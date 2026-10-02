@@ -3098,10 +3098,10 @@
   width: 100%;
   max-width: min(100%, 1060px);
   margin: 0 auto;
-  border-radius: 12px;
+  border-radius: 4px;
   border: 1.5px solid var(--border-bright);
   background: var(--code-bg, #0d1117);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   font-family: var(--font-mono);
 }
@@ -3111,7 +3111,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 8px 16px;
+  padding: 6px 14px;
   background: var(--surface2);
   border-bottom: 1px solid var(--border);
   font-size: calc(11px + var(--font-bump));
@@ -3119,27 +3119,34 @@
   user-select: none;
 }
 
-.terminal-block__dots {
-  display: flex;
+.terminal-block__controls {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
 }
 
-.terminal-block__dots span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #484f58;
+.terminal-block__ctrl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  border: 1px solid var(--border-bright);
+  background: color-mix(in srgb, var(--surface) 60%, transparent 40%);
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--text-dim);
 }
-
-.terminal-block__dots span:nth-child(1) { background: #ff5f56; }
-.terminal-block__dots span:nth-child(2) { background: #ffbd2e; }
-.terminal-block__dots span:nth-child(3) { background: #27c93f; }
 
 .terminal-block__title {
   flex: 1;
-  text-align: center;
+  text-align: left;
   font-weight: 600;
+  font-family: var(--font-mono);
   color: var(--text-dim);
   white-space: nowrap;
   overflow: hidden;
@@ -3148,11 +3155,12 @@
 
 .terminal-block__badge {
   font-size: 10px;
+  font-family: var(--font-mono);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 2px 8px;
-  border-radius: 999px;
+  padding: 2px 7px;
+  border-radius: 3px;
   border: 1px solid currentColor;
   color: var(--accent);
   background: var(--accent-dim);

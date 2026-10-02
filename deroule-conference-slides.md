@@ -17,10 +17,10 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 - **Action scénique :** Accueil de la salle, regard direct vers le public, attendre le calme avant de déclencher le chrono.
 - **Mots-clés :**
     - Quickie 15 min · Outillage dev Windows
-    - Scoop · Mise · DevRecipe
+    - Scoop · Mise · DevRecipe · Espace Utilisateur
 - **Verbatim oral (25 s) :**
   > « Bonjour à toutes et à tous ! Bienvenue à ce quickie de 15 minutes. Aujourd'hui, on va parler d'un sujet qui nous concerne tous au quotidien quand on développe sous Windows en entreprise : comment installer, versionner et partager ses outils de dev sans jamais avoir besoin d'appeler la DSI ni d'ouvrir un ticket administrateur. »
-- **Substance & Preuve :** Promesse d'autonomie complète en User Space.
+- **Substance & Preuve :** Promesse d'autonomie complète en espace utilisateur.
 - **Beat narratif :** Accroche bienveillante et promesse concrète.
 
 ### Slide 01 — Speaker
@@ -28,9 +28,9 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 - **Action scénique :** Rythme vif, posture de praticien terrain.
 - **Mots-clés :**
     - Alexis Scolan · Architecte technique onepoint
-    - Créateur de DevRecipe
+    - Créateur de DevRecipe · REX poste de travail
 - **Verbatim oral (30 s) :**
-  > « Je m'appelle Alexis Scolan, je suis architecte technique chez onepoint. J'accompagne des équipes de développement sur des postes Windows souvent très verrouillés par des politiques de sécurité strictes. Tout ce que je vous présente aujourd'hui est issu de retours d'expérience réels et de l'outil DevRecipe qu'on utilise pour fluidifier l'onboarding des développeurs. »
+  > « Je m'appelle Alexis Scolan, je suis architecte technique chez onepoint. J'accompagne des équipes de développement sur des postes Windows souvent très verrouillés par des politiques de sécurité strictes. Tout ce que je vous présente aujourd'hui est issu de retours d'expérience réels et de l'outil DevRecipe qu'on utilise pour fluidifier l'intégration des développeurs sur leurs projets. »
 - **Substance & Preuve :** Crédibilité terrain et confrontation aux contraintes réelles.
 - **Beat narratif :** Praticien parlant à des praticiens.
 
@@ -38,8 +38,8 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 - **Fichier :** [presentation/src/slides/02-les-4-erreurs.html](presentation/src/slides/02-les-4-erreurs.html)
 - **Action scénique :** Faire lever la main dans la salle sur les messages affichés.
 - **Mots-clés :**
-    - UAC · Command not found · Conflit de versions · Linux only
-    - Identification immédiate de la douleur
+    - UAC · Commande introuvable · Conflit de versions · Scripts Linux
+    - Diagnostic partagé de la douleur
 - **Verbatim oral (45 s) :**
   > « Levez la main si vous avez déjà vu au moins deux de ces quatre écrans : la fameuse popup UAC jaune demandant un compte admin le vendredi à 17h, la commande installée qui reste introuvable dans le terminal, le conflit de version Node entre deux projets, ou le script bash qui refuse de tourner sous Windows. On a tous perdu des heures entières là-dessus. »
 - **Substance & Preuve :** 4 messages d'erreur textuels issus du vécu de chaque développeur.
@@ -49,9 +49,9 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 - **Fichier :** [presentation/src/slides/03-promesse.html](presentation/src/slides/03-promesse.html)
 - **Action scénique :** Balayer les 4 réponses d'un geste clair de la main.
 - **Mots-clés :**
-    - Scoop (User Space) · Mise (Projet) · Shims (PATH) · DevRecipe (PR)
+    - Scoop (Espace utilisateur) · Mise (Projet) · Shims (PATH) · DevRecipe (PR)
 - **Verbatim oral (40 s) :**
-  > « La bonne nouvelle, c'est qu'il existe un écosystème moderne pour régler définitivement chacun de ces 4 points : Scoop pour installer sans admin dans son profil, Mise pour switcher automatiquement de version au 'cd', la maîtrise des shims pour dompter le PATH Windows, et DevRecipe pour formaliser tout ça dans une Pull Request relue en équipe. Voyons comment ça marche. »
+  > « La bonne nouvelle, c'est qu'il existe un écosystème moderne pour régler définitivement chacun de ces 4 points : Scoop pour installer sans admin dans son profil, Mise pour basculer automatiquement de version au changement de dossier, la maîtrise des relais pour dompter le PATH Windows, et DevRecipe pour formaliser tout ça dans une revue d'équipe. Voyons comment ça marche. »
 - **Substance & Preuve :** Contrat de la conférence : 4 problèmes, 4 solutions.
 - **Beat narratif :** Bascule du problème vers la solution.
 
@@ -59,11 +59,11 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 - **Fichier :** [presentation/src/slides/04-scoop-principe.html](presentation/src/slides/04-scoop-principe.html)
 - **Action scénique :** Insister sur la simplicité des shims et l'absence d'élévation de privilèges.
 - **Mots-clés :**
-    - Scoop · User Space · Zéro UAC · Shims · Buckets Git
+    - Scoop · Espace utilisateur · Zéro UAC · Shims (Relais) · Buckets Git
     - « Mes outils s'installent dans mon profil, sans admin. »
 - **Verbatim oral (60 s) :**
-  > « Premier réflexe : Scoop. Contrairement aux installeurs traditionnels ou aux gestionnaires système, Scoop part d'un principe radical : installer vos outils dans votre dossier utilisateur, typiquement ~/scoop/apps. Aucun droit administrateur n'est requis. Pour rendre les exécutables disponibles partout, Scoop utilise des 'shims', des petits proxys légers regroupés dans un dossier unique ajouté à votre PATH utilisateur. Et les paquets viennent de simples manifests JSON hébergés sur Git. »
-- **Substance & Preuve :** Démonstration du mécanisme d'isolation en espace utilisateur.
+  > « Premier réflexe : Scoop. Contrairement aux installeurs traditionnels ou aux gestionnaires système, Scoop installe tout dans votre profil utilisateur, typiquement ~/scoop/apps. Aucun droit administrateur n'est requis. Pour rendre les exécutables disponibles partout, Scoop utilise des 'shims' : ce sont de petits relais d'exécution légers, de simples passe-plats qui redirigent vers la version active sans exiger les liens symboliques administrateurs de Windows. Les catalogues viennent de dépôts Git déclaratifs. Première limite cependant : Scoop ne sait pas ce qui est déjà installé ailleurs sur votre machine. »
+- **Substance & Preuve :** Démonstration du mécanisme d'isolation en espace utilisateur et première limite identifiée.
 - **Beat narratif :** Découverte du premier pilier d'émancipation.
 
 ### Slide 05 — Démo Scoop
@@ -72,7 +72,7 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 - **Mots-clés :**
     - scoop install · lazygit · where.exe · shim vérifié
 - **Verbatim oral (50 s) :**
-  > « Regardez en direct : je lance un simple 'scoop install lazygit' dans mon PowerShell standard. Scoop télécharge l'archive, vérifie son empreinte SHA256, extrait les binaires dans mon profil, et crée automatiquement le shim dans ~/scoop/shims/lazygit.exe. La commande where.exe le confirme immédiatement : lazygit est prêt à l'emploi, sans que Windows n'ait jamais demandé un mot de passe administrateur. »
+  > « Regardez en direct : je lance un simple 'scoop install lazygit' dans mon PowerShell standard. Scoop télécharge l'archive, vérifie son empreinte SHA256, extrait les binaires dans mon profil, et crée automatiquement le relais dans ~/scoop/shims/lazygit.exe. La commande where.exe le confirme immédiatement : lazygit est prêt à l'emploi, sans que Windows n'ait jamais demandé un mot de passe administrateur. »
 - **Substance & Preuve :** Démo concrète d'installation sans popup UAC.
 - **Beat narratif :** Preuve par l'exemple en direct.
 
@@ -83,8 +83,8 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
     - Mise · Runtimes polyglottes · mise.toml · env & tasks
     - « La version du runtime suit le projet, pas le poste. »
 - **Verbatim oral (60 s) :**
-  > « Maintenant qu'on a nos outils CLI, comment gère-t-on les langages ? Pendant des années, on a empilé nvm pour Node, pyenv pour Python, sdkman pour Java. Mise regroupe tout cela en un seul binaire écrit en Rust, ultra-performant. Le secret ? Un fichier 'mise.toml' placé à la racine du dépôt Git. Quand vous naviguez dans vos dossiers, Mise ajuste instantanément les versions de vos runtimes et vos variables d'environnement, sans aucune friction. »
-- **Substance & Preuve :** Fichier de configuration déclaratif traçable dans Git.
+  > « Maintenant qu'on a nos outils CLI, comment gère-t-on les langages ? Pendant des années, on a empilé nvm pour Node, pyenv pour Python, sdkman pour Java. Mise regroupe tout cela en un seul binaire écrit en Rust, ultra-performant. Le secret ? Un fichier 'mise.toml' placé à la racine du dépôt Git. Quand vous naviguez dans vos dossiers, Mise ajuste instantanément les versions de vos runtimes et vos variables d'environnement. Mais attention à sa limite sous Windows : Mise fonctionne grâce à un hook dans votre shell, mais il ne s'active pas dans cmd.exe ni pour les outils qui appellent directement des processus fils. »
+- **Substance & Preuve :** Fichier de configuration déclaratif traçable dans Git et limite shell identifiée.
 - **Beat narratif :** Deuxième pilier : fin du casse-tête multi-versions.
 
 ### Slide 07 — Démo Mise
@@ -101,10 +101,10 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 - **Fichier :** [presentation/src/slides/08-path-le-piege.html](presentation/src/slides/08-path-le-piege.html)
 - **Action scénique :** Hausser le ton sur le piège HKLM vs HKCU, moment révélateur pour la salle.
 - **Mots-clés :**
-    - CreateEnvironmentBlock · HKLM avant HKCU · Shadowing · Masquage
+    - CreateEnvironmentBlock · HKLM avant HKCU · Masquage système
     - « Le PATH machine passe avant le PATH utilisateur. »
 - **Verbatim oral (60 s) :**
-  > « Mais attention, sous Windows, il y a un piège que beaucoup ignorent : la priorité du PATH. Lors de la création d'une session, Windows appelle CreateEnvironmentBlock qui fusionne toujours le PATH Machine (dans HKLM) AVANT le PATH Utilisateur (dans HKCU). Si votre poste d'entreprise a un vieux Python système ou un vieux Git déployé dans C:\Python, vos shims utilisateur seront silencieusement masqués ! »
+  > « Mais attention, sous Windows, il y a un piège que beaucoup ignorent : la priorité du PATH. Lors de la création d'une session, Windows appelle CreateEnvironmentBlock qui applique une règle mathématique immuable : PATH effectif = PATH Machine (dans HKLM) suivi du PATH Utilisateur (dans HKCU). Si votre poste d'entreprise possède un vieux Python 3.9 système dans C:\Python39, vos versions modernes installées proprement en espace utilisateur seront silencieusement masquées ! Et ni Scoop ni Mise seuls ne peuvent modifier HKLM sans droits administrateur. »
 - **Substance & Preuve :** Règle interne de Windows documentée et méconnue.
 - **Beat narratif :** Révélation de l'obstacle caché.
 
@@ -120,32 +120,32 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 
 ### Slide 10 — DevRecipe : L'onboarding en PR
 - **Fichier :** [presentation/src/slides/10-devrecipe-rex.html](presentation/src/slides/10-devrecipe-rex.html)
-- **Action scénique :** Présenter DevRecipe comme le liant d'industrialisation d'équipe.
+- **Action scénique :** Présenter DevRecipe comme le liant qui comble les limites de Scoop et Mise.
 - **Mots-clés :**
-    - DevRecipe · devrecipe.toml · Code Review · Preflight · Dry-Run
+    - DevRecipe · devrecipe.toml · Revue de code · Contrôle préalable · Précédence
     - « L'onboarding devient une commande relue en PR. »
-- **Verbatim oral (55 s) :**
-  > « Pour ne pas demander à chaque nouvel arrivant d'exécuter ces étapes à la main, nous avons créé DevRecipe. C'est un orchestrateur open-source léger. Dans devrecipe.toml, vous déclarez vos paquets Scoop, vos runtimes Mise, vos profils. Le gros avantage ? Quand un projet a besoin d'un nouvel outil, le dev fait une Pull Request sur le manifeste. Ses pairs la relisent, la valident, et toute l'équipe met à jour son poste en une seule commande. »
-- **Substance & Preuve :** Retour d'expérience d'industrialisation collaborative.
-- **Beat narratif :** Passage de l'astuce individuelle à la pratique d'équipe.
+- **Verbatim oral (60 s) :**
+  > « Vous voyez le tableau : Scoop et Mise sont deux excellents outils, mais ils travaillent chacun de leur côté. Ni l'un ni l'autre ne vérifient si votre machine a déjà un outil en conflit, et aucun ne résout la priorité pour l'ensemble des terminaux. DevRecipe a été créé précisément pour combler ces trois manques : 1) un manifeste d'équipe unique qui réunit Scoop et Mise dans une Pull Request ; 2) un contrôle préalable ou 'preflight check' qui inspecte le registre et le PATH avant d'installer ; 3) l'injection automatique des shims en tête de PATH dans PowerShell ET dans cmd.exe via AutoRun. »
+- **Substance & Preuve :** Justification claire du rôle de DevRecipe pour compléter la suite d'outils.
+- **Beat narratif :** Synthèse d'ingénierie : passer des astuces isolées à une chaîne complète.
 
 ### Slide 11 — Démo DevRecipe
 - **Fichier :** [presentation/src/slides/11-devrecipe-demo.html](presentation/src/slides/11-devrecipe-demo.html)
-- **Action scénique :** Montrer le scan preflight et l'absence d'altération en mode dry-run.
+- **Action scénique :** Montrer le scan préalable et l'absence d'altération en simulation à blanc.
 - **Mots-clés :**
-    - devrecipe -Validate · -DryRun -Review · Preflight scan · 0 surprise
+    - devrecipe -Validate · -DryRun -Review · Bilan préalable · Simulation sans risque
 - **Verbatim oral (50 s) :**
-  > « Regardons le preflight check : avant toute installation, DevRecipe inspecte le poste. Il détecte par exemple un vieux Git système déjà installé et émet un avertissement. Avec le commutateur -DryRun, il affiche le plan complet d'exécution sans toucher à votre machine. Zéro surprise, zéro régression, vous gardez la maîtrise intégrale de votre environnement. »
-- **Substance & Preuve :** Preflight déterministe avec rapport d'impact avant exécution.
+  > « Regardons le contrôle préalable : avant toute installation, DevRecipe inspecte le poste. Il détecte par exemple un vieux Git système déjà installé et émet un avertissement. Avec le commutateur -DryRun, il affiche le plan complet d'exécution sans toucher à votre machine. Zéro surprise, zéro régression, vous gardez la maîtrise intégrale de votre environnement. »
+- **Substance & Preuve :** Démonstration d'audit préalable déterministe avant exécution.
 - **Beat narratif :** Sérénité et professionnalisme de l'outillage.
 
 ### Slide 12 — Gouvernance & Sécurité
 - **Fichier :** [presentation/src/slides/12-gouvernance.html](presentation/src/slides/12-gouvernance.html)
 - **Action scénique :** Rassurer fermement sur la sécurité d'entreprise, désamorcer l'objection du 'Shadow IT'.
 - **Mots-clés :**
-    - User Space != Shadow IT · EDR & AppLocker respectés · Buckets approuvés · Audit
+    - Espace utilisateur != Shadow IT · EDR & AppLocker respectés · Dépôts approuvés · Audit
 - **Verbatim oral (50 s) :**
-  > « Une question revient souvent : est-ce que cette approche contourne la DSI ? Absolument pas. L'espace utilisateur respecte scrupuleusement les politiques de sécurité : l'EDR, l'antivirus et AppLocker restent 100 % actifs et bloqueront tout binaire suspect. Mieux : l'entreprise peut héberger son propre bucket Git privé avec des manifests audités, et scoop export fournit un inventaire complet pour les revues de conformité. »
+  > « Une question revient souvent : est-ce que cette approche contourne la DSI ? Absolument pas. L'espace utilisateur respecte scrupuleusement les politiques de sécurité : l'EDR, l'antivirus et AppLocker restent 100 % actifs et bloqueront tout binaire suspect. Mieux : l'entreprise peut héberger son propre dépôt de paquets Git privé avec des manifests audités, et scoop export fournit un inventaire complet pour les revues de conformité. »
 - **Substance & Preuve :** Compatibilité totale avec les règles de cybersécurité d'entreprise.
 - **Beat narratif :** Légitimité institutionnelle et sérénité DSI.
 
@@ -153,10 +153,10 @@ Format strict des champs en gras requis pour la validation automatisée (`npm ru
 - **Fichier :** [presentation/src/slides/13-recap-action.html](presentation/src/slides/13-recap-action.html)
 - **Action scénique :** Pointer la commande de démarrage en bas de slide, donner une impulsion d'action.
 - **Mots-clés :**
-    - 3 réflexes · User Space first · Mise dans le repo · irm get.scoop.sh
+    - 3 réflexes · Espace utilisateur d'abord · Mise dans le dépôt · irm get.scoop.sh
     - « Commencez dès aujourd'hui : une ligne de commande. »
 - **Verbatim oral (40 s) :**
-  > « Pour récapituler : adoptez le User Space pour tous vos outils en ligne de commande, versionnez vos runtimes dans vos dépôts avec Mise, et surveillez la priorité de vos shims. Votre première action dès ce soir : une seule ligne PowerShell pour installer Scoop et Mise, et commencer à vous simplifier la vie. »
+  > « Pour récapituler nos 3 règles d'or : 1) privilégiez l'espace utilisateur pour vos outils CLI, 2) versionnez vos runtimes dans vos dépôts avec Mise, et 3) surveillez la priorité de vos relais avec where.exe. Votre première action dès ce soir : une seule ligne PowerShell pour installer Scoop et Mise, et commencer à reprendre le contrôle de votre poste. »
 - **Substance & Preuve :** Commande d'installation vérifiée exécutable immédiatement sans admin.
 - **Beat narratif :** Passage à l'action immédiat.
 

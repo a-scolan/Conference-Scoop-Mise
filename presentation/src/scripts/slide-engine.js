@@ -126,32 +126,15 @@
     });
   };
   SlideEngine.prototype.injectCardHatchStrips=function(){
-    // Barrette de hachures biseautées identique à la planche de référence et aux diapos titres
-    var svgHatch =
-      '<svg viewBox="0 0 100 24" width="100" height="24" class="card-hatch-strip" aria-hidden="true" focusable="false">' +
-        '<g transform="translate(3, 2)">' +
-          '<line x1="0" y1="15" x2="9" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="9" y1="15" x2="18" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.22"/>' +
-          '<line x1="18" y1="15" x2="27" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="27" y1="15" x2="36" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.22"/>' +
-          '<line x1="36" y1="15" x2="45" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="45" y1="15" x2="54" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.22"/>' +
-          '<line x1="54" y1="15" x2="63" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="63" y1="15" x2="72" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.22"/>' +
-          '<line x1="72" y1="15" x2="81" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.95"/>' +
-          '<line x1="81" y1="15" x2="90" y2="1" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity="0.22"/>' +
-          '<line x1="0" y1="19" x2="92" y2="19" stroke="currentColor" stroke-width="1.2" opacity="0.45" stroke-dasharray="2.5 2.5"/>' +
-        '</g>' +
-      '</svg>';
-
+    var hatchContent = '<span class="card-modscene-hatch" aria-hidden="true">[ ░▒▓█▓▒░ ]</span>';
     var targets = document.querySelectorAll(
-      '.concept-card:not(.benefit-card), .review-questions__card, .lane-card, .key-card, .speaker-card, .speaker-panel, .slide--split:not([data-nav="V1 vs V2"]) .slide__panel'
+      '.concept-card:not(.benefit-card), .review-questions__card, .lane-card, .key-card, .speaker-card, .speaker-panel, .slide--split .slide__panel'
     );
     targets.forEach(function(el) {
-      if (el.querySelector('.card-hatch-strip')) return;
+      if (el.querySelector('.card-modscene-hatch, .card-hatch-strip')) return;
       var div = document.createElement('div');
       div.className = 'card-hatch-strip-wrap';
-      div.innerHTML = svgHatch;
+      div.innerHTML = hatchContent;
       el.appendChild(div);
     });
   };
@@ -801,6 +784,9 @@
   };
   SlideEngine.prototype.update=function(){
     this.cleanupInactiveModals(this.current);
+    if(this.slides && this.slides[this.current]){
+      this.slides[this.current].classList.add('visible');
+    }
     this.bar.style.width=((this.current+1)/this.total*100)+'%';
     var c=this.current; var map=this.sectionMap;
     this.dots.forEach(function(d,i){
@@ -817,7 +803,9 @@
     if(this.breadcrumb){
       this.breadcrumb.setAttribute('aria-label','Afficher la navigation des slides près de la barre de progression — '+(this.sectionTitles[this.current]||'Introduction')+' — '+(this.slideTitles[this.current]||('Slide '+(this.current+1))));
     }
-    this.counter.textContent=(this.current+1)+' / '+this.total;
+    var curStr = (this.current + 1 < 10 ? '0' : '') + (this.current + 1);
+    var totStr = (this.total < 10 ? '0' : '') + this.total;
+    this.counter.textContent = '[ ' + curStr + ' / ' + totStr + ' ]';
     /* Persist active slide in URL hash via History API */
     if(history.replaceState) history.replaceState(null,'','#slide-'+(this.current+1));
     this.broadcastSlideChange();
