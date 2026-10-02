@@ -1,17 +1,57 @@
 <section class="slide slide--content slide--speaker" data-nav="Speaker" data-part="0">
-    <div class="slide__inner">
-      <div class="speaker-intro">
-        <p class="slide__label reveal">Speaker</p>
-        <h2 class="slide__heading reveal" style="font-size:clamp(40px,6vw,72px); line-height:0.95; margin:0;">Alexis Scolan</h2>
-        <p class="speaker-intro__role reveal">Architecte technique chez <strong style="color:var(--accent);">onepoint</strong></p>
-        <br>
-        <p class="speaker-intro__lead reveal">TODO : accroche speaker orient&eacute;e outillage poste de dev (DevRecipe).</p>
-        <br>
-        <div class="speaker-pill-list reveal">
-          <span class="speaker-pill">Scoop</span>
-          <span class="speaker-pill">Mise</span>
-          <span class="speaker-pill">DevRecipe</span>
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>TTY:01/WHOAMI</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>OPERATOR PROFILE</span> <span class="petscii-glyph-cyan">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>ONEPOINT TECH</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
+  <div class="slide__inner">
+    <div class="speaker-intro" style="position:relative;">
+      <div class="petscii-card-header" style="color:var(--accent);">
+        <span>┌─[ SYS.USER: alexis.scolan ]</span>
+        <span class="petscii-hatch-strip">░▒▓ ARCHITECTE TECHNIQUE ▓▒░</span>
+        <span>[ TTY0 ]─┐</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr auto; gap:clamp(16px,2.5vw,36px); align-items:center;">
+        <div>
+          <p class="slide__label reveal">Speaker</p>
+          <h2 class="slide__heading reveal" style="font-size:clamp(36px,5vw,64px); line-height:0.95; margin:0;">Alexis Scolan</h2>
+          <p class="speaker-intro__role reveal" style="margin-top:8px;">Architecte technique chez <strong style="color:var(--accent);">onepoint</strong></p>
+          <p class="speaker-intro__lead reveal" style="margin-top:14px; font-size:clamp(15px,1.6vw,20px); color:var(--text-dim); line-height:1.45;">
+            Passionné d'outillage de dev, d'automatisation locale et d'environnements reproductibles sans friction. Auteur de <strong>DevRecipe</strong> pour délivrer un onboarding serein en PR.
+          </p>
+          <div class="speaker-pill-list reveal" style="margin-top:18px;">
+            <span class="petscii-tag"><span class="petscii-glyph-accent">■</span> SCOOP (User-Space)</span>
+            <span class="petscii-tag"><span class="petscii-glyph-cyan">■</span> MISE (Runtimes)</span>
+            <span class="petscii-tag"><span class="petscii-glyph-green">■</span> DEVRECIPE (Manifests)</span>
+          </div>
+        </div>
+
+        <div class="reveal" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <pre class="ansi-diagram-block" style="padding:10px 14px; font-size:clamp(10px,1.1vw,13px); line-height:1.2; text-align:left; background:var(--code-bg); border-color:var(--accent);"><code><span style="color:var(--accent3);">  ┌───────────────────────────┐</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ </span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> <span style="color:var(--green); font-weight:700;">PS C:\&gt; whoami</span>        <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> alexis @ onepoint   <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> role: tech-arch     <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> env: scoop + mise   <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> auth: user-space    <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> <span style="color:var(--green);">[■] [▲] [●] READY.</span>  <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ </span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  └────────────┬─┬────────────┘</span>
+<span style="color:var(--text-subtitle);">            ▄▄▄█ █▄▄▄          </span></code></pre>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

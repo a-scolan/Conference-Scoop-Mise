@@ -1,30 +1,66 @@
 <section class="slide slide--content slide--concept-cards" data-part="0" data-nav="Les 4 erreurs du quotidien">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>ERR::DAILY_BLOCKERS</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-orange">[</span> <span>DIAGNOSTIC 4/4</span> <span class="petscii-glyph-orange">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>WINDOWS PAIN POINTS</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">00</span>
-    <span class="slide__label">Accroche</span>
-    <h2 class="slide__heading">Les 4 blocages que tout dev Windows a vécus</h2>
+    <span class="slide__label">Accroche &middot; Symptômes</span>
+    <h2 class="slide__heading">Les 4 blocages que tout dev Windows a v&eacute;cus</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--orange">
+        <div class="petscii-card-header" style="color:var(--red);">
+          <span>[ ░▒▓ ERR.01 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">UAC_BLOCKED // DROIT ADMIN</span>
+          <span>[ ✕ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">ERREUR #1 &middot; LE MUR DU VENDREDI</span>
-        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« Voulez-vous autoriser cette application ? »</h3>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">&laquo; Voulez-vous autoriser cette application ? &raquo;</h3>
         <p class="concept-card__desc">Un simple outil CLI exige les droits administrateur (UAC). Billet DSI ouvert, ticket en attente 3 jours.</p>
       </div>
       <div class="concept-card concept-card--orange">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">ERREUR #2 &middot; LE FANTÔME DU PATH</span>
-        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« 'node' n'est pas reconnu en tant que commande »</h3>
-        <p class="concept-card__desc">L'outil a été installé via un installeur MSI... mais le PATH n'a pas été rechargé, ou pointe sur un binaire inexistant.</p>
+        <div class="petscii-card-header" style="color:var(--red);">
+          <span>[ ░▒▓ ERR.02 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">PATH_NOT_FOUND // COMMANDE INCONNUE</span>
+          <span>[ ⚠ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">ERREUR #2 &middot; LE FANT&Ocirc;ME DU PATH</span>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">&laquo; 'node' n'est pas reconnu en tant que commande &raquo;</h3>
+        <p class="concept-card__desc">L'outil a &eacute;t&eacute; install&eacute; via un installeur MSI... mais le PATH n'a pas &eacute;t&eacute; recharg&eacute;, ou pointe sur un binaire inexistant.</p>
       </div>
       <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ ERR.03 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">VERSION_COLLISION // RUNTIMES</span>
+          <span>[ ⚡ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">ERREUR #3 &middot; LE CONFLIT DE RUNTIMES</span>
-        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« Required node version "20", current is "18.2" »</h3>
-        <p class="concept-card__desc">Projet A en Node 18, Projet B en Node 22. Le dev passe son temps à jongler avec nvm ou à casser son poste.</p>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">&laquo; Required node version "20", current is "18.2" &raquo;</h3>
+        <p class="concept-card__desc">Projet A en Node 18, Projet B en Node 22. Le dev passe son temps &agrave; jongler avec nvm ou &agrave; casser son poste.</p>
       </div>
       <div class="concept-card concept-card--purple">
+        <div class="petscii-card-header" style="color:var(--accent4);">
+          <span>[ ░▒▓ ERR.04 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">OS_MISMATCH // README MAC/LINUX</span>
+          <span>[ 🚫 ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">ERREUR #4 &middot; LA CLAQUE MULTIPLATEFORME</span>
-        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« This script is only supported on Linux/macOS »</h3>
-        <p class="concept-card__desc">Un README rédigé sur Mac par le lead dev. Sur Windows, les outils manquent, les scripts bash échouent.</p>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">&laquo; This script is only supported on Linux/macOS &raquo;</h3>
+        <p class="concept-card__desc">Un README r&eacute;dig&eacute; sur Mac par le lead dev. Sur Windows, les outils manquent, les scripts bash &eacute;chouent.</p>
       </div>
     </div>
   </div>

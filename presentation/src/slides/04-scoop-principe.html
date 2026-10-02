@@ -1,4 +1,20 @@
 <section class="slide slide--content slide--concept-cards" data-part="1" data-nav="Scoop : Le User Space">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>SCOOP::ARCHITECTURE</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-accent">[</span> <span>USER-SPACE PUR</span> <span class="petscii-glyph-accent">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-accent">╚═[</span> <span>~/scoop/shims</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">01</span>
     <span class="slide__label">Scoop &middot; User Space</span>
@@ -7,20 +23,44 @@
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--blue">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #1</span>
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ ░▒▓ PRINCIPE #1 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">ZERO_UAC</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">USER PROFILE</span>
         <h3 class="concept-card__title">Zéro UAC</h3>
         <p class="concept-card__desc">Scoop décompresse les binaires dans <code>~/scoop/apps</code>. Aucun installeur MSI ne pollue le registre machine ni n'exige de droit élévé.</p>
       </div>
       <div class="concept-card concept-card--blue">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #2</span>
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ ░▒▓ PRINCIPE #2 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">SHIMS_ROUTING</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">LE DOSSIER UNIQUE</span>
         <h3 class="concept-card__title">Les Shims</h3>
         <p class="concept-card__desc">Un seul dossier dans votre PATH : <code>~/scoop/shims</code>. Chaque outil y dépose un petit proxy (.exe / .cmd) pointant sur la version active.</p>
       </div>
       <div class="concept-card concept-card--blue">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #3</span>
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ ░▒▓ PRINCIPE #3 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">GIT_BUCKETS</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">CATALOGUES GIT</span>
         <h3 class="concept-card__title">Buckets Git</h3>
         <p class="concept-card__desc">Les catalogues d'applications sont de simples dépôts Git de manifests JSON (<code>main</code>, <code>extras</code>, <code>versions</code> ou votre bucket interne d'entreprise).</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [ARCHITECTURE WINDOWS : MACHINE (HKLM) VS USER-SPACE (HKCU)] ═════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--red); font-weight:700;">░░ MACHINE SPACE (MSI / Admin) ░░</span>            <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">██ USER SPACE SCOOP (Zéro Admin) ██</span>           <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  - Requiert élévation UAC / Billet DSI        <span style="color:var(--text-subtitle);">║</span>  - Décompressé dans ~/scoop/apps/              <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  - Écrit dans C:\Program Files &amp; Registre     <span style="color:var(--text-subtitle);">║</span>  - Un seul dossier de shims dans le PATH       <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  - Risque de verrouillage / conflit global    <span style="color:var(--text-subtitle);">║</span>  - Désinstallation propre par simple 'rm'      <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚═══════════════════════════════════════════════╩════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>

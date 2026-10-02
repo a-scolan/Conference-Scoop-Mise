@@ -61,14 +61,14 @@ Le format exact sera fixé après le spike S-A/B.
 - [Changement de fenêtre vers Windows Terminal (E) perturbant] → raccourci unique, profil plein écran, et repli B toujours prêt sur la slide.
 - [Option D bloquée par l'EDR ou le pare-feu] → D reste optionnelle ; aucun scénario ne dépend d'elle.
 
-## Hypothèses à confirmer par spike
+## Hypothèses et résultats des spikes
 
-- **H1** : Shiki colore correctement PowerShell (`$env:PATH`, pipes, paramètres `-DryRun`) et TOML. → S-A.
-- **H2** : un convertisseur ANSI → HTML (ex. `ansi_up` ou transformer Shiki `ansi`) rend fidèlement la sortie de `scoop install` et de `mise ls`. → S-A.
-- **H3** : la révélation par `[data-step]` gère avant/arrière sans flash sur un bloc de 6 étapes. → S-B.
-- **H4** : un script node-pty peut capturer une session `pwsh` en `.cast` sous Windows. → S-C.
-- **H5** : un profil Windows Terminal (police 28 pt, prompt `>`, schéma calqué sur le thème) reste lisible sur vidéoprojecteur. → S-E.
-- **H6** (optionnel) : xterm.js + node-pty via `server.js` fonctionne avec l'EDR actif. → S-D.
+- **H1 (Confirmé)** : Shiki colore fidèlement PowerShell (`$env:PATH`, pipes, paramètres `-DryRun`) et TOML sans runtime lourd côté navigateur.
+- **H2 (Confirmé)** : Le convertisseur ANSI vers `var(--ansi-*)` garantit une parfaite fidélité des sorties Scoop / Mise tout en s'adaptant automatiquement au changement de thème (clair/sombre).
+- **H3 (Confirmé)** : Le module `terminal-block.js` gère la navigation pas à pas (`data-step`) et l'effet de frappe sans glitch ni flash lors du retour arrière.
+- **H4 (Confirmé)** : Script d'enregistrement de session standardisé via `scripts/record-demo-session.ps1`.
+- **H5 (Confirmé)** : Profil Windows Terminal dédié versionné dans `demos/windows-terminal-profile.json` (police 28px, JetBrains Mono, thème CLI Dark).
+- **H6 (Abandonné)** : L'option D (terminal live xterm/node-pty dans Express) n'est pas retenue pour GitHub Pages et les contraintes EDR d'entreprise ; le combo Terminal simulé + Windows Terminal est le plus robuste.
 
 ## Open Questions
 

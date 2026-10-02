@@ -36,6 +36,7 @@ function assembleDeck() {
     'slides.css',
     'components.css',
     'decorations.css',
+    'petscii.css',
   ].map(file => `  /* --- ${file.replace(/\\/g, '/')} --- */\n` + readSrcFile('styles', file)).join('\n\n');
 
   // 3. Assembler les diapositives selon le manifeste slides.json
@@ -51,6 +52,7 @@ function assembleDeck() {
     'theme-controller.js',
     'laser.js',
     'mermaid-controls.js',
+    'terminal-block.js',
     'slide-engine.js',
   ].map(file => `  // --- ${file} ---\n` + readSrcFile('scripts', file)).join('\n\n');
 

@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "scoop-mise-presentation",
   "version": "0.1.0",
   "description": "Support de la conférence quickie « Installer ses outils de dev avec Scoop et Mise »",
@@ -17,5 +17,8 @@
     "express": "^4.21.0",
     "mermaid": "^12.0.0",
     "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "shiki": "^4.5.0"
   }
 }

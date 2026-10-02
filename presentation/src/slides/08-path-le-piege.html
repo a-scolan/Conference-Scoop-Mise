@@ -1,21 +1,56 @@
 <section class="slide slide--content slide--concept-cards" data-part="3" data-nav="Le piège du PATH Windows">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-orange">╔═[</span> <span>WIN::PATH_INTERNALS</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-orange">[</span> <span>HKLM &gt; HKCU</span> <span class="petscii-glyph-orange">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>SHADOWING TRAP</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>WARN <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">03</span>
-    <span class="slide__label">Windows Internals</span>
-    <h2 class="slide__heading">Le piège du PATH : HKLM passe toujours avant HKCU</h2>
+    <span class="slide__label">Windows Internals &middot; Piège</span>
+    <h2 class="slide__heading">Le pi&egrave;ge du PATH : HKLM passe toujours avant HKCU</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--orange">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">LA RÈGLE WINDOWS</span>
+        <div class="petscii-card-header" style="color:var(--red);">
+          <span>[ ░▒▓ REGISTRY ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">CreateEnvironmentBlock</span>
+          <span>[ ⚠ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">LA R&Egrave;GLE WINDOWS</span>
         <h3 class="concept-card__title">Fusion descendante obligatoire</h3>
-        <p class="concept-card__desc">À la création de session (<code>CreateEnvironmentBlock</code>), Windows concatène le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
+        <p class="concept-card__desc">&Agrave; la cr&eacute;ation de session (<code>CreateEnvironmentBlock</code>), Windows concat&egrave;ne le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
       </div>
       <div class="concept-card concept-card--orange">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">LA CONSÉQUENCE CACHÉE</span>
+        <div class="petscii-card-header" style="color:var(--accent2);">
+          <span>[ ░▒▓ COLLISION ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">SILENT_SHADOWING</span>
+          <span>[ ⚡ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">LA CONS&Eacute;QUENCE CACH&Eacute;E</span>
         <h3 class="concept-card__title">Le masquage (Shadowing)</h3>
-        <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> déclaré au niveau Machine, votre Python 3.12 installé proprement via Mise ne sera <strong>jamais appelé</strong> par défaut dans vos scripts !</p>
+        <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> d&eacute;clar&eacute; au niveau Machine, votre Python 3.12 install&eacute; proprement via Mise ne sera <strong>jamais appel&eacute;</strong> par d&eacute;faut dans vos scripts !</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔══ [ORDRE DE RÉSOLUTION DES EXÉCUTABLES SOUS WINDOWS] ════════════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--red); font-weight:700;">[1] HKLM (Machine PATH)</span>  <span style="color:var(--red);">████████████████████████████████</span>  <span style="color:var(--ansi-bright-white); font-weight:700;">ÉVALUÉ EN PREMIER</span>               <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>      ↳ <span style="color:var(--red);">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- ⚠ MASQUE VOS VERSIONS RÉCENTES !</span>       <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent3); font-weight:700;">[2] HKCU (User PATH)</span>     <span style="color:var(--text-subtitle);">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>  <span style="color:var(--text-dim);">ÉVALUÉ EN SECOND</span>                <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>      ↳ <span style="color:var(--text-dim);">~\AppData\Local\mise\shims\python.exe</span>     <span style="color:var(--ansi-yellow);">&lt;-- 🚫 JAMAIS ATTEINT PAR DÉFAUT !</span>        <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚══════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>

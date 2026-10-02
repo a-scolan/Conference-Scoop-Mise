@@ -1,28 +1,57 @@
 <section class="slide slide--content" data-part="4" data-nav="Démo DevRecipe">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-green">╔═[</span> <span>LIVE::DEVRECIPE_DRYRUN</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-green">[</span> <span>PREFLIGHT AUDIT</span> <span class="petscii-glyph-green">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-green">╚═[</span> <span>0 MUTATIONS</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: PASS <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">04</span>
-    <span class="slide__label">Démo DevRecipe</span>
-    <h2 class="slide__heading">En direct : validation et simulation d'un manifeste d'équipe</h2>
+    <span class="slide__label">Démo DevRecipe &middot; Live Simulation</span>
+    <h2 class="slide__heading">En direct : validation et simulation d'un manifeste d'&eacute;quipe</h2>
   </div>
-  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
-    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
-        <span>devrecipe.ps1 &middot; Mode Preflight &amp; Dry-Run</span>
-        <span style="color:var(--green);">0 risque &middot; Zéro surprise</span>
+  <div class="slide__inner">
+    <div class="terminal-block reveal" data-shell="pwsh">
+      <div class="terminal-block__header">
+        <div class="terminal-block__dots">
+          <span class="terminal-window__dot terminal-window__dot--red"></span>
+          <span class="terminal-window__dot terminal-window__dot--yellow"></span>
+          <span class="terminal-window__dot terminal-window__dot--green"></span>
+        </div>
+        <div class="terminal-block__title">devrecipe.ps1 &middot; Mode Preflight &amp; Dry-Run</div>
+        <div class="terminal-block__badge" style="color:var(--green); background:var(--green-dim);">0 Risque &middot; Preflight</div>
       </div>
-      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># 1. Validation de la syntaxe du manifeste devrecipe.toml</span>
-<span style="color:var(--green); font-weight:700;">&gt;</span> .\devrecipe.ps1 -Validate
-<span style="color:var(--ansi-green);">[OK] Manifest syntax valid (profile: default)</span>
-
-<span style="color:var(--text-dim);"># 2. Simulation avec preflight check des conflits existants</span>
-<span style="color:var(--green); font-weight:700;">&gt;</span> .\devrecipe.ps1 -DryRun -Review
-<span style="color:var(--ansi-bright-black);">[Preflight] Scanning system software and registry paths...</span>
-<span style="color:var(--ansi-yellow);">[WARN] Existing system Git found at 'C:\Program Files\Git\cmd' (version 2.38)</span>
+      <div class="terminal-block__content">
+        <div class="terminal-step" data-step="1">
+          <div class="terminal-cmd" data-type-effect="true">.\devrecipe.ps1 -Validate</div>
+          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">[OK] Manifest syntax valid (profile: default)</span></div>
+        </div>
+        <div class="terminal-step" data-step="2">
+          <div class="terminal-cmd" data-type-effect="true">.\devrecipe.ps1 -DryRun -Review</div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[Preflight] Scanning system software and registry paths...</span>
+<span style="color:var(--ansi-yellow); font-weight:700;">[WARN] Existing system Git found at 'C:\Program Files\Git\cmd' (version 2.38)</span>
 <span style="color:var(--ansi-blue);">[DryRun] Plan:</span>
 <span style="color:var(--text-dim);">  + Scoop packages to install : [ripgrep, fzf, jq, lazygit]</span>
 <span style="color:var(--text-dim);">  + Mise runtimes to install  : [node@22.14.0, python@3.12.2]</span>
 <span style="color:var(--text-dim);">  + Environment actions      : Prepend user shims in PowerShell &amp; cmd AutoRun</span>
-<span style="color:var(--ansi-green); font-weight:700;">[OK] DryRun complete (exit code 0). No system changes applied.</span></code></pre>
+<span style="color:var(--green); font-weight:700;">[OK] DryRun complete (exit code 0). No system changes applied.</span></div>
+        </div>
+      </div>
+      <div class="terminal-window__statusbar">
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> PREFLIGHT: 1 WARN / 0 BLOCKERS</span>
+        <span class="terminal-window__statusbar-tag">PLAN: 4 PKGS / 2 RUNTIMES</span>
+        <span class="terminal-window__statusbar-tag">EXIT: 0 <span class="petscii-cursor">█</span></span>
+      </div>
     </div>
   </div>
 </section>

@@ -3090,3 +3090,134 @@
       transition: none !important;
     }
   }
+
+/* ============ TERMINAL BLOCK COMPONENT (Démos & Lignes de commande) ============ */
+.terminal-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: min(100%, 1060px);
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-bright);
+  background: var(--code-bg, #0d1117);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+.terminal-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-size: calc(11px + var(--font-bump));
+  color: var(--text-dim);
+  user-select: none;
+}
+
+.terminal-block__dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-block__dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #484f58;
+}
+
+.terminal-block__dots span:nth-child(1) { background: #ff5f56; }
+.terminal-block__dots span:nth-child(2) { background: #ffbd2e; }
+.terminal-block__dots span:nth-child(3) { background: #27c93f; }
+
+.terminal-block__title {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.terminal-block__badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.terminal-block__content {
+  padding: clamp(14px, 2vh, 22px) clamp(16px, 2vw, 24px);
+  overflow-x: auto;
+  font-size: calc(clamp(13px, 1.35vw, 17px) + var(--font-bump));
+  line-height: 1.55;
+  color: var(--code-text, #e6edf3);
+}
+
+.terminal-step {
+  display: none;
+  margin-bottom: 16px;
+}
+
+.terminal-step:last-child {
+  margin-bottom: 0;
+}
+
+.terminal-step.is-visible {
+  display: block;
+}
+
+.terminal-cmd {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.terminal-cmd::before {
+  content: '❯';
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.terminal-cmd.is-typing::after {
+  content: '▋';
+  display: inline-block;
+  color: var(--accent);
+  animation: cli-cursor-blink 0.8s steps(2, start) infinite;
+  margin-left: 2px;
+}
+
+.terminal-out {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text-dim);
+  padding-left: 18px;
+  border-left: 2px solid var(--border);
+  margin-top: 4px;
+}
+
+.terminal-out [data-highlight="true"],
+.terminal-out .line-highlight {
+  display: block;
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin: 1px 0;
+}

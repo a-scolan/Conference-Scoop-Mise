@@ -1,26 +1,55 @@
 <section class="slide slide--content" data-part="2" data-nav="Démo Mise">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-cyan">╔═[</span> <span>LIVE::MISE_DEMO</span> <span class="petscii-glyph-cyan">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>AUTO CONTEXT SWITCH</span> <span class="petscii-glyph-cyan">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-cyan">╚═[</span> <span>PER-PROJECT RUNTIMES</span> <span class="petscii-glyph-cyan">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: ACTIVE <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">02</span>
-    <span class="slide__label">Démo Mise</span>
-    <h2 class="slide__heading">En direct : bascule de version automatique au « cd »</h2>
+    <span class="slide__label">Démo Mise &middot; Live Switch</span>
+    <h2 class="slide__heading">En direct : bascule de version automatique au &laquo; cd &raquo;</h2>
   </div>
-  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
-    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
-        <span>PowerShell 7 + mise activate --shims</span>
-        <span style="color:var(--accent3);">Zero-friction runtime switch</span>
+  <div class="slide__inner">
+    <div class="terminal-block reveal" data-shell="pwsh">
+      <div class="terminal-block__header">
+        <div class="terminal-block__dots">
+          <span class="terminal-window__dot terminal-window__dot--red"></span>
+          <span class="terminal-window__dot terminal-window__dot--yellow"></span>
+          <span class="terminal-window__dot terminal-window__dot--green"></span>
+        </div>
+        <div class="terminal-block__title">PowerShell 7.4 + mise activate --shims</div>
+        <div class="terminal-block__badge" style="color:var(--accent3); background:var(--accent3-dim);">Zero-Friction Switch</div>
       </div>
-      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--accent3); font-weight:700;">&gt;</span> cd C:\workspace\projet-legacy
-<span style="color:var(--accent3); font-weight:700;">&gt;</span> node --version
-<span style="color:var(--ansi-yellow); font-weight:700;">v18.20.4</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "18")</span>
-
-<span style="color:var(--accent3); font-weight:700;">&gt;</span> cd C:\workspace\projet-moderne
-<span style="color:var(--accent3); font-weight:700;">&gt;</span> node --version
-<span style="color:var(--green); font-weight:700;">v22.14.0</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "22")</span>
-
-<span style="color:var(--text-dim);"># Lance la tâche d'équipe déclarée dans [tasks.dev]</span>
-<span style="color:var(--accent3); font-weight:700;">&gt;</span> mise run dev
-<span style="color:var(--ansi-bright-black);">[dev] API_URL=http://localhost:8080 npm run start</span></code></pre>
+      <div class="terminal-block__content">
+        <div class="terminal-step" data-step="1">
+          <div class="terminal-cmd" data-type-effect="true">cd C:\workspace\projet-legacy &amp;&amp; node --version</div>
+          <div class="terminal-out"><span style="color:var(--ansi-yellow); font-weight:700;">v18.20.4</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "18")</span></div>
+        </div>
+        <div class="terminal-step" data-step="2">
+          <div class="terminal-cmd" data-type-effect="true">cd C:\workspace\projet-moderne &amp;&amp; node --version</div>
+          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">v22.14.0</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "22")</span></div>
+        </div>
+        <div class="terminal-step" data-step="3">
+          <div class="terminal-cmd">mise run dev</div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[dev] API_URL=http://localhost:8080 npm run start</span></div>
+        </div>
+      </div>
+      <div class="terminal-window__statusbar">
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> NODE: 18 &rarr; 22</span>
+        <span class="terminal-window__statusbar-tag">TASK: [tasks.dev]</span>
+        <span class="terminal-window__statusbar-tag">LATENCY: 5ms <span class="petscii-cursor">█</span></span>
+      </div>
     </div>
   </div>
 </section>

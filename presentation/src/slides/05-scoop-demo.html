@@ -1,26 +1,56 @@
 <section class="slide slide--content" data-part="1" data-nav="Démo Scoop">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>LIVE::SCOOP_DEMO</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-accent">[</span> <span>15 SECONDES</span> <span class="petscii-glyph-accent">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>USER-SPACE PUR</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: OK <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">01</span>
-    <span class="slide__label">Démo Scoop</span>
+    <span class="slide__label">Démo Scoop &middot; Live CLI</span>
     <h2 class="slide__heading">En direct : installer un outil CLI en 15 secondes</h2>
   </div>
-  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
-    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
-        <span>PowerShell 7 &middot; Profil Utilisateur Standard</span>
-        <span style="color:var(--accent);">User Space &middot; Zéro UAC</span>
+  <div class="slide__inner">
+    <div class="terminal-block reveal" data-shell="pwsh">
+      <div class="terminal-block__header">
+        <div class="terminal-block__dots">
+          <span class="terminal-window__dot terminal-window__dot--red"></span>
+          <span class="terminal-window__dot terminal-window__dot--yellow"></span>
+          <span class="terminal-window__dot terminal-window__dot--green"></span>
+        </div>
+        <div class="terminal-block__title">PowerShell 7.4 &middot; Profil Utilisateur Standard (C:\Users\alexis)</div>
+        <div class="terminal-block__badge">User Space &middot; Zéro UAC</div>
       </div>
-      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># 1. Vérification : aucun droit administrateur requis</span>
-<span style="color:var(--accent); font-weight:700;">&gt;</span> scoop install lazygit
-<span style="color:var(--ansi-bright-black);">Installing 'lazygit' (0.44.1) [64bit] from 'extras' bucket</span>
+      <div class="terminal-block__content">
+        <div class="terminal-step" data-step="1">
+          <div class="terminal-cmd" data-type-effect="true">scoop install lazygit</div>
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">Installing 'lazygit' (0.44.1) [64bit] from 'extras' bucket</span>
 <span style="color:var(--ansi-green);">Checking hash of lazygit_0.44.1_Windows_x86_64.zip ... ok.</span>
 <span style="color:var(--ansi-bright-black);">Extracting lazygit_0.44.1_Windows_x86_64.zip ... done.</span>
 <span style="color:var(--ansi-blue);">Linking ~\scoop\apps\lazygit\current =&gt; ~\scoop\apps\lazygit\0.44.1</span>
 <span style="color:var(--ansi-yellow);">Creating shim for 'lazygit' in ~\scoop\shims\lazygit.exe</span>
-<span style="color:var(--green); font-weight:700;">'lazygit' (0.44.1) was installed successfully!</span>
-
-<span style="color:var(--accent); font-weight:700;">&gt;</span> where.exe lazygit
-<span style="color:var(--ansi-bright-white);">C:\Users\alexis\scoop\shims\lazygit.exe</span></code></pre>
+<span style="color:var(--green); font-weight:700;">'lazygit' (0.44.1) was installed successfully!</span></div>
+        </div>
+        <div class="terminal-step" data-step="2">
+          <div class="terminal-cmd">where.exe lazygit</div>
+          <div class="terminal-out" data-highlight="true">C:\Users\alexis\scoop\shims\lazygit.exe</div>
+        </div>
+      </div>
+      <div class="terminal-window__statusbar">
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> READY</span>
+        <span class="terminal-window__statusbar-tag">SHIM: ~/scoop/shims/lazygit.exe</span>
+        <span class="terminal-window__statusbar-tag">RETURN: 0 <span class="petscii-cursor">█</span></span>
+      </div>
     </div>
   </div>
 </section>

@@ -1,26 +1,65 @@
 <section class="slide slide--content slide--concept-cards" data-part="4" data-nav="DevRecipe : L'onboarding en PR">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-green">╔═[</span> <span>REX::DEVRECIPE_AS_CODE</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-green">[</span> <span>TEAM ONBOARDING IN PR</span> <span class="petscii-glyph-green">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-green">╚═[</span> <span>PREFLIGHT + DRY-RUN</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">04</span>
-    <span class="slide__label">REX &middot; DevRecipe</span>
-    <h2 class="slide__heading">DevRecipe : l'onboarding d'équipe devient une PR</h2>
+    <span class="slide__label">REX &middot; DevRecipe &middot; As Code</span>
+    <h2 class="slide__heading">DevRecipe : l'onboarding d'&eacute;quipe devient une PR</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ AS_CODE ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">devrecipe.toml</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">MANIFESTE TOML</span>
         <h3 class="concept-card__title">Code Review</h3>
-        <p class="concept-card__desc">Fini le wiki obsolète de 15 pages. La liste des outils requis (Scoop) et des runtimes (Mise) est déclarée en code et validée en équipe.</p>
+        <p class="concept-card__desc">Fini le wiki obsol&egrave;te de 15 pages. La liste des outils requis (Scoop) et des runtimes (Mise) est d&eacute;clar&eacute;e en code et valid&eacute;e en &eacute;quipe.</p>
       </div>
       <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ AUDIT ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">COLLISION_CHECK</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">PREFLIGHT CHECK</span>
-        <h3 class="concept-card__title">Détection des conflits</h3>
-        <p class="concept-card__desc">Avant de toucher au poste, DevRecipe inspecte les désinstalleurs Windows, AppX et le PATH pour alerter si un outil tiers entre en collision.</p>
+        <h3 class="concept-card__title">D&eacute;tection des conflits</h3>
+        <p class="concept-card__desc">Avant de toucher au poste, DevRecipe inspecte les d&eacute;sinstalleurs Windows, AppX et le PATH pour alerter si un outil tiers entre en collision.</p>
       </div>
       <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ SIMULATION ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">ZERO_SIDE_EFFECTS</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">DRY-RUN &amp; PROFILS</span>
-        <h3 class="concept-card__title">Zéro effet de bord</h3>
-        <p class="concept-card__desc"><code>-DryRun</code> montre exactement les actions qui seront exécutées. Les profils (<code>default</code>, <code>ai-agents</code>, <code>cloud</code>) ciblent les besoins réels.</p>
+        <h3 class="concept-card__title">Z&eacute;ro effet de bord</h3>
+        <p class="concept-card__desc"><code>-DryRun</code> montre exactement les actions qui seront ex&eacute;cut&eacute;es. Les profils (<code>default</code>, <code>ai-agents</code>, <code>cloud</code>) ciblent les besoins r&eacute;els.</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [DEVRECIPE.TOML : ORCHESTRATION DÉCLARATIVE SCOOP + MISE] ═════════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent); font-weight:700;">[scoop]</span>                          <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent3); font-weight:700;">[mise.tools]</span>                  <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[preflight]</span>                   <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  buckets = [<span style="color:var(--green);">"extras"</span>, <span style="color:var(--green);">"internal"</span>] <span style="color:var(--text-subtitle);">║</span>  node   = <span style="color:var(--green);">"22.14.0"</span>            <span style="color:var(--text-subtitle);">║</span>  check_conflicts = <span style="color:var(--accent2);">true</span>        <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  apps    = [<span style="color:var(--green);">"lazygit"</span>, <span style="color:var(--green);">"ripgrep"</span>]  <span style="color:var(--text-subtitle);">║</span>  python = <span style="color:var(--green);">"3.12.2"</span>             <span style="color:var(--text-subtitle);">║</span>  scan_registry   = <span style="color:var(--accent2);">true</span>        <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚═══════════════════════════════════╩════════════════════════════╩════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>

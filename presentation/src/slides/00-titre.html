@@ -1,11 +1,54 @@
 <section class="slide slide--title" data-nav="Titre">
-    <div class="reveal" style="margin-bottom:clamp(16px,3vh,32px);">
-      <p class="slide__subtitle" style="letter-spacing:3px; color:var(--accent);">Quickie &middot; 15 min</p>
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>TTY:00/INIT</span> <span class="petscii-glyph-accent">]</span>
     </div>
-    <h1 class="slide__display reveal">Installer ses<br>outils de dev</h1>
-    <h1 class="slide__display reveal" style="color:var(--text); font-size:clamp(32px,6.5vw,80px); margin-top:8px;">avec Scoop &amp; Mise</h1>
-    <div class="reveal" style="margin-top:clamp(24px,4vh,48px); display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;">
-      <span class="slide__accent-line" style="width:80px; height:4px;"></span>
-      <p class="slide__subtitle" style="color:var(--text-dim); margin-top:8px;">Alexis Scolan</p>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>64K RAM &middot; PETSCII</span> <span class="petscii-glyph-cyan">]═╗</span>
     </div>
-  </section>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>HKCU: USER-SPACE</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY. <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
+  <!-- Filigrane matriciel PETSCII en arrière-plan -->
+  <div class="petscii-bg-watermark" aria-hidden="true">░▒▓█ SCOOP &amp; MISE // ZERO UAC █▓▒░
+╱╲╱╲╱╲ 64K RAM SYSTEM ╱╲╱╲╱╲</div>
+
+  <div class="reveal" style="margin-bottom:clamp(12px, 2vh, 20px);">
+    <div class="ansi-art ansi-art--title">
+<span class="c-scoop"> ███████╗ ██████╗  ██████╗  ██████╗ ██████╗ </span>      <span class="c-and">     </span> <span class="c-mise">███╗   ███╗██╗███████╗███████╗</span>
+<span class="c-scoop"> ██╔════╝██╔════╝ ██╔═══██╗██╔═══██╗██╔══██╗</span>      <span class="c-and">     </span> <span class="c-mise">████╗ ████║██║██╔════╝██╔════╝</span>
+<span class="c-scoop"> ███████╗██║      ██║   ██║██║   ██║██████╔╝</span>  <span class="c-and">██╗ </span> <span class="c-mise">██╔████╔██║██║███████╗█████╗  </span>
+<span class="c-scoop"> ╚════██║██║      ██║   ██║██║   ██║██╔═══╝ </span>  <span class="c-and">╚═╝ </span> <span class="c-mise">██║╚██╔╝██║██║╚════██║██╔══╝  </span>
+<span class="c-scoop"> ███████║╚██████╗ ╚██████╔╝╚██████╔╝██║     </span>      <span class="c-and">     </span> <span class="c-mise">██║ ╚═╝ ██║██║███████║███████╗</span>
+<span class="c-scoop"> ╚══════╝ ╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     </span>      <span class="c-and">     </span> <span class="c-mise">╚═╝     ╚═╝╚═╝╚══════╝╚══════╝</span></div>
+  </div>
+
+  <div class="reveal" style="margin-bottom:clamp(8px,1.5vh,16px);">
+    <span class="petscii-tag"><span class="petscii-glyph-accent">■</span> QUICKIE 15 MIN</span>
+    <span class="petscii-tag" style="margin-left:8px;"><span class="petscii-glyph-cyan">■</span> WINDOWS DEV ENVIRONMENT</span>
+    <span class="petscii-tag" style="margin-left:8px;"><span class="petscii-glyph-green">■</span> ZERO UAC</span>
+  </div>
+
+  <h1 class="slide__display reveal" style="font-size:clamp(26px,5vw,56px); margin:0; line-height:1.15; font-family:var(--petscii-font);">
+    Installer ses outils de dev
+  </h1>
+  <p class="slide__subtitle reveal" style="color:var(--accent); margin-top:8px; font-size:clamp(16px,2.2vw,26px); letter-spacing:0.04em;">
+    sans droits admin &middot; runtimes par projet &middot; onboarding en PR
+  </p>
+
+  <div class="reveal" style="margin-top:clamp(18px,3vh,32px); display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center;">
+    <span class="petscii-hatch-strip" style="color:var(--accent2); font-size:14px;">░▒▓████████████████████████████████████████████████▓▒░</span>
+    <p class="slide__subtitle" style="color:var(--text-dim); margin-top:4px; font-size:clamp(13px,1.4vw,16px);">
+      <strong>Alexis Scolan</strong> &middot; Architecte technique chez onepoint
+    </p>
+    <div style="font-family:var(--petscii-font); font-size:12px; color:var(--green); margin-top:4px;">
+      <code>C:\DEV&gt; READY. <span class="petscii-cursor">█</span></code>
+    </div>
+  </div>
+</section>

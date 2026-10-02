@@ -57,7 +57,7 @@ Vary the choice each time. If the last diagram was dark and technical, make the 
 - For data tables, comparisons, audits, feature matrices: read `./templates/data-table.html`
 - For slide deck presentations (when `--slides` flag is present or `/generate-slides` is invoked): read `./templates/slide-deck.html` and `./references/slide-patterns.md`
 
-  The `slide-deck.html` template uses the **Electric Navy** preset (Poppins Black, `#0e2841` navy, `#fbfe7a` yellow-lime accent). Refer to `./references/slide-patterns.md` "Curated Presets" for all five presets (Midnight Editorial, Warm Signal, Terminal Mono, Swiss Clean, Electric Navy).
+  The `slide-deck.html` template uses the **Electric Navy** preset (Poppins Black, `#0e2841` navy, `#fbfe7a` yellow-lime accent). Refer to `./references/slide-patterns.md` "Curated Presets" for all five presets (Midnight Editorial, Warm Signal, Terminal Mono, Swiss Clean, Electric Navy). For interactive or recorded CLI/terminal demonstrations in presentations, use the **Terminal Block** pattern (`.terminal-block`, `.terminal-step[data-step]`, `.terminal-cmd`, `.terminal-out`) with ANSI variable mappings and step typing effects.
 - For prose-heavy publishable pages (READMEs, articles, blog posts, essays): read the "Prose Page Elements" section in `./references/css-patterns.md` and "Typography by Content Voice" in `./references/libraries.md`
 
 **For CSS/layout patterns and SVG connectors**, read `./references/css-patterns.md`.

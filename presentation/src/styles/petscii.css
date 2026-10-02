@@ -1,0 +1,368 @@
+/* ==========================================================================
+   PETSCII & PC ANSI ART STYLESHEET
+   Esthétique rétro-terminal, art bloc MS-DOS / TheDraw / ACiD View et PETSCII CBM.
+   ========================================================================== */
+
+/* Variables dédiées au rendu PETSCII et ANSI */
+:root {
+  --petscii-font: 'JetBrains Mono', 'Cascadia Code', Consolas, 'Courier New', monospace;
+  --petscii-glow-green: rgba(63, 185, 80, 0.45);
+  --petscii-glow-cyan: rgba(88, 166, 255, 0.45);
+  --petscii-glow-yellow: rgba(241, 224, 90, 0.45);
+  --petscii-glow-red: rgba(248, 81, 73, 0.45);
+}
+
+/* ==========================================================================
+   SUBTLE CRT SCANLINES & PHOSPHOR AMBIENCE (cli-dark uniquement)
+   ========================================================================== */
+[data-theme="cli-dark"] .deck::before,
+[data-theme="terminal-dark"] .deck::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 95;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.28) 50%
+  );
+  background-size: 100% 3px;
+  opacity: 0.16;
+}
+
+/* Léger halo phosphor au survol et sur les éléments d'accentuation */
+[data-theme="cli-dark"] .petscii-glow {
+  text-shadow: 0 0 8px var(--petscii-glow-cyan);
+}
+[data-theme="cli-dark"] .petscii-glow--green {
+  text-shadow: 0 0 8px var(--petscii-glow-green);
+}
+[data-theme="cli-dark"] .petscii-glow--yellow {
+  text-shadow: 0 0 8px var(--petscii-glow-yellow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="cli-dark"] .deck::before,
+  [data-theme="terminal-dark"] .deck::before {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   CADRE PÉRIPHÉRIQUE PETSCII SUR LES SLIDES (Angles & repères rétro)
+   ========================================================================== */
+.petscii-slide-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  font-family: var(--petscii-font);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-subtitle);
+  user-select: none;
+}
+
+.petscii-slide-frame__tl {
+  position: absolute;
+  top: clamp(8px, 1.6vh, 18px);
+  left: clamp(14px, 2.2vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.petscii-slide-frame__tr {
+  position: absolute;
+  top: clamp(8px, 1.6vh, 18px);
+  right: clamp(68px, 6vw, 96px); /* Laisse la place au deck counter */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.petscii-slide-frame__bl {
+  position: absolute;
+  bottom: clamp(10px, 1.8vh, 20px);
+  left: clamp(14px, 2.2vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.petscii-slide-frame__br {
+  position: absolute;
+  bottom: clamp(10px, 1.8vh, 20px);
+  right: clamp(14px, 2.2vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.petscii-glyph-accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+.petscii-glyph-cyan {
+  color: var(--accent3);
+  font-weight: 700;
+}
+.petscii-glyph-green {
+  color: var(--green);
+  font-weight: 700;
+}
+.petscii-glyph-orange {
+  color: var(--accent2);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   BLOCK ASCII & THE-DRAW STYLE LOGO BANNERS
+   Rendu fidèle des blocs █ ▀ ▄ ▌ ▐ ░ ▒ ▓
+   ========================================================================== */
+.ansi-art {
+  font-family: var(--petscii-font);
+  font-size: clamp(8px, 1.1vw, 13px);
+  line-height: 1.05;
+  letter-spacing: 0;
+  white-space: pre;
+  user-select: none;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.ansi-art--title {
+  font-size: clamp(9px, 1.35vw, 15px);
+  line-height: 1.08;
+  color: var(--text);
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
+}
+
+.ansi-art .c-scoop {
+  color: var(--accent);
+}
+.ansi-art .c-and {
+  color: var(--accent2);
+}
+.ansi-art .c-mise {
+  color: var(--accent3);
+}
+.ansi-art .c-green {
+  color: var(--green);
+}
+.ansi-art .c-dim {
+  color: var(--text-subtitle);
+  opacity: 0.6;
+}
+.ansi-art .c-shade {
+  color: var(--border-bright);
+}
+
+/* ==========================================================================
+   AUTHENTIC DOS / BBS TERMINAL WINDOW FRAME
+   Remplace les fenêtres simples par un véritable cadre ANSI double ligne
+   ========================================================================== */
+.terminal-window {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid var(--border-bright);
+  background: var(--code-bg, #030712);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.terminal-window__titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--petscii-font);
+  font-size: clamp(10px, 1.05vw, 12.5px);
+  font-weight: 600;
+  color: var(--text);
+  user-select: none;
+}
+
+.terminal-window__titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.terminal-window__dots {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.terminal-window__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.terminal-window__dot--red { background: var(--ansi-red, #ff7b72); }
+.terminal-window__dot--yellow { background: var(--ansi-yellow, #d29922); }
+.terminal-window__dot--green { background: var(--ansi-green, #3fb950); }
+
+.terminal-window__badge {
+  font-size: 11px;
+  font-family: var(--petscii-font);
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--surface) 60%, transparent 40%);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.terminal-window__statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 14px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  font-family: var(--petscii-font);
+  font-size: clamp(9px, 0.95vw, 11px);
+  color: var(--text-subtitle);
+  user-select: none;
+}
+
+.terminal-window__statusbar-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================================
+   PETSCII BADGES & DECORATIVE CARD ORNAMENTS
+   ========================================================================== */
+.petscii-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  font-family: var(--petscii-font);
+  font-size: clamp(10px, 1vw, 12px);
+  font-weight: 700;
+}
+
+.petscii-hatch-strip {
+  font-family: var(--petscii-font);
+  font-size: 11px;
+  letter-spacing: 1px;
+  user-select: none;
+  opacity: 0.65;
+}
+
+.petscii-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--petscii-font);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   BLOCK DIAGRAM COMPONENT (Pour le PATH et l'Architecture)
+   ========================================================================== */
+.ansi-diagram-block {
+  font-family: var(--petscii-font);
+  font-size: clamp(11px, 1.25vw, 15px);
+  line-height: 1.45;
+  background: var(--surface2);
+  border: 1.5px solid var(--border-bright);
+  border-radius: 8px;
+  padding: 14px 18px;
+  color: var(--text);
+  overflow-x: auto;
+  user-select: none;
+}
+
+.ansi-diagram-block pre {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* ==========================================================================
+   WATERMARK RETRO MATRIX (En fond de slide)
+   ========================================================================== */
+.petscii-bg-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--petscii-font);
+  font-size: clamp(18px, 3.5vw, 42px);
+  line-height: 1.1;
+  letter-spacing: 4px;
+  color: var(--text-subtitle);
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  white-space: pre;
+  text-align: center;
+}
+
+/* ==========================================================================
+   RETRO PROMPT BLINKING CURSOR
+   ========================================================================== */
+.petscii-cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-family: var(--petscii-font);
+  font-weight: 700;
+  animation: petscii-blink 1s steps(2, start) infinite;
+}
+
+@keyframes petscii-blink {
+  to { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petscii-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE RULES POUR L'ART PETSCII
+   ========================================================================== */
+@media (max-width: 860px), (max-height: 580px) {
+  .petscii-slide-frame {
+    display: none !important;
+  }
+  .petscii-bg-watermark {
+    display: none !important;
+  }
+  .ansi-art--title {
+    font-size: clamp(6.5px, 1.1vw, 9.5px);
+    line-height: 1.05;
+  }
+  .ansi-diagram-block {
+    padding: 8px 10px;
+    font-size: clamp(9.5px, 1.1vw, 12px);
+  }
+}

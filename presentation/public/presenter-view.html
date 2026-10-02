@@ -1861,6 +1861,22 @@
       document.getElementById('pv-beat-badge').textContent = note.beat || 'Transition';
       document.getElementById('pv-notes-title').textContent = note.title;
 
+      var stepBadge = document.getElementById('pv-step-badge');
+      if (!stepBadge) {
+        stepBadge = document.createElement('span');
+        stepBadge.id = 'pv-step-badge';
+        stepBadge.className = 'pv-meta-badge';
+        stepBadge.style.color = 'var(--pv-accent)';
+        var headerMeta = document.querySelector('.pv-notes-header__meta');
+        if (headerMeta) headerMeta.appendChild(stepBadge);
+      }
+      if (state.currentStep && state.currentStep !== 'all' && state.currentStep !== 'launcher') {
+        stepBadge.textContent = 'Étape ' + state.currentStep;
+        stepBadge.style.display = 'inline-block';
+      } else {
+        stepBadge.style.display = 'none';
+      }
+
       // Action scénique / Silence
       var actionBox = document.getElementById('pv-action-box');
       var actionTextEl = document.getElementById('pv-action-text');

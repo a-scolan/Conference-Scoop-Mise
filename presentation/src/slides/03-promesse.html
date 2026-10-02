@@ -1,29 +1,65 @@
 <section class="slide slide--content slide--concept-cards" data-part="0" data-nav="La promesse">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>SOL::PROMISE_MATRIX</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-green">[</span> <span>SOLUTIONS 4/4</span> <span class="petscii-glyph-green">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>ZERO-FRICTION DEV</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">00</span>
-    <span class="slide__label">Accroche</span>
-    <h2 class="slide__heading">La promesse : 4 erreurs, 4 réponses concrètes</h2>
+    <span class="slide__label">Accroche &middot; Réponses</span>
+    <h2 class="slide__heading">La promesse : 4 erreurs, 4 r&eacute;ponses concr&egrave;tes</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--blue">
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ ░▒▓ SOL.01 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">USER_SPACE // SCOOP</span>
+          <span>[ ✔ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PAS DE DROIT ADMIN &rarr; SCOOP</span>
         <h3 class="concept-card__title">User Space pur</h3>
         <p class="concept-card__desc">Tous les outils de dev s'installent dans votre dossier utilisateur. Aucune invite UAC, aucune modification des dossiers système.</p>
       </div>
       <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ SOL.02 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">CONTEXTUAL // MISE</span>
+          <span>[ ✔ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">VERSIONS PAR PROJET &rarr; MISE</span>
         <h3 class="concept-card__title">Activation contextuelle</h3>
         <p class="concept-card__desc">Un simple <code>mise.toml</code> versionné dans le dépôt Git. Quand vous entrez dans le dossier, les bons runtimes s'activent immédiatement.</p>
       </div>
       <div class="concept-card concept-card--orange">
+        <div class="petscii-card-header" style="color:var(--accent2);">
+          <span>[ ░▒▓ SOL.03 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">PRECEDENCE // SHIMS</span>
+          <span>[ ✔ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">COMMAND NOT FOUND &rarr; SHIMS &amp; PRECEDENCE</span>
-        <h3 class="concept-card__title">Maîtrise du PATH</h3>
+        <h3 class="concept-card__title">Ma&icirc;trise du PATH</h3>
         <p class="concept-card__desc">Comprendre comment Windows résout les exécutables (HKLM avant HKCU) pour éviter que les vieux outils système ne masquent vos versions.</p>
       </div>
       <div class="concept-card concept-card--green">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">L'ONBOARDING D'ÉQUIPE &rarr; DEVRECIPE</span>
-        <h3 class="concept-card__title">Manifeste déclaratif en PR</h3>
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ SOL.04 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">DECLARATIVE // DEVRECIPE</span>
+          <span>[ ✔ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">L'ONBOARDING D'&Eacute;QUIPE &rarr; DEVRECIPE</span>
+        <h3 class="concept-card__title">Manifeste d&eacute;claratif en PR</h3>
         <p class="concept-card__desc">Orchestrer Scoop et Mise dans un manifeste TOML partagé, testé en preflight, avec détection de conflits avant installation.</p>
       </div>
     </div>

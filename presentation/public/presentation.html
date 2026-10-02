@@ -365,6 +365,59 @@
   }
 }
 
+/* ============ CURSEUR & POINTEUR STYLÉ TERMINAL (CLI LIGHT) ============ */
+[data-theme="cli-light"],
+[data-theme="terminal-light"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 2L18 12L11 13L14 20L11 21L8 14L3 18V2Z' fill='%23ffffff' stroke='%230969da' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto;
+}
+
+[data-theme="cli-light"] a,
+[data-theme="cli-light"] button,
+[data-theme="cli-light"] [role="button"],
+[data-theme="cli-light"] .deck-dot,
+[data-theme="terminal-light"] a,
+[data-theme="terminal-light"] button,
+[data-theme="terminal-light"] [role="button"],
+[data-theme="terminal-light"] .deck-dot {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 4L14 12L6 20' stroke='%230969da' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='18' cy='12' r='2' fill='%230969da'/%3E%3C/svg%3E") 6 12, pointer;
+}
+
+/* Réticule Laser HUD Terminal pour CLI Light */
+[data-theme="cli-light"] .laser-pointer::before,
+[data-theme="terminal-light"] .laser-pointer::before {
+  inset: 2px;
+  border-radius: 4px;
+  background: radial-gradient(circle, var(--laser-glow) 0%, transparent 68%);
+  border: 1px dashed var(--laser-ring);
+  box-shadow: 0 0 10px var(--laser-glow);
+}
+
+[data-theme="cli-light"] .laser-pointer::after,
+[data-theme="terminal-light"] .laser-pointer::after {
+  inset: 12px;
+  border-radius: 2px;
+  border: 1.5px solid var(--laser-hot);
+  background:
+    linear-gradient(var(--laser-hot), var(--laser-hot)) center / 2px 100% no-repeat,
+    linear-gradient(var(--laser-hot), var(--laser-hot)) center / 100% 2px no-repeat,
+    radial-gradient(circle, var(--laser-core) 0%, var(--laser-core) 1.5px, transparent 2px) center / 4px 4px no-repeat;
+  filter: drop-shadow(0 0 3px var(--laser-hot));
+}
+
+[data-theme="cli-light"] .laser-pointer.is-active::before,
+[data-theme="terminal-light"] .laser-pointer.is-active::before {
+  transform: scale(1.25);
+  border-style: solid;
+  border-color: var(--laser-hot);
+  box-shadow: 0 0 18px var(--laser-glow);
+}
+
+[data-theme="cli-light"] .laser-pointer.is-active::after,
+[data-theme="terminal-light"] .laser-pointer.is-active::after {
+  transform: scale(0.85);
+  background-color: var(--laser-glow-soft);
+}
+
 
   /* --- themes/cli-dark.css --- */
 /* ==========================================================================
@@ -431,12 +484,12 @@
   --ansi-bright-cyan: #56d4dd;
   --ansi-bright-white: #f0f6fc;
 
-  /* Laser virtuel (Cyan terminal) */
+  /* Laser virtuel (Ambre électrique / Terminal) */
   --laser-core: #ffffff;
-  --laser-hot: #58a6ff;
-  --laser-ring: rgba(88, 166, 255, 0.60);
-  --laser-glow: rgba(88, 166, 255, 0.28);
-  --laser-glow-soft: rgba(88, 166, 255, 0.10);
+  --laser-hot: #f1e05a;
+  --laser-ring: rgba(241, 224, 90, 0.65);
+  --laser-glow: rgba(241, 224, 90, 0.35);
+  --laser-glow-soft: rgba(241, 224, 90, 0.12);
 
   /* Diagrammes */
   --diagram-gold: #e3b341;
@@ -515,6 +568,59 @@
     animation: none;
     opacity: 1;
   }
+}
+
+/* ============ CURSEUR & POINTEUR STYLÉ TERMINAL (CLI DARK) ============ */
+[data-theme="cli-dark"],
+[data-theme="terminal-dark"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 2L18 12L11 13L14 20L11 21L8 14L3 18V2Z' fill='%230d1117' stroke='%23f1e05a' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto;
+}
+
+[data-theme="cli-dark"] a,
+[data-theme="cli-dark"] button,
+[data-theme="cli-dark"] [role="button"],
+[data-theme="cli-dark"] .deck-dot,
+[data-theme="terminal-dark"] a,
+[data-theme="terminal-dark"] button,
+[data-theme="terminal-dark"] [role="button"],
+[data-theme="terminal-dark"] .deck-dot {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 4L14 12L6 20' stroke='%23f1e05a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='18' cy='12' r='2' fill='%23ffffff'/%3E%3C/svg%3E") 6 12, pointer;
+}
+
+/* Réticule Laser HUD Terminal pour CLI Dark */
+[data-theme="cli-dark"] .laser-pointer::before,
+[data-theme="terminal-dark"] .laser-pointer::before {
+  inset: 2px;
+  border-radius: 4px;
+  background: radial-gradient(circle, var(--laser-glow) 0%, transparent 68%);
+  border: 1px dashed var(--laser-ring);
+  box-shadow: 0 0 10px var(--laser-glow);
+}
+
+[data-theme="cli-dark"] .laser-pointer::after,
+[data-theme="terminal-dark"] .laser-pointer::after {
+  inset: 12px;
+  border-radius: 2px;
+  border: 1.5px solid var(--laser-hot);
+  background:
+    linear-gradient(var(--laser-hot), var(--laser-hot)) center / 2px 100% no-repeat,
+    linear-gradient(var(--laser-hot), var(--laser-hot)) center / 100% 2px no-repeat,
+    radial-gradient(circle, var(--laser-core) 0%, var(--laser-core) 1.5px, transparent 2px) center / 4px 4px no-repeat;
+  filter: drop-shadow(0 0 3px var(--laser-hot));
+}
+
+[data-theme="cli-dark"] .laser-pointer.is-active::before,
+[data-theme="terminal-dark"] .laser-pointer.is-active::before {
+  transform: scale(1.25);
+  border-style: solid;
+  border-color: var(--laser-hot);
+  box-shadow: 0 0 18px var(--laser-glow);
+}
+
+[data-theme="cli-dark"] .laser-pointer.is-active::after,
+[data-theme="terminal-dark"] .laser-pointer.is-active::after {
+  transform: scale(0.85);
+  background-color: var(--laser-glow-soft);
 }
 
 
@@ -4549,6 +4655,137 @@
     }
   }
 
+/* ============ TERMINAL BLOCK COMPONENT (Démos & Lignes de commande) ============ */
+.terminal-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: min(100%, 1060px);
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-bright);
+  background: var(--code-bg, #0d1117);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+.terminal-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-size: calc(11px + var(--font-bump));
+  color: var(--text-dim);
+  user-select: none;
+}
+
+.terminal-block__dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-block__dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #484f58;
+}
+
+.terminal-block__dots span:nth-child(1) { background: #ff5f56; }
+.terminal-block__dots span:nth-child(2) { background: #ffbd2e; }
+.terminal-block__dots span:nth-child(3) { background: #27c93f; }
+
+.terminal-block__title {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.terminal-block__badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.terminal-block__content {
+  padding: clamp(14px, 2vh, 22px) clamp(16px, 2vw, 24px);
+  overflow-x: auto;
+  font-size: calc(clamp(13px, 1.35vw, 17px) + var(--font-bump));
+  line-height: 1.55;
+  color: var(--code-text, #e6edf3);
+}
+
+.terminal-step {
+  display: none;
+  margin-bottom: 16px;
+}
+
+.terminal-step:last-child {
+  margin-bottom: 0;
+}
+
+.terminal-step.is-visible {
+  display: block;
+}
+
+.terminal-cmd {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.terminal-cmd::before {
+  content: '❯';
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.terminal-cmd.is-typing::after {
+  content: '▋';
+  display: inline-block;
+  color: var(--accent);
+  animation: cli-cursor-blink 0.8s steps(2, start) infinite;
+  margin-left: 2px;
+}
+
+.terminal-out {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text-dim);
+  padding-left: 18px;
+  border-left: 2px solid var(--border);
+  margin-top: 4px;
+}
+
+.terminal-out [data-highlight="true"],
+.terminal-out .line-highlight {
+  display: block;
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin: 1px 0;
+}
+
 
   /* --- decorations.css --- */
 /* ==========================================================================
@@ -5875,6 +6112,377 @@
   }
 }
 
+
+  /* --- petscii.css --- */
+/* ==========================================================================
+   PETSCII & PC ANSI ART STYLESHEET
+   Esthétique rétro-terminal, art bloc MS-DOS / TheDraw / ACiD View et PETSCII CBM.
+   ========================================================================== */
+
+/* Variables dédiées au rendu PETSCII et ANSI */
+:root {
+  --petscii-font: 'JetBrains Mono', 'Cascadia Code', Consolas, 'Courier New', monospace;
+  --petscii-glow-green: rgba(63, 185, 80, 0.45);
+  --petscii-glow-cyan: rgba(88, 166, 255, 0.45);
+  --petscii-glow-yellow: rgba(241, 224, 90, 0.45);
+  --petscii-glow-red: rgba(248, 81, 73, 0.45);
+}
+
+/* ==========================================================================
+   SUBTLE CRT SCANLINES & PHOSPHOR AMBIENCE (cli-dark uniquement)
+   ========================================================================== */
+[data-theme="cli-dark"] .deck::before,
+[data-theme="terminal-dark"] .deck::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 95;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.28) 50%
+  );
+  background-size: 100% 3px;
+  opacity: 0.16;
+}
+
+/* Léger halo phosphor au survol et sur les éléments d'accentuation */
+[data-theme="cli-dark"] .petscii-glow {
+  text-shadow: 0 0 8px var(--petscii-glow-cyan);
+}
+[data-theme="cli-dark"] .petscii-glow--green {
+  text-shadow: 0 0 8px var(--petscii-glow-green);
+}
+[data-theme="cli-dark"] .petscii-glow--yellow {
+  text-shadow: 0 0 8px var(--petscii-glow-yellow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="cli-dark"] .deck::before,
+  [data-theme="terminal-dark"] .deck::before {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   CADRE PÉRIPHÉRIQUE PETSCII SUR LES SLIDES (Angles & repères rétro)
+   ========================================================================== */
+.petscii-slide-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  font-family: var(--petscii-font);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-subtitle);
+  user-select: none;
+}
+
+.petscii-slide-frame__tl {
+  position: absolute;
+  top: clamp(8px, 1.6vh, 18px);
+  left: clamp(14px, 2.2vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.petscii-slide-frame__tr {
+  position: absolute;
+  top: clamp(8px, 1.6vh, 18px);
+  right: clamp(68px, 6vw, 96px); /* Laisse la place au deck counter */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.petscii-slide-frame__bl {
+  position: absolute;
+  bottom: clamp(10px, 1.8vh, 20px);
+  left: clamp(14px, 2.2vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.petscii-slide-frame__br {
+  position: absolute;
+  bottom: clamp(10px, 1.8vh, 20px);
+  right: clamp(14px, 2.2vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.55;
+}
+
+.petscii-glyph-accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+.petscii-glyph-cyan {
+  color: var(--accent3);
+  font-weight: 700;
+}
+.petscii-glyph-green {
+  color: var(--green);
+  font-weight: 700;
+}
+.petscii-glyph-orange {
+  color: var(--accent2);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   BLOCK ASCII & THE-DRAW STYLE LOGO BANNERS
+   Rendu fidèle des blocs █ ▀ ▄ ▌ ▐ ░ ▒ ▓
+   ========================================================================== */
+.ansi-art {
+  font-family: var(--petscii-font);
+  font-size: clamp(8px, 1.1vw, 13px);
+  line-height: 1.05;
+  letter-spacing: 0;
+  white-space: pre;
+  user-select: none;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.ansi-art--title {
+  font-size: clamp(9px, 1.35vw, 15px);
+  line-height: 1.08;
+  color: var(--text);
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
+}
+
+.ansi-art .c-scoop {
+  color: var(--accent);
+}
+.ansi-art .c-and {
+  color: var(--accent2);
+}
+.ansi-art .c-mise {
+  color: var(--accent3);
+}
+.ansi-art .c-green {
+  color: var(--green);
+}
+.ansi-art .c-dim {
+  color: var(--text-subtitle);
+  opacity: 0.6;
+}
+.ansi-art .c-shade {
+  color: var(--border-bright);
+}
+
+/* ==========================================================================
+   AUTHENTIC DOS / BBS TERMINAL WINDOW FRAME
+   Remplace les fenêtres simples par un véritable cadre ANSI double ligne
+   ========================================================================== */
+.terminal-window {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid var(--border-bright);
+  background: var(--code-bg, #030712);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.terminal-window__titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--petscii-font);
+  font-size: clamp(10px, 1.05vw, 12.5px);
+  font-weight: 600;
+  color: var(--text);
+  user-select: none;
+}
+
+.terminal-window__titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.terminal-window__dots {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.terminal-window__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.terminal-window__dot--red { background: var(--ansi-red, #ff7b72); }
+.terminal-window__dot--yellow { background: var(--ansi-yellow, #d29922); }
+.terminal-window__dot--green { background: var(--ansi-green, #3fb950); }
+
+.terminal-window__badge {
+  font-size: 11px;
+  font-family: var(--petscii-font);
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--surface) 60%, transparent 40%);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.terminal-window__statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 14px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  font-family: var(--petscii-font);
+  font-size: clamp(9px, 0.95vw, 11px);
+  color: var(--text-subtitle);
+  user-select: none;
+}
+
+.terminal-window__statusbar-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================================
+   PETSCII BADGES & DECORATIVE CARD ORNAMENTS
+   ========================================================================== */
+.petscii-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  font-family: var(--petscii-font);
+  font-size: clamp(10px, 1vw, 12px);
+  font-weight: 700;
+}
+
+.petscii-hatch-strip {
+  font-family: var(--petscii-font);
+  font-size: 11px;
+  letter-spacing: 1px;
+  user-select: none;
+  opacity: 0.65;
+}
+
+.petscii-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--petscii-font);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   BLOCK DIAGRAM COMPONENT (Pour le PATH et l'Architecture)
+   ========================================================================== */
+.ansi-diagram-block {
+  font-family: var(--petscii-font);
+  font-size: clamp(11px, 1.25vw, 15px);
+  line-height: 1.45;
+  background: var(--surface2);
+  border: 1.5px solid var(--border-bright);
+  border-radius: 8px;
+  padding: 14px 18px;
+  color: var(--text);
+  overflow-x: auto;
+  user-select: none;
+}
+
+.ansi-diagram-block pre {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* ==========================================================================
+   WATERMARK RETRO MATRIX (En fond de slide)
+   ========================================================================== */
+.petscii-bg-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--petscii-font);
+  font-size: clamp(18px, 3.5vw, 42px);
+  line-height: 1.1;
+  letter-spacing: 4px;
+  color: var(--text-subtitle);
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  white-space: pre;
+  text-align: center;
+}
+
+/* ==========================================================================
+   RETRO PROMPT BLINKING CURSOR
+   ========================================================================== */
+.petscii-cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-family: var(--petscii-font);
+  font-weight: 700;
+  animation: petscii-blink 1s steps(2, start) infinite;
+}
+
+@keyframes petscii-blink {
+  to { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petscii-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE RULES POUR L'ART PETSCII
+   ========================================================================== */
+@media (max-width: 860px), (max-height: 580px) {
+  .petscii-slide-frame {
+    display: none !important;
+  }
+  .petscii-bg-watermark {
+    display: none !important;
+  }
+  .ansi-art--title {
+    font-size: clamp(6.5px, 1.1vw, 9.5px);
+    line-height: 1.05;
+  }
+  .ansi-diagram-block {
+    padding: 8px 10px;
+    font-size: clamp(9.5px, 1.1vw, 12px);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -5894,64 +6502,183 @@
 <div class="deck">
   <!-- Slide 0: Titre -->
 <section class="slide slide--title" data-nav="Titre">
-    <div class="reveal" style="margin-bottom:clamp(16px,3vh,32px);">
-      <p class="slide__subtitle" style="letter-spacing:3px; color:var(--accent);">Quickie &middot; 15 min</p>
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>TTY:00/INIT</span> <span class="petscii-glyph-accent">]</span>
     </div>
-    <h1 class="slide__display reveal">Installer ses<br>outils de dev</h1>
-    <h1 class="slide__display reveal" style="color:var(--text); font-size:clamp(32px,6.5vw,80px); margin-top:8px;">avec Scoop &amp; Mise</h1>
-    <div class="reveal" style="margin-top:clamp(24px,4vh,48px); display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;">
-      <span class="slide__accent-line" style="width:80px; height:4px;"></span>
-      <p class="slide__subtitle" style="color:var(--text-dim); margin-top:8px;">Alexis Scolan</p>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>64K RAM &middot; PETSCII</span> <span class="petscii-glyph-cyan">]═╗</span>
     </div>
-  </section>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>HKCU: USER-SPACE</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY. <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
+  <!-- Filigrane matriciel PETSCII en arrière-plan -->
+  <div class="petscii-bg-watermark" aria-hidden="true">░▒▓█ SCOOP &amp; MISE // ZERO UAC █▓▒░
+╱╲╱╲╱╲ 64K RAM SYSTEM ╱╲╱╲╱╲</div>
+
+  <div class="reveal" style="margin-bottom:clamp(12px, 2vh, 20px);">
+    <div class="ansi-art ansi-art--title">
+<span class="c-scoop"> ███████╗ ██████╗  ██████╗  ██████╗ ██████╗ </span>      <span class="c-and">     </span> <span class="c-mise">███╗   ███╗██╗███████╗███████╗</span>
+<span class="c-scoop"> ██╔════╝██╔════╝ ██╔═══██╗██╔═══██╗██╔══██╗</span>      <span class="c-and">     </span> <span class="c-mise">████╗ ████║██║██╔════╝██╔════╝</span>
+<span class="c-scoop"> ███████╗██║      ██║   ██║██║   ██║██████╔╝</span>  <span class="c-and">██╗ </span> <span class="c-mise">██╔████╔██║██║███████╗█████╗  </span>
+<span class="c-scoop"> ╚════██║██║      ██║   ██║██║   ██║██╔═══╝ </span>  <span class="c-and">╚═╝ </span> <span class="c-mise">██║╚██╔╝██║██║╚════██║██╔══╝  </span>
+<span class="c-scoop"> ███████║╚██████╗ ╚██████╔╝╚██████╔╝██║     </span>      <span class="c-and">     </span> <span class="c-mise">██║ ╚═╝ ██║██║███████║███████╗</span>
+<span class="c-scoop"> ╚══════╝ ╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     </span>      <span class="c-and">     </span> <span class="c-mise">╚═╝     ╚═╝╚═╝╚══════╝╚══════╝</span></div>
+  </div>
+
+  <div class="reveal" style="margin-bottom:clamp(8px,1.5vh,16px);">
+    <span class="petscii-tag"><span class="petscii-glyph-accent">■</span> QUICKIE 15 MIN</span>
+    <span class="petscii-tag" style="margin-left:8px;"><span class="petscii-glyph-cyan">■</span> WINDOWS DEV ENVIRONMENT</span>
+    <span class="petscii-tag" style="margin-left:8px;"><span class="petscii-glyph-green">■</span> ZERO UAC</span>
+  </div>
+
+  <h1 class="slide__display reveal" style="font-size:clamp(26px,5vw,56px); margin:0; line-height:1.15; font-family:var(--petscii-font);">
+    Installer ses outils de dev
+  </h1>
+  <p class="slide__subtitle reveal" style="color:var(--accent); margin-top:8px; font-size:clamp(16px,2.2vw,26px); letter-spacing:0.04em;">
+    sans droits admin &middot; runtimes par projet &middot; onboarding en PR
+  </p>
+
+  <div class="reveal" style="margin-top:clamp(18px,3vh,32px); display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center;">
+    <span class="petscii-hatch-strip" style="color:var(--accent2); font-size:14px;">░▒▓████████████████████████████████████████████████▓▒░</span>
+    <p class="slide__subtitle" style="color:var(--text-dim); margin-top:4px; font-size:clamp(13px,1.4vw,16px);">
+      <strong>Alexis Scolan</strong> &middot; Architecte technique chez onepoint
+    </p>
+    <div style="font-family:var(--petscii-font); font-size:12px; color:var(--green); margin-top:4px;">
+      <code>C:\DEV&gt; READY. <span class="petscii-cursor">█</span></code>
+    </div>
+  </div>
+</section>
 
   <!-- Slide 1: Speaker -->
 <section class="slide slide--content slide--speaker" data-nav="Speaker" data-part="0">
-    <div class="slide__inner">
-      <div class="speaker-intro">
-        <p class="slide__label reveal">Speaker</p>
-        <h2 class="slide__heading reveal" style="font-size:clamp(40px,6vw,72px); line-height:0.95; margin:0;">Alexis Scolan</h2>
-        <p class="speaker-intro__role reveal">Architecte technique chez <strong style="color:var(--accent);">onepoint</strong></p>
-        <br>
-        <p class="speaker-intro__lead reveal">TODO : accroche speaker orient&eacute;e outillage poste de dev (DevRecipe).</p>
-        <br>
-        <div class="speaker-pill-list reveal">
-          <span class="speaker-pill">Scoop</span>
-          <span class="speaker-pill">Mise</span>
-          <span class="speaker-pill">DevRecipe</span>
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>TTY:01/WHOAMI</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>OPERATOR PROFILE</span> <span class="petscii-glyph-cyan">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>ONEPOINT TECH</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
+  <div class="slide__inner">
+    <div class="speaker-intro" style="position:relative;">
+      <div class="petscii-card-header" style="color:var(--accent);">
+        <span>┌─[ SYS.USER: alexis.scolan ]</span>
+        <span class="petscii-hatch-strip">░▒▓ ARCHITECTE TECHNIQUE ▓▒░</span>
+        <span>[ TTY0 ]─┐</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr auto; gap:clamp(16px,2.5vw,36px); align-items:center;">
+        <div>
+          <p class="slide__label reveal">Speaker</p>
+          <h2 class="slide__heading reveal" style="font-size:clamp(36px,5vw,64px); line-height:0.95; margin:0;">Alexis Scolan</h2>
+          <p class="speaker-intro__role reveal" style="margin-top:8px;">Architecte technique chez <strong style="color:var(--accent);">onepoint</strong></p>
+          <p class="speaker-intro__lead reveal" style="margin-top:14px; font-size:clamp(15px,1.6vw,20px); color:var(--text-dim); line-height:1.45;">
+            Passionné d'outillage de dev, d'automatisation locale et d'environnements reproductibles sans friction. Auteur de <strong>DevRecipe</strong> pour délivrer un onboarding serein en PR.
+          </p>
+          <div class="speaker-pill-list reveal" style="margin-top:18px;">
+            <span class="petscii-tag"><span class="petscii-glyph-accent">■</span> SCOOP (User-Space)</span>
+            <span class="petscii-tag"><span class="petscii-glyph-cyan">■</span> MISE (Runtimes)</span>
+            <span class="petscii-tag"><span class="petscii-glyph-green">■</span> DEVRECIPE (Manifests)</span>
+          </div>
+        </div>
+
+        <div class="reveal" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <pre class="ansi-diagram-block" style="padding:10px 14px; font-size:clamp(10px,1.1vw,13px); line-height:1.2; text-align:left; background:var(--code-bg); border-color:var(--accent);"><code><span style="color:var(--accent3);">  ┌───────────────────────────┐</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ </span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> <span style="color:var(--green); font-weight:700;">PS C:\&gt; whoami</span>        <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> alexis @ onepoint   <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> role: tech-arch     <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> env: scoop + mise   <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> auth: user-space    <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> █</span> <span style="color:var(--green);">[■] [▲] [●] READY.</span>  <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);"> ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ </span> <span style="color:var(--accent3);">│</span>
+<span style="color:var(--accent3);">  └────────────┬─┬────────────┘</span>
+<span style="color:var(--text-subtitle);">            ▄▄▄█ █▄▄▄          </span></code></pre>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Slide 2: Les 4 erreurs du quotidien -->
 <section class="slide slide--content slide--concept-cards" data-part="0" data-nav="Les 4 erreurs du quotidien">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>ERR::DAILY_BLOCKERS</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-orange">[</span> <span>DIAGNOSTIC 4/4</span> <span class="petscii-glyph-orange">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>WINDOWS PAIN POINTS</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">00</span>
-    <span class="slide__label">Accroche</span>
-    <h2 class="slide__heading">Les 4 blocages que tout dev Windows a vécus</h2>
+    <span class="slide__label">Accroche &middot; Symptômes</span>
+    <h2 class="slide__heading">Les 4 blocages que tout dev Windows a v&eacute;cus</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--orange">
+        <div class="petscii-card-header" style="color:var(--red);">
+          <span>[ ░▒▓ ERR.01 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">UAC_BLOCKED // DROIT ADMIN</span>
+          <span>[ ✕ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">ERREUR #1 &middot; LE MUR DU VENDREDI</span>
-        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« Voulez-vous autoriser cette application ? »</h3>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">&laquo; Voulez-vous autoriser cette application ? &raquo;</h3>
         <p class="concept-card__desc">Un simple outil CLI exige les droits administrateur (UAC). Billet DSI ouvert, ticket en attente 3 jours.</p>
       </div>
       <div class="concept-card concept-card--orange">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">ERREUR #2 &middot; LE FANTÔME DU PATH</span>
-        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« 'node' n'est pas reconnu en tant que commande »</h3>
-        <p class="concept-card__desc">L'outil a été installé via un installeur MSI... mais le PATH n'a pas été rechargé, ou pointe sur un binaire inexistant.</p>
+        <div class="petscii-card-header" style="color:var(--red);">
+          <span>[ ░▒▓ ERR.02 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">PATH_NOT_FOUND // COMMANDE INCONNUE</span>
+          <span>[ ⚠ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">ERREUR #2 &middot; LE FANT&Ocirc;ME DU PATH</span>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">&laquo; 'node' n'est pas reconnu en tant que commande &raquo;</h3>
+        <p class="concept-card__desc">L'outil a &eacute;t&eacute; install&eacute; via un installeur MSI... mais le PATH n'a pas &eacute;t&eacute; recharg&eacute;, ou pointe sur un binaire inexistant.</p>
       </div>
       <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ ERR.03 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">VERSION_COLLISION // RUNTIMES</span>
+          <span>[ ⚡ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">ERREUR #3 &middot; LE CONFLIT DE RUNTIMES</span>
-        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« Required node version "20", current is "18.2" »</h3>
-        <p class="concept-card__desc">Projet A en Node 18, Projet B en Node 22. Le dev passe son temps à jongler avec nvm ou à casser son poste.</p>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">&laquo; Required node version "20", current is "18.2" &raquo;</h3>
+        <p class="concept-card__desc">Projet A en Node 18, Projet B en Node 22. Le dev passe son temps &agrave; jongler avec nvm ou &agrave; casser son poste.</p>
       </div>
       <div class="concept-card concept-card--purple">
+        <div class="petscii-card-header" style="color:var(--accent4);">
+          <span>[ ░▒▓ ERR.04 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">OS_MISMATCH // README MAC/LINUX</span>
+          <span>[ 🚫 ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">ERREUR #4 &middot; LA CLAQUE MULTIPLATEFORME</span>
-        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">« This script is only supported on Linux/macOS »</h3>
-        <p class="concept-card__desc">Un README rédigé sur Mac par le lead dev. Sur Windows, les outils manquent, les scripts bash échouent.</p>
+        <h3 class="concept-card__title" style="font-family:var(--font-mono); font-size:clamp(15px,1.5vw,20px); color:var(--text);">&laquo; This script is only supported on Linux/macOS &raquo;</h3>
+        <p class="concept-card__desc">Un README r&eacute;dig&eacute; sur Mac par le lead dev. Sur Windows, les outils manquent, les scripts bash &eacute;chouent.</p>
       </div>
     </div>
   </div>
@@ -5959,31 +6686,67 @@
 
   <!-- Slide 3: La promesse -->
 <section class="slide slide--content slide--concept-cards" data-part="0" data-nav="La promesse">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>SOL::PROMISE_MATRIX</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-green">[</span> <span>SOLUTIONS 4/4</span> <span class="petscii-glyph-green">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>ZERO-FRICTION DEV</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">00</span>
-    <span class="slide__label">Accroche</span>
-    <h2 class="slide__heading">La promesse : 4 erreurs, 4 réponses concrètes</h2>
+    <span class="slide__label">Accroche &middot; Réponses</span>
+    <h2 class="slide__heading">La promesse : 4 erreurs, 4 r&eacute;ponses concr&egrave;tes</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--blue">
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ ░▒▓ SOL.01 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">USER_SPACE // SCOOP</span>
+          <span>[ ✔ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PAS DE DROIT ADMIN &rarr; SCOOP</span>
         <h3 class="concept-card__title">User Space pur</h3>
         <p class="concept-card__desc">Tous les outils de dev s'installent dans votre dossier utilisateur. Aucune invite UAC, aucune modification des dossiers système.</p>
       </div>
       <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ SOL.02 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">CONTEXTUAL // MISE</span>
+          <span>[ ✔ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">VERSIONS PAR PROJET &rarr; MISE</span>
         <h3 class="concept-card__title">Activation contextuelle</h3>
         <p class="concept-card__desc">Un simple <code>mise.toml</code> versionné dans le dépôt Git. Quand vous entrez dans le dossier, les bons runtimes s'activent immédiatement.</p>
       </div>
       <div class="concept-card concept-card--orange">
+        <div class="petscii-card-header" style="color:var(--accent2);">
+          <span>[ ░▒▓ SOL.03 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">PRECEDENCE // SHIMS</span>
+          <span>[ ✔ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">COMMAND NOT FOUND &rarr; SHIMS &amp; PRECEDENCE</span>
-        <h3 class="concept-card__title">Maîtrise du PATH</h3>
+        <h3 class="concept-card__title">Ma&icirc;trise du PATH</h3>
         <p class="concept-card__desc">Comprendre comment Windows résout les exécutables (HKLM avant HKCU) pour éviter que les vieux outils système ne masquent vos versions.</p>
       </div>
       <div class="concept-card concept-card--green">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">L'ONBOARDING D'ÉQUIPE &rarr; DEVRECIPE</span>
-        <h3 class="concept-card__title">Manifeste déclaratif en PR</h3>
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ SOL.04 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">DECLARATIVE // DEVRECIPE</span>
+          <span>[ ✔ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">L'ONBOARDING D'&Eacute;QUIPE &rarr; DEVRECIPE</span>
+        <h3 class="concept-card__title">Manifeste d&eacute;claratif en PR</h3>
         <p class="concept-card__desc">Orchestrer Scoop et Mise dans un manifeste TOML partagé, testé en preflight, avec détection de conflits avant installation.</p>
       </div>
     </div>
@@ -5992,6 +6755,22 @@
 
   <!-- Slide 4: Scoop : Le User Space -->
 <section class="slide slide--content slide--concept-cards" data-part="1" data-nav="Scoop : Le User Space">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>SCOOP::ARCHITECTURE</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-accent">[</span> <span>USER-SPACE PUR</span> <span class="petscii-glyph-accent">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-accent">╚═[</span> <span>~/scoop/shims</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">01</span>
     <span class="slide__label">Scoop &middot; User Space</span>
@@ -6000,221 +6779,492 @@
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--blue">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #1</span>
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ ░▒▓ PRINCIPE #1 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">ZERO_UAC</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">USER PROFILE</span>
         <h3 class="concept-card__title">Zéro UAC</h3>
         <p class="concept-card__desc">Scoop décompresse les binaires dans <code>~/scoop/apps</code>. Aucun installeur MSI ne pollue le registre machine ni n'exige de droit élévé.</p>
       </div>
       <div class="concept-card concept-card--blue">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #2</span>
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ ░▒▓ PRINCIPE #2 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">SHIMS_ROUTING</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">LE DOSSIER UNIQUE</span>
         <h3 class="concept-card__title">Les Shims</h3>
         <p class="concept-card__desc">Un seul dossier dans votre PATH : <code>~/scoop/shims</code>. Chaque outil y dépose un petit proxy (.exe / .cmd) pointant sur la version active.</p>
       </div>
       <div class="concept-card concept-card--blue">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">PRINCIPE #3</span>
+        <div class="petscii-card-header" style="color:var(--accent);">
+          <span>[ ░▒▓ PRINCIPE #3 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">GIT_BUCKETS</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent); font-weight:700;">CATALOGUES GIT</span>
         <h3 class="concept-card__title">Buckets Git</h3>
         <p class="concept-card__desc">Les catalogues d'applications sont de simples dépôts Git de manifests JSON (<code>main</code>, <code>extras</code>, <code>versions</code> ou votre bucket interne d'entreprise).</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [ARCHITECTURE WINDOWS : MACHINE (HKLM) VS USER-SPACE (HKCU)] ═════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--red); font-weight:700;">░░ MACHINE SPACE (MSI / Admin) ░░</span>            <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">██ USER SPACE SCOOP (Zéro Admin) ██</span>           <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  - Requiert élévation UAC / Billet DSI        <span style="color:var(--text-subtitle);">║</span>  - Décompressé dans ~/scoop/apps/              <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  - Écrit dans C:\Program Files &amp; Registre     <span style="color:var(--text-subtitle);">║</span>  - Un seul dossier de shims dans le PATH       <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  - Risque de verrouillage / conflit global    <span style="color:var(--text-subtitle);">║</span>  - Désinstallation propre par simple 'rm'      <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚═══════════════════════════════════════════════╩════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
 
   <!-- Slide 5: Démo Scoop -->
 <section class="slide slide--content" data-part="1" data-nav="Démo Scoop">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>LIVE::SCOOP_DEMO</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-accent">[</span> <span>15 SECONDES</span> <span class="petscii-glyph-accent">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>USER-SPACE PUR</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: OK <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">01</span>
-    <span class="slide__label">Démo Scoop</span>
+    <span class="slide__label">Démo Scoop &middot; Live CLI</span>
     <h2 class="slide__heading">En direct : installer un outil CLI en 15 secondes</h2>
   </div>
-  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
-    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
-        <span>PowerShell 7 &middot; Profil Utilisateur Standard</span>
-        <span style="color:var(--accent);">User Space &middot; Zéro UAC</span>
+  <div class="slide__inner">
+    <div class="terminal-block reveal" data-shell="pwsh">
+      <div class="terminal-block__header">
+        <div class="terminal-block__dots">
+          <span class="terminal-window__dot terminal-window__dot--red"></span>
+          <span class="terminal-window__dot terminal-window__dot--yellow"></span>
+          <span class="terminal-window__dot terminal-window__dot--green"></span>
+        </div>
+        <div class="terminal-block__title">PowerShell 7.4 &middot; Profil Utilisateur Standard (C:\Users\alexis)</div>
+        <div class="terminal-block__badge">User Space &middot; Zéro UAC</div>
       </div>
-      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># 1. Vérification : aucun droit administrateur requis</span>
-<span style="color:var(--accent); font-weight:700;">&gt;</span> scoop install lazygit
-<span style="color:var(--ansi-bright-black);">Installing 'lazygit' (0.44.1) [64bit] from 'extras' bucket</span>
+      <div class="terminal-block__content">
+        <div class="terminal-step" data-step="1">
+          <div class="terminal-cmd" data-type-effect="true">scoop install lazygit</div>
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">Installing 'lazygit' (0.44.1) [64bit] from 'extras' bucket</span>
 <span style="color:var(--ansi-green);">Checking hash of lazygit_0.44.1_Windows_x86_64.zip ... ok.</span>
 <span style="color:var(--ansi-bright-black);">Extracting lazygit_0.44.1_Windows_x86_64.zip ... done.</span>
 <span style="color:var(--ansi-blue);">Linking ~\scoop\apps\lazygit\current =&gt; ~\scoop\apps\lazygit\0.44.1</span>
 <span style="color:var(--ansi-yellow);">Creating shim for 'lazygit' in ~\scoop\shims\lazygit.exe</span>
-<span style="color:var(--green); font-weight:700;">'lazygit' (0.44.1) was installed successfully!</span>
-
-<span style="color:var(--accent); font-weight:700;">&gt;</span> where.exe lazygit
-<span style="color:var(--ansi-bright-white);">C:\Users\alexis\scoop\shims\lazygit.exe</span></code></pre>
+<span style="color:var(--green); font-weight:700;">'lazygit' (0.44.1) was installed successfully!</span></div>
+        </div>
+        <div class="terminal-step" data-step="2">
+          <div class="terminal-cmd">where.exe lazygit</div>
+          <div class="terminal-out" data-highlight="true">C:\Users\alexis\scoop\shims\lazygit.exe</div>
+        </div>
+      </div>
+      <div class="terminal-window__statusbar">
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> READY</span>
+        <span class="terminal-window__statusbar-tag">SHIM: ~/scoop/shims/lazygit.exe</span>
+        <span class="terminal-window__statusbar-tag">RETURN: 0 <span class="petscii-cursor">█</span></span>
+      </div>
     </div>
   </div>
 </section>
 
   <!-- Slide 6: Mise : Runtimes par projet -->
 <section class="slide slide--content slide--concept-cards" data-part="2" data-nav="Mise : Runtimes par projet">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-cyan">╔═[</span> <span>MISE::RUNTIME_SWITCHER</span> <span class="petscii-glyph-cyan">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>5MS PROMPT // RUST</span> <span class="petscii-glyph-cyan">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-cyan">╚═[</span> <span>mise.toml VERSIONNÉ</span> <span class="petscii-glyph-cyan">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">02</span>
-    <span class="slide__label">Mise-en-place</span>
+    <span class="slide__label">Mise-en-place &middot; Polyglotte</span>
     <h2 class="slide__heading">Mise : la version du runtime suit le projet, pas le poste</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ RUST_ENGINE ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">5MS PROMPT</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">POLYGLOTTE</span>
         <h3 class="concept-card__title">Un seul outil</h3>
-        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Écrit en Rust, ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
+        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... &Eacute;crit en Rust, ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
       </div>
       <div class="concept-card concept-card--cyan">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">DÉCLARATIF</span>
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ REPO_CONFIG ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">GIT TRACKED</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">D&Eacute;CLARATIF</span>
         <h3 class="concept-card__title">mise.toml</h3>
-        <p class="concept-card__desc">Le fichier de configuration vit dans le dépôt Git. Quand vous changez de branche ou de dossier, les versions basculent automatiquement.</p>
+        <p class="concept-card__desc">Le fichier de configuration vit dans le d&eacute;p&ocirc;t Git. Quand vous changez de branche ou de dossier, les versions basculent automatiquement.</p>
       </div>
       <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ TEAM_TASKS ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">STANDARDIZED</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">ENV &amp; TASKS</span>
-        <h3 class="concept-card__title">Au-delà des runtimes</h3>
-        <p class="concept-card__desc">Charge des variables d'environnement (<code>[env]</code>) et des tâches d'équipe (<code>[tasks]</code>) pour standardiser les scripts sans dépendre de Makefile ou bash.</p>
+        <h3 class="concept-card__title">Au-del&agrave; des runtimes</h3>
+        <p class="concept-card__desc">Charge des variables d'environnement (<code>[env]</code>) et des t&acirc;ches d'&eacute;quipe (<code>[tasks]</code>) pour standardiser les scripts sans d&eacute;pendre de Makefile ou bash.</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [EXEMPLE MISE.TOML DANS LE DÉPÔT GIT] ═════════════════════════════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent3); font-weight:700;">[tools]</span>                                  <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[tasks.dev]</span>                                    <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  node   = <span style="color:var(--green);">"22.14.0"</span>                        <span style="color:var(--text-subtitle);">║</span>  description = <span style="color:var(--green);">"Démarrer l'application locale"</span>   <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  python = <span style="color:var(--green);">"3.12.2"</span>                         <span style="color:var(--text-subtitle);">║</span>  run         = <span style="color:var(--green);">"npm run dev"</span>                     <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  ripgrep= <span style="color:var(--green);">"14.1.0"</span>                         <span style="color:var(--text-subtitle);">║</span>  env         = { NODE_ENV = <span style="color:var(--green);">"development"</span> }     <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚═══════════════════════════════════════════╩════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
 
   <!-- Slide 7: Démo Mise -->
 <section class="slide slide--content" data-part="2" data-nav="Démo Mise">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-cyan">╔═[</span> <span>LIVE::MISE_DEMO</span> <span class="petscii-glyph-cyan">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>AUTO CONTEXT SWITCH</span> <span class="petscii-glyph-cyan">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-cyan">╚═[</span> <span>PER-PROJECT RUNTIMES</span> <span class="petscii-glyph-cyan">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: ACTIVE <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">02</span>
-    <span class="slide__label">Démo Mise</span>
-    <h2 class="slide__heading">En direct : bascule de version automatique au « cd »</h2>
+    <span class="slide__label">Démo Mise &middot; Live Switch</span>
+    <h2 class="slide__heading">En direct : bascule de version automatique au &laquo; cd &raquo;</h2>
   </div>
-  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
-    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
-        <span>PowerShell 7 + mise activate --shims</span>
-        <span style="color:var(--accent3);">Zero-friction runtime switch</span>
+  <div class="slide__inner">
+    <div class="terminal-block reveal" data-shell="pwsh">
+      <div class="terminal-block__header">
+        <div class="terminal-block__dots">
+          <span class="terminal-window__dot terminal-window__dot--red"></span>
+          <span class="terminal-window__dot terminal-window__dot--yellow"></span>
+          <span class="terminal-window__dot terminal-window__dot--green"></span>
+        </div>
+        <div class="terminal-block__title">PowerShell 7.4 + mise activate --shims</div>
+        <div class="terminal-block__badge" style="color:var(--accent3); background:var(--accent3-dim);">Zero-Friction Switch</div>
       </div>
-      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--accent3); font-weight:700;">&gt;</span> cd C:\workspace\projet-legacy
-<span style="color:var(--accent3); font-weight:700;">&gt;</span> node --version
-<span style="color:var(--ansi-yellow); font-weight:700;">v18.20.4</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "18")</span>
-
-<span style="color:var(--accent3); font-weight:700;">&gt;</span> cd C:\workspace\projet-moderne
-<span style="color:var(--accent3); font-weight:700;">&gt;</span> node --version
-<span style="color:var(--green); font-weight:700;">v22.14.0</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "22")</span>
-
-<span style="color:var(--text-dim);"># Lance la tâche d'équipe déclarée dans [tasks.dev]</span>
-<span style="color:var(--accent3); font-weight:700;">&gt;</span> mise run dev
-<span style="color:var(--ansi-bright-black);">[dev] API_URL=http://localhost:8080 npm run start</span></code></pre>
+      <div class="terminal-block__content">
+        <div class="terminal-step" data-step="1">
+          <div class="terminal-cmd" data-type-effect="true">cd C:\workspace\projet-legacy &amp;&amp; node --version</div>
+          <div class="terminal-out"><span style="color:var(--ansi-yellow); font-weight:700;">v18.20.4</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "18")</span></div>
+        </div>
+        <div class="terminal-step" data-step="2">
+          <div class="terminal-cmd" data-type-effect="true">cd C:\workspace\projet-moderne &amp;&amp; node --version</div>
+          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">v22.14.0</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "22")</span></div>
+        </div>
+        <div class="terminal-step" data-step="3">
+          <div class="terminal-cmd">mise run dev</div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[dev] API_URL=http://localhost:8080 npm run start</span></div>
+        </div>
+      </div>
+      <div class="terminal-window__statusbar">
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> NODE: 18 &rarr; 22</span>
+        <span class="terminal-window__statusbar-tag">TASK: [tasks.dev]</span>
+        <span class="terminal-window__statusbar-tag">LATENCY: 5ms <span class="petscii-cursor">█</span></span>
+      </div>
     </div>
   </div>
 </section>
 
   <!-- Slide 8: Le piège du PATH Windows -->
 <section class="slide slide--content slide--concept-cards" data-part="3" data-nav="Le piège du PATH Windows">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-orange">╔═[</span> <span>WIN::PATH_INTERNALS</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-orange">[</span> <span>HKLM &gt; HKCU</span> <span class="petscii-glyph-orange">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>SHADOWING TRAP</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>WARN <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">03</span>
-    <span class="slide__label">Windows Internals</span>
-    <h2 class="slide__heading">Le piège du PATH : HKLM passe toujours avant HKCU</h2>
+    <span class="slide__label">Windows Internals &middot; Piège</span>
+    <h2 class="slide__heading">Le pi&egrave;ge du PATH : HKLM passe toujours avant HKCU</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--orange">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">LA RÈGLE WINDOWS</span>
+        <div class="petscii-card-header" style="color:var(--red);">
+          <span>[ ░▒▓ REGISTRY ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">CreateEnvironmentBlock</span>
+          <span>[ ⚠ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--red); font-weight:700;">LA R&Egrave;GLE WINDOWS</span>
         <h3 class="concept-card__title">Fusion descendante obligatoire</h3>
-        <p class="concept-card__desc">À la création de session (<code>CreateEnvironmentBlock</code>), Windows concatène le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
+        <p class="concept-card__desc">&Agrave; la cr&eacute;ation de session (<code>CreateEnvironmentBlock</code>), Windows concat&egrave;ne le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
       </div>
       <div class="concept-card concept-card--orange">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">LA CONSÉQUENCE CACHÉE</span>
+        <div class="petscii-card-header" style="color:var(--accent2);">
+          <span>[ ░▒▓ COLLISION ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">SILENT_SHADOWING</span>
+          <span>[ ⚡ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent2); font-weight:700;">LA CONS&Eacute;QUENCE CACH&Eacute;E</span>
         <h3 class="concept-card__title">Le masquage (Shadowing)</h3>
-        <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> déclaré au niveau Machine, votre Python 3.12 installé proprement via Mise ne sera <strong>jamais appelé</strong> par défaut dans vos scripts !</p>
+        <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> d&eacute;clar&eacute; au niveau Machine, votre Python 3.12 install&eacute; proprement via Mise ne sera <strong>jamais appel&eacute;</strong> par d&eacute;faut dans vos scripts !</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔══ [ORDRE DE RÉSOLUTION DES EXÉCUTABLES SOUS WINDOWS] ════════════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--red); font-weight:700;">[1] HKLM (Machine PATH)</span>  <span style="color:var(--red);">████████████████████████████████</span>  <span style="color:var(--ansi-bright-white); font-weight:700;">ÉVALUÉ EN PREMIER</span>               <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>      ↳ <span style="color:var(--red);">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- ⚠ MASQUE VOS VERSIONS RÉCENTES !</span>       <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent3); font-weight:700;">[2] HKCU (User PATH)</span>     <span style="color:var(--text-subtitle);">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>  <span style="color:var(--text-dim);">ÉVALUÉ EN SECOND</span>                <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>      ↳ <span style="color:var(--text-dim);">~\AppData\Local\mise\shims\python.exe</span>     <span style="color:var(--ansi-yellow);">&lt;-- 🚫 JAMAIS ATTEINT PAR DÉFAUT !</span>        <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚══════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
 
   <!-- Slide 9: Démo PATH -->
 <section class="slide slide--content" data-part="3" data-nav="Démo PATH">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-orange">╔═[</span> <span>DIAG::PATH_SHADOWING</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-orange">[</span> <span>WHERE.EXE INSPECT</span> <span class="petscii-glyph-orange">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>SHIMS PREPENDED</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: FIXED <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">03</span>
-    <span class="slide__label">Démo PATH</span>
-    <h2 class="slide__heading">En direct : débusquer le masquage avec where.exe</h2>
+    <span class="slide__label">Démo PATH &middot; Live Diagnostic</span>
+    <h2 class="slide__heading">En direct : d&eacute;busquer le masquage avec where.exe</h2>
   </div>
-  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
-    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
-        <span>Diagnostic &middot; Ordre de résolution Windows</span>
-        <span style="color:var(--accent2);">HKLM vs HKCU</span>
+  <div class="slide__inner">
+    <div class="terminal-block reveal" data-shell="pwsh">
+      <div class="terminal-block__header">
+        <div class="terminal-block__dots">
+          <span class="terminal-window__dot terminal-window__dot--red"></span>
+          <span class="terminal-window__dot terminal-window__dot--yellow"></span>
+          <span class="terminal-window__dot terminal-window__dot--green"></span>
+        </div>
+        <div class="terminal-block__title">Diagnostic &middot; Ordre de r&eacute;solution Windows (HKLM vs HKCU)</div>
+        <div class="terminal-block__badge" style="color:var(--accent2); background:var(--accent2-dim);">PATH Precedence</div>
       </div>
-      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># Le piège : l'exécutable système passe en premier</span>
-<span style="color:var(--accent2); font-weight:700;">&gt;</span> where.exe python
-<span style="color:var(--red); font-weight:700;">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM (Machine legacy)</span>
-<span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU (Ignoré !)</span>
-
-<span style="color:var(--text-dim);"># La parade DevRecipe : shims_prepend.cmd via AutoRun cmd.exe</span>
-<span style="color:var(--text-dim);"># et injection au début du PATH dans le profil PowerShell ($env:PATH)</span>
-<span style="color:var(--accent2); font-weight:700;">&gt;</span> devrecipe -Review
-<span style="color:var(--green); font-weight:700;">[OK] User shims prepended at index 0 of current PATH</span>
-
-<span style="color:var(--accent2); font-weight:700;">&gt;</span> where.exe python
-<span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- Prioritaire !</span>
-<span style="color:var(--text-dim);">C:\Python39\python.exe</span></code></pre>
+      <div class="terminal-block__content">
+        <div class="terminal-step" data-step="1">
+          <div class="terminal-cmd" data-type-effect="true">where.exe python</div>
+          <div class="terminal-out"><span style="color:var(--red); font-weight:700;">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM Machine (Prend la main !)</span>
+<span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU User (Masqu&eacute; !)</span></div>
+        </div>
+        <div class="terminal-step" data-step="2">
+          <div class="terminal-cmd" data-type-effect="true">$env:PATH = "$env:LOCALAPPDATA\mise\shims;$HOME\scoop\shims;$env:PATH"</div>
+          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">[OK] User shims prepended at index 0 of session PATH</span></div>
+        </div>
+        <div class="terminal-step" data-step="3">
+          <div class="terminal-cmd">where.exe python</div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- Prioritaire d&eacute;sormais !</span>
+<span style="color:var(--text-dim);">C:\Python39\python.exe</span></div>
+        </div>
+      </div>
+      <div class="terminal-window__statusbar">
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> HKLM SHADOWING OVERRIDDEN</span>
+        <span class="terminal-window__statusbar-tag">ORDER: HKCU SHIMS FIRST</span>
+        <span class="terminal-window__statusbar-tag">INDEX: 0 <span class="petscii-cursor">█</span></span>
+      </div>
     </div>
   </div>
 </section>
 
   <!-- Slide 10: DevRecipe : L'onboarding en PR -->
 <section class="slide slide--content slide--concept-cards" data-part="4" data-nav="DevRecipe : L'onboarding en PR">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-green">╔═[</span> <span>REX::DEVRECIPE_AS_CODE</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-green">[</span> <span>TEAM ONBOARDING IN PR</span> <span class="petscii-glyph-green">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-green">╚═[</span> <span>PREFLIGHT + DRY-RUN</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">04</span>
-    <span class="slide__label">REX &middot; DevRecipe</span>
-    <h2 class="slide__heading">DevRecipe : l'onboarding d'équipe devient une PR</h2>
+    <span class="slide__label">REX &middot; DevRecipe &middot; As Code</span>
+    <h2 class="slide__heading">DevRecipe : l'onboarding d'&eacute;quipe devient une PR</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ AS_CODE ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">devrecipe.toml</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">MANIFESTE TOML</span>
         <h3 class="concept-card__title">Code Review</h3>
-        <p class="concept-card__desc">Fini le wiki obsolète de 15 pages. La liste des outils requis (Scoop) et des runtimes (Mise) est déclarée en code et validée en équipe.</p>
+        <p class="concept-card__desc">Fini le wiki obsol&egrave;te de 15 pages. La liste des outils requis (Scoop) et des runtimes (Mise) est d&eacute;clar&eacute;e en code et valid&eacute;e en &eacute;quipe.</p>
       </div>
       <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ AUDIT ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">COLLISION_CHECK</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">PREFLIGHT CHECK</span>
-        <h3 class="concept-card__title">Détection des conflits</h3>
-        <p class="concept-card__desc">Avant de toucher au poste, DevRecipe inspecte les désinstalleurs Windows, AppX et le PATH pour alerter si un outil tiers entre en collision.</p>
+        <h3 class="concept-card__title">D&eacute;tection des conflits</h3>
+        <p class="concept-card__desc">Avant de toucher au poste, DevRecipe inspecte les d&eacute;sinstalleurs Windows, AppX et le PATH pour alerter si un outil tiers entre en collision.</p>
       </div>
       <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ SIMULATION ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">ZERO_SIDE_EFFECTS</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">DRY-RUN &amp; PROFILS</span>
-        <h3 class="concept-card__title">Zéro effet de bord</h3>
-        <p class="concept-card__desc"><code>-DryRun</code> montre exactement les actions qui seront exécutées. Les profils (<code>default</code>, <code>ai-agents</code>, <code>cloud</code>) ciblent les besoins réels.</p>
+        <h3 class="concept-card__title">Z&eacute;ro effet de bord</h3>
+        <p class="concept-card__desc"><code>-DryRun</code> montre exactement les actions qui seront ex&eacute;cut&eacute;es. Les profils (<code>default</code>, <code>ai-agents</code>, <code>cloud</code>) ciblent les besoins r&eacute;els.</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [DEVRECIPE.TOML : ORCHESTRATION DÉCLARATIVE SCOOP + MISE] ═════════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent); font-weight:700;">[scoop]</span>                          <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent3); font-weight:700;">[mise.tools]</span>                  <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[preflight]</span>                   <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  buckets = [<span style="color:var(--green);">"extras"</span>, <span style="color:var(--green);">"internal"</span>] <span style="color:var(--text-subtitle);">║</span>  node   = <span style="color:var(--green);">"22.14.0"</span>            <span style="color:var(--text-subtitle);">║</span>  check_conflicts = <span style="color:var(--accent2);">true</span>        <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  apps    = [<span style="color:var(--green);">"lazygit"</span>, <span style="color:var(--green);">"ripgrep"</span>]  <span style="color:var(--text-subtitle);">║</span>  python = <span style="color:var(--green);">"3.12.2"</span>             <span style="color:var(--text-subtitle);">║</span>  scan_registry   = <span style="color:var(--accent2);">true</span>        <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚═══════════════════════════════════╩════════════════════════════╩════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
 
   <!-- Slide 11: Démo DevRecipe -->
 <section class="slide slide--content" data-part="4" data-nav="Démo DevRecipe">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-green">╔═[</span> <span>LIVE::DEVRECIPE_DRYRUN</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-green">[</span> <span>PREFLIGHT AUDIT</span> <span class="petscii-glyph-green">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-green">╚═[</span> <span>0 MUTATIONS</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>STATUS: PASS <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">04</span>
-    <span class="slide__label">Démo DevRecipe</span>
-    <h2 class="slide__heading">En direct : validation et simulation d'un manifeste d'équipe</h2>
+    <span class="slide__label">Démo DevRecipe &middot; Live Simulation</span>
+    <h2 class="slide__heading">En direct : validation et simulation d'un manifeste d'&eacute;quipe</h2>
   </div>
-  <div class="slide__inner" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:center;">
-    <div class="slide__code-block reveal" data-active-step="1" style="max-width:960px; margin:0 auto; width:100%;">
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--surface2); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
-        <span>devrecipe.ps1 &middot; Mode Preflight &amp; Dry-Run</span>
-        <span style="color:var(--green);">0 risque &middot; Zéro surprise</span>
+  <div class="slide__inner">
+    <div class="terminal-block reveal" data-shell="pwsh">
+      <div class="terminal-block__header">
+        <div class="terminal-block__dots">
+          <span class="terminal-window__dot terminal-window__dot--red"></span>
+          <span class="terminal-window__dot terminal-window__dot--yellow"></span>
+          <span class="terminal-window__dot terminal-window__dot--green"></span>
+        </div>
+        <div class="terminal-block__title">devrecipe.ps1 &middot; Mode Preflight &amp; Dry-Run</div>
+        <div class="terminal-block__badge" style="color:var(--green); background:var(--green-dim);">0 Risque &middot; Preflight</div>
       </div>
-      <pre style="padding:18px 20px; font-family:var(--font-mono); font-size:clamp(14px,1.4vw,18px); line-height:1.55; margin:0; overflow-x:auto;"><code><span style="color:var(--text-dim);"># 1. Validation de la syntaxe du manifeste devrecipe.toml</span>
-<span style="color:var(--green); font-weight:700;">&gt;</span> .\devrecipe.ps1 -Validate
-<span style="color:var(--ansi-green);">[OK] Manifest syntax valid (profile: default)</span>
-
-<span style="color:var(--text-dim);"># 2. Simulation avec preflight check des conflits existants</span>
-<span style="color:var(--green); font-weight:700;">&gt;</span> .\devrecipe.ps1 -DryRun -Review
-<span style="color:var(--ansi-bright-black);">[Preflight] Scanning system software and registry paths...</span>
-<span style="color:var(--ansi-yellow);">[WARN] Existing system Git found at 'C:\Program Files\Git\cmd' (version 2.38)</span>
+      <div class="terminal-block__content">
+        <div class="terminal-step" data-step="1">
+          <div class="terminal-cmd" data-type-effect="true">.\devrecipe.ps1 -Validate</div>
+          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">[OK] Manifest syntax valid (profile: default)</span></div>
+        </div>
+        <div class="terminal-step" data-step="2">
+          <div class="terminal-cmd" data-type-effect="true">.\devrecipe.ps1 -DryRun -Review</div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[Preflight] Scanning system software and registry paths...</span>
+<span style="color:var(--ansi-yellow); font-weight:700;">[WARN] Existing system Git found at 'C:\Program Files\Git\cmd' (version 2.38)</span>
 <span style="color:var(--ansi-blue);">[DryRun] Plan:</span>
 <span style="color:var(--text-dim);">  + Scoop packages to install : [ripgrep, fzf, jq, lazygit]</span>
 <span style="color:var(--text-dim);">  + Mise runtimes to install  : [node@22.14.0, python@3.12.2]</span>
 <span style="color:var(--text-dim);">  + Environment actions      : Prepend user shims in PowerShell &amp; cmd AutoRun</span>
-<span style="color:var(--ansi-green); font-weight:700;">[OK] DryRun complete (exit code 0). No system changes applied.</span></code></pre>
+<span style="color:var(--green); font-weight:700;">[OK] DryRun complete (exit code 0). No system changes applied.</span></div>
+        </div>
+      </div>
+      <div class="terminal-window__statusbar">
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> PREFLIGHT: 1 WARN / 0 BLOCKERS</span>
+        <span class="terminal-window__statusbar-tag">PLAN: 4 PKGS / 2 RUNTIMES</span>
+        <span class="terminal-window__statusbar-tag">EXIT: 0 <span class="petscii-cursor">█</span></span>
+      </div>
     </div>
   </div>
 </section>
 
   <!-- Slide 12: Gouvernance & Sécurité -->
 <section class="slide slide--content slide--concept-cards" data-part="4" data-nav="Gouvernance &amp; Sécurité">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-green">╔═[</span> <span>SEC::GOVERNANCE_COMPLIANCE</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-green">[</span> <span>ZERO SHADOW IT</span> <span class="petscii-glyph-green">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-green">╚═[</span> <span>WDAC &amp; EDR ACTIVE</span> <span class="petscii-glyph-green">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">04</span>
     <span class="slide__label">Sécurité &middot; Entreprise</span>
@@ -6223,78 +7273,180 @@
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--green">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">CONTRÔLE</span>
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ EDR / WDAC ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">ACTIVE DEFENSE</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">CONTR&Ocirc;LE</span>
         <h3 class="concept-card__title">EDR &amp; AppLocker actifs</h3>
-        <p class="concept-card__desc">Installer en User Space ne contourne aucun antivirus d'entreprise, ni WDAC ni les restrictions d'exécution. Tout binaire non autorisé reste bloqué.</p>
+        <p class="concept-card__desc">Installer en User Space ne contourne aucun antivirus d'entreprise, ni WDAC ni les restrictions d'ex&eacute;cution. Tout binaire non autoris&eacute; reste bloqu&eacute;.</p>
       </div>
       <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ PRIVATE_GIT ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">SEC_APPROVED</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">PROCURATION</span>
-        <h3 class="concept-card__title">Buckets approuvés</h3>
-        <p class="concept-card__desc">L'entreprise peut héberger son propre bucket Git privé avec des manifests validés par les équipes cybersécurité et des miroirs internes.</p>
+        <h3 class="concept-card__title">Buckets approuv&eacute;s</h3>
+        <p class="concept-card__desc">L'entreprise peut h&eacute;berger son propre bucket Git priv&eacute; avec des manifests valid&eacute;s par les &eacute;quipes cybers&eacute;curit&eacute; et des miroirs internes.</p>
       </div>
       <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ ░▒▓ AUDIT_JSON ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">TRACEABILITY</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--green); font-weight:700;">TRANSPARENCE</span>
-        <h3 class="concept-card__title">Auditabilité complète</h3>
-        <p class="concept-card__desc"><code>scoop export</code> et <code>mise ls --json</code> permettent de générer un inventaire machine instantané pour la conformité et les revues sécurité.</p>
+        <h3 class="concept-card__title">Auditabilit&eacute; compl&egrave;te</h3>
+        <p class="concept-card__desc"><code>scoop export</code> et <code>mise ls --json</code> permettent de g&eacute;n&eacute;rer un inventaire machine instantan&eacute; pour la conformit&eacute; et les revues s&eacute;curit&eacute;.</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [CONFORMITÉ &amp; SÉCURITÉ ENTREPRISE : CONTRÔLE PLEIN ET ENTIER] ═════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[✔] EDR &amp; Antivirus</span> : Analyse temps réel de tout binaire décompressé dans ~/scoop/apps         <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[✔] AppLocker / WDAC</span>: Les règles de signature et de hash bloquent tout exécutable illégitime    <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[✔] Inventaire CI/CD</span>: <span style="color:var(--accent);">scoop export &gt; tools.json</span> exporte l'état complet du poste en 1 commande  <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚════════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
 
   <!-- Slide 13: Démarrer dès aujourd'hui -->
 <section class="slide slide--content slide--concept-cards" data-part="5" data-nav="Démarrer dès aujourd'hui">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-orange">╔═[</span> <span>TAKEAWAY::ACTION_PLAN</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-green">[</span> <span>3 REFLEXES</span> <span class="petscii-glyph-green">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>ONE-LINER EXEC</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">05</span>
-    <span class="slide__label">Conclusion</span>
-    <h2 class="slide__heading">3 réflexes à retenir &middot; Votre 1ère action dès aujourd'hui</h2>
+    <span class="slide__label">Conclusion &middot; Vos 3 Réflexes</span>
+    <h2 class="slide__heading">3 r&eacute;flexes &agrave; retenir &middot; Votre 1&egrave;re action d&egrave;s aujourd'hui</h2>
   </div>
   <div class="slide__inner">
-    <div class="concept-grid concept-grid--3 reveal" style="margin-bottom:20px;">
+    <div class="concept-grid concept-grid--3 reveal" style="margin-bottom:16px;">
       <div class="concept-card concept-card--purple">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">RÉFLEXE #1</span>
+        <div class="petscii-card-header" style="color:var(--accent4);">
+          <span>[ ░▒▓ RÉFLEXE 1 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">SCOOP_FIRST</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">R&Eacute;FLEXE #1</span>
         <h3 class="concept-card__title">User Space first</h3>
         <p class="concept-card__desc">Scoop pour tous vos outils en ligne de commande. Ne demandez plus les droits admin pour un simple binaire CLI.</p>
       </div>
       <div class="concept-card concept-card--purple">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">RÉFLEXE #2</span>
+        <div class="petscii-card-header" style="color:var(--accent4);">
+          <span>[ ░▒▓ RÉFLEXE 2 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">MISE_CONFIG</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">R&Eacute;FLEXE #2</span>
         <h3 class="concept-card__title">Mise dans le repo</h3>
-        <p class="concept-card__desc">Figez les runtimes dans un <code>mise.toml</code> versionné. Vos collègues démarrent le projet en 1 seconde.</p>
+        <p class="concept-card__desc">Figez les runtimes dans un <code>mise.toml</code> versionn&eacute;. Vos coll&egrave;gues d&eacute;marrent le projet en 1 seconde.</p>
       </div>
       <div class="concept-card concept-card--purple">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">RÉFLEXE #3</span>
+        <div class="petscii-card-header" style="color:var(--accent4);">
+          <span>[ ░▒▓ RÉFLEXE 3 ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">SHIMS_ORDER</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent4); font-weight:700;">R&Eacute;FLEXE #3</span>
         <h3 class="concept-card__title">Shims prioritaires</h3>
-        <p class="concept-card__desc">Vérifiez vos shims avec <code>where.exe</code> pour vous assurer que les outils HKLM système ne prennent pas le pas.</p>
+        <p class="concept-card__desc">V&eacute;rifiez vos shims avec <code>where.exe</code> pour vous assurer que les outils HKLM syst&egrave;me ne prennent pas le pas.</p>
       </div>
     </div>
-    <div class="slide__code-block reveal" style="max-width:860px; margin:0 auto; width:100%;">
-      <pre style="padding:14px 18px; font-family:var(--font-mono); font-size:clamp(13px,1.2vw,16px); line-height:1.45; margin:0; text-align:center;"><code><span style="color:var(--text-dim);"># Votre première commande ce soir en rentrant du talk :</span>
+
+    <div class="terminal-window reveal" style="max-width:860px; margin:0 auto;">
+      <div class="terminal-window__titlebar">
+        <div class="terminal-window__titlebar-left">
+          <div class="terminal-window__dots">
+            <span class="terminal-window__dot terminal-window__dot--red"></span>
+            <span class="terminal-window__dot terminal-window__dot--yellow"></span>
+            <span class="terminal-window__dot terminal-window__dot--green"></span>
+          </div>
+          <span>PowerShell 7.4 &middot; Quickstart One-Liner</span>
+        </div>
+        <div>
+          <span class="terminal-window__badge" style="color:var(--accent4);">Ce soir en sortant du talk</span>
+        </div>
+      </div>
+      <pre style="padding:16px 20px; font-family:var(--petscii-font); font-size:clamp(13px,1.3vw,16.5px); line-height:1.5; margin:0; text-align:center; background:var(--code-bg);"><code><span style="color:var(--text-dim);"># Installez Scoop puis Mise dans votre espace utilisateur en 1 seule ligne :</span>
 <span style="color:var(--accent4); font-weight:700;">&gt;</span> irm get.scoop.sh | iex ; scoop install mise</code></pre>
+      <div class="terminal-window__statusbar">
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> READY FOR DEPLOYMENT</span>
+        <span class="terminal-window__statusbar-tag">TARGET: HKCU\scoop</span>
+        <span class="terminal-window__statusbar-tag">READY <span class="petscii-cursor">█</span></span>
+      </div>
     </div>
   </div>
 </section>
 
   <!-- Slide 14: Merci -->
 <section class="slide slide--content slide--outro" data-part="5" data-nav="Merci">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-accent">╔═[</span> <span>OUTRO::SYS_COMPLETE</span> <span class="petscii-glyph-accent">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>64K RAM &middot; PETSCII</span> <span class="petscii-glyph-cyan">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-orange">╚═[</span> <span>OPEN SOURCE // COMMUNITY</span> <span class="petscii-glyph-orange">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__inner">
     <div class="outro-main">
       <p class="slide__label reveal">Questions / R&eacute;ponses</p>
       <h2 class="slide__heading reveal">Merci !</h2>
       <p class="slide__subtitle reveal">Installer ses outils de dev avec Scoop &amp; Mise</p>
       <div class="reveal outro-tags">
-        <span class="badge badge--accent">Scoop</span>
-        <span class="badge badge--blue">Mise</span>
-        <span class="badge badge--green">DevRecipe</span>
-        <span class="badge badge--orange">PATH Windows</span>
+        <span class="petscii-tag"><span class="petscii-glyph-accent">■</span> Scoop</span>
+        <span class="petscii-tag"><span class="petscii-glyph-cyan">■</span> Mise</span>
+        <span class="petscii-tag"><span class="petscii-glyph-green">■</span> DevRecipe</span>
+        <span class="petscii-tag"><span class="petscii-glyph-orange">■</span> PATH Windows</span>
       </div>
-      <div class="reveal outro-speaker">
+      <div class="reveal outro-speaker" style="margin-top:10px;">
         <p>Alexis Scolan &mdash; <strong style="color:var(--accent);">Architecte technique</strong> chez onepoint</p>
       </div>
+
+      <pre class="ansi-diagram-block reveal" style="padding:10px 14px; font-size:clamp(11px,1.1vw,13.5px); line-height:1.35; margin-top:14px; border-color:var(--accent); background:var(--code-bg); text-align:left;"><code><span style="color:var(--accent3);">  **** COMMODORE 64 / MS-DOS CLI ENVIRONMENT ****</span>
+<span style="color:var(--text-subtitle);"> 64K RAM SYSTEM  38911 BYTES FREE</span>
+<span style="color:var(--green); font-weight:700;"> READY.</span>
+<span style="color:var(--accent); font-weight:700;"> LOAD "QUESTIONS",8,1</span>
+<span style="color:var(--green); font-weight:700;"> SEARCHING FOR QUESTIONS... FOUND</span>
+<span style="color:var(--green); font-weight:700;"> READY. <span class="petscii-cursor">█</span></span></code></pre>
     </div>
     <div class="outro-qr-pane reveal">
-      <div class="outro-qr-card">
-        <h3 class="outro-qr__title">Support de pr&eacute;sentation</h3>
+      <div class="outro-qr-card" style="position:relative;">
+        <div class="petscii-card-header" style="color:var(--accent); margin-bottom:12px;">
+          <span>╔═[ ░▒▓ SUPPORT &amp; CODE ▓▒░ ]</span>
+          <span>[ SCAN ME ]═╗</span>
+        </div>
         <div class="qr-spotlight">
           <img src="assets/presentation-qr.png" alt="QR code vers le support de la pr&eacute;sentation" loading="eager">
+        </div>
+        <div style="font-family:var(--petscii-font); font-size:11px; color:var(--text-subtitle); margin-top:8px; text-align:center;">
+          <span>╚═══════════════════════════════════════╝</span>
         </div>
       </div>
     </div>
@@ -6727,6 +7879,97 @@
       }
     },{passive:true});
   });
+
+  // --- terminal-block.js ---
+/* ==========================================================================
+   TERMINAL BLOCK ENGINE (Runtime pour démos et commandes)
+   Gère les étapes [data-step], l'effet de frappe optionnel et le surlignage.
+   ========================================================================== */
+
+(function initTerminalBlocks() {
+  function updateSlideTerminals(slide, activeStep) {
+    if (!slide) return;
+    var terminals = slide.querySelectorAll('.terminal-block');
+    if (!terminals.length) return;
+
+    var stepNum = parseInt(activeStep, 10);
+    if (isNaN(stepNum)) {
+      stepNum = (activeStep === 'all') ? 999 : 1;
+    }
+
+    terminals.forEach(function(term) {
+      var steps = term.querySelectorAll('.terminal-step');
+      steps.forEach(function(s) {
+        var sStep = parseInt(s.getAttribute('data-step'), 10);
+        if (isNaN(sStep)) sStep = 1;
+
+        var isVisible = sStep <= stepNum;
+        s.classList.toggle('is-visible', isVisible);
+        s.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
+
+        // Animation de frappe optionnelle uniquement sur la nouvelle commande active
+        var cmdEl = s.querySelector('.terminal-cmd');
+        if (cmdEl && cmdEl.hasAttribute('data-type-effect') && sStep === stepNum && isVisible) {
+          if (!cmdEl.classList.contains('is-typed')) {
+            runTypeEffect(cmdEl);
+          }
+        }
+      });
+    });
+  }
+
+  function runTypeEffect(el) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.classList.add('is-typed');
+      return;
+    }
+    var fullText = el.getAttribute('data-cmd-text') || el.textContent;
+    el.setAttribute('data-cmd-text', fullText);
+    el.classList.add('is-typing');
+    el.textContent = '';
+
+    var idx = 0;
+    var speed = Math.max(15, Math.min(45, Math.floor(700 / Math.max(fullText.length, 1))));
+
+    function tick() {
+      if (idx < fullText.length) {
+        el.textContent += fullText.charAt(idx);
+        idx++;
+        setTimeout(tick, speed);
+      } else {
+        el.classList.remove('is-typing');
+        el.classList.add('is-typed');
+        var out = el.nextElementSibling;
+        if (out && out.classList.contains('terminal-out')) {
+          out.style.opacity = '1';
+        }
+      }
+    }
+    tick();
+  }
+
+  // Écouter les changements d'étape du deck engine
+  document.addEventListener('DOMContentLoaded', function() {
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.type === 'attributes' && m.attributeName === 'data-active-step') {
+          var slide = m.target;
+          var step = slide.getAttribute('data-active-step') || '1';
+          updateSlideTerminals(slide, step);
+        }
+      });
+    });
+
+    document.querySelectorAll('.slide').forEach(function(slide) {
+      observer.observe(slide, { attributes: true, attributeFilter: ['data-active-step'] });
+      var initStep = slide.getAttribute('data-active-step') || '1';
+      updateSlideTerminals(slide, initStep);
+    });
+  });
+
+  window.updateSlideTerminals = updateSlideTerminals;
+})();
+
 
   // --- slide-engine.js ---
 /* ============ SlideEngine ============ */

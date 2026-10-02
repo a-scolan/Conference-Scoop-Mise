@@ -146,3 +146,56 @@
     opacity: 1;
   }
 }
+
+/* ============ CURSEUR & POINTEUR STYLÉ TERMINAL (CLI LIGHT) ============ */
+[data-theme="cli-light"],
+[data-theme="terminal-light"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 2L18 12L11 13L14 20L11 21L8 14L3 18V2Z' fill='%23ffffff' stroke='%230969da' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto;
+}
+
+[data-theme="cli-light"] a,
+[data-theme="cli-light"] button,
+[data-theme="cli-light"] [role="button"],
+[data-theme="cli-light"] .deck-dot,
+[data-theme="terminal-light"] a,
+[data-theme="terminal-light"] button,
+[data-theme="terminal-light"] [role="button"],
+[data-theme="terminal-light"] .deck-dot {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 4L14 12L6 20' stroke='%230969da' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='18' cy='12' r='2' fill='%230969da'/%3E%3C/svg%3E") 6 12, pointer;
+}
+
+/* Réticule Laser HUD Terminal pour CLI Light */
+[data-theme="cli-light"] .laser-pointer::before,
+[data-theme="terminal-light"] .laser-pointer::before {
+  inset: 2px;
+  border-radius: 4px;
+  background: radial-gradient(circle, var(--laser-glow) 0%, transparent 68%);
+  border: 1px dashed var(--laser-ring);
+  box-shadow: 0 0 10px var(--laser-glow);
+}
+
+[data-theme="cli-light"] .laser-pointer::after,
+[data-theme="terminal-light"] .laser-pointer::after {
+  inset: 12px;
+  border-radius: 2px;
+  border: 1.5px solid var(--laser-hot);
+  background:
+    linear-gradient(var(--laser-hot), var(--laser-hot)) center / 2px 100% no-repeat,
+    linear-gradient(var(--laser-hot), var(--laser-hot)) center / 100% 2px no-repeat,
+    radial-gradient(circle, var(--laser-core) 0%, var(--laser-core) 1.5px, transparent 2px) center / 4px 4px no-repeat;
+  filter: drop-shadow(0 0 3px var(--laser-hot));
+}
+
+[data-theme="cli-light"] .laser-pointer.is-active::before,
+[data-theme="terminal-light"] .laser-pointer.is-active::before {
+  transform: scale(1.25);
+  border-style: solid;
+  border-color: var(--laser-hot);
+  box-shadow: 0 0 18px var(--laser-glow);
+}
+
+[data-theme="cli-light"] .laser-pointer.is-active::after,
+[data-theme="terminal-light"] .laser-pointer.is-active::after {
+  transform: scale(0.85);
+  background-color: var(--laser-glow-soft);
+}

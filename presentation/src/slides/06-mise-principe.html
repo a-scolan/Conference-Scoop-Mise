@@ -1,26 +1,66 @@
 <section class="slide slide--content slide--concept-cards" data-part="2" data-nav="Mise : Runtimes par projet">
+  <!-- Cadre décoratif périphérique PETSCII -->
+  <div class="petscii-slide-frame" aria-hidden="true">
+    <div class="petscii-slide-frame__tl">
+      <span class="petscii-glyph-cyan">╔═[</span> <span>MISE::RUNTIME_SWITCHER</span> <span class="petscii-glyph-cyan">]</span>
+    </div>
+    <div class="petscii-slide-frame__tr">
+      <span class="petscii-glyph-cyan">[</span> <span>5MS PROMPT // RUST</span> <span class="petscii-glyph-cyan">]═╗</span>
+    </div>
+    <div class="petscii-slide-frame__bl">
+      <span class="petscii-glyph-cyan">╚═[</span> <span>mise.toml VERSIONNÉ</span> <span class="petscii-glyph-cyan">]</span>
+    </div>
+    <div class="petscii-slide-frame__br">
+      <span class="petscii-glyph-green">[</span> <span>READY <span class="petscii-cursor">█</span></span> <span class="petscii-glyph-green">]═╝</span>
+    </div>
+  </div>
+
   <div class="slide__header reveal">
     <span class="slide__number">02</span>
-    <span class="slide__label">Mise-en-place</span>
+    <span class="slide__label">Mise-en-place &middot; Polyglotte</span>
     <h2 class="slide__heading">Mise : la version du runtime suit le projet, pas le poste</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--3 reveal">
       <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ RUST_ENGINE ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">5MS PROMPT</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">POLYGLOTTE</span>
         <h3 class="concept-card__title">Un seul outil</h3>
-        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Écrit en Rust, ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
+        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... &Eacute;crit en Rust, ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
       </div>
       <div class="concept-card concept-card--cyan">
-        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">DÉCLARATIF</span>
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ REPO_CONFIG ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">GIT TRACKED</span>
+          <span>[ ■ ]</span>
+        </div>
+        <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">D&Eacute;CLARATIF</span>
         <h3 class="concept-card__title">mise.toml</h3>
-        <p class="concept-card__desc">Le fichier de configuration vit dans le dépôt Git. Quand vous changez de branche ou de dossier, les versions basculent automatiquement.</p>
+        <p class="concept-card__desc">Le fichier de configuration vit dans le d&eacute;p&ocirc;t Git. Quand vous changez de branche ou de dossier, les versions basculent automatiquement.</p>
       </div>
       <div class="concept-card concept-card--cyan">
+        <div class="petscii-card-header" style="color:var(--accent3);">
+          <span>[ ░▒▓ TEAM_TASKS ▓▒░ ]</span>
+          <span class="petscii-hatch-strip">STANDARDIZED</span>
+          <span>[ ■ ]</span>
+        </div>
         <span class="concept-card__step" style="font-family:var(--font-mono); color:var(--accent3); font-weight:700;">ENV &amp; TASKS</span>
-        <h3 class="concept-card__title">Au-delà des runtimes</h3>
-        <p class="concept-card__desc">Charge des variables d'environnement (<code>[env]</code>) et des tâches d'équipe (<code>[tasks]</code>) pour standardiser les scripts sans dépendre de Makefile ou bash.</p>
+        <h3 class="concept-card__title">Au-del&agrave; des runtimes</h3>
+        <p class="concept-card__desc">Charge des variables d'environnement (<code>[env]</code>) et des t&acirc;ches d'&eacute;quipe (<code>[tasks]</code>) pour standardiser les scripts sans d&eacute;pendre de Makefile ou bash.</p>
       </div>
+    </div>
+
+    <div class="ansi-diagram-block reveal" style="max-width:960px; margin:16px auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [EXEMPLE MISE.TOML DANS LE DÉPÔT GIT] ═════════════════════════════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--accent3); font-weight:700;">[tools]</span>                                  <span style="color:var(--text-subtitle);">║</span>  <span style="color:var(--green); font-weight:700;">[tasks.dev]</span>                                    <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  node   = <span style="color:var(--green);">"22.14.0"</span>                        <span style="color:var(--text-subtitle);">║</span>  description = <span style="color:var(--green);">"Démarrer l'application locale"</span>   <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  python = <span style="color:var(--green);">"3.12.2"</span>                         <span style="color:var(--text-subtitle);">║</span>  run         = <span style="color:var(--green);">"npm run dev"</span>                     <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">║</span>  ripgrep= <span style="color:var(--green);">"14.1.0"</span>                         <span style="color:var(--text-subtitle);">║</span>  env         = { NODE_ENV = <span style="color:var(--green);">"development"</span> }     <span style="color:var(--text-subtitle);">║</span>
+<span style="color:var(--text-subtitle);">╚═══════════════════════════════════════════╩════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
