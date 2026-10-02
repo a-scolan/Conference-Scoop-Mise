@@ -33,15 +33,15 @@
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true">cd C:\workspace\projet-legacy &amp;&amp; node --version</div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-legacy ; node --version">cd C:\workspace\projet-legacy &amp;&amp; node --version</div>
           <div class="terminal-out"><span style="color:var(--ansi-yellow); font-weight:700;">v18.20.4</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "18")</span></div>
         </div>
         <div class="terminal-step" data-step="2">
-          <div class="terminal-cmd" data-type-effect="true">cd C:\workspace\projet-moderne &amp;&amp; node --version</div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-moderne ; node --version">cd C:\workspace\projet-moderne &amp;&amp; node --version</div>
           <div class="terminal-out"><span style="color:var(--green); font-weight:700;">v22.14.0</span>  <span style="color:var(--text-dim);">(défini par mise.toml : node = "22")</span></div>
         </div>
         <div class="terminal-step" data-step="3">
-          <div class="terminal-cmd">mise run dev</div>
+          <div class="terminal-cmd" data-cmd-text="mise run dev">mise run dev</div>
           <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[dev] API_URL=http://localhost:8080 npm run start</span></div>
         </div>
       </div>

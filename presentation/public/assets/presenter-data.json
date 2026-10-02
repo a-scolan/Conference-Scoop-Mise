@@ -62,11 +62,12 @@
     "checklist": [],
     "keywords": [
       "Scoop · Espace utilisateur · Zéro UAC · Shims (Relais) · Buckets Git",
+      "scoop.sh/#/apps · scoop bucket add · scoop search",
       "« Mes outils s'installent dans mon profil, sans admin. »"
     ],
     "beat": "Découverte du premier pilier d'émancipation.",
     "substance": "Démonstration du mécanisme d'isolation en espace utilisateur et première limite identifiée.",
-    "verbatim": "« Premier réflexe : Scoop. Contrairement aux installeurs traditionnels ou aux gestionnaires système, Scoop installe tout dans votre profil utilisateur, typiquement ~/scoop/apps. Aucun droit administrateur n'est requis. Pour rendre les exécutables disponibles partout, Scoop utilise des 'shims' : ce sont de petits relais d'exécution légers, de simples passe-plats qui redirigent vers la version active sans exiger les liens symboliques administrateurs de Windows. Les catalogues viennent de dépôts Git déclaratifs. Première limite cependant : Scoop ne sait pas ce qui est déjà installé ailleurs sur votre machine. »"
+    "verbatim": "« Premier réflexe : Scoop. Contrairement aux installeurs traditionnels ou aux gestionnaires système, Scoop installe tout dans votre profil utilisateur, typiquement ~/scoop/apps. Aucun droit administrateur n'est requis. Pour trouver des paquets parmi des milliers d'outils, la commande 'scoop search' ou le site scoop.sh/#/apps liste l'ensemble de l'écosystème. Scoop s'appuie sur des dépôts Git appelés 'buckets' : on ajoute en une ligne les outils complémentaires avec 'scoop bucket add extras', ou le dépôt privé Git de votre entreprise. Et au quotidien, la maintenance est triviale : 'scoop update *' met tout à jour, et 'scoop hold' fige une version pour éviter les régressions. Première limite cependant : Scoop ne sait pas ce qui est déjà installé ailleurs sur votre machine. »"
   },
   {
     "index": 5,
@@ -89,11 +90,12 @@
     "checklist": [],
     "keywords": [
       "Mise · Runtimes polyglottes · mise.toml · env & tasks",
+      "mise.jdx.dev · mise registry · mise upgrade",
       "« La version du runtime suit le projet, pas le poste. »"
     ],
     "beat": "Deuxième pilier : fin du casse-tête multi-versions.",
     "substance": "Fichier de configuration déclaratif traçable dans Git et limite shell identifiée.",
-    "verbatim": "« Maintenant qu'on a nos outils CLI, comment gère-t-on les langages ? Pendant des années, on a empilé nvm pour Node, pyenv pour Python, sdkman pour Java. Mise regroupe tout cela en un seul binaire écrit en Rust, ultra-performant. Le secret ? Un fichier 'mise.toml' placé à la racine du dépôt Git. Quand vous naviguez dans vos dossiers, Mise ajuste instantanément les versions de vos runtimes et vos variables d'environnement. Mais attention à sa limite sous Windows : Mise fonctionne grâce à un hook dans votre shell, mais il ne s'active pas dans cmd.exe ni pour les outils qui appellent directement des processus fils. »"
+    "verbatim": "« Maintenant qu'on a nos outils CLI, comment gère-t-on les langages ? Pendant des années, on a empilé nvm pour Node, pyenv pour Python, sdkman pour Java. Mise regroupe tout cela en un seul binaire écrit en Rust, ultra-performant. Pour explorer les langages et outils supportés, le site mise.jdx.dev et la commande 'mise registry' référencent l'ensemble des runtimes. On peut aussi déclarer des plugins ou backends personnalisés comme aqua ou npm directement dans son fichier. Le secret ? Un fichier 'mise.toml' placé à la racine du dépôt Git. Quand vous naviguez dans vos dossiers, Mise ajuste instantanément les versions de vos runtimes et vos variables d'environnement. Et pour les montées de versions : un simple 'mise upgrade'. Mais attention à sa limite sous Windows : Mise fonctionne grâce à un hook dans votre shell, mais il ne s'active pas dans cmd.exe ni pour les outils qui appellent directement des processus fils. »"
   },
   {
     "index": 7,
@@ -192,14 +194,14 @@
   {
     "index": 14,
     "title": "Merci",
-    "duration": "20 s",
-    "action": "Afficher le QR code, remercier la salle, inviter chaleureusement aux questions.",
+    "duration": "25 s",
+    "action": "Pointer l'antisèche de commandes affichée à gauche, montrer le QR code à droite, ouvrir chaleureusement aux questions.",
     "checklist": [],
     "keywords": [
-      "Questions / Réponses · QR Code · Support complet en ligne"
+      "Questions / Réponses · QR Code · scoop.sh/#/apps · mise.jdx.dev · Antisèche commandes"
     ],
     "beat": "Clôture élégante et ouverture des échanges.",
-    "substance": "Support et ressources disponibles en ligne immédiatement.",
-    "verbatim": "« Merci infiniment pour votre attention ! Retrouvez l'intégralité du support de présentation, les manifests et le code source via le QR code affiché à l'écran. Je suis à votre écoute pour toutes vos questions ! »"
+    "substance": "Antisèche de commandes concrètes et annuaires officiels directement projetés.",
+    "verbatim": "« Merci infiniment pour votre attention ! Vous avez sur cette slide récapitulative l'antisèche des commandes essentielles, les deux annuaires pour piocher vos paquets — scoop.sh et mise.jdx.dev —, et comment brancher vos propres dépôts de recettes d'entreprise. Retrouvez l'intégralité du support et le code source via le QR code. Je suis à votre écoute pour toutes vos questions ! »"
   }
 ]

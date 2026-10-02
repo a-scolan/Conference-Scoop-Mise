@@ -27,12 +27,30 @@
         <p>Alexis Scolan &mdash; <strong style="color:var(--accent);">Architecte technique</strong> chez onepoint</p>
       </div>
 
-      <pre class="ansi-diagram-block reveal" style="padding:10px 14px; font-size:clamp(11px,1.1vw,13.5px); line-height:1.35; margin-top:14px; border-color:var(--accent); background:var(--code-bg); text-align:left;"><code><span style="color:var(--accent3);">  **** COMMODORE 64 / MS-DOS CLI ENVIRONMENT ****</span>
-<span style="color:var(--text-subtitle);"> 64K RAM SYSTEM  38911 BYTES FREE</span>
-<span style="color:var(--green); font-weight:700;"> READY.</span>
-<span style="color:var(--accent); font-weight:700;"> LOAD "QUESTIONS",8,1</span>
-<span style="color:var(--green); font-weight:700;"> SEARCHING FOR QUESTIONS... FOUND</span>
-<span style="color:var(--green); font-weight:700;"> READY. <span class="petscii-cursor">█</span></span></code></pre>
+      <div class="ansi-diagram-block reveal" style="padding:10px 14px; font-size:clamp(10px,1vw,12.5px); line-height:1.45; margin-top:12px; border-color:var(--accent); background:var(--code-bg); text-align:left;">
+        <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:6px; margin-bottom:8px; font-family:var(--font-mono); font-weight:700;">
+          <span style="color:var(--accent);">ANTISÈCHE &middot; COMMANDES DU QUOTIDIEN</span>
+          <span style="color:var(--text-subtitle);">LIENS : scoop.sh/#/apps &middot; mise.jdx.dev</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-family:var(--font-mono);">
+          <div>
+            <div style="color:var(--accent); font-weight:700; margin-bottom:4px;">[ SCOOP : GESTION DES OUTILS ]</div>
+            <div><span style="color:var(--text-dim);">&gt;</span> scoop search &lt;terme&gt;</div>
+            <div><span style="color:var(--text-dim);">&gt;</span> scoop install &lt;paquet&gt;</div>
+            <div><span style="color:var(--text-dim);">&gt;</span> scoop update * <span style="color:var(--ansi-bright-black);">(met à jour tout)</span></div>
+            <div><span style="color:var(--text-dim);">&gt;</span> scoop hold &lt;paquet&gt; <span style="color:var(--ansi-bright-black);">(figer version)</span></div>
+            <div><span style="color:var(--text-dim);">&gt;</span> scoop bucket add &lt;nom&gt; &lt;url-git&gt;</div>
+          </div>
+          <div>
+            <div style="color:var(--accent3); font-weight:700; margin-bottom:4px;">[ MISE : RUNTIMES DU PROJET ]</div>
+            <div><span style="color:var(--text-dim);">&gt;</span> mise use node@22 python@3.12</div>
+            <div><span style="color:var(--text-dim);">&gt;</span> mise install <span style="color:var(--ansi-bright-black);">(selon mise.toml)</span></div>
+            <div><span style="color:var(--text-dim);">&gt;</span> mise upgrade <span style="color:var(--ansi-bright-black);">(mise à jour runtimes)</span></div>
+            <div><span style="color:var(--text-dim);">&gt;</span> mise ls <span style="color:var(--ansi-bright-black);">(versions installées)</span></div>
+            <div><span style="color:var(--text-dim);">&gt;</span> mise run &lt;task&gt; <span style="color:var(--ansi-bright-black);">(tâches d'équipe)</span></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="outro-qr-pane reveal">
       <div class="outro-qr-card" style="position:relative;">

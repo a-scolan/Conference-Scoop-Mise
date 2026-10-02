@@ -51,16 +51,46 @@ Autres commandes, à lancer dans `presentation/` :
 
 ## Travailler avec OpenSpec
 
-Les objectifs et les besoins sont décrits dans `openspec/changes/` :
+Les spécifications et l'historique des changements sont décrits dans `openspec/` :
 
-- `bootstrap-scoop-mise-talk` : trame en 6 actes, catalogue des démos, nettoyage du moteur.
-- `terminal-demo-rendering` : exploration du rendu des lignes de commande dans les slides.
+- `openspec/specs/` : spécifications canoniques à jour (`talk-narrative`, `demo-scenarios`, `content-theme`, `presenter-view`, `terminal-display`, `build-and-delivery`).
+- `openspec/changes/archive/` : historique des changes appliqués et validés.
 
-```bash
-openspec list                       # changes en cours
-openspec show <change>              # lire un change
-openspec validate <change> --strict # valider
-```
+## 📋 Antisèche pratique : Scoop, Mise & Sources
+
+### 1. Scoop (Gestionnaire d'outils CLI en espace utilisateur)
+
+- **Annuaire des paquets disponibles :** [https://scoop.sh/#/apps](https://scoop.sh/#/apps)
+- **Rechercher un outil :** `scoop search <nom>`
+- **Installer un paquet :** `scoop install <nom>` *(ex: `scoop install lazygit ripgrep fzf jq`)*
+- **Tout mettre à jour :** `scoop update *`
+- **Figer une version (anti-régression) :** `scoop hold <nom>` *(défiger : `scoop unhold <nom>`)*
+- **Désinstaller proprement :** `scoop uninstall <nom>`
+- **Ajouter une source de paquets (bucket Git) :**
+  - Outils communautaires étendus : `scoop bucket add extras`
+  - Anciennes versions de runtimes/outils : `scoop bucket add versions`
+  - Polices pour développeurs : `scoop bucket add nerd-fonts`
+  - Dépôt privé d'entreprise : `scoop bucket add mon-equipe https://gitlab.mon-entreprise.com/dev/scoop-bucket.git`
+
+### 2. Mise (Gestionnaire polyglotte de runtimes par projet)
+
+- **Annuaire & documentation :** [https://mise.jdx.dev](https://mise.jdx.dev)
+- **Explorer le registre des outils :** `mise registry` ou `mise ls-remote <runtime>`
+- **Associer un runtime au projet courant :** `mise use node@22 python@3.12` *(génère ou met à jour `mise.toml`)*
+- **Installer les runtimes déclarés :** `mise install`
+- **Mettre à niveau les runtimes :** `mise upgrade`
+- **Lister les versions installées :** `mise ls`
+- **Lancer une tâche d'équipe :** `mise run <nom-tâche>` *(défini dans `[tasks]`)*
+- **Ajouter des sources ou backends alternatifs :**
+  - Plugins asdf/mise : `mise plugin install <nom> <url>`
+  - Backends directs dans `mise.toml` : `[tools] "npm:@biomejs/biome" = "latest"`, `aqua:sharkdp/fd = "latest"`, `cargo:...`
+
+### 3. DevRecipe (Orchestrateur déclaratif d'équipe)
+
+- **Dépôt officiel :** [https://github.com/a-scolan/DevRecipe](https://github.com/a-scolan/DevRecipe)
+- **Valider la syntaxe du manifeste :** `devrecipe -Validate`
+- **Simulation avec contrôle préalable des conflits :** `devrecipe -DryRun -Review`
+- **Installation complète sans droit admin :** `devrecipe`
 
 ## Origine
 

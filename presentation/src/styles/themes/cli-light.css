@@ -5,6 +5,11 @@
 
 [data-theme="cli-light"],
 [data-theme="terminal-light"] {
+  /* Typographie unifiée MS-DOS / Monospace */
+  --font-body: var(--font-mono);
+  --font-heading: var(--font-mono);
+  --font-sans: var(--font-mono);
+
   /* Surfaces & Fonds (Clair, net, esprit terminal papier / light editor) */
   --bg: #f6f8fa;
   --surface: #ffffff;

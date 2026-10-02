@@ -6,6 +6,11 @@
 [data-theme="cli-dark"],
 [data-theme="terminal-dark"],
 :root:not([data-theme]) {
+  /* Typographie unifiée MS-DOS / Monospace */
+  --font-body: var(--font-mono);
+  --font-heading: var(--font-mono);
+  --font-sans: var(--font-mono);
+
   /* Surfaces & Fonds (Terminal sobre type VS Code / Ghostty) */
   --bg: #0d1117;
   --surface: #161b22;

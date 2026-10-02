@@ -30,16 +30,16 @@
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true">where.exe python</div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="where.exe python">where.exe python</div>
           <div class="terminal-out"><span style="color:var(--red); font-weight:700;">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM Machine (Prend la main !)</span>
 <span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU User (Masqu&eacute; !)</span></div>
         </div>
         <div class="terminal-step" data-step="2">
-          <div class="terminal-cmd" data-type-effect="true">$env:PATH = "$env:LOCALAPPDATA\mise\shims;$HOME\scoop\shims;$env:PATH"</div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="$env:PATH = &quot;$env:LOCALAPPDATA\mise\shims;$HOME\scoop\shims;$env:PATH&quot;">$env:PATH = "$env:LOCALAPPDATA\mise\shims;$HOME\scoop\shims;$env:PATH"</div>
           <div class="terminal-out"><span style="color:var(--green); font-weight:700;">[OK] User shims prepended at index 0 of session PATH</span></div>
         </div>
         <div class="terminal-step" data-step="3">
-          <div class="terminal-cmd">where.exe python</div>
+          <div class="terminal-cmd" data-cmd-text="where.exe python">where.exe python</div>
           <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- Prioritaire d&eacute;sormais !</span>
 <span style="color:var(--text-dim);">C:\Python39\python.exe</span></div>
         </div>

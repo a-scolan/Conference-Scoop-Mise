@@ -92,7 +92,22 @@ ${styles}
 ${slidesHtml}
 </div>
 
-<div class="laser-pointer" aria-hidden="true"></div>
+<div class="laser-pointer" aria-hidden="true">
+  <svg class="laser-pointer__svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+    <!-- Coins PETSCII ┌ ┐ └ ┘ -->
+    <path class="laser-bracket laser-bracket--tl" d="M3 10 V3 H10" stroke="var(--accent)" stroke-width="2" fill="none"/>
+    <path class="laser-bracket laser-bracket--tr" d="M22 3 H29 V10" stroke="var(--accent)" stroke-width="2" fill="none"/>
+    <path class="laser-bracket laser-bracket--bl" d="M3 22 V29 H10" stroke="var(--accent)" stroke-width="2" fill="none"/>
+    <path class="laser-bracket laser-bracket--br" d="M22 29 H29 V22" stroke="var(--accent)" stroke-width="2" fill="none"/>
+    <!-- Réticule micro-croix modscene -->
+    <line class="laser-cross" x1="16" y1="8" x2="16" y2="12" stroke="var(--accent3)" stroke-width="2"/>
+    <line class="laser-cross" x1="16" y1="20" x2="16" y2="24" stroke="var(--accent3)" stroke-width="2"/>
+    <line class="laser-cross" x1="8" y1="16" x2="12" y2="16" stroke="var(--accent3)" stroke-width="2"/>
+    <line class="laser-cross" x1="20" y1="16" x2="24" y2="16" stroke="var(--accent3)" stroke-width="2"/>
+    <!-- Pixel central ■ -->
+    <rect class="laser-center-dot" x="15" y="15" width="2" height="2" fill="#ffffff"/>
+  </svg>
+</div>
 
 <!-- Moteur de diaporama et contrôles interactifs -->
 <script>

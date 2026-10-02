@@ -36,24 +36,34 @@
   }
 
   function runTypeEffect(el) {
+    if (!el) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       el.classList.add('is-typed');
       return;
     }
-    var fullText = el.getAttribute('data-cmd-text') || el.textContent;
-    el.setAttribute('data-cmd-text', fullText);
+    if (el._typeTimer) {
+      clearTimeout(el._typeTimer);
+      el._typeTimer = null;
+    }
+    var fullText = el.getAttribute('data-cmd-text');
+    if (!fullText) {
+      fullText = el.textContent.trim();
+      el.setAttribute('data-cmd-text', fullText);
+    }
     el.classList.add('is-typing');
+    el.classList.remove('is-typed');
     el.textContent = '';
 
     var idx = 0;
-    var speed = Math.max(15, Math.min(45, Math.floor(700 / Math.max(fullText.length, 1))));
+    var speed = Math.max(15, Math.min(35, Math.floor(600 / Math.max(fullText.length, 1))));
 
     function tick() {
       if (idx < fullText.length) {
-        el.textContent += fullText.charAt(idx);
+        el.textContent = fullText.slice(0, idx + 1);
         idx++;
-        setTimeout(tick, speed);
+        el._typeTimer = setTimeout(tick, speed);
       } else {
+        el._typeTimer = null;
         el.classList.remove('is-typing');
         el.classList.add('is-typed');
         var out = el.nextElementSibling;
