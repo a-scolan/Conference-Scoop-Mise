@@ -44,22 +44,23 @@
       </div>
     </div>
 
-    <div class="terminal-window reveal" style="max-width:860px; margin:0 auto;">
-      <div class="terminal-window__titlebar">
-        <div class="terminal-window__titlebar-left">
-          <div class="terminal-block__controls">
-            <span class="terminal-block__ctrl">_</span>
-            <span class="terminal-block__ctrl">□</span>
-            <span class="terminal-block__ctrl">✕</span>
-          </div>
-          <span>MS-DOS Prompt &middot; Quickstart One-Liner</span>
+    <div class="terminal-block reveal" data-shell="pwsh" style="max-width:860px; margin:0 auto;">
+      <div class="terminal-block__header">
+        <div class="terminal-block__controls">
+          <span class="terminal-block__ctrl">_</span>
+          <span class="terminal-block__ctrl">□</span>
+          <span class="terminal-block__ctrl">✕</span>
         </div>
-        <div>
-          <span class="terminal-window__badge" style="color:var(--accent4);">Ce soir en sortant du talk</span>
+        <div class="terminal-block__title">MS-DOS Prompt &middot; Quickstart One-Liner</div>
+        <div class="terminal-block__badge" style="color:var(--accent4); background:var(--accent4-dim);">Ce soir en sortant du talk</div>
+      </div>
+      <div class="terminal-block__content">
+        <div class="terminal-step is-visible" data-step="1">
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="irm get.scoop.sh | iex ; scoop install mise">irm get.scoop.sh | iex ; scoop install mise</div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">[OK] Scoop &amp; Mise installés avec succès en espace utilisateur !</span>
+<span style="color:var(--text-dim);">Prêt pour le développement sans droits administrateur.</span></div>
         </div>
       </div>
-      <pre style="padding:16px 20px; font-family:var(--font-mono); font-size:clamp(13px,1.3vw,16.5px); line-height:1.5; margin:0; text-align:center; background:var(--code-bg);"><code><span style="color:var(--text-dim);"># Installez Scoop puis Mise dans votre espace utilisateur en 1 seule ligne :</span>
-<span style="color:var(--accent4); font-weight:700;">&gt;</span> irm get.scoop.sh | iex ; scoop install mise</code></pre>
       <div class="terminal-window__statusbar">
         <span class="terminal-window__statusbar-tag">[OK] READY FOR DEPLOYMENT</span>
         <span class="terminal-window__statusbar-tag">TARGET: HKCU\scoop</span>

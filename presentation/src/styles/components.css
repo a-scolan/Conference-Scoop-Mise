@@ -1932,6 +1932,7 @@
       }
     }
 
+    /* ============ STYLE RETRO FLAT WINDOWS 98 DES CARTES ============ */
     .concept-card {
       --card-pad-x: clamp(14px, 1.8vw, 22px);
       --card-pad-top: clamp(12px, 1.5vh, 18px);
@@ -1944,19 +1945,19 @@
       min-height: auto;
       height: 100%;
       padding: var(--card-pad-top) var(--card-pad-x) var(--card-pad-bottom);
-      border-radius: 4px;
-      border: 1.5px solid color-mix(in srgb, var(--card-accent, var(--accent)) 45%, var(--border-bright));
+      border-radius: 0px !important;
+      border: 2px solid var(--border-bright);
       border-top: 4px solid var(--card-accent, var(--accent));
-      background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 12%, var(--surface)) 0%, var(--surface) 40%);
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+      background: var(--surface2) !important;
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4) !important;
       overflow: hidden;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.15s ease, border-color 0.15s ease;
     }
     .concept-card:hover {
       border-color: var(--card-accent, var(--accent));
-      background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 20%, var(--surface)) 0%, var(--surface) 40%);
+      background: var(--surface2) !important;
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4), 0 0 12px color-mix(in srgb, var(--card-accent, var(--accent)) 30%, transparent);
+      box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5) !important;
     }
     .concept-card::before {
       display: none;
@@ -1983,24 +1984,42 @@
       overflow-wrap: break-word;
     }
 
-    /* Couleurs d'accentuation des cartes (bordures et dégradés dédiés) */
+    /* Couleurs d'accentuation des cartes (bordures et style flat Windows 98) */
     .concept-card--blue {
       --card-accent: var(--accent);
+      background: var(--surface2);
     }
     .concept-card--cyan {
       --card-accent: var(--accent3);
+      background: var(--surface2);
     }
     .concept-card--orange {
       --card-accent: var(--accent2);
+      background: var(--surface2);
     }
     .concept-card--green {
       --card-accent: var(--green);
+      background: var(--surface2);
     }
     .concept-card--purple {
       --card-accent: var(--accent4, #f43f5e);
+      background: var(--surface2);
     }
     .concept-card--teal {
       --card-accent: #0f766e;
+      background: var(--surface2);
+    }
+
+    [data-theme="cli-light"] .concept-card {
+      background: #e4e6eb !important;
+      border: 2px solid #afb8c1 !important;
+      border-top: 4px solid var(--card-accent, var(--accent)) !important;
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15) !important;
+    }
+    [data-theme="cli-light"] .concept-card:hover {
+      background: #e4e6eb !important;
+      border-color: var(--card-accent, var(--accent)) !important;
+      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.22) !important;
     }
 
     .concept-card__step {
@@ -2015,7 +2034,8 @@
 
     .concept-card__title {
       margin: 0;
-      font-size: calc(clamp(14.5px, 1.5vw, 18px) + var(--font-bump));
+      font-family: var(--font-mono);
+      font-size: calc(clamp(14px, 1.4vw, 17.5px) + var(--font-bump));
       line-height: 1.28;
       font-weight: 700;
       color: var(--text);
@@ -2027,9 +2047,9 @@
 
     .concept-card__desc {
       margin: 0;
-      font-size: calc(clamp(12px, 1.25vw, 14.5px) + var(--font-bump));
+      font-size: calc(clamp(11.5px, 1.15vw, 14px) + var(--font-bump));
       line-height: 1.48;
-      color: var(--text-subtitle);
+      color: var(--text-dim);
       text-wrap: pretty;
       font-weight: 500;
     }

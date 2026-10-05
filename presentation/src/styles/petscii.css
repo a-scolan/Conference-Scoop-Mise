@@ -158,36 +158,35 @@
 }
 
 /* ==========================================================================
-   WATERMARK LOGO WINDOWS PLEINE HAUTEUR (Fond de slide titre)
+   WATERMARK LOGO WINDOWS EN FOND DE SLIDE TITRE
+   Calé en haut à droite pour habiller le fond sans gêner le texte central
    ========================================================================== */
 .title-bg-win-logo {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: clamp(20px, 4vh, 60px);
+  right: clamp(24px, 4.5vw, 80px);
+  left: auto;
+  transform: none;
+  width: auto;
+  height: auto;
   pointer-events: none;
   user-select: none;
   z-index: 0;
-  opacity: 0.18;
-  overflow: hidden;
+  opacity: 0.28;
+  overflow: visible;
 }
 
 [data-theme="cli-light"] .title-bg-win-logo {
-  opacity: 0.14;
+  opacity: 0.24;
 }
 
 .title-bg-win-logo pre {
   margin: 0;
   font-family: Consolas, 'Cascadia Code', monospace !important;
-  font-size: clamp(16px, 2.9vh, 32px);
-  line-height: 1.02;
+  font-size: clamp(12px, 1.8vh, 18px);
+  line-height: 1.15;
   letter-spacing: 0;
-  text-align: center;
+  text-align: right;
   border: none !important;
   background: transparent !important;
   box-shadow: none !important;
@@ -296,14 +295,14 @@
   font-weight: 700;
 }
 
-/* En-tête de carte façon barre de titre active Windows 98 */
+/* En-tête de carte façon barre de titre Windows 98 (Couleur flat unie) */
 .concept-card .petscii-card-header {
   margin: calc(-1 * var(--card-pad-top, 12px)) calc(-1 * var(--card-pad-x, 14px)) clamp(8px, 1.2vh, 12px) calc(-1 * var(--card-pad-x, 14px)) !important;
   padding: 5px 12px !important;
   width: calc(100% + 2 * var(--card-pad-x, 14px)) !important;
   box-sizing: border-box !important;
-  background: linear-gradient(90deg, var(--titlebar-start, #000080) 0%, var(--titlebar-end, #1084d0) 100%) !important;
-  border-bottom: 1.5px solid var(--card-accent, #1084d0) !important;
+  background: var(--titlebar-flat, #000080) !important;
+  border-bottom: 1.5px solid var(--border-bright) !important;
   color: #ffffff !important;
   display: flex !important;
   align-items: center !important;
@@ -312,41 +311,36 @@
   font-size: clamp(10.5px, 0.95vw, 12px) !important;
   font-weight: 700 !important;
   letter-spacing: 0.04em !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+  text-shadow: none !important;
 }
 
 [data-theme="cli-light"] .concept-card .petscii-card-header {
-  background: linear-gradient(90deg, color-mix(in srgb, var(--titlebar-start, #000080) 65%, #000) 0%, color-mix(in srgb, var(--titlebar-end, #1084d0) 25%, #eaeef2) 100%) !important;
+  background: var(--titlebar-flat, #000080) !important;
   color: #ffffff !important;
 }
 
-/* Palette Windows 98 canonique */
+/* Palette Windows 98 canonique flat */
 .concept-card--red,
 .concept-card--orange {
   --card-accent: #ff3333;
-  --titlebar-start: #800000;
-  --titlebar-end: #ff3333;
+  --titlebar-flat: #800000;
 }
 .concept-card--green {
   --card-accent: #00aa00;
-  --titlebar-start: #004d00;
-  --titlebar-end: #00aa00;
+  --titlebar-flat: #004d00;
 }
 .concept-card--blue,
 .concept-card--cyan {
   --card-accent: #1084d0;
-  --titlebar-start: #000080;
-  --titlebar-end: #1084d0;
+  --titlebar-flat: #000080;
 }
 .concept-card--yellow {
   --card-accent: #ffb900;
-  --titlebar-start: #805500;
-  --titlebar-end: #ffb900;
+  --titlebar-flat: #805500;
 }
 .concept-card--purple {
   --card-accent: #b03a8a;
-  --titlebar-start: #5a1846;
-  --titlebar-end: #b03a8a;
+  --titlebar-flat: #5a1846;
 }
 
 .petscii-hatch-strip {
@@ -430,27 +424,26 @@
 }
 
 /* ==========================================================================
-   MODSCENE / KEYGEN / RETRO TERMINAL CARD STYLES
-   Suppression des arrondis "iOS", bordures techniques et hachures ANSI
+   STYLE FLAT DES CARTES (Windows 98 sobre sans dégradé)
    ========================================================================== */
 .concept-card {
-  border-radius: 4px !important;
-  border: 1.5px solid color-mix(in srgb, var(--card-accent, var(--accent)) 45%, var(--border-bright)) !important;
-  border-top: 4px solid var(--card-accent, var(--accent)) !important;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 12%, var(--surface)) 0%, var(--surface) 40%) !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 2px !important;
+  border: 1.5px solid var(--border-bright) !important;
+  border-top: 3px solid var(--card-accent, var(--accent)) !important;
+  background: var(--surface2) !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3) !important;
   overflow: hidden !important;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  transition: transform 0.15s ease, border-color 0.15s ease !important;
 }
 
 .concept-card::before {
-  display: none !important; /* Remplacé par border-top net */
+  display: none !important;
 }
 
 .concept-card:hover {
   border-color: var(--card-accent, var(--accent)) !important;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--card-accent, var(--accent)) 20%, var(--surface)) 0%, var(--surface) 40%) !important;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4), 0 0 12px color-mix(in srgb, var(--card-accent, var(--accent)) 30%, transparent) !important;
+  background: var(--surface2) !important;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.45) !important;
   transform: translateY(-2px) !important;
 }
 

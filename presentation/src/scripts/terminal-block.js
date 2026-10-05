@@ -24,12 +24,26 @@
         s.classList.toggle('is-visible', isVisible);
         s.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
 
-        // Animation de frappe optionnelle uniquement sur la nouvelle commande active
+        // Si l'étape est visible et antérieure, s'assurer que son contenu est affiché
         var cmdEl = s.querySelector('.terminal-cmd');
-        if (cmdEl && cmdEl.hasAttribute('data-type-effect') && sStep === stepNum && isVisible) {
+        var outEl = s.querySelector('.terminal-out');
+        if (sStep < stepNum) {
+          if (cmdEl) {
+            cmdEl.classList.remove('is-typing');
+            cmdEl.classList.add('is-typed');
+            var fullCmd = cmdEl.getAttribute('data-cmd-text') || cmdEl.textContent.trim();
+            cmdEl.textContent = fullCmd;
+          }
+          if (outEl) {
+            outEl.style.opacity = '1';
+          }
+        } else if (cmdEl && cmdEl.hasAttribute('data-type-effect') && sStep === stepNum && isVisible) {
+          // Animation de frappe sur la nouvelle commande active
           if (!cmdEl.classList.contains('is-typed')) {
             runTypeEffect(cmdEl);
           }
+        } else if (outEl && isVisible) {
+          outEl.style.opacity = '1';
         }
       });
     });
