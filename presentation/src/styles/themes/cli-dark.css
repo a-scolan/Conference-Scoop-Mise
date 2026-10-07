@@ -27,10 +27,10 @@
   --border-focus: #58a6ff;
 
   /* Encres & Typographie (Contraste élevé > 7:1) */
-  --text: #e6edf3;
-  --text-dim: #c9d1d9;
-  --text-subtitle: #8b949e;
-  --part0-neutral-gray: #8b949e;
+  --text: #f0f6fc;
+  --text-dim: #d0d7de;
+  --text-subtitle: #9ea7b3;
+  --part0-neutral-gray: #9ea7b3;
 
   /* Accents des 6 parties du talk (Palette terminal claire et distincte) */
   --accent: #f1e05a;          /* Partie 1: Scoop (Jaune vif) */

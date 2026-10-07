@@ -15,12 +15,12 @@
    ========================================================================== */
 
 :root {
-  --font-terminal: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, 'Courier New', monospace;
-  --font-body: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace;
-  --font-heading: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace;
-  --font-sans: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, monospace;
-  --font-mono: 'Share Tech Mono', 'IBM Plex Mono', 'Lucida Console', Consolas, 'Courier New', monospace;
-  --font-bump: 3px;
+  --font-terminal: 'IBM Plex Mono', 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  --font-body: 'IBM Plex Mono', 'JetBrains Mono', Consolas, monospace;
+  --font-heading: 'IBM Plex Mono', 'JetBrains Mono', Consolas, monospace;
+  --font-sans: 'IBM Plex Mono', 'JetBrains Mono', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', Consolas, 'Courier New', monospace;
+  --font-bump: 4px;
 
   /* Assets graphiques réutilisables */
   --quote-bg: url("./assets/quote.png");
@@ -451,10 +451,10 @@
   --border-focus: #58a6ff;
 
   /* Encres & Typographie (Contraste élevé > 7:1) */
-  --text: #e6edf3;
-  --text-dim: #c9d1d9;
-  --text-subtitle: #8b949e;
-  --part0-neutral-gray: #8b949e;
+  --text: #f0f6fc;
+  --text-dim: #d0d7de;
+  --text-subtitle: #9ea7b3;
+  --part0-neutral-gray: #9ea7b3;
 
   /* Accents des 6 parties du talk (Palette terminal claire et distincte) */
   --accent: #f1e05a;          /* Partie 1: Scoop (Jaune vif) */
@@ -721,21 +721,31 @@
     width: 100%;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     scroll-padding-top: 0;
     overscroll-behavior-y: contain;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    overflow-anchor: auto;
   }
   .deck::-webkit-scrollbar { display: none; }
+
+  .deck.is-resizing,
+  .deck.is-resizing * {
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
 
   .slide {
     height: 100%;
     height: -webkit-fill-available;
     height: 100svh;
     height: 100dvh;
-    scroll-snap-align: start;
+    scroll-snap-align: none;
     scroll-snap-stop: always;
+    overflow-anchor: none;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -746,6 +756,11 @@
     opacity: 0;
     transform: none;
     transition: opacity 0.24s ease;
+  }
+
+  .slide.is-current {
+    scroll-snap-align: start;
+    overflow-anchor: auto;
   }
 
   .slide.visible,
@@ -874,12 +889,26 @@
     display: none !important;
   }
   .is-iframe-preview,
+  .is-iframe-preview body,
+  .is-iframe-preview body.laser-cursor-enabled,
+  .is-iframe-preview body.laser-cursor-enabled * {
+    cursor: default !important;
+  }
+  .is-iframe-preview body.laser-cursor-enabled button,
+  .is-iframe-preview body.laser-cursor-enabled a,
+  .is-iframe-preview body.laser-cursor-enabled [role="button"],
+  .is-iframe-preview body.laser-cursor-enabled [role="tab"],
+  .is-iframe-preview body.laser-cursor-enabled summary {
+    cursor: pointer !important;
+  }
+  .is-iframe-preview,
   .is-iframe-preview body {
     overflow: hidden !important;
   }
   .is-iframe-preview .deck {
     scroll-snap-type: none !important;
     overflow-y: hidden !important;
+    scroll-behavior: auto !important;
   }
 
   .deck-hints {
@@ -2142,13 +2171,16 @@
   .slide__code-diff .line-del {
     display: block; color: var(--red); background: var(--red-dim);
     margin: 0 calc(-1 * clamp(24px, 4vw, 48px)); padding: 0 clamp(24px, 4vw, 48px);
+    min-width: 100%; width: max-content; box-sizing: border-box;
   }
   .slide__code-diff .line-add {
     display: block; color: var(--green); background: var(--green-dim);
     margin: 0 calc(-1 * clamp(24px, 4vw, 48px)); padding: 0 clamp(24px, 4vw, 48px);
+    min-width: 100%; width: max-content; box-sizing: border-box;
   }
   .slide__code-diff .line-ctx {
     display: block; color: var(--text-dim);
+    min-width: 100%; width: max-content; box-sizing: border-box;
   }
   .slide__code-diff .slide__diff-label {
     font-family: var(--font-mono); font-size: calc(clamp(11px, 1.2vw, 13px) + var(--font-bump));
@@ -3525,8 +3557,8 @@
 
     .concept-card__title {
       font-family: var(--font-mono);
-      font-size: calc(clamp(13.5px, 1.25vw, 17.5px) + var(--font-bump));
-      line-height: 1.28;
+      font-size: calc(clamp(14px, 1.35vw, 18px) + var(--font-bump));
+      line-height: 1.32;
       font-weight: 700;
       color: var(--text);
       margin: 0;
@@ -3536,8 +3568,8 @@
       word-break: normal;
     }
     .concept-card__desc {
-      font-size: calc(clamp(11.5px, 1.05vw, 13.5px) + var(--font-bump));
-      line-height: 1.45;
+      font-size: calc(clamp(12px, 1.1vw, 14.5px) + var(--font-bump));
+      line-height: 1.52;
       color: var(--text-dim);
       margin: 0;
       white-space: normal !important;
@@ -3585,7 +3617,7 @@
     .concept-card__step {
       margin: 0;
       font-family: var(--font-mono);
-      font-size: calc(clamp(10.5px, 1.1vw, 12.5px) + var(--font-bump));
+      font-size: calc(clamp(11px, 1.15vw, 13px) + var(--font-bump));
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -3595,8 +3627,8 @@
     .concept-card__title {
       margin: 0;
       font-family: var(--font-mono);
-      font-size: calc(clamp(14px, 1.4vw, 17.5px) + var(--font-bump));
-      line-height: 1.28;
+      font-size: calc(clamp(14.5px, 1.4vw, 18px) + var(--font-bump));
+      line-height: 1.32;
       font-weight: 700;
       color: var(--text);
       min-height: calc(2.4em + var(--font-bump));
@@ -3607,8 +3639,8 @@
 
     .concept-card__desc {
       margin: 0;
-      font-size: calc(clamp(11.5px, 1.15vw, 14px) + var(--font-bump));
-      line-height: 1.48;
+      font-size: calc(clamp(12px, 1.15vw, 14.5px) + var(--font-bump));
+      line-height: 1.52;
       color: var(--text-dim);
       text-wrap: pretty;
       font-weight: 500;
@@ -3626,9 +3658,9 @@
       list-style: none !important;
       position: relative;
       padding-left: 16px;
-      font-size: calc(clamp(12px, 1.25vw, 14.5px) + var(--font-bump));
-      line-height: 1.45;
-      color: var(--text-subtitle);
+      font-size: calc(clamp(12.5px, 1.25vw, 15px) + var(--font-bump));
+      line-height: 1.5;
+      color: var(--text-dim);
     }
     .concept-card__list li strong {
       color: var(--text);
@@ -4585,8 +4617,8 @@
   }
 
   .benefit-card__text {
-    font-size: calc(clamp(11.5px, 1.05vw, 13.5px) + var(--font-bump));
-    line-height: 1.35;
+    font-size: calc(clamp(12px, 1.1vw, 14.5px) + var(--font-bump));
+    line-height: 1.45;
     color: var(--text);
     margin: 0;
   }
@@ -4607,7 +4639,9 @@
     padding-left: 4px;
     margin-left: -7px;
     display: inline-block;
-    width: calc(100% + 7px);
+    min-width: 100%;
+    width: max-content;
+    box-sizing: border-box;
   }
 
   /* ============ RESPONSIVE GENERAL ============ */
@@ -5075,14 +5109,17 @@
 }
 
 /* ==========================================================================
-   MOBILE ORIENTATION LOCK OVERLAY (Blocage obligatoire en mode portrait)
+   MOBILE ORIENTATION LOCK OVERLAY (Screen Orientation API & Landscape lock)
    ========================================================================== */
 .orientation-lock-overlay {
   display: none;
 }
+.orientation-lock-overlay.is-bypassed {
+  display: none !important;
+}
 
 @media screen and (orientation: portrait) and (max-width: 899px) {
-  .orientation-lock-overlay {
+  .orientation-lock-overlay:not(.is-bypassed) {
     display: flex !important;
     position: fixed;
     inset: 0;
@@ -5092,34 +5129,36 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 32px 24px;
+    padding: 24px 16px;
     text-align: center;
     user-select: none;
+    box-sizing: border-box;
   }
 
   .orientation-lock-card {
     background: var(--surface);
     border: 2px solid var(--border-bright);
     border-radius: 16px;
-    padding: 36px 28px;
+    padding: 28px 20px;
     max-width: 360px;
     width: 100%;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
+    box-sizing: border-box;
   }
 
   .orientation-lock-icon {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
     color: var(--accent);
     animation: rotatePhone 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 
   .orientation-lock-title {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
     line-height: 1.3;
     color: var(--text);
@@ -5127,10 +5166,57 @@
   }
 
   .orientation-lock-desc {
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.45;
     color: var(--text-dim);
     margin: 0;
+  }
+
+  .orientation-lock-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .orientation-lock-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 16px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.18s ease;
+  }
+
+  .orientation-lock-btn--primary {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    box-shadow: 0 4px 12px rgba(251, 254, 122, 0.25);
+  }
+
+  .orientation-lock-btn--primary:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+  }
+
+  .orientation-lock-btn--secondary {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    font-size: 12px;
+  }
+
+  .orientation-lock-btn--secondary:hover {
+    color: var(--text);
+    border-color: var(--border-bright);
   }
 
   @keyframes rotatePhone {
@@ -6741,17 +6827,33 @@
 </head>
 <body>
 
-<!-- Overlay de verrouillage d'orientation mobile (forcé en paysage) -->
-<div class="orientation-lock-overlay" aria-hidden="true">
+<!-- Overlay de verrouillage d'orientation mobile (forcé en paysage avec Screen Orientation API) -->
+<div class="orientation-lock-overlay" id="orientation-lock-overlay" aria-hidden="true">
   <div class="orientation-lock-card">
-    <svg class="orientation-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="orientation-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
       <line x1="12" y1="18" x2="12.01" y2="18"></line>
     </svg>
     <h2 class="orientation-lock-title">Pivotez votre &eacute;cran</h2>
-    <p class="orientation-lock-desc">Veuillez faire pivoter votre &eacute;cran en mode paysage (horizontal).</p>
+    <p class="orientation-lock-desc">Ce support de conf&eacute;rence est optimis&eacute; pour un affichage en mode paysage (horizontal).</p>
+    <div class="orientation-lock-actions">
+      <button type="button" class="orientation-lock-btn orientation-lock-btn--primary" id="btn-lock-landscape" onclick="if(typeof attemptLockLandscape==='function')attemptLockLandscape();">
+        <span>Basculer en plein &eacute;cran paysage</span>
+      </button>
+      <button type="button" class="orientation-lock-btn orientation-lock-btn--secondary" id="btn-bypass-orientation" onclick="if(typeof bypassOrientationLock==='function')bypassOrientationLock();">
+        <span>Continuer en portrait</span>
+      </button>
+    </div>
   </div>
 </div>
+<script>
+  try {
+    if (sessionStorage.getItem('sm_orientation_bypassed') === '1') {
+      var _ov = document.getElementById('orientation-lock-overlay');
+      if (_ov) _ov.classList.add('is-bypassed');
+    }
+  } catch (_) {}
+</script>
 
 <div class="deck">
   <!-- Slide 0: Titre -->
@@ -7859,6 +7961,8 @@
   // --- laser.js ---
 /* ============ Laser pointer ============ */
   (function initLaserPointer() {
+    // En mode aperçu pupitre, le curseur OS natif est utilisé : désactiver le laser virtuel pour libérer 100% du CPU
+    if (document.documentElement.classList.contains('is-iframe-preview')) return;
     if (!window.matchMedia || !window.matchMedia('(any-pointer: fine)').matches) return;
     var laser = document.querySelector('.laser-pointer');
     if (!laser) return;
@@ -7872,6 +7976,7 @@
 
     function paint() {
       rafId = 0;
+      // Réactivité maximale 1:1 instantanée sans décalage ni traînée
       currentX = targetX;
       currentY = targetY;
       laser.style.transform = 'translate3d(' + Math.round(currentX) + 'px, ' + Math.round(currentY) + 'px, 0) translate(-50%, -50%) scale(' + scale + ')';
@@ -7881,14 +7986,24 @@
       if (!rafId) rafId = window.requestAnimationFrame(paint);
     }
 
-    function moveTo(clientX, clientY) {
+    function moveTo(clientX, clientY, instant) {
       if (typeof clientX !== 'number' || typeof clientY !== 'number') return;
       targetX = clientX;
       targetY = clientY;
-      schedulePaint();
+      currentX = targetX;
+      currentY = targetY;
+      if (laser) {
+        laser.style.transform = 'translate3d(' + Math.round(currentX) + 'px, ' + Math.round(currentY) + 'px, 0) translate(-50%, -50%) scale(' + scale + ')';
+        if (!visible) {
+          visible = true;
+          document.body.classList.add('laser-cursor-enabled');
+          laser.classList.add('is-visible');
+        }
+      }
     }
 
     function reveal(evt) {
+      if (evt && !evt.isTrusted) return;
       if (evt && evt.pointerType && evt.pointerType !== 'mouse' && evt.pointerType !== 'pen') {
         conceal();
         return;
@@ -7913,6 +8028,7 @@
     }
 
     function press(evt) {
+      if (evt && !evt.isTrusted) return;
       reveal(evt);
       scale = 1.06;
       laser.classList.add('is-active');
@@ -7924,6 +8040,91 @@
       laser.classList.remove('is-active');
       schedulePaint();
     }
+
+    window.laserPointer = {
+      moveTo: moveTo,
+      reveal: reveal,
+      conceal: conceal,
+      press: press,
+      release: release,
+      paint: paint
+    };
+
+    function attachIframePointerTracking(iframe) {
+      if (!iframe) return;
+      try {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc || !doc.body || doc._laserDocAttached) return;
+        doc._laserDocAttached = true;
+
+        // Cacher le curseur système par défaut dans l'iframe uniquement sur la projection publique
+        if (!document.documentElement.classList.contains('is-iframe-preview')) {
+          var style = doc.createElement('style');
+          style.textContent = 'body, body * { cursor: none !important; }';
+          doc.head.appendChild(style);
+        }
+
+        var cachedRect = null;
+        function updateRect() {
+          try { cachedRect = iframe.getBoundingClientRect(); } catch(_) {}
+        }
+        window.addEventListener('resize', updateRect, { passive: true });
+        window.addEventListener('scroll', updateRect, { passive: true });
+        iframe.addEventListener('mouseenter', updateRect, { passive: true });
+        updateRect();
+
+        function handleIframePointer(evt) {
+          if (evt && !evt.isTrusted) return;
+          if (!cachedRect) updateRect();
+          var px = (cachedRect ? cachedRect.left : 0) + evt.clientX;
+          var py = (cachedRect ? cachedRect.top : 0) + evt.clientY;
+          moveTo(px, py, true);
+          if (!visible) {
+            visible = true;
+            document.body.classList.add('laser-cursor-enabled');
+            laser.classList.add('is-visible');
+          }
+        }
+
+        doc.addEventListener('pointermove', handleIframePointer, { passive: true });
+        if (!window.PointerEvent) {
+          doc.addEventListener('mousemove', handleIframePointer, { passive: true });
+        }
+        doc.addEventListener('pointerdown', function(evt) {
+          handleIframePointer(evt);
+          scale = 1.06;
+          laser.classList.add('is-active');
+          schedulePaint();
+        }, { passive: true });
+        doc.addEventListener('pointerup', function() {
+          scale = 1;
+          laser.classList.remove('is-active');
+          schedulePaint();
+        }, { passive: true });
+      } catch(e) {}
+    }
+
+    function scanAndAttachIframes() {
+      document.querySelectorAll('iframe').forEach(function(iframe) {
+        if (!iframe._laserLoadHooked) {
+          iframe._laserLoadHooked = true;
+          iframe.addEventListener('load', function() {
+            attachIframePointerTracking(iframe);
+          });
+        }
+        attachIframePointerTracking(iframe);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', scanAndAttachIframes);
+    } else {
+      scanAndAttachIframes();
+    }
+    try {
+      var iframeObserver = new MutationObserver(scanAndAttachIframes);
+      iframeObserver.observe(document.body, { childList: true, subtree: true });
+    } catch(e) {}
 
     document.addEventListener('pointermove', reveal, { passive: true });
     if (!window.PointerEvent) {
@@ -8227,6 +8428,9 @@
       if(parsed>=0&&parsed<this.total) initIdx=parsed;
     }
     this.current=initIdx;
+    this.isResizing=false;
+    this.isNavigating=false;
+    this.resizeTimer=null;
     this.scrollTimer=null;
     if(initIdx>0){
       var targetTop=this.getSlideTop(initIdx);
@@ -8235,7 +8439,11 @@
     this.injectCardHatchStrips();
     this.injectBackgroundArt();
     this.initPresenterSync();
+    this.displayStream=null;
+    this.peerConnection=null;
+    this.initStreamEmitter();
     this.buildSectionMap();this.buildChrome();this.bindEvents();this.observe();this.update();
+    this.initOrientationLock();
     if(initIdx>0){
       var self=this;
       setTimeout(function(){ self.goTo(initIdx,'instant'); }, 50);
@@ -8379,12 +8587,16 @@
     if(this.isInIframe) return; // Ne pas intercepter les touches ou les scrolls en mode preview
     document.addEventListener('keydown',function(e){
       if(e.target && typeof e.target.closest === 'function' && e.target.closest('.mermaid-wrap,.table-scroll,.code-scroll,input,textarea,[contenteditable]'))return;
-      if(['ArrowDown','ArrowRight',' ','PageDown'].indexOf(e.key)>-1){e.preventDefault();self.next();}
-      else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();self.prev();}
+      var isNext = ['ArrowDown','ArrowRight',' ','PageDown','Enter','n','N'].indexOf(e.key) > -1 || e.code === 'NumpadAdd';
+      var isPrev = ['ArrowUp','ArrowLeft','PageUp','Backspace','p','P'].indexOf(e.key) > -1 || e.code === 'NumpadSubtract';
+      if(isNext){e.preventDefault();self.next();}
+      else if(isPrev){e.preventDefault();self.prev();}
       else if(e.key==='Home'){e.preventDefault();self.goTo(0);}
       else if(e.key==='End'){e.preventDefault();self.goTo(self.total-1);}
-      else if(e.key==='p'||e.key==='P'){e.preventDefault();self.openPresenterView();}
+      else if(e.key==='v'||e.key==='V'||(e.key==='p'&&e.altKey)){e.preventDefault();self.openPresenterView();}
       else if(e.key==='.'||e.key==='b'||e.key==='B'){e.preventDefault();self.toggleBlackout();}
+      else if(e.key==='c'||e.key==='C'){e.preventDefault();self.toggleComfortMode();}
+      else if(e.key==='t'||e.key==='T'){e.preventDefault();self.toggleTheme();}
       self.fadeHints();
     });
     var tY, tX, isMultiTouch = false;
@@ -8430,22 +8642,64 @@
       tX = null;
     });
     this.deck.addEventListener('scroll',function(){
+      if(self.isResizing || self.isNavigating){
+        if(self.scrollTimer){
+          clearTimeout(self.scrollTimer);
+          self.scrollTimer = null;
+        }
+        return;
+      }
       clearTimeout(self.scrollTimer);
       self.scrollTimer=setTimeout(function(){self.snapToNearest();},140);
     },{passive:true});
 
-    /* Recalage précis en cas de redimensionnement de fenêtre, rotation ou barre d'URL mobile */
-    var resizeTimer = null;
+    /* Verrouillage strict et recalage instantané pendant tout redimensionnement (ex: barre d'outils / menu Firefox) */
+    var lastH = window.innerHeight;
+    var lastW = window.innerWidth;
     var handleResize = function(){
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function(){
+      if(!self.deck) return;
+      var newH = window.innerHeight;
+      var newW = window.innerWidth;
+      if(Math.abs(newH - lastH) < 2 && Math.abs(newW - lastW) < 2) return;
+      lastH = newH;
+      lastW = newW;
+
+      // Détection de redimensionnement de la fenêtre : verrouiller sur la slide active
+      self.isResizing = true;
+      self.deck.classList.add('is-resizing');
+
+      // Repositionnement immédiat sur la slide active sans changer de slide
+      var targetTop = self.getSlideTop(self.current);
+      self.deck.scrollTop = targetTop;
+
+      // Recalage synchrone dans la trame de rendu (élimine tout tressautement d'une trame)
+      if(!self._resizeRaf){
+        self._resizeRaf = requestAnimationFrame(function(){
+          self._resizeRaf = 0;
+          if(self.deck && self.slides[self.current]){
+            self.deck.scrollTop = self.getSlideTop(self.current);
+          }
+        });
+      }
+
+      if(self.resizeTimer) clearTimeout(self.resizeTimer);
+      self.resizeTimer = setTimeout(function(){
+        self.resizeTimer = null;
+        if(self._resizeRaf){
+          cancelAnimationFrame(self._resizeRaf);
+          self._resizeRaf = 0;
+        }
         if(self.deck && self.slides[self.current]){
-          var targetTop = self.getSlideTop(self.current);
-          self.deck.scrollTo({ top: targetTop, behavior: 'instant' });
+          var finalTop = self.getSlideTop(self.current);
+          self.deck.scrollTop = finalTop;
+          self.deck.classList.remove('is-resizing');
+          self.slides[self.current].classList.add('visible');
           self.update();
         }
-      }, 50);
+        self.isResizing = false;
+      }, 60);
     };
+
     window.addEventListener('resize', handleResize, { passive: true });
     window.addEventListener('orientationchange', handleResize, { passive: true });
     if(window.visualViewport){
@@ -8741,8 +8995,20 @@
             if(window.setDeckTheme) window.setDeckTheme(data.theme, true);
           } else if(data.type==='TOGGLE_THEME'){
             if(window.toggleDeckTheme) window.toggleDeckTheme();
+          } else if(data.type==='TOGGLE_READABILITY'){
+            if(window.toggleReadabilityMode) window.toggleReadabilityMode();
+          } else if(data.type==='SET_READABILITY'&&data.mode){
+            if(window.setReadabilityMode) window.setReadabilityMode(data.mode);
           } else if(data.type==='REQUEST_SYNC'){
             self.broadcastSlideChange();
+          } else if(data.type==='STREAM_REQUEST_OFFER'){
+            self.handleStreamRequestOffer();
+          } else if(data.type==='STREAM_ANSWER'){
+            self.handleStreamAnswer(data);
+          } else if(data.type==='STREAM_ICE_CANDIDATE'){
+            self.handleStreamIceCandidate(data);
+          } else if(data.type==='STREAM_STOP_REQUEST'){
+            self.stopDisplayStream();
           }
         };
       }catch(e){
@@ -8864,10 +9130,22 @@
     });
   };
   SlideEngine.prototype.goTo=function(i,behavior,initialStep){
+    if(this.resizeTimer){
+      clearTimeout(this.resizeTimer);
+      this.resizeTimer = null;
+    }
+    this.isResizing = false;
+    if(this.deck){
+      this.deck.classList.remove('is-resizing');
+      this.deck.style.scrollSnapType = '';
+    }
     i=Math.max(0,Math.min(i,this.total-1));
     this.cleanupInactiveModals(i);
     this.current=i;
     var targetSlide=this.slides[i];
+    if(targetSlide){
+      targetSlide.classList.add('visible');
+    }
     var steps=this.getSlideSteps(targetSlide);
     if(steps.length>0){
       var stepToSet=initialStep||steps[0];
@@ -8879,6 +9157,16 @@
     var self = this;
     setTimeout(function(){ self.isNavigating = false; }, 400);
     this.deck.scrollTo({top:this.getSlideTop(i),behavior:behavior||'smooth'});
+  };
+  SlideEngine.prototype.toggleComfortMode=function(){
+    if(window.toggleReadabilityMode){
+      window.toggleReadabilityMode();
+    }
+  };
+  SlideEngine.prototype.toggleTheme=function(){
+    if(window.toggleDeckTheme){
+      window.toggleDeckTheme();
+    }
   };
   SlideEngine.prototype.next=function(){
     var slide=this.slides[this.current];
@@ -8993,6 +9281,302 @@
     if(history.replaceState) history.replaceState(null,'','#slide-'+(this.current+1));
     this.broadcastSlideChange();
   };
+
+  /* ============ DISPLAY STREAM EMITTER & WEBRTC P2P ============ */
+  SlideEngine.prototype.initStreamEmitter = function() {
+    if (this.isInIframe) return;
+    var self = this;
+    window.addEventListener('beforeunload', function() {
+      self.stopDisplayStream();
+    });
+  };
+
+  SlideEngine.prototype.toggleDisplayStream = function() {
+    if (this.displayStream && this.displayStream.active) {
+      this.stopDisplayStream();
+    } else {
+      this.startDisplayStream();
+    }
+  };
+
+  SlideEngine.prototype.startDisplayStream = function() {
+    var self = this;
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
+      console.warn('[SlideEngine] getDisplayMedia non supporté dans cet environnement.');
+      return Promise.resolve(null);
+    }
+    var options = {
+      video: {
+        displaySurface: 'browser',
+        frameRate: { ideal: 60, max: 60 },
+        cursor: 'never'
+      },
+      audio: false,
+      preferCurrentTab: true
+    };
+    return navigator.mediaDevices.getDisplayMedia(options).then(function(stream) {
+      self.displayStream = stream;
+
+      if (self.presenterChannel) {
+        self.presenterChannel.postMessage({ type: 'STREAM_STATUS', active: true });
+      }
+
+      self.initWebRtcEmitter();
+
+      var videoTrack = stream.getVideoTracks()[0];
+      if (videoTrack) {
+        videoTrack.onended = function() {
+          self.stopDisplayStream();
+        };
+      }
+      return stream;
+    }).catch(function(err) {
+      console.warn('[SlideEngine] Capture écran annulée ou refusée:', err);
+      return null;
+    });
+  };
+
+  SlideEngine.prototype.initWebRtcEmitter = function() {
+    var self = this;
+    if (!this.displayStream) return;
+    if (this.peerConnection) {
+      try { this.peerConnection.close(); } catch(e){}
+      this.peerConnection = null;
+    }
+    try {
+      var pc = new RTCPeerConnection({ iceServers: [] });
+      this.peerConnection = pc;
+
+      this.displayStream.getTracks().forEach(function(track) {
+        pc.addTrack(track, self.displayStream);
+      });
+
+      pc.onicecandidate = function(e) {
+        if (e.candidate && self.presenterChannel) {
+          var candObj = e.candidate.toJSON ? e.candidate.toJSON() : {
+            candidate: e.candidate.candidate,
+            sdpMid: e.candidate.sdpMid,
+            sdpMLineIndex: e.candidate.sdpMLineIndex
+          };
+          self.presenterChannel.postMessage({
+            type: 'STREAM_ICE_CANDIDATE',
+            candidate: candObj,
+            from: 'public'
+          });
+        }
+      };
+
+      pc.createOffer({
+        offerToReceiveVideo: false,
+        offerToReceiveAudio: false
+      }).then(function(offer) {
+        return pc.setLocalDescription(offer);
+      }).then(function() {
+        if (self.presenterChannel && pc.localDescription) {
+          self.presenterChannel.postMessage({
+            type: 'STREAM_OFFER',
+            sdp: {
+              type: pc.localDescription.type,
+              sdp: pc.localDescription.sdp
+            }
+          });
+        }
+      }).catch(function(err) {
+        console.warn('[SlideEngine] Erreur createOffer WebRTC:', err);
+      });
+    } catch(e) {
+      console.warn('[SlideEngine] Initialisation WebRTC émetteur impossible:', e);
+    }
+  };
+
+  SlideEngine.prototype.handleStreamAnswer = function(data) {
+    if (this.peerConnection && data && data.sdp) {
+      this.peerConnection.setRemoteDescription(new RTCSessionDescription(data.sdp)).catch(function(err) {
+        console.warn('[SlideEngine] Erreur setRemoteDescription answer:', err);
+      });
+    }
+  };
+
+  SlideEngine.prototype.handleStreamIceCandidate = function(data) {
+    if (this.peerConnection && data && data.candidate && data.from === 'receiver') {
+      this.peerConnection.addIceCandidate(new RTCIceCandidate(data.candidate)).catch(function(){});
+    }
+  };
+
+  SlideEngine.prototype.handleStreamRequestOffer = function() {
+    if (this.displayStream && this.displayStream.active) {
+      this.initWebRtcEmitter();
+    }
+  };
+
+  SlideEngine.prototype.stopDisplayStream = function() {
+    if (this.displayStream) {
+      this.displayStream.getTracks().forEach(function(t) {
+        try { t.stop(); } catch(e){}
+      });
+      this.displayStream = null;
+    }
+    if (this.peerConnection) {
+      try { this.peerConnection.close(); } catch(e){}
+      this.peerConnection = null;
+    }
+    if (this.presenterChannel) {
+      this.presenterChannel.postMessage({ type: 'STREAM_STATUS', active: false });
+    }
+  };
+
+  /* ============ VERROUILLAGE ET DÉTECTION D'ORIENTATION MOBILE ============ */
+  function bypassOrientationLock() {
+    var overlay = document.getElementById('orientation-lock-overlay') || document.querySelector('.orientation-lock-overlay');
+    if (overlay) {
+      overlay.classList.add('is-bypassed');
+      overlay.classList.remove('is-active');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+    try {
+      sessionStorage.setItem('sm_orientation_bypassed', '1');
+    } catch (_) {}
+  }
+  window.bypassOrientationLock = bypassOrientationLock;
+
+  var _isLockingLandscape = false;
+  async function attemptLockLandscape() {
+    if (_isLockingLandscape) return;
+    _isLockingLandscape = true;
+    var overlay = document.getElementById('orientation-lock-overlay') || document.querySelector('.orientation-lock-overlay');
+    var desc = overlay ? overlay.querySelector('.orientation-lock-desc') : null;
+    var btnLock = overlay ? overlay.querySelector('#btn-lock-landscape') : null;
+    var docEl = document.documentElement;
+
+    try {
+      // 1. Tenter le passage en plein écran (souvent prérequis pour l'orientation lock sur Chrome Android)
+      try {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          if (docEl.requestFullscreen) {
+            await docEl.requestFullscreen();
+          } else if (docEl.webkitRequestFullscreen) {
+            await docEl.webkitRequestFullscreen();
+          }
+        }
+      } catch (fsErr) {
+        console.warn('[OrientationLock] Plein écran non disponible ou refusé:', fsErr);
+      }
+
+      // 2. Tenter le verrouillage de l'orientation
+      var locked = false;
+      try {
+        if (window.screen && window.screen.orientation && typeof window.screen.orientation.lock === 'function') {
+          await window.screen.orientation.lock('landscape');
+          locked = true;
+        }
+      } catch (lockErr) {
+        console.warn('[OrientationLock] Verrouillage d\'orientation non supporté ou refusé:', lockErr);
+      }
+
+      if (locked) {
+        if (overlay) {
+          overlay.classList.add('is-bypassed');
+          overlay.classList.remove('is-active');
+          overlay.setAttribute('aria-hidden', 'true');
+        }
+        return;
+      }
+
+      // Si le verrouillage automatique n'est pas permis ou non supporté (ex: iOS Safari)
+      if (desc) {
+        desc.textContent = "Le verrouillage automatique n'est pas autorisé par votre navigateur mobile. Veuillez faire pivoter votre appareil manuellement à l'horizontale.";
+      }
+      if (btnLock) {
+        var btnSpan = btnLock.querySelector('span') || btnLock;
+        btnSpan.textContent = "Pivoter manuellement";
+      }
+    } finally {
+      _isLockingLandscape = false;
+    }
+  }
+  window.attemptLockLandscape = attemptLockLandscape;
+
+  SlideEngine.prototype.initOrientationLock = function() {
+    if (this.isInIframe) return;
+    var overlay = document.getElementById('orientation-lock-overlay') || document.querySelector('.orientation-lock-overlay');
+    if (!overlay) return;
+
+    var btnLock = overlay.querySelector('#btn-lock-landscape');
+    var btnBypass = overlay.querySelector('#btn-bypass-orientation');
+
+    if (btnLock && !btnLock._bound) {
+      btnLock._bound = true;
+      if (!btnLock.getAttribute('onclick')) {
+        btnLock.addEventListener('click', function(e) {
+          e.preventDefault();
+          attemptLockLandscape();
+        });
+      }
+    }
+
+    if (btnBypass && !btnBypass._bound) {
+      btnBypass._bound = true;
+      if (!btnBypass.getAttribute('onclick')) {
+        btnBypass.addEventListener('click', function(e) {
+          e.preventDefault();
+          bypassOrientationLock();
+        });
+      }
+    }
+
+    var checkOrientation = function() {
+      var isPortrait = false;
+      if (window.screen && window.screen.orientation && window.screen.orientation.type) {
+        isPortrait = window.screen.orientation.type.indexOf('portrait') !== -1;
+      } else if (window.matchMedia) {
+        isPortrait = window.matchMedia('(orientation: portrait)').matches;
+      } else {
+        isPortrait = window.innerHeight > window.innerWidth;
+      }
+
+      var isNarrow = (window.innerWidth <= 899 || window.innerHeight <= 899);
+      var isBypassed = false;
+      try {
+        isBypassed = sessionStorage.getItem('sm_orientation_bypassed') === '1';
+      } catch (_) {}
+
+      if (isBypassed) {
+        overlay.classList.add('is-bypassed');
+        overlay.classList.remove('is-active');
+        overlay.setAttribute('aria-hidden', 'true');
+        return;
+      }
+
+      if (isPortrait && isNarrow) {
+        overlay.classList.add('is-active');
+        overlay.removeAttribute('aria-hidden');
+      } else {
+        overlay.classList.remove('is-active');
+        overlay.setAttribute('aria-hidden', 'true');
+      }
+    };
+
+    if (window.screen && window.screen.orientation) {
+      window.screen.orientation.addEventListener('change', checkOrientation);
+    }
+    if (window.matchMedia) {
+      try {
+        var mql = window.matchMedia('(orientation: portrait)');
+        if (mql.addEventListener) {
+          mql.addEventListener('change', checkOrientation);
+        } else if (mql.addListener) {
+          mql.addListener(checkOrientation);
+        }
+      } catch (_) {}
+    }
+    window.addEventListener('orientationchange', function() {
+      setTimeout(checkOrientation, 100);
+    });
+    window.addEventListener('resize', checkOrientation);
+
+    checkOrientation();
+  };
+
   SlideEngine.prototype.fadeHints=function(){clearTimeout(this.hintTimer);this.hints.classList.add('faded');};
 
   // Auto-initialisation robuste et indépendante

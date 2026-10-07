@@ -582,13 +582,16 @@
   .slide__code-diff .line-del {
     display: block; color: var(--red); background: var(--red-dim);
     margin: 0 calc(-1 * clamp(24px, 4vw, 48px)); padding: 0 clamp(24px, 4vw, 48px);
+    min-width: 100%; width: max-content; box-sizing: border-box;
   }
   .slide__code-diff .line-add {
     display: block; color: var(--green); background: var(--green-dim);
     margin: 0 calc(-1 * clamp(24px, 4vw, 48px)); padding: 0 clamp(24px, 4vw, 48px);
+    min-width: 100%; width: max-content; box-sizing: border-box;
   }
   .slide__code-diff .line-ctx {
     display: block; color: var(--text-dim);
+    min-width: 100%; width: max-content; box-sizing: border-box;
   }
   .slide__code-diff .slide__diff-label {
     font-family: var(--font-mono); font-size: calc(clamp(11px, 1.2vw, 13px) + var(--font-bump));
@@ -1965,8 +1968,8 @@
 
     .concept-card__title {
       font-family: var(--font-mono);
-      font-size: calc(clamp(13.5px, 1.25vw, 17.5px) + var(--font-bump));
-      line-height: 1.28;
+      font-size: calc(clamp(14px, 1.35vw, 18px) + var(--font-bump));
+      line-height: 1.32;
       font-weight: 700;
       color: var(--text);
       margin: 0;
@@ -1976,8 +1979,8 @@
       word-break: normal;
     }
     .concept-card__desc {
-      font-size: calc(clamp(11.5px, 1.05vw, 13.5px) + var(--font-bump));
-      line-height: 1.45;
+      font-size: calc(clamp(12px, 1.1vw, 14.5px) + var(--font-bump));
+      line-height: 1.52;
       color: var(--text-dim);
       margin: 0;
       white-space: normal !important;
@@ -2025,7 +2028,7 @@
     .concept-card__step {
       margin: 0;
       font-family: var(--font-mono);
-      font-size: calc(clamp(10.5px, 1.1vw, 12.5px) + var(--font-bump));
+      font-size: calc(clamp(11px, 1.15vw, 13px) + var(--font-bump));
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -2035,8 +2038,8 @@
     .concept-card__title {
       margin: 0;
       font-family: var(--font-mono);
-      font-size: calc(clamp(14px, 1.4vw, 17.5px) + var(--font-bump));
-      line-height: 1.28;
+      font-size: calc(clamp(14.5px, 1.4vw, 18px) + var(--font-bump));
+      line-height: 1.32;
       font-weight: 700;
       color: var(--text);
       min-height: calc(2.4em + var(--font-bump));
@@ -2047,8 +2050,8 @@
 
     .concept-card__desc {
       margin: 0;
-      font-size: calc(clamp(11.5px, 1.15vw, 14px) + var(--font-bump));
-      line-height: 1.48;
+      font-size: calc(clamp(12px, 1.15vw, 14.5px) + var(--font-bump));
+      line-height: 1.52;
       color: var(--text-dim);
       text-wrap: pretty;
       font-weight: 500;
@@ -2066,9 +2069,9 @@
       list-style: none !important;
       position: relative;
       padding-left: 16px;
-      font-size: calc(clamp(12px, 1.25vw, 14.5px) + var(--font-bump));
-      line-height: 1.45;
-      color: var(--text-subtitle);
+      font-size: calc(clamp(12.5px, 1.25vw, 15px) + var(--font-bump));
+      line-height: 1.5;
+      color: var(--text-dim);
     }
     .concept-card__list li strong {
       color: var(--text);
@@ -3025,8 +3028,8 @@
   }
 
   .benefit-card__text {
-    font-size: calc(clamp(11.5px, 1.05vw, 13.5px) + var(--font-bump));
-    line-height: 1.35;
+    font-size: calc(clamp(12px, 1.1vw, 14.5px) + var(--font-bump));
+    line-height: 1.45;
     color: var(--text);
     margin: 0;
   }
@@ -3047,7 +3050,9 @@
     padding-left: 4px;
     margin-left: -7px;
     display: inline-block;
-    width: calc(100% + 7px);
+    min-width: 100%;
+    width: max-content;
+    box-sizing: border-box;
   }
 
   /* ============ RESPONSIVE GENERAL ============ */

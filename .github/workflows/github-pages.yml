@@ -38,7 +38,10 @@ jobs:
 
       - name: Build presentation assets
         working-directory: presentation
-        run: npm run build
+        run: |
+          npm run build
+          npm run verify
+          touch public/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

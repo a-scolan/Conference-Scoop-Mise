@@ -28,15 +28,24 @@ Autres commandes, à lancer dans `presentation/` :
 | `npm run dev:deck` | Rechargement automatique pendant l'édition des slides. |
 | `npm run verify` | Contrôle l'alignement entre `slides.json` et le déroulé. |
 
-## Raccourcis en séance
+## Raccourcis et fonctionnalités en séance
 
-| Touche | Effet |
+| Touche / Contrôle | Effet |
 | --- | --- |
-| → / Espace / télécommande | Étape suivante, puis slide suivante |
-| P | Ouvre la vue présentateur (chrono, notes, slide suivante) |
-| C | Mode confort et fort contraste pour vidéoprojecteur délavé |
-| T | Change de thème visuel |
-| B ou . | Écran noir |
+| `→` / `↓` / `Espace` / `PageDown` / `Enter` / `N` / Pavé `+` | Étape suivante, puis slide suivante (compatible télécommandes de présentation) |
+| `←` / `↑` / `PageUp` / `Backspace` / `P` / Pavé `-` | Étape précédente, puis slide précédente |
+| `P`, `V` ou `Alt+P` | Ouvre la console présentateur double écran (`presenter-view.html`) synchronisée |
+| Bouton Miroir ou touche `M` | Démarre/arrête le miroir vidéo direct P2P WebRTC 60 fps sur le pupitre |
+| `C` | Mode confort et fort contraste (synchronisé en temps réel avec le pupitre) |
+| `T` | Bascule de thème visuel (`cli-dark`, `cli-light`, blueprints) |
+| `B` ou `.` | Écran noir public (Blackout) |
+| Clic sur le chrono ou `R` | Démarre / suspend / réinitialise le chronomètre persistant (mémorisé dans le navigateur) |
+
+### Nouveautés ergonomiques du moteur
+
+- **Miroir Vidéo Direct WebRTC 60fps** : La console présentateur s'affranchit du double rendu iframe pour afficher directement le flux vidéo matériel de la projection publique sans latence, avec cadrage supérieur de la slide suivante pour anticiper le flux narratif.
+- **Stabilisation et Scroll-Anchoring** : Recalage instantané au redimensionnement sans saut intempestif de slide (résistant aux barres d'outils et menus auto-rétractables des navigateurs comme Firefox en plein écran).
+- **Adaptation Mobile & Screen Orientation API** : Détection du mode portrait sur mobile avec calque d'invitation au plein écran paysage ou bouton de contournement utilisateur mémorisé en session.
 
 ## Structure du dépôt
 
