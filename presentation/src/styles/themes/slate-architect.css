@@ -5,19 +5,27 @@
 
 [data-theme="slate-architect"],
 [data-theme="dark"] {
-  /* Surfaces & Fonds */
-  --bg: #090d16;
-  --surface: #0f172a;
-  --surface2: #1e293b;
-  --surface-elevated: #334155;
+  /* Surfaces & Fonds (Ardoise profonde teintée Teal Windows 98) */
+  --bg: #091216;
+  --surface: #0f1c22;
+  --surface2: #162830;
+  --surface-elevated: #203742;
 
-  /* Papier millimétré sombre blueprint (double quadrillage 20px / 100px) */
+  /* Fond rétro Windows 98 Setup : Micro-dithering 16-bit + Carreaux biseautés Thatches + Lueur Ardoise/Teal */
   --blueprint-grid:
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
-  --blueprint-grid-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+    var(--win98-dither-pattern),
+    linear-gradient(to right, rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+    linear-gradient(to left, rgba(0, 0, 0, 0.55) 1px, transparent 1px),
+    linear-gradient(to top, rgba(0, 0, 0, 0.55) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 25%, rgba(0, 128, 128, 0.20) 0%, transparent 72%);
+  --blueprint-grid-size:
+    4px 4px,
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    100% 100%;
 
   /* Bordures */
   --border: rgba(255, 255, 255, 0.12);

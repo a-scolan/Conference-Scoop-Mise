@@ -10,15 +10,27 @@
   --font-heading: var(--font-mono);
   --font-sans: var(--font-mono);
 
-  /* Surfaces & Fonds (Clair, net, esprit terminal papier / light editor) */
-  --bg: #f6f8fa;
+  /* Surfaces & Fonds (Clair, net, esprit terminal papier teinté Teal Windows 98) */
+  --bg: #f4f8f8;
   --surface: #ffffff;
-  --surface2: #eaeef2;
+  --surface2: #e7eff0;
   --surface-elevated: #ffffff;
 
-  /* Pas de papier millimétré blueprint : arrière-plan épuré */
-  --blueprint-grid: none;
-  --blueprint-grid-size: auto;
+  /* Fond rétro Windows 98 Setup (Light) : Micro-dithering 16-bit sombre + Carreaux biseautés Thatches */
+  --blueprint-grid:
+    var(--win98-dither-pattern-light),
+    linear-gradient(to right, rgba(255, 255, 255, 0.95) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 1px, transparent 1px),
+    linear-gradient(to left, rgba(0, 60, 60, 0.085) 1px, transparent 1px),
+    linear-gradient(to top, rgba(0, 60, 60, 0.085) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 25%, rgba(0, 128, 128, 0.06) 0%, transparent 70%);
+  --blueprint-grid-size:
+    4px 4px,
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    100% 100%;
 
   /* Bordures fines */
   --border: #d0d7de;

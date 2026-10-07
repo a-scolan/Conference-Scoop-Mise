@@ -24,6 +24,14 @@
 
   /* Assets graphiques réutilisables */
   --quote-bg: url("./assets/quote.png");
+
+  /* ==========================================================================
+     TEXTURES RÉTRO WINDOWS 98 & DEMOSCENE
+     Micro-dithering 16-bit ordonné (Bayer 2x2) & motifs de carreaux "Thatches"
+     ========================================================================== */
+  --win98-dither-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23ffffff' fill-opacity='0.055'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23ffffff' fill-opacity='0.055'/%3E%3C/svg%3E");
+  --win98-dither-pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23004040' fill-opacity='0.048'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23004040' fill-opacity='0.048'/%3E%3C/svg%3E");
+  --win98-tile-size: 40px;
 }
 
 /* ==========================================================================
@@ -31,12 +39,36 @@
    ========================================================================== */
 [data-readability="high-contrast"] {
   --font-bump: 6.5px;
+
+  /* Atténuation complète du quadrillage et tramage en mode confort */
+  --blueprint-grid: none !important;
+  --blueprint-grid-size: auto !important;
+}
+
+/* Contraste élevé pour thèmes clairs (cli-light, google-blueprint-light) */
+[data-theme="cli-light"][data-readability="high-contrast"],
+[data-theme="google-blueprint-light"][data-readability="high-contrast"],
+[data-theme="light"][data-readability="high-contrast"] {
   --text: #000000;
   --text-dim: #0f172a;
   --text-subtitle: #1e293b;
   --code-text: #020617;
   --border: #334155;
   --border-bright: #0284c7;
+}
+
+/* Contraste élevé pour thèmes sombres (cli-dark par défaut, slate-architect) */
+[data-theme="cli-dark"][data-readability="high-contrast"],
+[data-theme="terminal-dark"][data-readability="high-contrast"],
+[data-theme="slate-architect"][data-readability="high-contrast"],
+:root:not([data-theme])[data-readability="high-contrast"],
+html:not([data-theme*="light"])[data-readability="high-contrast"] {
+  --text: #ffffff;
+  --text-dim: #f0f6fc;
+  --text-subtitle: #d0d7de;
+  --code-text: #ffffff;
+  --border: #6e7681;
+  --border-bright: #79c0ff;
 }
 
 [data-readability="high-contrast"] .line-add {
@@ -64,19 +96,27 @@
 
 [data-theme="google-blueprint-light"],
 [data-theme="light"] {
-  /* Surfaces & Fonds (Clair, net, papier millimétré d'architecte) */
-  --bg: #fafbfd;
+  /* Surfaces & Fonds (Clair, net, esprit Windows 98 Setup teinté Teal) */
+  --bg: #f5f9f9;
   --surface: #ffffff;
-  --surface2: #f1f5f9;
+  --surface2: #edf4f4;
   --surface-elevated: #ffffff;
 
-  /* Papier millimétré subtil et technique (double quadrillage 20px / 100px) */
+  /* Fond rétro Windows 98 Setup : Micro-dithering 16-bit sombre + Carreaux biseautés Thatches */
   --blueprint-grid:
-    linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(to right, rgba(26, 115, 232, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(26, 115, 232, 0.07) 1px, transparent 1px);
-  --blueprint-grid-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+    var(--win98-dither-pattern-light),
+    linear-gradient(to right, rgba(255, 255, 255, 0.95) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 1px, transparent 1px),
+    linear-gradient(to left, rgba(26, 115, 232, 0.09) 1px, transparent 1px),
+    linear-gradient(to top, rgba(26, 115, 232, 0.09) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 25%, rgba(0, 128, 128, 0.07) 0%, transparent 70%);
+  --blueprint-grid-size:
+    4px 4px,
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    100% 100%;
 
   /* Bordures nettes et contrastées (parfaites pour vidéoprojecteur) */
   --border: #cbd5e1;
@@ -144,19 +184,27 @@
 
 [data-theme="slate-architect"],
 [data-theme="dark"] {
-  /* Surfaces & Fonds */
-  --bg: #090d16;
-  --surface: #0f172a;
-  --surface2: #1e293b;
-  --surface-elevated: #334155;
+  /* Surfaces & Fonds (Ardoise profonde teintée Teal Windows 98) */
+  --bg: #091216;
+  --surface: #0f1c22;
+  --surface2: #162830;
+  --surface-elevated: #203742;
 
-  /* Papier millimétré sombre blueprint (double quadrillage 20px / 100px) */
+  /* Fond rétro Windows 98 Setup : Micro-dithering 16-bit + Carreaux biseautés Thatches + Lueur Ardoise/Teal */
   --blueprint-grid:
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
-  --blueprint-grid-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+    var(--win98-dither-pattern),
+    linear-gradient(to right, rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+    linear-gradient(to left, rgba(0, 0, 0, 0.55) 1px, transparent 1px),
+    linear-gradient(to top, rgba(0, 0, 0, 0.55) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 25%, rgba(0, 128, 128, 0.20) 0%, transparent 72%);
+  --blueprint-grid-size:
+    4px 4px,
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    100% 100%;
 
   /* Bordures */
   --border: rgba(255, 255, 255, 0.12);
@@ -229,15 +277,27 @@
   --font-heading: var(--font-mono);
   --font-sans: var(--font-mono);
 
-  /* Surfaces & Fonds (Clair, net, esprit terminal papier / light editor) */
-  --bg: #f6f8fa;
+  /* Surfaces & Fonds (Clair, net, esprit terminal papier teinté Teal Windows 98) */
+  --bg: #f4f8f8;
   --surface: #ffffff;
-  --surface2: #eaeef2;
+  --surface2: #e7eff0;
   --surface-elevated: #ffffff;
 
-  /* Pas de papier millimétré blueprint : arrière-plan épuré */
-  --blueprint-grid: none;
-  --blueprint-grid-size: auto;
+  /* Fond rétro Windows 98 Setup (Light) : Micro-dithering 16-bit sombre + Carreaux biseautés Thatches */
+  --blueprint-grid:
+    var(--win98-dither-pattern-light),
+    linear-gradient(to right, rgba(255, 255, 255, 0.95) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 1px, transparent 1px),
+    linear-gradient(to left, rgba(0, 60, 60, 0.085) 1px, transparent 1px),
+    linear-gradient(to top, rgba(0, 60, 60, 0.085) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 25%, rgba(0, 128, 128, 0.06) 0%, transparent 70%);
+  --blueprint-grid-size:
+    4px 4px,
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    100% 100%;
 
   /* Bordures fines */
   --border: #d0d7de;
@@ -435,19 +495,31 @@
   --font-heading: var(--font-mono);
   --font-sans: var(--font-mono);
 
-  /* Surfaces & Fonds (Terminal sobre type VS Code / Ghostty) */
-  --bg: #0d1117;
-  --surface: #161b22;
-  --surface2: #21262d;
-  --surface-elevated: #30363d;
+  /* Surfaces & Fonds (Ambiance Windows 98 Teal modernisée & Terminal sombre) */
+  --bg: #081416;
+  --surface: #101c1e;
+  --surface2: #162528;
+  --surface-elevated: #1f3236;
 
-  /* Pas de papier millimétré blueprint : arrière-plan épuré */
-  --blueprint-grid: none;
-  --blueprint-grid-size: auto;
+  /* Fond rétro Windows 98 Setup : Micro-dithering 16-bit + Carreaux biseautés Thatches + Halo Teal */
+  --blueprint-grid:
+    var(--win98-dither-pattern),
+    linear-gradient(to right, rgba(0, 240, 240, 0.085) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 240, 0.085) 1px, transparent 1px),
+    linear-gradient(to left, rgba(0, 0, 0, 0.55) 1px, transparent 1px),
+    linear-gradient(to top, rgba(0, 0, 0, 0.55) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 25%, rgba(0, 140, 140, 0.22) 0%, transparent 72%);
+  --blueprint-grid-size:
+    4px 4px,
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    100% 100%;
 
   /* Bordures fines type terminal */
-  --border: #30363d;
-  --border-bright: #484f58;
+  --border: #23363a;
+  --border-bright: #395055;
   --border-focus: #58a6ff;
 
   /* Encres & Typographie (Contraste élevé > 7:1) */
@@ -4877,16 +4949,17 @@
 
   /* --- decorations.css --- */
 /* ==========================================================================
-   BLUEPRINT DECORATIONS & VISUAL TEXTURES
-   Rappels d'ingénierie et papier millimétré d'architecture vivante.
+   RETRO TECH TEXTURES: WINDOWS 98 SETUP & 16-BIT DITHERING
+   Motif de carreaux biseautés "Thatches", micro-tramage dither et ambiance Teal.
    ========================================================================== */
 
-/* Fond en papier millimétré technique pour le deck et les diapositives */
+/* Fond rétro Windows 98 Setup & Dither pour le deck et les diapositives */
 .deck,
 .slide {
   background-color: var(--bg);
   background-image: var(--blueprint-grid);
   background-size: var(--blueprint-grid-size);
+  background-repeat: repeat;
 }
 
 /* Mires techniques de coin (+) sur les cadres et conteneurs principaux */
@@ -6704,13 +6777,12 @@
 }
 
 /* ==========================================================================
-   RETRO LATERAL ASCII ART (Excentré pour admirer sans gêner le contenu)
+   RETRO LATERAL ASCII ART (Calé en haut à droite pour admirer sans gêner le contenu)
    ========================================================================== */
 .petscii-bg-art {
   position: absolute;
-  top: 50%;
-  right: clamp(16px, 3.2vw, 68px);
-  transform: translateY(-50%);
+  top: clamp(24px, 4.5vh, 64px);
+  right: clamp(16px, 2.5vw, 48px);
   font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
   font-size: clamp(9px, 0.95vw, 13.5px);
   line-height: 1.12;
@@ -7943,18 +8015,6 @@
   window.toggleReadabilityMode = toggleReadability;
 
   applyReadability(getTargetReadability());
-
-  // Raccourcis clavier : 'T' pour thème, 'C' pour confort/contraste
-  document.addEventListener('keydown', function(e) {
-    if (e.target && typeof e.target.closest === 'function' && e.target.closest('input, textarea, [contenteditable]')) return;
-    if (e.key === 't' || e.key === 'T') {
-      e.preventDefault();
-      toggleTheme();
-    } else if (e.key === 'c' || e.key === 'C') {
-      e.preventDefault();
-      toggleReadability();
-    }
-  });
 })();
 
 
@@ -8466,50 +8526,52 @@
   SlideEngine.prototype.injectBackgroundArt=function(){
     var win98Html =
       '<span style="background:#000080;padding:2px 8px;border-radius:3px 3px 0 0;font-weight:700;color:#ffffff;font-size:11px;display:inline-block;letter-spacing:0.04em;">[ ■ ] Microsoft Windows 98</span>\n' +
-      '<span style="color:#8b949e;">╔═══════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">      ,.=:!!t3Z3z.,                          </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">     :tt:::tt333EE3                          </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">     Et:::ztt33EEEL</span> <span style="color:#00aa00;">@Ee.,      ..,           </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">    ;tt:::tt333EE7</span> <span style="color:#00aa00;">;EEEEEEttttt33#           </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">   :Et:::zt333EEQ.</span> <span style="color:#00aa00;">$EEEEEttttt33QL           </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">   it::::tt333EEF</span> <span style="color:#00aa00;">@EEEEEEttttt33F            </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">  ;3=*^```"*4EEV</span> <span style="color:#00aa00;">:EEEEEEttttt33@.            </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">  ,.=::::!t=., `</span> <span style="color:#00aa00;">@EEEEEEtttz33QF             </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;"> ;::::::::zt33)</span>   <span style="color:#00aa00;">"4EEEtttji3P*              </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">:t::::::::tt33.</span> <span style="color:#ffb900;">:Z3z..</span>  <span style="color:#00aa00;">``</span> <span style="color:#ffb900;">,..g.             </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">i::::::::zt33F</span> <span style="color:#ffb900;">AEEEtttt::::ztF               </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">;:::::::::t33V</span> <span style="color:#ffb900;">;EEEttttt::::t3               </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">E::::::::zt33L</span> <span style="color:#ffb900;">@EEEtttt::::z3F               </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">{3=*^```"*4E3)</span> <span style="color:#ffb900;">;EEEtttt:::::tZ`              </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">            `</span> <span style="color:#ffb900;">:EEEEtttt::::z7                </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ffb900;">                "VEzjt:;;z>*`                </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">╔════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">           ,.=:!!t3Z3z.,                     </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">          :tt:::tt333EE3                     </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">          Et:::ztt33EEEL</span> <span style="color:#00aa00;">@Ee.,      ..,      </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">         ;tt:::tt333EE7</span> <span style="color:#00aa00;">;EEEEEEttttt33#      </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">        :Et:::zt333EEQ.</span> <span style="color:#00aa00;">$EEEEEttttt33QL      </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">        it::::tt333EEF</span> <span style="color:#00aa00;">@EEEEEEttttt33F       </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">       ;3=*^```"*4EEV</span> <span style="color:#00aa00;">:EEEEEEttttt33@.       </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">       ,.=::::!t=., `</span> <span style="color:#00aa00;">@EEEEEEtttz33QF        </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">      ;::::::::zt33)</span>   <span style="color:#00aa00;">"4EEEtttji3P*         </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     :t::::::::tt33.</span> <span style="color:#ffb900;">:Z3z..</span>  <span style="color:#00aa00;">``</span> <span style="color:#ffb900;">,..g.        </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     i::::::::zt33F</span> <span style="color:#ffb900;">AEEEtttt::::ztF          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     ;:::::::::t33V</span> <span style="color:#ffb900;">;EEEttttt::::t3          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     E::::::::zt33L</span> <span style="color:#ffb900;">@EEEtttt::::z3F          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     {3=*^```"*4E3)</span> <span style="color:#ffb900;">;EEEtttt:::::tZ`         </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">                 `</span> <span style="color:#ffb900;">:EEEEtttt::::z7           </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ffb900;">                     "VEzjt:;;z>*`           </span> <span style="color:#8b949e;">║</span>\n' +
       '<span style="color:#8b949e;">║                                               ║\n' +
-      '║ [ MICROSOFT WINDOWS 98 // WIN32 USER-SPACE ]  ║\n' +
+      '║             [ WIN32 USER-SPACE ]              ║\n' +
       '╚═══════════════════════════════════════════════╝</span>';
 
     var javaHtml =
       '<span style="background:#000080;padding:2px 8px;border-radius:3px 3px 0 0;font-weight:700;color:#ffffff;font-size:11px;display:inline-block;letter-spacing:0.04em;">[ ☕ ] Java(TM) Platform</span>\n' +
-      '<span style="color:#8b949e;">╔═══════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
-      '<span style="color:#8b949e;">║</span>                                               <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>                          <span style="color:#58a6ff;">:--=</span>    <span style="color:#58a6ff;">.:</span>           <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>                     <span style="color:#58a6ff;">:--:</span> <span style="color:#58a6ff;">-===:</span> <span style="color:#58a6ff;">.===-.</span>         <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#58a6ff;">..</span>           <span style="color:#58a6ff;">-===---===::===.</span>          <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">.-=-:.</span>         <span style="color:#ff3333;">.-============</span>           <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.====-:.</span>        <span style="color:#ff3333;">:-==========-</span>          <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.=======-:.</span>  <span style="color:#ff3333;">.:--===========.</span>         <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.==========-====----========:</span>           <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.=============:.</span>      <span style="color:#ff3333;">.-=-.</span>            <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.======-=========-.</span>     <span style="color:#ff3333;">:=:</span>             <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.==-</span> <span style="color:#ff3333;">.-------=-:::</span>   <span style="color:#ff3333;">-.</span>              <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">:===-=========</span> <span style="color:#ff3333;">.-=--</span>                <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">:-.:-========--.</span>     <span style="color:#ff3333;">:=-</span>                <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>      <span style="color:#ff3333;">:-:</span>    <span style="color:#ff3333;">......</span>          <span style="color:#ff3333;">.=.</span>               <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>     <span style="color:#ffb900;">-=-.</span>                     <span style="color:#ffb900;">.-:</span>              <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>      <span style="color:#ffb900;">=.</span>                       <span style="color:#ffb900;">.::</span>             <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>      <span style="color:#ffb900;">-.</span>                        <span style="color:#ffb900;">.-.</span>            <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>     <span style="color:#ffb900;">=.</span>                          <span style="color:#ffb900;">.-</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">╔════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
+      '<span style="color:#8b949e;">║</span>                         <span style="color:#ff3333;">▓</span>                     <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                       <span style="color:#ff3333;">▓▓▓</span>                     <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                     <span style="color:#ff3333;">▓▓▓▓</span>   <span style="color:#ff3333;">▓▓</span>                 <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                   <span style="color:#ff3333;">▓▓▓▓</span>  <span style="color:#ff3333;">▓▓▓</span>                   <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                 <span style="color:#ff3333;">▓▓▓▓</span>  <span style="color:#ff3333;">▓▓▓</span>                     <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                 <span style="color:#ff3333;">▓░▓</span>   <span style="color:#ff3333;">▓ ▓</span>                     <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                 <span style="color:#ff3333;">▓▓▓</span>   <span style="color:#ff3333;">▓▓▓▓</span>                    <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                   <span style="color:#ff3333;">▓▓</span>    <span style="color:#ff3333;">▓▓</span>                    <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                    <span style="color:#ff3333;">▓▓</span>   <span style="color:#ff3333;">▓▓</span>                    <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>            <span style="color:#58a6ff;">████</span>        <span style="color:#ff3333;">▓▓</span>     <span style="color:#58a6ff;">█████</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>           <span style="color:#58a6ff;">███████████████████</span>    <span style="color:#58a6ff;">▒█</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                                  <span style="color:#58a6ff;">██</span>           <span style="color:#58a6ff;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>              <span style="color:#58a6ff;">██████</span> <span style="color:#58a6ff;">█</span><span style="color:#58a6ff;">▓</span><span style="color:#58a6ff;">█████</span>     <span style="color:#58a6ff;">██</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                  <span style="color:#58a6ff;">░▒ ░ ░</span>       <span style="color:#58a6ff;">█</span>               <span style="color:#58a6ff;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>               <span style="color:#58a6ff;">███</span><span style="color:#58a6ff;">░░░▒ ▒</span><span style="color:#58a6ff;">████</span>                   <span style="color:#58a6ff;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>         <span style="color:#58a6ff;">███</span>     <span style="color:#58a6ff;">▓</span><span style="color:#58a6ff;">██</span><span style="color:#58a6ff;">▓</span><span style="color:#58a6ff;">██</span><span style="color:#58a6ff;">▓</span><span style="color:#58a6ff;">█</span>         <span style="color:#58a6ff;">█</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#58a6ff;">██</span><span style="color:#58a6ff;">▓</span><span style="color:#58a6ff;">█</span>                    <span style="color:#58a6ff;">███</span>            <span style="color:#58a6ff;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>           <span style="color:#58a6ff;">████████████████████</span>      <span style="color:#58a6ff;">█</span>         <span style="color:#58a6ff;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                                 <span style="color:#58a6ff;">███</span>           <span style="color:#58a6ff;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                   <span style="color:#58a6ff;">████████████</span>                <span style="color:#58a6ff;">║</span>\n' +
       '<span style="color:#8b949e;">║                                               ║\n' +
-      '║ [ JAVA RUNTIME // SWITCH AUTOMATIQUE AU CD ]  ║\n' +
+      '║     [ SWITCH AUTOMATIQUE SELON DOSSIER ]      ║\n' +
       '╚═══════════════════════════════════════════════╝</span>';
 
     this.slides.forEach(function(slide) {
@@ -8579,7 +8641,7 @@
     document.addEventListener('pointerdown',function(e){if(!nav.contains(e.target))closeNav(true);});
     var ctr=document.createElement('div');ctr.className='deck-counter';ctr.setAttribute('aria-live','polite');ctr.setAttribute('aria-atomic','true');document.body.appendChild(ctr);this.counter=ctr;
 
-    var hints=document.createElement('div');hints.className='deck-hints';hints.textContent='\u2190 \u2192 \u2193 \u2191 \u00b7 scroll \u00b7 touch \u00b7 P';document.body.appendChild(hints);this.hints=hints;
+    var hints=document.createElement('div');hints.className='deck-hints';hints.textContent='\u2190 \u2192 \u2193 \u2191 \u00b7 scroll \u00b7 touch \u00b7 V';document.body.appendChild(hints);this.hints=hints;
     this.hintTimer=setTimeout(function(){hints.classList.add('faded');},4000);
   };
   SlideEngine.prototype.bindEvents=function(){

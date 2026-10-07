@@ -448,13 +448,12 @@
 }
 
 /* ==========================================================================
-   RETRO LATERAL ASCII ART (Excentré pour admirer sans gêner le contenu)
+   RETRO LATERAL ASCII ART (Calé en haut à droite pour admirer sans gêner le contenu)
    ========================================================================== */
 .petscii-bg-art {
   position: absolute;
-  top: 50%;
-  right: clamp(16px, 3.2vw, 68px);
-  transform: translateY(-50%);
+  top: clamp(24px, 4.5vh, 64px);
+  right: clamp(16px, 2.5vw, 48px);
   font-family: Consolas, 'Cascadia Code', 'Courier New', monospace !important;
   font-size: clamp(9px, 0.95vw, 13.5px);
   line-height: 1.12;

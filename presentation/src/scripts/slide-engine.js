@@ -58,50 +58,52 @@
   SlideEngine.prototype.injectBackgroundArt=function(){
     var win98Html =
       '<span style="background:#000080;padding:2px 8px;border-radius:3px 3px 0 0;font-weight:700;color:#ffffff;font-size:11px;display:inline-block;letter-spacing:0.04em;">[ ■ ] Microsoft Windows 98</span>\n' +
-      '<span style="color:#8b949e;">╔═══════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">      ,.=:!!t3Z3z.,                          </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">     :tt:::tt333EE3                          </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">     Et:::ztt33EEEL</span> <span style="color:#00aa00;">@Ee.,      ..,           </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">    ;tt:::tt333EE7</span> <span style="color:#00aa00;">;EEEEEEttttt33#           </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">   :Et:::zt333EEQ.</span> <span style="color:#00aa00;">$EEEEEttttt33QL           </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">   it::::tt333EEF</span> <span style="color:#00aa00;">@EEEEEEttttt33F            </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">  ;3=*^```"*4EEV</span> <span style="color:#00aa00;">:EEEEEEttttt33@.            </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">  ,.=::::!t=., `</span> <span style="color:#00aa00;">@EEEEEEtttz33QF             </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;"> ;::::::::zt33)</span>   <span style="color:#00aa00;">"4EEEtttji3P*              </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">:t::::::::tt33.</span> <span style="color:#ffb900;">:Z3z..</span>  <span style="color:#00aa00;">``</span> <span style="color:#ffb900;">,..g.             </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">i::::::::zt33F</span> <span style="color:#ffb900;">AEEEtttt::::ztF               </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">;:::::::::t33V</span> <span style="color:#ffb900;">;EEEttttt::::t3               </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">E::::::::zt33L</span> <span style="color:#ffb900;">@EEEtttt::::z3F               </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">{3=*^```"*4E3)</span> <span style="color:#ffb900;">;EEEtttt:::::tZ`              </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">            `</span> <span style="color:#ffb900;">:EEEEtttt::::z7                </span> <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span> <span style="color:#ffb900;">                "VEzjt:;;z>*`                </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">╔════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">           ,.=:!!t3Z3z.,                     </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">          :tt:::tt333EE3                     </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">          Et:::ztt33EEEL</span> <span style="color:#00aa00;">@Ee.,      ..,      </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">         ;tt:::tt333EE7</span> <span style="color:#00aa00;">;EEEEEEttttt33#      </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">        :Et:::zt333EEQ.</span> <span style="color:#00aa00;">$EEEEEttttt33QL      </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">        it::::tt333EEF</span> <span style="color:#00aa00;">@EEEEEEttttt33F       </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ff3333;">       ;3=*^```"*4EEV</span> <span style="color:#00aa00;">:EEEEEEttttt33@.       </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">       ,.=::::!t=., `</span> <span style="color:#00aa00;">@EEEEEEtttz33QF        </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">      ;::::::::zt33)</span>   <span style="color:#00aa00;">"4EEEtttji3P*         </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     :t::::::::tt33.</span> <span style="color:#ffb900;">:Z3z..</span>  <span style="color:#00aa00;">``</span> <span style="color:#ffb900;">,..g.        </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     i::::::::zt33F</span> <span style="color:#ffb900;">AEEEtttt::::ztF          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     ;:::::::::t33V</span> <span style="color:#ffb900;">;EEEttttt::::t3          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     E::::::::zt33L</span> <span style="color:#ffb900;">@EEEtttt::::z3F          </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">     {3=*^```"*4E3)</span> <span style="color:#ffb900;">;EEEtttt:::::tZ`         </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#1084d0;">                 `</span> <span style="color:#ffb900;">:EEEEtttt::::z7           </span> <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span> <span style="color:#ffb900;">                     "VEzjt:;;z>*`           </span> <span style="color:#8b949e;">║</span>\n' +
       '<span style="color:#8b949e;">║                                               ║\n' +
-      '║ [ MICROSOFT WINDOWS 98 // WIN32 USER-SPACE ]  ║\n' +
+      '║             [ WIN32 USER-SPACE ]              ║\n' +
       '╚═══════════════════════════════════════════════╝</span>';
 
     var javaHtml =
       '<span style="background:#000080;padding:2px 8px;border-radius:3px 3px 0 0;font-weight:700;color:#ffffff;font-size:11px;display:inline-block;letter-spacing:0.04em;">[ ☕ ] Java(TM) Platform</span>\n' +
-      '<span style="color:#8b949e;">╔═══════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
-      '<span style="color:#8b949e;">║</span>                                               <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>                          <span style="color:#58a6ff;">:--=</span>    <span style="color:#58a6ff;">.:</span>           <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>                     <span style="color:#58a6ff;">:--:</span> <span style="color:#58a6ff;">-===:</span> <span style="color:#58a6ff;">.===-.</span>         <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#58a6ff;">..</span>           <span style="color:#58a6ff;">-===---===::===.</span>          <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">.-=-:.</span>         <span style="color:#ff3333;">.-============</span>           <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.====-:.</span>        <span style="color:#ff3333;">:-==========-</span>          <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.=======-:.</span>  <span style="color:#ff3333;">.:--===========.</span>         <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.==========-====----========:</span>           <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.=============:.</span>      <span style="color:#ff3333;">.-=-.</span>            <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.======-=========-.</span>     <span style="color:#ff3333;">:=:</span>             <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>        <span style="color:#ff3333;">.==-</span> <span style="color:#ff3333;">.-------=-:::</span>   <span style="color:#ff3333;">-.</span>              <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">:===-=========</span> <span style="color:#ff3333;">.-=--</span>                <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>       <span style="color:#ff3333;">:-.:-========--.</span>     <span style="color:#ff3333;">:=-</span>                <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>      <span style="color:#ff3333;">:-:</span>    <span style="color:#ff3333;">......</span>          <span style="color:#ff3333;">.=.</span>               <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>     <span style="color:#ffb900;">-=-.</span>                     <span style="color:#ffb900;">.-:</span>              <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>      <span style="color:#ffb900;">=.</span>                       <span style="color:#ffb900;">.::</span>             <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>      <span style="color:#ffb900;">-.</span>                        <span style="color:#ffb900;">.-.</span>            <span style="color:#8b949e;">║</span>\n' +
-      '<span style="color:#8b949e;">║</span>     <span style="color:#ffb900;">=.</span>                          <span style="color:#ffb900;">.-</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">╔════════════════════════════════════[ _ ][ X ]═╗</span>\n' +
+      '<span style="color:#8b949e;">║</span>                         <span style="color:#ff3333;">▓</span>                     <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                       <span style="color:#ff3333;">▓▓▓</span>                     <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                     <span style="color:#ff3333;">▓▓▓▓</span>   <span style="color:#ffb900;">▓▓</span>                 <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                   <span style="color:#ff3333;">▓▓▓▓</span>  <span style="color:#ffb900;">▓▓▓</span>                   <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                 <span style="color:#ff3333;">▓▓▓▓</span>  <span style="color:#ffb900;">▓▓▓</span>                     <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                 <span style="color:#ff3333;">▓░▓</span>   <span style="color:#ffb900;">▓ ▓</span>                     <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                 <span style="color:#ff3333;">▓▓▓</span>   <span style="color:#ffb900;">▓▓▓▓</span>                    <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                   <span style="color:#ff3333;">▓▓</span>    <span style="color:#ffb900;">▓▓</span>                    <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                    <span style="color:#ff3333;">▓▓</span>   <span style="color:#ffb900;">▓▓</span>                    <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>            <span style="color:#58a6ff;">████</span>        <span style="color:#ffb900;">▓▓</span>     <span style="color:#58a6ff;">█████</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>           <span style="color:#58a6ff;">██████████████████</span>     <span style="color:#58a6ff;">▒█</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                                  <span style="color:#58a6ff;">██</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>              <span style="color:#58a6ff;">██████</span> <span style="color:#1084d0;">█</span><span style="color:#ffb900;">▓</span><span style="color:#58a6ff;">█████</span>     <span style="color:#58a6ff;">██</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                  <span style="color:#ffb900;">░▒ ░ ░</span>       <span style="color:#58a6ff;">█</span>               <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>               <span style="color:#58a6ff;">███</span><span style="color:#ffb900;">░░░▒ ▒</span><span style="color:#58a6ff;">████</span>                   <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>         <span style="color:#58a6ff;">███</span>     <span style="color:#ffb900;">▓</span><span style="color:#58a6ff;">██</span><span style="color:#ffb900;">▓</span><span style="color:#58a6ff;">██</span><span style="color:#ffb900;">▓</span><span style="color:#58a6ff;">█</span>         <span style="color:#58a6ff;">█</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>        <span style="color:#58a6ff;">██</span><span style="color:#1084d0;">▓</span><span style="color:#58a6ff;">█</span>                    <span style="color:#58a6ff;">███</span>            <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>           <span style="color:#58a6ff;">████████████████████</span>      <span style="color:#58a6ff;">█</span>         <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                                 <span style="color:#58a6ff;">███</span>           <span style="color:#8b949e;">║</span>\n' +
+      '<span style="color:#8b949e;">║</span>                   <span style="color:#58a6ff;">████████████</span>                <span style="color:#8b949e;">║</span>\n' +
       '<span style="color:#8b949e;">║                                               ║\n' +
-      '║ [ JAVA RUNTIME // SWITCH AUTOMATIQUE AU CD ]  ║\n' +
+      '║     [ SWITCH AUTOMATIQUE SELON DOSSIER ]      ║\n' +
       '╚═══════════════════════════════════════════════╝</span>';
 
     this.slides.forEach(function(slide) {
@@ -171,7 +173,7 @@
     document.addEventListener('pointerdown',function(e){if(!nav.contains(e.target))closeNav(true);});
     var ctr=document.createElement('div');ctr.className='deck-counter';ctr.setAttribute('aria-live','polite');ctr.setAttribute('aria-atomic','true');document.body.appendChild(ctr);this.counter=ctr;
 
-    var hints=document.createElement('div');hints.className='deck-hints';hints.textContent='\u2190 \u2192 \u2193 \u2191 \u00b7 scroll \u00b7 touch \u00b7 P';document.body.appendChild(hints);this.hints=hints;
+    var hints=document.createElement('div');hints.className='deck-hints';hints.textContent='\u2190 \u2192 \u2193 \u2191 \u00b7 scroll \u00b7 touch \u00b7 V';document.body.appendChild(hints);this.hints=hints;
     this.hintTimer=setTimeout(function(){hints.classList.add('faded');},4000);
   };
   SlideEngine.prototype.bindEvents=function(){

@@ -179,16 +179,4 @@
   window.toggleReadabilityMode = toggleReadability;
 
   applyReadability(getTargetReadability());
-
-  // Raccourcis clavier : 'T' pour thème, 'C' pour confort/contraste
-  document.addEventListener('keydown', function(e) {
-    if (e.target && typeof e.target.closest === 'function' && e.target.closest('input, textarea, [contenteditable]')) return;
-    if (e.key === 't' || e.key === 'T') {
-      e.preventDefault();
-      toggleTheme();
-    } else if (e.key === 'c' || e.key === 'C') {
-      e.preventDefault();
-      toggleReadability();
-    }
-  });
 })();

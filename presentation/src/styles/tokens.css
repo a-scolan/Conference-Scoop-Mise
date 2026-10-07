@@ -12,6 +12,14 @@
 
   /* Assets graphiques réutilisables */
   --quote-bg: url("./assets/quote.png");
+
+  /* ==========================================================================
+     TEXTURES RÉTRO WINDOWS 98 & DEMOSCENE
+     Micro-dithering 16-bit ordonné (Bayer 2x2) & motifs de carreaux "Thatches"
+     ========================================================================== */
+  --win98-dither-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23ffffff' fill-opacity='0.055'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23ffffff' fill-opacity='0.055'/%3E%3C/svg%3E");
+  --win98-dither-pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23004040' fill-opacity='0.048'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23004040' fill-opacity='0.048'/%3E%3C/svg%3E");
+  --win98-tile-size: 40px;
 }
 
 /* ==========================================================================
@@ -19,12 +27,36 @@
    ========================================================================== */
 [data-readability="high-contrast"] {
   --font-bump: 6.5px;
+
+  /* Atténuation complète du quadrillage et tramage en mode confort */
+  --blueprint-grid: none !important;
+  --blueprint-grid-size: auto !important;
+}
+
+/* Contraste élevé pour thèmes clairs (cli-light, google-blueprint-light) */
+[data-theme="cli-light"][data-readability="high-contrast"],
+[data-theme="google-blueprint-light"][data-readability="high-contrast"],
+[data-theme="light"][data-readability="high-contrast"] {
   --text: #000000;
   --text-dim: #0f172a;
   --text-subtitle: #1e293b;
   --code-text: #020617;
   --border: #334155;
   --border-bright: #0284c7;
+}
+
+/* Contraste élevé pour thèmes sombres (cli-dark par défaut, slate-architect) */
+[data-theme="cli-dark"][data-readability="high-contrast"],
+[data-theme="terminal-dark"][data-readability="high-contrast"],
+[data-theme="slate-architect"][data-readability="high-contrast"],
+:root:not([data-theme])[data-readability="high-contrast"],
+html:not([data-theme*="light"])[data-readability="high-contrast"] {
+  --text: #ffffff;
+  --text-dim: #f0f6fc;
+  --text-subtitle: #d0d7de;
+  --code-text: #ffffff;
+  --border: #6e7681;
+  --border-bright: #79c0ff;
 }
 
 [data-readability="high-contrast"] .line-add {

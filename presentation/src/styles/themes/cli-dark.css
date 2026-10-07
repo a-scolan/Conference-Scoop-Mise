@@ -11,19 +11,31 @@
   --font-heading: var(--font-mono);
   --font-sans: var(--font-mono);
 
-  /* Surfaces & Fonds (Terminal sobre type VS Code / Ghostty) */
-  --bg: #0d1117;
-  --surface: #161b22;
-  --surface2: #21262d;
-  --surface-elevated: #30363d;
+  /* Surfaces & Fonds (Ambiance Windows 98 Teal modernisée & Terminal sombre) */
+  --bg: #081416;
+  --surface: #101c1e;
+  --surface2: #162528;
+  --surface-elevated: #1f3236;
 
-  /* Pas de papier millimétré blueprint : arrière-plan épuré */
-  --blueprint-grid: none;
-  --blueprint-grid-size: auto;
+  /* Fond rétro Windows 98 Setup : Micro-dithering 16-bit + Carreaux biseautés Thatches + Halo Teal */
+  --blueprint-grid:
+    var(--win98-dither-pattern),
+    linear-gradient(to right, rgba(0, 240, 240, 0.085) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 240, 0.085) 1px, transparent 1px),
+    linear-gradient(to left, rgba(0, 0, 0, 0.55) 1px, transparent 1px),
+    linear-gradient(to top, rgba(0, 0, 0, 0.55) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 25%, rgba(0, 140, 140, 0.22) 0%, transparent 72%);
+  --blueprint-grid-size:
+    4px 4px,
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    var(--win98-tile-size) var(--win98-tile-size),
+    100% 100%;
 
   /* Bordures fines type terminal */
-  --border: #30363d;
-  --border-bright: #484f58;
+  --border: #23363a;
+  --border-bright: #395055;
   --border-focus: #58a6ff;
 
   /* Encres & Typographie (Contraste élevé > 7:1) */

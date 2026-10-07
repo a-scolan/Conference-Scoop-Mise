@@ -33,10 +33,10 @@ Autres commandes, à lancer dans `presentation/` :
 | Touche / Contrôle | Effet |
 | --- | --- |
 | `→` / `↓` / `Espace` / `PageDown` / `Enter` / `N` / Pavé `+` | Étape suivante, puis slide suivante (compatible télécommandes de présentation) |
-| `←` / `↑` / `PageUp` / `Backspace` / `P` / Pavé `-` | Étape précédente, puis slide précédente |
-| `P`, `V` ou `Alt+P` | Ouvre la console présentateur double écran (`presenter-view.html`) synchronisée |
+| `←` / `↑` / `PageUp` / `Backspace` / `P` / Pavé `-` | Étape précédente, puis slide précédente (compatible télécommandes de présentation) |
+| `V` ou `Alt+P` | Ouvre la console présentateur double écran (`presenter-view.html`) synchronisée (`V` pour *View*, `P` seul étant réservé au recul télécommande) |
 | Bouton Miroir ou touche `M` | Démarre/arrête le miroir vidéo direct P2P WebRTC 60 fps sur le pupitre |
-| `C` | Mode confort et fort contraste (synchronisé en temps réel avec le pupitre) |
+| `C` | Mode confort / agrandissement texte et fort contraste (synchronisé en temps réel avec le pupitre) |
 | `T` | Bascule de thème visuel (`cli-dark`, `cli-light`, blueprints) |
 | `B` ou `.` | Écran noir public (Blackout) |
 | Clic sur le chrono ou `R` | Démarre / suspend / réinitialise le chronomètre persistant (mémorisé dans le navigateur) |

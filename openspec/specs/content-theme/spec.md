@@ -48,15 +48,15 @@ Chaque grande partie de la conférence DOIT (SHALL) posséder un code couleur d'
   - **Partie 5 (Clôture) :** Framboise (`--accent4`, `#f43f5e`).
 
 ### Requirement: Habillage géométrique et éléments décoratifs de fond (Blueprint & Calibration)
-Le système visuel DOIT (SHALL) habiller les fonds de diapositives et les conteneurs avec une trame sobre de type plan d'ingénierie (blueprint), intégrant des dégradés radiaux asymétriques et des repères techniques d'impression et de calibration (mires de registre, échelle CMYK, barrettes de hachures biseautées, réglettes d'étalonnage sur cartes) sans concurrencer la lisibilité des schémas.
+Le système visuel DOIT (SHALL) habiller les fonds de diapositives avec une trame géométrique inspirée de l'ère Windows 98 et des motifs de bureau (« Thatches » / « Carreaux ») combinée à un micro-dithering 16-bit (tramage ordonné 2×2) et une ambiance Teal rétro modernisée, tout en maintenant un contraste et une lisibilité supérieurs aux normes d'accessibilité en vidéoprojection.
 
 #### Scenario: Rendu des fonds de diapositives
 - **WHEN** Une diapositive de contenu est affichée
-- **THEN** Elle combine un dégradé radial localisé (ex: `radial-gradient(ellipse at 80% 80%, var(--accent2-dim) 0%, transparent 45%)`) et l'injection dynamique des quatre ornements blueprint aux angles (`.blueprint-deco--tl`, `.blueprint-deco--tr`, `.blueprint-deco--bl`, `.blueprint-deco--br`).
+- **THEN** Le fond applique une double texture composée d'un quadrillage de carreaux subtilement biseautés et d'un micro-tramage de pixels en damier 2×2 à opacité contenue (inférieure ou égale à 4%), sur une base de couleur intégrant des nuances Teal rétro estompées (`#0a1818` à `#0d1e20` en thème sombre), combinant un dégradé radial d'ambiance et des repères techniques aux angles.
 
 #### Scenario: Réglettes d'étalonnage sur les composants de cartes
 - **WHEN** Une carte de contenu (`.concept-card`, `.benefit-card`, etc.) est injectée
-- **THEN** Une barrette de micro-hachures biseautées bicolores (`.card-calibration-strip`) est apposée en bas de la carte pour rappeler l'esthétique blueprint d'ingénierie technique.
+- **THEN** Une barrette de micro-hachures biseautées bicolores (`.card-calibration-strip`) ou des bordures biseautées rétro sont apposées pour rappeler l'esthétique d'ingénierie logicielle et d'étalonnage technique.
 
 ---
 

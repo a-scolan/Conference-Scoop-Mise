@@ -1,14 +1,15 @@
 /* ==========================================================================
-   BLUEPRINT DECORATIONS & VISUAL TEXTURES
-   Rappels d'ingénierie et papier millimétré d'architecture vivante.
+   RETRO TECH TEXTURES: WINDOWS 98 SETUP & 16-BIT DITHERING
+   Motif de carreaux biseautés "Thatches", micro-tramage dither et ambiance Teal.
    ========================================================================== */
 
-/* Fond en papier millimétré technique pour le deck et les diapositives */
+/* Fond rétro Windows 98 Setup & Dither pour le deck et les diapositives */
 .deck,
 .slide {
   background-color: var(--bg);
   background-image: var(--blueprint-grid);
   background-size: var(--blueprint-grid-size);
+  background-repeat: repeat;
 }
 
 /* Mires techniques de coin (+) sur les cadres et conteneurs principaux */
