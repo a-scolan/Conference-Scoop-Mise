@@ -5,7 +5,7 @@
       <span class="petscii-glyph-cyan">╔═[</span> <span>MISE::RUNTIME_SWITCHER</span> <span class="petscii-glyph-cyan">]</span>
     </div>
     <div class="petscii-slide-frame__tr">
-      <span class="petscii-glyph-cyan">[</span> <span>5MS PROMPT // RUST</span> <span class="petscii-glyph-cyan">]═╗</span>
+      <span class="petscii-glyph-cyan">[</span> <span>UN BINAIRE // RUST</span> <span class="petscii-glyph-cyan">]═╗</span>
     </div>
     <div class="petscii-slide-frame__bl">
       <span class="petscii-glyph-cyan">╚═[</span> <span>mise.toml VERSIONNÉ</span> <span class="petscii-glyph-cyan">]</span>
@@ -24,7 +24,7 @@
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Un seul outil en Rust</h3>
-        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
+        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Un seul binaire écrit en Rust, disponible pour Windows.</p>
       </div>
       <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
@@ -32,7 +32,7 @@
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Fichier mise.toml versionn&eacute;</h3>
-        <p class="concept-card__desc">La configuration vit dans le d&eacute;p&ocirc;t Git. Quand vous changez de branche ou de dossier, les versions basculent imm&eacute;diatement.</p>
+        <p class="concept-card__desc">La configuration vit dans le dépôt Git. Avec le hook activé, les versions suivent le dossier dans lequel vous entrez.</p>
       </div>
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
@@ -44,13 +44,17 @@
       </div>
     </div>
 
-    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
-      <pre><code><span style="color:var(--text-subtitle);">╔═ [EXEMPLE MISE.TOML DANS LE DÉPÔT GIT] ════════╦═ [TÂCHES D'ÉQUIPE ET ENVIRONNEMENT] ══════════╗
-║ <span style="color:var(--accent3); font-weight:700;">[tools]</span>                                        ║ <span style="color:var(--green); font-weight:700;">[tasks.dev]</span>                                   ║
-║ java   = <span style="color:var(--green);">"temurin-17"</span>                          ║ description = <span style="color:var(--green);">"Lancer l'application Spring"</span>   ║
-║ node   = <span style="color:var(--green);">"22.14.0"</span>                             ║ run         = <span style="color:var(--green);">"./mvnw spring-boot:run"</span>        ║
-║ python = <span style="color:var(--green);">"3.12.2"</span>                              ║ env         = { SPRING_PROFILES = <span style="color:var(--green);">"local"</span> }   ║
-╚════════════════════════════════════════════════╩═══════════════════════════════════════════════╝</span></code></pre>
+    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(14px, 2vh, 24px) auto 0 auto; width:100%; font-size:clamp(15px, 1.55vw, 22px); line-height:1.5;">
+      <pre><code><span style="color:var(--text);">╔═ [COMMENT MISE CHOISIT LA VERSION] ════════════════════════════════════╗</span>
+<span style="color:var(--text);">║ 1. Détection : mise lit le mise.toml du dossier et de ses parents.     ║</span>
+<span style="color:var(--text);">║                                                                        ║</span>
+<span style="color:var(--text);">║ 2. Hook : mise s'accroche au shell (PowerShell, bash, zsh).            ║</span>
+<span style="color:var(--text);">║    Le shell le relance après chaque commande et à chaque cd.           ║</span>
+<span style="color:var(--text);">║    Effet : PATH, [env] et JAVA_HOME sont réglés pour ce dossier.       ║</span>
+<span style="color:var(--text);">║                                                                        ║</span>
+<span style="color:var(--text);">║ 3. cmd.exe n'a pas de hook. On ajoute %LOCALAPPDATA%\mise\shims        ║</span>
+<span style="color:var(--text);">║    au PATH : chaque shim appelle mise pour choisir la version.         ║</span>
+<span style="color:var(--text);">╚════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>

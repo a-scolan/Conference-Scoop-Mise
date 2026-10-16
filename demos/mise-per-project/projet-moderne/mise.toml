@@ -1,9 +1,9 @@
-﻿[tools]
-node = "22"
+[tools]
+java = "21"
 
 [env]
 API_URL = "http://localhost:8080"
 
 [tasks.dev]
-description = "DÃ©marre le serveur de dÃ©veloppement"
-run = "node -e 'console.log(`[dev] Serveur dÃ©marrÃ© avec ${process.env.API_URL} sous Node ${process.version}`)'"
+description = "Démarre le serveur de développement"
+run = "java -version"

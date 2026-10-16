@@ -2,51 +2,109 @@
   <!-- Cadre décoratif périphérique PETSCII -->
   <div class="petscii-slide-frame" aria-hidden="true">
     <div class="petscii-slide-frame__tl">
-      <span class="petscii-glyph-green">╔═[</span> <span>LIVE::DEVRECIPE_DRYRUN</span> <span class="petscii-glyph-green">]</span>
+      <span class="petscii-glyph-green">╔═[</span> <span>LIVE::DEVRECIPE_LOG</span> <span class="petscii-glyph-green">]</span>
     </div>
     <div class="petscii-slide-frame__tr">
-      <span class="petscii-glyph-green">[</span> <span>PREFLIGHT AUDIT</span> <span class="petscii-glyph-green">]═╗</span>
+      <span class="petscii-glyph-green">[</span> <span>PREFLIGHT + CHOIX</span> <span class="petscii-glyph-green">]═╗</span>
     </div>
     <div class="petscii-slide-frame__bl">
-      <span class="petscii-glyph-green">╚═[</span> <span>0 MUTATIONS</span> <span class="petscii-glyph-green">]</span>
+      <span class="petscii-glyph-green">╚═[</span> <span>RIEN N'EST FORC&Eacute; PAR D&Eacute;FAUT</span> <span class="petscii-glyph-green">]</span>
     </div>
   </div>
 
   <div class="slide__header reveal">
     <p class="slide__label">&gt; 04 // DEVRECIPE &middot; D&Eacute;MO EN DIRECT</p>
-    <h2 class="slide__heading">En direct : validation et simulation d'un manifeste</h2>
+    <h2 class="slide__heading">Récap : installer Java 11 et grep dans un existant</h2>
   </div>
   <div class="slide__inner">
-    <div class="terminal-block reveal" data-shell="pwsh">
+    <div class="terminal-block terminal-block--scroll reveal" data-shell="pwsh">
       <div class="terminal-block__header">
         <div class="terminal-block__controls">
           <span class="terminal-block__ctrl">_</span>
           <span class="terminal-block__ctrl">□</span>
           <span class="terminal-block__ctrl">✕</span>
         </div>
-        <div class="terminal-block__title">MS-DOS Prompt &middot; DevRecipe Engine (Preflight)</div>
-        <div class="terminal-block__badge" style="color:var(--green); background:var(--green-dim);">0 Risque &middot; Preflight</div>
+        <div class="terminal-block__title">PowerShell &middot; DevRecipe Engine</div>
+        <div class="terminal-block__badge" style="color:var(--green); background:var(--green-dim);">Pr&eacute;flight &rarr; choix</div>
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text=".\devrecipe.ps1 -Validate">.\devrecipe.ps1 -Validate</div>
-          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">[OK] Manifest syntax valid (profile: default)</span></div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text=".\DevRecipe_windows.ps1">.\DevRecipe_windows.ps1</div>
+          <div class="terminal-out">--- PREFLIGHT CONFLICT EVIDENCE (read-only) ---
+Scanning requested tools and checking your system for existing traces to prevent installation conflicts.
+threshold=90/100; potential collisions resolved from name similarity
+[1/2 (50%)] grep
+[2/2 (100%)] java</div>
         </div>
         <div class="terminal-step" data-step="2">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text=".\devrecipe.ps1 -DryRun -Review">.\devrecipe.ps1 -DryRun -Review</div>
-          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[Preflight] Scanning system software and registry paths...</span>
-<span style="color:var(--ansi-yellow); font-weight:700;">[WARN] Existing system Git found at 'C:\Program Files\Git\cmd' (version 2.38)</span>
-<span style="color:var(--ansi-blue);">[DryRun] Plan:</span>
-<span style="color:var(--text-dim);">  + Scoop packages to install : [ripgrep, fzf, jq, lazygit]</span>
-<span style="color:var(--text-dim);">  + Mise runtimes to install  : [node@22.14.0, python@3.12.2]</span>
-<span style="color:var(--text-dim);">  + Environment actions      : Prepend user shims in PowerShell &amp; cmd AutoRun</span>
-<span style="color:var(--green); font-weight:700;">[OK] DryRun complete (exit code 0). No system changes applied.</span></div>
+          <div class="terminal-out">--- PREFLIGHT CHECK: java ---
+<span data-highlight="true">  provider-conflict | provider=Mise | application=java | declared-version=11 | installed-version=21.0.2,26.0.2 | reason=provider-version-mismatch</span>
+Traces found for 'java':
+  evidence | source=os-location-metadata | scope=user | location=~\AppData\Microsoft\Windows\Recent\java-coffee-cup-logo.jpg.lnk | ...
+  evidence | source=os-location-metadata | scope=user | location=~\AppData\Local\DBeaver\jre\bin\java.dll | ...
+  evidence | source=os-location-metadata | scope=user | location=~\AppData\Local\DBeaver\jre\bin\java.exe | ...</div>
+        </div>
+        <div class="terminal-step" data-step="3">
+          <div class="terminal-out">--- PREFLIGHT COVERAGE NOTE (read-only) ---
+  coverage | scopes=machine,user | incomplete-checks=5 | ...
+--- PREFLIGHT CONFLICT SELECTION ---
+Detected existing system installations. Check tools to force Mise/Scoop installation and supersede existing installs (unchecked are declined):
+Up/Down: move/scroll | Space: toggle | A: all | Left/Right or Tab: buttons | Enter: confirm | Escape: cancel
+  <span style="color:var(--text);">[x] runtimes | mise | java | 11</span>
+  <span style="color:var(--text);">&gt; [ Force selected (1) ]  [ Cancel ]</span>
+<span data-highlight="true">  decision=force | application=java</span></div>
+        </div>
+        <div class="terminal-step" data-step="4">
+          <div class="terminal-out">--- FINAL INSTALLATION PLAN AFTER PREFLIGHT ---
+Scoop: scoop install grep
+...
+Mise: mise install java@11
+Mise: mise reshim.
+Mise: add %LOCALAPPDATA%\mise\shims to the user PATH for cmd.exe and new processes.
+Command Processor: configure AutoRun in HKCU to prepend Mise and Scoop shims for cmd.exe and sub-processes.
+Shell startup files: add Mise shims activation commands for available compatible shells: PowerShell, Nushell, Bash, Zsh, ...
+Open a new terminal after installation; already-running processes keep their existing PATH.
+Selected profiles: default</div>
+        </div>
+        <div class="terminal-step" data-step="5">
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">[1/2 (50%)] grep</span>
+Installing 'grep' (3.11) [64bit] from 'main' bucket
+Checking hash of grep-3.11-x64.exe... OK.
+Linking ~\scoop\apps\grep\current =&gt; ~\scoop\apps\grep\3.11
+<span style="color:var(--green); font-weight:700;">'grep' (3.11) was installed successfully!</span></div>
+        </div>
+        <div class="terminal-step" data-step="6">
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">[2/2 (100%)] java</span>
+mise by @jdx – installing 1 tool
+mise █████████████░░░ 0/1 · ...
+  java@11.0.2  java -version  21.0s
+mise java@11.0.2 openjdk version "11.0.2" 2019-01-15
+mise java@11.0.2 OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+mise ✓ java@11.0.2  22.2s  openjdk-11.0.2_windows-x64_bin.zip
+<span style="color:var(--green); font-weight:700;">mise ████████████████ 1/1 · installed 1 tool in 22.2s</span></div>
+        </div>
+        <div class="terminal-step" data-step="7">
+          <div class="terminal-out">Global activation skipped for 'java': existing installation or configuration detected.
+Mise shims path is already first in the user PATH: ~\AppData\Local\mise\shims.
+Mise shims activation is already present in ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1.
+Mise shims activation is already present in ~\AppData\Roaming\nushell\...
+Mise shims activation configured for available compatible shells. Open new shell sessions to use Mise-managed commands.
+cmd.exe AutoRun already contains DevRecipe shim precedence.</div>
+        </div>
+        <div class="terminal-step" data-step="8">
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">============================================================
+INSTALLATION SUMMARY
+============================================================</span>
+Installed:
+  - grep (latest)
+  <span style="color:var(--green); font-weight:700;">- java (11)</span>
+Full execution log: logs/devrecipe-windows-20261016-115523.log</div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
-        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> PREFLIGHT: 1 WARN / 0 BLOCKERS</span>
-        <span class="terminal-window__statusbar-tag">PLAN: 4 PKGS / 2 RUNTIMES</span>
-        <span class="terminal-window__statusbar-tag">EXIT: 0 <span class="petscii-cursor">█</span></span>
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">&#9679;</span> 2 PAQUETS : GREP, JAVA 11</span>
+        <span class="terminal-window__statusbar-tag">CHOIX : JAVA FORC&Eacute;</span>
+        <span class="terminal-window__statusbar-tag">LOG <span class="petscii-cursor">█</span></span>
       </div>
     </div>
   </div>

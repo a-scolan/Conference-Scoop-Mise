@@ -740,6 +740,35 @@
     display: block;
     object-fit: contain;
   }
+  .outro-qr-duo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(28px, 4vw, 48px);
+    width: 100%;
+    margin: 0;
+  }
+  .outro-qr-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    min-width: 0;
+  }
+  .outro-qr-duo .qr-spotlight {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: clamp(120px, 12vw, 170px);
+    margin: 0 auto;
+  }
+  .outro-qr-item figcaption {
+    font-family: var(--font-mono);
+    font-size: calc(clamp(10px, 0.9vw, 13px) + var(--font-bump));
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
   .outro-qr__url {
     margin-top: clamp(10px, 1.5vh, 16px);
     font-size: calc(clamp(9.5px, 0.85vw, 12px) + var(--font-bump));
@@ -773,6 +802,9 @@
     }
     .slide--outro .outro-main {
       align-items: center;
+    }
+    .outro-qr-duo {
+      gap: clamp(20px, 5vw, 40px);
     }
   }
   .outro-card .slide__heading {
@@ -3175,6 +3207,8 @@
 }
 
 .terminal-block__controls {
+  order: 2;
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -3198,6 +3232,7 @@
 }
 
 .terminal-block__title {
+  order: 0;
   flex: 1;
   text-align: left;
   font-weight: 600;
@@ -3209,6 +3244,8 @@
 }
 
 .terminal-block__badge {
+  order: 1;
+  flex: 0 0 auto;
   font-size: 10px;
   font-family: var(--font-mono);
   font-weight: 700;
@@ -3219,6 +3256,10 @@
   border: 1px solid currentColor;
   color: var(--accent);
   background: var(--accent-dim);
+}
+
+.terminal-block.is-advanceable {
+  cursor: pointer;
 }
 
 .terminal-block__content {
@@ -3238,6 +3279,18 @@
   margin-bottom: 0;
 }
 
+/* Terminal déroulant : les étapes s'empilent et les plus anciennes sortent par le haut */
+.terminal-block--scroll .terminal-block__content {
+  height: min(60vh, 600px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.terminal-block--scroll .terminal-step {
+  flex: 0 0 auto;
+}
 .terminal-step.is-visible {
   display: block;
 }

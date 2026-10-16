@@ -1,54 +1,62 @@
-<section class="slide slide--content slide--concept-cards" data-part="4" data-nav="DevRecipe : L'onboarding en PR">
+<section class="slide slide--content slide--concept-cards" data-part="4" data-nav="DevRecipe : fonctionnement">
   <!-- Cadre décoratif périphérique PETSCII -->
   <div class="petscii-slide-frame" aria-hidden="true">
     <div class="petscii-slide-frame__tl">
-      <span class="petscii-glyph-green">╔═[</span> <span>REX::DEVRECIPE_AS_CODE</span> <span class="petscii-glyph-green">]</span>
+      <span class="petscii-glyph-green">╔═[</span> <span>REX::DEVRECIPE_FLOW</span> <span class="petscii-glyph-green">]</span>
     </div>
     <div class="petscii-slide-frame__tr">
-      <span class="petscii-glyph-green">[</span> <span>ORCHESTRATION D'ÉQUIPE</span> <span class="petscii-glyph-green">]═╗</span>
+      <span class="petscii-glyph-green">[</span> <span>4 ÉTAPES</span> <span class="petscii-glyph-green">]═╗</span>
     </div>
     <div class="petscii-slide-frame__bl">
-      <span class="petscii-glyph-green">╚═[</span> <span>PREFLIGHT + DRY-RUN</span> <span class="petscii-glyph-green">]</span>
+      <span class="petscii-glyph-green">╚═[</span> <span>DÉCISION HUMAINE</span> <span class="petscii-glyph-green">]</span>
     </div>
   </div>
 
   <div class="slide__header reveal">
-    <p class="slide__label">&gt; 04 // DEVRECIPE &middot; L'ORCHESTRATION D'&Eacute;QUIPE</p>
-    <h2 class="slide__heading">DevRecipe : combler les limites de Scoop et Mise</h2>
+    <p class="slide__label">&gt; 04 // DEVRECIPE &middot; FONCTIONNEMENT</p>
+    <h2 class="slide__heading">DevRecipe : manifeste, pr&eacute;flight, d&eacute;cision</h2>
   </div>
   <div class="slide__inner">
-    <div class="concept-grid concept-grid--3 reveal">
+    <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ 01 // UNIFICATION ]</span>
+          <span>[ 01 // MANIFESTE ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Manifeste devrecipe.toml partag&eacute;</h3>
-        <p class="concept-card__desc">Scoop et Mise s'ignorent mutuellement. DevRecipe les rassemble dans un fichier partag&eacute;, versionn&eacute; et relu en PR pour r&eacute;pondre aux besoins collectifs de l'&eacute;quipe.</p>
+        <h3 class="concept-card__title">Un manifeste relu en PR</h3>
+        <p class="concept-card__desc"><code>DevRecipe_windows.toml</code> liste, par profil, les paquets Scoop et les runtimes Mise. <code>-Validate</code> contr&ocirc;le la syntaxe sans toucher au poste.</p>
       </div>
       <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
-          <span>[ 02 // PREFLIGHT ]</span>
-          <span class="petscii-hatch-strip">[OK]</span>
+          <span>[ 02 // PR&Eacute;FLIGHT ]</span>
+          <span class="petscii-hatch-strip">[!]</span>
         </div>
-        <h3 class="concept-card__title">Contr&ocirc;le pr&eacute;alable des conflits</h3>
-        <p class="concept-card__desc">Ni Scoop ni Mise n'inspectent les logiciels d&eacute;j&agrave; pr&eacute;sents. DevRecipe scanne le registre, AppX et le PATH pour alerter avant toute modification.</p>
+        <h3 class="concept-card__title">Chercher les traces avant d'&eacute;crire</h3>
+        <p class="concept-card__desc"><code>-DryRun</code> parcourt le registre, AppX, les services et les t&acirc;ches. Il ne modifie rien et s'arr&ecirc;te si une installation existe d&eacute;j&agrave;.</p>
       </div>
       <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
-          <span>[ 03 // PRECEDENCE ]</span>
+          <span>[ 03 // D&Eacute;CISION ]</span>
+          <span class="petscii-hatch-strip">[?]</span>
+        </div>
+        <h3 class="concept-card__title">Vous cochez ce que vous forcez</h3>
+        <p class="concept-card__desc">Si le préflight trouve une installation existante, une liste s'affiche : chaque conflit est coché ou refusé. Rien n'est forcé par défaut. Sans terminal interactif, DevRecipe s'arrête (code 3).</p>
+      </div>
+      <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ 04 // ENVIRONNEMENT ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Pr&eacute;c&eacute;dence du PATH garantie</h3>
-        <p class="concept-card__desc">DevRecipe injecte les shims en priorit&eacute; 0 dans PowerShell et dans <code>cmd.exe</code> (via <code>AutoRun</code>), neutralisant le masquage machine HKLM.</p>
+        <h3 class="concept-card__title">Outils et runtimes en place</h3>
+        <p class="concept-card__desc">Scoop installe les paquets, Mise les runtimes. DevRecipe place aussi les shims en t&ecirc;te de PATH, dans PowerShell et dans <code>cmd.exe</code> via AutoRun.</p>
       </div>
     </div>
 
-    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(14px, 2vh, 24px) auto 0 auto; width:100%; display:flex; justify-content:center;">
-      <pre style="margin:0 auto; text-align:left;"><code><span style="color:var(--text-subtitle);">╔═ [DEVRECIPE : LA PASSERELLE ENTRE LE CODE ET LE POSTE WINDOWS] ══════════════════════════════════╗
-║ <span style="color:var(--accent); font-weight:700;">SCOOP (Outils CLI)</span>  +  <span style="color:var(--accent3); font-weight:700;">MISE (Runtimes)</span>  +  <span style="color:var(--accent2); font-weight:700;">CONTRÔLE DU PATH</span>  +  <span style="color:var(--green); font-weight:700;">PR COLLECTIVE (devrecipe.toml)</span>   ║
-║ > Validation syntaxique (-Validate)    -->  Simulation sans risque (-DryRun -Review)             ║
-╚══════════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
+    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(14px, 2vh, 24px) auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [CE QUE VOUS VOYEZ] ══════════════════════════════════════════════════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║ manifeste  ->  -Validate  ->  préflight (traces)  ->  choix (cocher)  ->  Scoop + Mise + shims     ║</span>
+<span style="color:var(--text-subtitle);">║ lecture     lecture     lecture seule        décision humaine (vous)          environnement        ║</span>
+<span style="color:var(--text-subtitle);">╚════════════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>

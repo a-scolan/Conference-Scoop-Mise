@@ -34,6 +34,7 @@ Autres commandes, à lancer dans `presentation/` :
 | --- | --- |
 | `→` / `↓` / `Espace` / `PageDown` / `Enter` / `N` / Pavé `+` | Étape suivante, puis slide suivante (compatible télécommandes de présentation) |
 | `←` / `↑` / `PageUp` / `Backspace` / `P` / Pavé `-` | Étape précédente, puis slide précédente (compatible télécommandes de présentation) |
+| Clic ou tap sur une fenêtre de console (démos) | Étape suivante de cette console, sans changer de slide ; le curseur devient une main tant qu'il reste une étape |
 | `V` ou `Alt+P` | Ouvre la console présentateur double écran (`presenter-view.html`) synchronisée (`V` pour *View*, `P` seul étant réservé au recul télécommande) |
 | Bouton Miroir ou touche `M` | Démarre/arrête le miroir vidéo direct P2P WebRTC 60 fps sur le pupitre |
 | `C` | Mode confort / agrandissement texte et fort contraste (synchronisé en temps réel avec le pupitre) |
@@ -46,6 +47,7 @@ Autres commandes, à lancer dans `presentation/` :
 - **Miroir Vidéo Direct WebRTC 60fps** : La console présentateur s'affranchit du double rendu iframe pour afficher directement le flux vidéo matériel de la projection publique sans latence, avec cadrage supérieur de la slide suivante pour anticiper le flux narratif.
 - **Stabilisation et Scroll-Anchoring** : Recalage instantané au redimensionnement sans saut intempestif de slide (résistant aux barres d'outils et menus auto-rétractables des navigateurs comme Firefox en plein écran).
 - **Adaptation Mobile & Screen Orientation API** : Détection du mode portrait sur mobile avec calque d'invitation au plein écran paysage ou bouton de contournement utilisateur mémorisé en session.
+- **Lisibilité en paysage compact** : En paysage sur petit écran (hauteur ≤ 560 px), les hachures décoratives sont masquées, les titres de fenêtres terminal sont repliés au lieu d'être tronqués, et les blocs qui ne tiennent pas défilent en interne.
 
 ## Structure du dépôt
 
@@ -71,12 +73,12 @@ Les spécifications et l'historique des changements sont décrits dans `openspec
 
 - **Annuaire des paquets disponibles :** [https://scoop.sh/#/apps](https://scoop.sh/#/apps)
 - **Rechercher un outil :** `scoop search <nom>`
-- **Installer un paquet :** `scoop install <nom>` *(ex: `scoop install lazygit ripgrep fzf jq`)*
+- **Installer un paquet :** `scoop install <nom>` *(ex: `scoop install git ripgrep fzf jq`)*
 - **Tout mettre à jour :** `scoop update *`
 - **Figer une version (anti-régression) :** `scoop hold <nom>` *(défiger : `scoop unhold <nom>`)*
 - **Désinstaller proprement :** `scoop uninstall <nom>`
 - **Ajouter une source de paquets (bucket Git) :**
-  - Outils communautaires étendus : `scoop bucket add extras`
+  - Outils communautaires étendus (dont `lazygit`, absent de `main`) : `scoop bucket add extras`
   - Anciennes versions de runtimes/outils : `scoop bucket add versions`
   - Polices pour développeurs : `scoop bucket add nerd-fonts`
   - Dépôt privé d'entreprise : `scoop bucket add mon-equipe https://gitlab.mon-entreprise.com/dev/scoop-bucket.git`
@@ -97,9 +99,10 @@ Les spécifications et l'historique des changements sont décrits dans `openspec
 ### 3. DevRecipe (Orchestrateur déclaratif d'équipe)
 
 - **Dépôt officiel :** [https://github.com/a-scolan/DevRecipe](https://github.com/a-scolan/DevRecipe)
-- **Valider la syntaxe du manifeste :** `devrecipe -Validate`
-- **Simulation avec contrôle préalable des conflits :** `devrecipe -DryRun -Review`
-- **Installation complète sans droit admin :** `devrecipe`
+- **Valider le manifeste (`DevRecipe_windows.toml`) :** `.\DevRecipe_windows.ps1 -Validate`
+- **Simulation avec préflight (lecture seule) :** `.\DevRecipe_windows.ps1 -DryRun` (code 3 si une décision humaine est requise)
+- **Approuver action par action (terminal interactif) :** `.\DevRecipe_windows.ps1 -Review`
+- **Installation après relecture :** `.\DevRecipe_windows.ps1`
 
 ## Origine
 

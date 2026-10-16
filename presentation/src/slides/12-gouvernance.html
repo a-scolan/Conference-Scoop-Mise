@@ -23,8 +23,8 @@
           <span>[ 01 // DEFENSE ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">EDR &amp; AppLocker restent actifs</h3>
-        <p class="concept-card__desc">Installer en espace utilisateur ne contourne aucun antivirus d'entreprise, ni WDAC ni restrictions. Tout binaire non autoris&eacute; reste bloqu&eacute;.</p>
+        <h3 class="concept-card__title">EDR, AppLocker et WDAC si la DSI les active</h3>
+        <p class="concept-card__desc">Scoop ne contourne aucun antivirus ni aucune règle. AppLocker ou WDAC n'appliquent rien tant qu'une stratégie n'est pas déployée. Une fois déployée, elle peut bloquer un outil installé dans votre profil : la levée du blocage relève de la DSI.</p>
       </div>
       <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
@@ -32,23 +32,23 @@
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Catalogues d'entreprise approuv&eacute;s</h3>
-        <p class="concept-card__desc">L'entreprise peut h&eacute;berger son propre bucket Git priv&eacute; de manifests valid&eacute;s par la cybers&eacute;curit&eacute; et des miroirs internes d'artifactory.</p>
+        <p class="concept-card__desc">Bucket Git privé de manifests validés par la cybersécurité, et proxy d'entreprise configuré pour Scoop et Mise.</p>
       </div>
       <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ 03 // AUDIT ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Auditabilit&eacute; &amp; inventaire complet</h3>
-        <p class="concept-card__desc"><code>scoop export</code> et <code>mise ls --json</code> g&eacute;n&egrave;rent un inventaire machine instantan&eacute; pour la conformit&eacute; et les revues s&eacute;curit&eacute;.</p>
+        <h3 class="concept-card__title">Auditabilité et inventaire</h3>
+        <p class="concept-card__desc"><code>scoop export</code> liste les paquets Scoop (JSON), <code>mise ls --json</code> les runtimes. Utile pour les revues de conformité.</p>
       </div>
     </div>
 
     <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
       <pre><code><span style="color:var(--text-subtitle);">╔═ [CONFORMITÉ & SÉCURITÉ ENTREPRISE : CONTRÔLE PLEIN ET ENTIER] ══════════════════════════════╗
-║ <span style="color:var(--green); font-weight:700;">[OK] EDR &amp; Antivirus</span> : Analyse temps réel de tout binaire décompressé dans ~/scoop/apps      ║
-║ <span style="color:var(--green); font-weight:700;">[OK] AppLocker / WDAC</span>: Les règles de hash bloquent tout exécutable illégitime                ║
-║ <span style="color:var(--green); font-weight:700;">[OK] Inventaire CI/CD</span>: scoop export &gt; tools.json exporte l'état complet en 1 commande        ║
+║ <span style="color:var(--green); font-weight:700;">[OK] EDR &amp; Antivirus</span> : Surveillent les binaires extraits dans ~/scoop/apps                   ║
+║ <span style="color:var(--accent); font-weight:700;">[!!] AppLocker / WDAC</span>: actifs seulement si la DSI les déploie (exception DSI)                ║
+║ <span style="color:var(--green); font-weight:700;">[OK] Inventaire CI/CD</span>: scoop export &gt; scoop.json liste les paquets                           ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>

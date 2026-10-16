@@ -23,8 +23,8 @@
           <span>[ 01 // PROFIL USER ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Z&eacute;ro UAC</h3>
-        <p class="concept-card__desc">Scoop d&eacute;compresse les binaires dans <code>~/scoop/apps</code>. Aucun installeur MSI ne pollue la machine ni n'exige de droit.</p>
+        <h3 class="concept-card__title">Pas d'UAC pour Scoop</h3>
+        <p class="concept-card__desc">Scoop extrait les archives dans <code>~/scoop/apps</code>. Pas d'installeur MSI pour ces paquets, donc pas d'élévation.</p>
       </div>
       <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
@@ -32,7 +32,7 @@
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Relais d'ex&eacute;cution (Shims)</h3>
-        <p class="concept-card__desc">Un seul dossier dans votre PATH : <code>~/scoop/shims</code>. Chaque outil y d&eacute;pose un proxy (.exe / .cmd) pointant sur la version active.</p>
+        <p class="concept-card__desc">Scoop ajoute <code>~/scoop/shims</code> à votre PATH utilisateur. Chaque outil y dépose un relais (.exe / .cmd) vers la version active.</p>
       </div>
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
@@ -47,9 +47,9 @@
     <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
       <pre><code><span style="color:var(--text-subtitle);">╔═ [ESPACE MACHINE : HKLM (MSI / ADMIN)] ════════╦═ [ESPACE UTILISATEUR : HKCU (SCOOP)] ═════════╗
 ║ <span style="color:var(--red); font-weight:700;">░░ INSTALLATIONS SYSTEME (MSI) ░░</span>              ║ <span style="color:var(--green); font-weight:700;">██ EXTRACTION EN USER-SPACE (~/scoop) ██</span>      ║
-║ - Requiert élévation UAC / validation DSI      ║ - Zéro droit admin / isolation totale         ║
+║ - Requiert élévation UAC / validation DSI      ║ - Zéro droit admin pour installer             ║
 ║ - Écrit dans C:\Program Files et Registre      ║ - Un seul dossier dans le PATH (~/shims)      ║
-║ - Risque de verrouillage / conflit global      ║ - Désinstallation propre sans résidu          ║
+║ - Risque de verrouillage / conflit global      ║ - Désinstallation via Scoop                   ║
 ╚════════════════════════════════════════════════╩═══════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>

@@ -24,23 +24,23 @@
           <span class="terminal-block__ctrl">□</span>
           <span class="terminal-block__ctrl">✕</span>
         </div>
-        <div class="terminal-block__title">MS-DOS Prompt &middot; PATH Diagnostics (where.exe)</div>
+        <div class="terminal-block__title">SIMULATION (poste préparé) &middot; PATH Diagnostics (where.exe)</div>
         <div class="terminal-block__badge" style="color:var(--accent2); background:var(--accent2-dim);">PATH Precedence</div>
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
           <div class="terminal-cmd" data-type-effect="true" data-cmd-text="where.exe python">where.exe python</div>
-          <div class="terminal-out"><span style="color:var(--red); font-weight:700;">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM Machine (Prend la main !)</span>
-<span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU User (Masqu&eacute; !)</span></div>
+          <div class="terminal-out"><span style="color:var(--red); font-weight:700;">C:\Python39\python.cmd</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM Machine (prend la main)</span>
+<span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU User (masqué)</span></div>
         </div>
         <div class="terminal-step" data-step="2">
           <div class="terminal-cmd" data-type-effect="true" data-cmd-text="$env:PATH = &quot;$env:LOCALAPPDATA\mise\shims;$HOME\scoop\shims;$env:PATH&quot;">$env:PATH = "$env:LOCALAPPDATA\mise\shims;$HOME\scoop\shims;$env:PATH"</div>
-          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">[OK] User shims prepended at index 0 of session PATH</span></div>
+          <div class="terminal-out"><span style="color:var(--text);">PATH de la session redéfini : shims Mise, puis shims Scoop, placés avant le reste du PATH (donc avant C:\Python39).</span></div>
         </div>
         <div class="terminal-step" data-step="3">
           <div class="terminal-cmd" data-type-effect="true" data-cmd-text="where.exe python">where.exe python</div>
-          <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- Prioritaire d&eacute;sormais !</span>
-<span style="color:var(--text-dim);">C:\Python39\python.exe</span></div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- en premier</span>
+<span style="color:var(--text-dim);">C:\Python39\python.cmd</span></div>
         </div>
       </div>
       <div class="terminal-window__statusbar">

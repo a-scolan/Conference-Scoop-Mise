@@ -5,7 +5,7 @@
       <span class="petscii-glyph-accent">╔═[</span> <span>LIVE::SCOOP_DEMO</span> <span class="petscii-glyph-accent">]</span>
     </div>
     <div class="petscii-slide-frame__tr">
-      <span class="petscii-glyph-accent">[</span> <span>15 SECONDES</span> <span class="petscii-glyph-accent">]═╗</span>
+      <span class="petscii-glyph-accent">[</span> <span>SANS ADMIN</span> <span class="petscii-glyph-accent">]═╗</span>
     </div>
     <div class="petscii-slide-frame__bl">
       <span class="petscii-glyph-orange">╚═[</span> <span>USER-SPACE PUR</span> <span class="petscii-glyph-orange">]</span>
@@ -14,7 +14,7 @@
 
   <div class="slide__header reveal">
     <p class="slide__label">&gt; 01 // SCOOP &middot; D&Eacute;MO EN DIRECT</p>
-    <h2 class="slide__heading">En direct : installer un outil CLI en 15 secondes</h2>
+    <h2 class="slide__heading">Récap : installer git</h2>
   </div>
   <div class="slide__inner">
     <div class="terminal-block reveal" data-shell="pwsh">
@@ -24,27 +24,23 @@
           <span class="terminal-block__ctrl">□</span>
           <span class="terminal-block__ctrl">✕</span>
         </div>
-        <div class="terminal-block__title">MS-DOS Prompt &middot; Scoop CLI (C:\Users\alexis)</div>
-        <div class="terminal-block__badge">User Space &middot; Zéro UAC</div>
+        <div class="terminal-block__title">PowerShell &middot; Scoop CLI</div>
+        <div class="terminal-block__badge">User Space &middot; Sans UAC</div>
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="scoop install lazygit">scoop install lazygit</div>
-          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">Installing 'lazygit' (0.44.1) [64bit] from 'extras' bucket</span>
-<span style="color:var(--ansi-green);">Checking hash of lazygit_0.44.1_Windows_x86_64.zip ... ok.</span>
-<span style="color:var(--ansi-bright-black);">Extracting lazygit_0.44.1_Windows_x86_64.zip ... done.</span>
-<span style="color:var(--ansi-blue);">Linking ~\scoop\apps\lazygit\current =&gt; ~\scoop\apps\lazygit\0.44.1</span>
-<span style="color:var(--ansi-yellow);">Creating shim for 'lazygit' in ~\scoop\shims\lazygit.exe</span>
-<span style="color:var(--green); font-weight:700;">'lazygit' (0.44.1) was installed successfully!</span></div>
-        </div>
-        <div class="terminal-step" data-step="2">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="where.exe lazygit">where.exe lazygit</div>
-          <div class="terminal-out" data-highlight="true">C:\Users\alexis\scoop\shims\lazygit.exe</div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="scoop install git">scoop install git</div>
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">Installing 'git' (2.56.0.2) [64bit] from 'main' bucket</span>
+<span style="color:var(--ansi-green);">Checking hash of PortableGit-2.56.0.2-64-bit.7z.exe... OK.</span>
+<span style="color:var(--ansi-bright-black);">Extracting PortableGit-2.56.0.2-64-bit.7z.exe... Done.</span>
+<span style="color:var(--ansi-blue);">Linking ~\scoop\apps\git\current =&gt; ~\scoop\apps\git\2.56.0.2</span>
+<span style="color:var(--ansi-yellow);">Creating shim for 'git'.</span>
+<span style="color:var(--green); font-weight:700;">'git' (2.56.0.2) was installed successfully!</span></div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
-        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> READY</span>
-        <span class="terminal-window__statusbar-tag">SHIM: ~/scoop/shims/lazygit.exe</span>
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> INSTALL SANS ÉLÉVATION</span>
+        <span class="terminal-window__statusbar-tag">SHIM: ~/scoop/shims/git.exe</span>
         <span class="terminal-window__statusbar-tag">RETURN: 0 <span class="petscii-cursor">█</span></span>
       </div>
     </div>

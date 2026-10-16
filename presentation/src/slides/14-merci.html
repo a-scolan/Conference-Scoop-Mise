@@ -30,7 +30,7 @@
       <div class="ansi-diagram-block reveal" style="padding:10px 14px; font-size:clamp(10px,1vw,12.5px); line-height:1.45; margin-top:12px; border-color:var(--accent); background:var(--code-bg); text-align:left;">
         <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:6px; margin-bottom:8px; font-family:var(--font-mono); font-weight:700;">
           <span style="color:var(--accent);">ANTISÈCHE &middot; COMMANDES DU QUOTIDIEN</span>
-          <span style="color:var(--text-subtitle);">LIENS : scoop.sh/#/apps &middot; mise.jdx.dev</span>
+          <span style="color:var(--text); font-size:clamp(13px, 1.25vw, 17px); font-weight:700;">LIENS : <a href="https://scoop.sh/#/apps" style="color:var(--accent); font-weight:700; text-decoration:underline;">scoop.sh</a> &middot; <a href="https://mise.jdx.dev" style="color:var(--accent); font-weight:700; text-decoration:underline;">mise.jdx.dev</a> &middot; <a href="https://github.com/a-scolan/DevRecipe" style="color:var(--accent); font-weight:700; text-decoration:underline;">DevRecipe</a></span>
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-family:var(--font-mono);">
           <div>
@@ -55,13 +55,24 @@
     <div class="outro-qr-pane reveal">
       <div class="outro-qr-card" style="position:relative; text-align:center;">
         <div class="petscii-card-header" style="color:var(--accent); width:100%; margin: -20px -20px 14px -20px; padding: 6px 14px;">
-          <span>[ QR // SUPPORT &amp; CODE ]</span>
+          <span>[ QR // SUPPORT &amp; FEEDBACK ]</span>
           <span class="petscii-hatch-strip">[SCAN]</span>
         </div>
-        <div class="qr-spotlight">
-          <img src="assets/presentation-qr.png" alt="QR code vers le support de la pr&eacute;sentation" loading="eager">
+        <div class="outro-qr-duo">
+          <figure class="outro-qr-item">
+            <div class="qr-spotlight">
+              <img src="assets/presentation-qr.png" alt="QR code vers le support de la pr&eacute;sentation" loading="eager">
+            </div>
+            <figcaption>Slides &amp; code</figcaption>
+          </figure>
+          <figure class="outro-qr-item">
+            <div class="qr-spotlight">
+              <img src="assets/feedback-qr.png" alt="QR code vers le formulaire de feedback" loading="eager">
+            </div>
+            <figcaption>Feedback</figcaption>
+          </figure>
         </div>
-        <p style="font-family:var(--font-mono); font-size:11.5px; color:var(--text-dim); margin-top:10px;">Scannez pour retrouver les slides et le code</p>
+        <p style="font-family:var(--font-mono); font-size:11.5px; color:var(--text-dim); margin-top:10px;">Scannez pour retrouver le support et laisser votre feedback</p>
       </div>
     </div>
   </div>

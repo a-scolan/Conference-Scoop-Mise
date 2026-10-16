@@ -2401,6 +2401,35 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
     display: block;
     object-fit: contain;
   }
+  .outro-qr-duo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(28px, 4vw, 48px);
+    width: 100%;
+    margin: 0;
+  }
+  .outro-qr-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    min-width: 0;
+  }
+  .outro-qr-duo .qr-spotlight {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: clamp(120px, 12vw, 170px);
+    margin: 0 auto;
+  }
+  .outro-qr-item figcaption {
+    font-family: var(--font-mono);
+    font-size: calc(clamp(10px, 0.9vw, 13px) + var(--font-bump));
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
   .outro-qr__url {
     margin-top: clamp(10px, 1.5vh, 16px);
     font-size: calc(clamp(9.5px, 0.85vw, 12px) + var(--font-bump));
@@ -2434,6 +2463,9 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
     }
     .slide--outro .outro-main {
       align-items: center;
+    }
+    .outro-qr-duo {
+      gap: clamp(20px, 5vw, 40px);
     }
   }
   .outro-card .slide__heading {
@@ -4836,6 +4868,8 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
 }
 
 .terminal-block__controls {
+  order: 2;
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -4859,6 +4893,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
 }
 
 .terminal-block__title {
+  order: 0;
   flex: 1;
   text-align: left;
   font-weight: 600;
@@ -4870,6 +4905,8 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
 }
 
 .terminal-block__badge {
+  order: 1;
+  flex: 0 0 auto;
   font-size: 10px;
   font-family: var(--font-mono);
   font-weight: 700;
@@ -4880,6 +4917,10 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
   border: 1px solid currentColor;
   color: var(--accent);
   background: var(--accent-dim);
+}
+
+.terminal-block.is-advanceable {
+  cursor: pointer;
 }
 
 .terminal-block__content {
@@ -4899,6 +4940,18 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
   margin-bottom: 0;
 }
 
+/* Terminal déroulant : les étapes s'empilent et les plus anciennes sortent par le haut */
+.terminal-block--scroll .terminal-block__content {
+  height: min(60vh, 600px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.terminal-block--scroll .terminal-step {
+  flex: 0 0 auto;
+}
 .terminal-step.is-visible {
   display: block;
 }
@@ -5970,6 +6023,8 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
     overflow-y: visible !important;
   }
   .concept-card {
+    --card-pad-x: 10px;
+    --card-pad-top: 6px;
     min-height: auto !important;
     padding: 6px 10px !important;
     gap: 3px !important;
@@ -6019,6 +6074,8 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
     gap: 6px !important;
   }
   .slide--grammaire-modele .concept-card {
+    --card-pad-x: 8px;
+    --card-pad-top: 5px;
     padding: 5px 8px !important;
     gap: 2px !important;
   }
@@ -6293,10 +6350,21 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
     justify-content: center !important;
   }
   .slide--outro .outro-qr-card {
-    padding: 6px 10px !important;
+    padding: 6px 8px !important;
     border-radius: 14px !important;
-    max-width: 200px !important;
+    max-width: none !important;
     width: 100% !important;
+  }
+  .slide--outro .outro-qr-card .petscii-card-header {
+    margin: -6px -8px 8px -8px !important;
+  }
+  .slide--outro .outro-qr-duo {
+    gap: 10px !important;
+  }
+  .slide--outro .outro-qr-item figcaption {
+    font-size: 8px !important;
+    letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
   }
   .slide--outro .outro-qr__title {
     font-size: 9.5px !important;
@@ -6324,6 +6392,62 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   MOBILE PAYSAGE COMPACT : CARTES ET FENÊTRES TERMINAL
+   En-têtes de carte : les libellés passent à la ligne au lieu de déborder.
+   Titre terminal : replié sur plusieurs lignes au lieu d'être tronqué ; le badge
+   décoratif est retiré. Le bloc terminal reste borné à la slide et défile en interne.
+   ========================================================================== */
+@media screen and (orientation: landscape) and (max-height: 560px) {
+  .concept-card .petscii-card-header {
+    flex-wrap: wrap !important;
+    gap: 2px 6px !important;
+  }
+  .concept-card .petscii-card-header > span {
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+  }
+  .terminal-block__badge {
+    display: none !important;
+  }
+  .terminal-block__title {
+    font-size: 11px !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    min-width: 0 !important;
+  }
+  .terminal-block {
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 100% !important;
+    min-height: 0 !important;
+  }
+  .terminal-block__content {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    padding: 8px 12px !important;
+    font-size: clamp(10px, 2.3vh, 13px) !important;
+    line-height: 1.35 !important;
+  }
+  .terminal-window__statusbar {
+    flex: 0 0 auto !important;
+  }
+
+  /* Antisèche de la conclusion : tient en hauteur sans défilement */
+  .slide--outro .outro-main .ansi-diagram-block {
+    font-size: clamp(8.5px, 1.9vh, 10.5px) !important;
+    line-height: 1.3 !important;
+    padding: 6px 8px !important;
+    margin-top: 6px !important;
+  }
+  .slide--outro .outro-main .ansi-diagram-block > div:last-child {
+    gap: 6px !important;
+  }
+}
+
 
 
   /* --- petscii.css --- */
@@ -6845,9 +6969,10 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
   font-family: var(--font-mono) !important;
 }
 
-/* Hachures modscene / ANSI des blocs */
+/* Hachures modscene / ANSI des blocs.
+   Pas de display !important ici : sinon le masquage mobile de decorations.css est annulé. */
 .card-hatch-strip-wrap {
-  display: block !important;
+  display: block;
   position: absolute !important;
   bottom: 8px !important;
   right: 14px !important;
@@ -7022,14 +7147,12 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
         <span>[ TTY0 ]─┐</span>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr auto; gap:clamp(16px,2.5vw,36px); align-items:center;">
+      <div style="display:grid; grid-template-columns:1fr; gap:clamp(16px,2.5vw,36px); align-items:center;">
         <div>
           <p class="slide__label reveal">Speaker</p>
           <h2 class="slide__heading reveal" style="font-size:clamp(36px,5vw,64px); line-height:0.95; margin:0;">Alexis Scolan</h2>
           <p class="speaker-intro__role reveal" style="margin-top:8px;">Architecte technique <strong style="color:var(--accent);">@Onepoint</strong></p>
-          <p class="speaker-intro__lead reveal" style="margin-top:14px; font-size:clamp(15px,1.6vw,20px); color:var(--text-dim); line-height:1.45;">
-            Passionn&eacute; d'outillage de dev, d'automatisation locale et d'environnements reproductibles sans friction. Auteur de <strong>DevRecipe</strong> pour r&eacute;aliser un onboarding d'&eacute;quipe partag&eacute; en code.
-          </p>
+          <p class="speaker-intro__lead reveal" style="margin-top:14px; font-size:clamp(15px,1.6vw,20px); color:var(--text-dim); line-height:1.45;">Je mets mon bagage d'expertise à profit dans des transformations progressives des systèmes et des pratiques.</p>
           <div class="speaker-pill-list reveal" style="margin-top:18px;">
             <span class="petscii-tag"><span class="petscii-glyph-accent">■</span> SCOOP (User-Space)</span>
             <span class="petscii-tag"><span class="petscii-glyph-cyan">■</span> MISE (Runtimes)</span>
@@ -7037,19 +7160,6 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           </div>
         </div>
 
-        <div class="reveal" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
-          <pre class="ansi-diagram-block" style="padding:10px 14px; font-size:clamp(10px,1.1vw,13px); line-height:1.2; text-align:left; background:var(--code-bg); border-color:var(--accent);"><code><span style="color:var(--accent3);">  ┌─────────────────────────┐</span>
-<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</span> <span style="color:var(--accent3);">│</span>
-<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);">█</span> <span style="color:var(--green); font-weight:700;">PS C:\&gt; whoami</span>      <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
-<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);">█</span> alexis @ onepoint   <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
-<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);">█</span> role: tech-arch     <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
-<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);">█</span> env: scoop + mise   <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
-<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);">█</span> auth: user-space    <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
-<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);">█</span> <span style="color:var(--green);">[*] READY.</span>          <span style="color:var(--accent);">█</span> <span style="color:var(--accent3);">│</span>
-<span style="color:var(--accent3);">  │</span> <span style="color:var(--accent);">▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀</span> <span style="color:var(--accent3);">│</span>
-<span style="color:var(--accent3);">  └───────────┬─┬───────────┘</span>
-<span style="color:var(--text-subtitle);">           ▄▄▄█ █▄▄▄         </span></code></pre>
-        </div>
       </div>
     </div>
   </div>
@@ -7112,7 +7222,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
   </div>
 </section>
 
-  <!-- Slide 3: La promesse -->
+  <!-- Slide 3: La promesse : déléguer le PATH et l'espace utilisateur, rendre l'équipe reproductible -->
 <section class="slide slide--content slide--concept-cards" data-part="0" data-nav="La promesse">
   <!-- Cadre décoratif périphérique PETSCII -->
   <div class="petscii-slide-frame" aria-hidden="true">
@@ -7129,7 +7239,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
 
   <div class="slide__header reveal">
     <p class="slide__label">&gt; 00 // R&Eacute;SOLUTION &middot; LA PROMESSE</p>
-    <h2 class="slide__heading">La promesse : 4 erreurs, 4 r&eacute;ponses concr&egrave;tes</h2>
+    <h2 class="slide__heading">La promesse : déléguer le PATH et l'espace utilisateur, rendre l'équipe reproductible</h2>
   </div>
   <div class="slide__inner">
     <div class="concept-grid concept-grid--2 reveal">
@@ -7138,8 +7248,8 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span>[ SOL.01 // SCOOP ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">User Space pur (Z&eacute;ro UAC)</h3>
-        <p class="concept-card__desc">Tous les outils s'installent dans votre profil (<code>~/scoop</code>). Aucune invite UAC ni alt&eacute;ration du syst&egrave;me.</p>
+        <h3 class="concept-card__title">Installation en espace utilisateur</h3>
+        <p class="concept-card__desc">Les paquets Scoop s'installent dans votre profil (<code>~/scoop</code>) : pas d'invite UAC pour eux.</p>
       </div>
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
@@ -7195,8 +7305,8 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span>[ 01 // PROFIL USER ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Z&eacute;ro UAC</h3>
-        <p class="concept-card__desc">Scoop d&eacute;compresse les binaires dans <code>~/scoop/apps</code>. Aucun installeur MSI ne pollue la machine ni n'exige de droit.</p>
+        <h3 class="concept-card__title">Pas d'UAC pour Scoop</h3>
+        <p class="concept-card__desc">Scoop extrait les archives dans <code>~/scoop/apps</code>. Pas d'installeur MSI pour ces paquets, donc pas d'élévation.</p>
       </div>
       <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
@@ -7204,7 +7314,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Relais d'ex&eacute;cution (Shims)</h3>
-        <p class="concept-card__desc">Un seul dossier dans votre PATH : <code>~/scoop/shims</code>. Chaque outil y d&eacute;pose un proxy (.exe / .cmd) pointant sur la version active.</p>
+        <p class="concept-card__desc">Scoop ajoute <code>~/scoop/shims</code> à votre PATH utilisateur. Chaque outil y dépose un relais (.exe / .cmd) vers la version active.</p>
       </div>
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
@@ -7219,9 +7329,9 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
     <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
       <pre><code><span style="color:var(--text-subtitle);">╔═ [ESPACE MACHINE : HKLM (MSI / ADMIN)] ════════╦═ [ESPACE UTILISATEUR : HKCU (SCOOP)] ═════════╗
 ║ <span style="color:var(--red); font-weight:700;">░░ INSTALLATIONS SYSTEME (MSI) ░░</span>              ║ <span style="color:var(--green); font-weight:700;">██ EXTRACTION EN USER-SPACE (~/scoop) ██</span>      ║
-║ - Requiert élévation UAC / validation DSI      ║ - Zéro droit admin / isolation totale         ║
+║ - Requiert élévation UAC / validation DSI      ║ - Zéro droit admin pour installer             ║
 ║ - Écrit dans C:\Program Files et Registre      ║ - Un seul dossier dans le PATH (~/shims)      ║
-║ - Risque de verrouillage / conflit global      ║ - Désinstallation propre sans résidu          ║
+║ - Risque de verrouillage / conflit global      ║ - Désinstallation via Scoop                   ║
 ╚════════════════════════════════════════════════╩═══════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
@@ -7235,7 +7345,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
       <span class="petscii-glyph-accent">╔═[</span> <span>LIVE::SCOOP_DEMO</span> <span class="petscii-glyph-accent">]</span>
     </div>
     <div class="petscii-slide-frame__tr">
-      <span class="petscii-glyph-accent">[</span> <span>15 SECONDES</span> <span class="petscii-glyph-accent">]═╗</span>
+      <span class="petscii-glyph-accent">[</span> <span>SANS ADMIN</span> <span class="petscii-glyph-accent">]═╗</span>
     </div>
     <div class="petscii-slide-frame__bl">
       <span class="petscii-glyph-orange">╚═[</span> <span>USER-SPACE PUR</span> <span class="petscii-glyph-orange">]</span>
@@ -7244,7 +7354,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
 
   <div class="slide__header reveal">
     <p class="slide__label">&gt; 01 // SCOOP &middot; D&Eacute;MO EN DIRECT</p>
-    <h2 class="slide__heading">En direct : installer un outil CLI en 15 secondes</h2>
+    <h2 class="slide__heading">Récap : installer git</h2>
   </div>
   <div class="slide__inner">
     <div class="terminal-block reveal" data-shell="pwsh">
@@ -7254,27 +7364,23 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span class="terminal-block__ctrl">□</span>
           <span class="terminal-block__ctrl">✕</span>
         </div>
-        <div class="terminal-block__title">MS-DOS Prompt &middot; Scoop CLI (C:\Users\alexis)</div>
-        <div class="terminal-block__badge">User Space &middot; Zéro UAC</div>
+        <div class="terminal-block__title">PowerShell &middot; Scoop CLI</div>
+        <div class="terminal-block__badge">User Space &middot; Sans UAC</div>
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="scoop install lazygit">scoop install lazygit</div>
-          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">Installing 'lazygit' (0.44.1) [64bit] from 'extras' bucket</span>
-<span style="color:var(--ansi-green);">Checking hash of lazygit_0.44.1_Windows_x86_64.zip ... ok.</span>
-<span style="color:var(--ansi-bright-black);">Extracting lazygit_0.44.1_Windows_x86_64.zip ... done.</span>
-<span style="color:var(--ansi-blue);">Linking ~\scoop\apps\lazygit\current =&gt; ~\scoop\apps\lazygit\0.44.1</span>
-<span style="color:var(--ansi-yellow);">Creating shim for 'lazygit' in ~\scoop\shims\lazygit.exe</span>
-<span style="color:var(--green); font-weight:700;">'lazygit' (0.44.1) was installed successfully!</span></div>
-        </div>
-        <div class="terminal-step" data-step="2">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="where.exe lazygit">where.exe lazygit</div>
-          <div class="terminal-out" data-highlight="true">C:\Users\alexis\scoop\shims\lazygit.exe</div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="scoop install git">scoop install git</div>
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">Installing 'git' (2.56.0.2) [64bit] from 'main' bucket</span>
+<span style="color:var(--ansi-green);">Checking hash of PortableGit-2.56.0.2-64-bit.7z.exe... OK.</span>
+<span style="color:var(--ansi-bright-black);">Extracting PortableGit-2.56.0.2-64-bit.7z.exe... Done.</span>
+<span style="color:var(--ansi-blue);">Linking ~\scoop\apps\git\current =&gt; ~\scoop\apps\git\2.56.0.2</span>
+<span style="color:var(--ansi-yellow);">Creating shim for 'git'.</span>
+<span style="color:var(--green); font-weight:700;">'git' (2.56.0.2) was installed successfully!</span></div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
-        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> READY</span>
-        <span class="terminal-window__statusbar-tag">SHIM: ~/scoop/shims/lazygit.exe</span>
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> INSTALL SANS ÉLÉVATION</span>
+        <span class="terminal-window__statusbar-tag">SHIM: ~/scoop/shims/git.exe</span>
         <span class="terminal-window__statusbar-tag">RETURN: 0 <span class="petscii-cursor">█</span></span>
       </div>
     </div>
@@ -7289,7 +7395,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
       <span class="petscii-glyph-cyan">╔═[</span> <span>MISE::RUNTIME_SWITCHER</span> <span class="petscii-glyph-cyan">]</span>
     </div>
     <div class="petscii-slide-frame__tr">
-      <span class="petscii-glyph-cyan">[</span> <span>5MS PROMPT // RUST</span> <span class="petscii-glyph-cyan">]═╗</span>
+      <span class="petscii-glyph-cyan">[</span> <span>UN BINAIRE // RUST</span> <span class="petscii-glyph-cyan">]═╗</span>
     </div>
     <div class="petscii-slide-frame__bl">
       <span class="petscii-glyph-cyan">╚═[</span> <span>mise.toml VERSIONNÉ</span> <span class="petscii-glyph-cyan">]</span>
@@ -7308,7 +7414,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Un seul outil en Rust</h3>
-        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Ultra-rapide (5 ms au prompt) et fonctionne nativement sous Windows.</p>
+        <p class="concept-card__desc">Remplace nvm, pyenv, rbenv, sdkman, goenv... Un seul binaire écrit en Rust, disponible pour Windows.</p>
       </div>
       <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
@@ -7316,7 +7422,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Fichier mise.toml versionn&eacute;</h3>
-        <p class="concept-card__desc">La configuration vit dans le d&eacute;p&ocirc;t Git. Quand vous changez de branche ou de dossier, les versions basculent imm&eacute;diatement.</p>
+        <p class="concept-card__desc">La configuration vit dans le dépôt Git. Avec le hook activé, les versions suivent le dossier dans lequel vous entrez.</p>
       </div>
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
@@ -7328,13 +7434,17 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
       </div>
     </div>
 
-    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
-      <pre><code><span style="color:var(--text-subtitle);">╔═ [EXEMPLE MISE.TOML DANS LE DÉPÔT GIT] ════════╦═ [TÂCHES D'ÉQUIPE ET ENVIRONNEMENT] ══════════╗
-║ <span style="color:var(--accent3); font-weight:700;">[tools]</span>                                        ║ <span style="color:var(--green); font-weight:700;">[tasks.dev]</span>                                   ║
-║ java   = <span style="color:var(--green);">"temurin-17"</span>                          ║ description = <span style="color:var(--green);">"Lancer l'application Spring"</span>   ║
-║ node   = <span style="color:var(--green);">"22.14.0"</span>                             ║ run         = <span style="color:var(--green);">"./mvnw spring-boot:run"</span>        ║
-║ python = <span style="color:var(--green);">"3.12.2"</span>                              ║ env         = { SPRING_PROFILES = <span style="color:var(--green);">"local"</span> }   ║
-╚════════════════════════════════════════════════╩═══════════════════════════════════════════════╝</span></code></pre>
+    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(14px, 2vh, 24px) auto 0 auto; width:100%; font-size:clamp(15px, 1.55vw, 22px); line-height:1.5;">
+      <pre><code><span style="color:var(--text);">╔═ [COMMENT MISE CHOISIT LA VERSION] ════════════════════════════════════╗</span>
+<span style="color:var(--text);">║ 1. Détection : mise lit le mise.toml du dossier et de ses parents.     ║</span>
+<span style="color:var(--text);">║                                                                        ║</span>
+<span style="color:var(--text);">║ 2. Hook : mise s'accroche au shell (PowerShell, bash, zsh).            ║</span>
+<span style="color:var(--text);">║    Le shell le relance après chaque commande et à chaque cd.           ║</span>
+<span style="color:var(--text);">║    Effet : PATH, [env] et JAVA_HOME sont réglés pour ce dossier.       ║</span>
+<span style="color:var(--text);">║                                                                        ║</span>
+<span style="color:var(--text);">║ 3. cmd.exe n'a pas de hook. On ajoute %LOCALAPPDATA%\mise\shims        ║</span>
+<span style="color:var(--text);">║    au PATH : chaque shim appelle mise pour choisir la version.         ║</span>
+<span style="color:var(--text);">╚════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
@@ -7359,7 +7469,8 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
 
   <div class="slide__header reveal">
     <p class="slide__label">&gt; 02 // MISE &middot; D&Eacute;MO EN DIRECT</p>
-    <h2 class="slide__heading">En direct : bascule de version automatique au &laquo; cd &raquo;</h2>
+    <h2 class="slide__heading">Récap : bascule de version automatique au &laquo; cd &raquo;</h2>
+    <p class="slide__subtitle reveal" style="color:var(--text-dim); margin-top:8px;">Chaque dossier a son <code>mise.toml</code> : projet-legacy demande Java 17, projet-moderne demande Java 21. Mise lit le fichier du dossier courant.</p>
   </div>
   <div class="slide__inner">
     <div class="terminal-block reveal" data-shell="pwsh">
@@ -7374,24 +7485,25 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-legacy ; java -version">cd C:\workspace\projet-legacy &amp;&amp; java -version</div>
-          <div class="terminal-out"><span style="color:var(--ansi-yellow); font-weight:700;">openjdk version "17.0.12" (Temurin-17)</span>
-<span style="color:var(--text-dim);">(d&eacute;fini par mise.toml : java = "17" &middot; $env:JAVA_HOME mis &agrave; jour)</span></div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-legacy ; java -version">cd C:\workspace\projet-legacy ; java -version</div>
+          <div class="terminal-out"><span style="color:var(--ansi-yellow); font-weight:700;">openjdk version "17.0.2" 2022-01-18</span>
+<span style="color:var(--text-dim);">(défini par mise.toml : java = "17" · JAVA_HOME suit le runtime 17.0.2)</span></div>
         </div>
         <div class="terminal-step" data-step="2">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-moderne ; java -version">cd C:\workspace\projet-moderne &amp;&amp; java -version</div>
-          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">openjdk version "21.0.4" (Temurin-21)</span>
-<span style="color:var(--text-dim);">(d&eacute;fini par mise.toml : java = "21" &middot; $env:JAVA_HOME bascul&eacute; en 5 ms !)</span></div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-moderne ; java -version">cd C:\workspace\projet-moderne ; java -version</div>
+          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">openjdk version "21.0.2" 2024-01-16</span>
+<span style="color:var(--text-dim);">(défini par mise.toml : java = "21" · JAVA_HOME bascule sur 21.0.2)</span></div>
         </div>
         <div class="terminal-step" data-step="3">
           <div class="terminal-cmd" data-type-effect="true" data-cmd-text="mise run dev">mise run dev</div>
-          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[dev] ./mvnw spring-boot:run --quiet</span></div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[dev] $ java -version</span>
+<span style="color:var(--green);">openjdk version "21.0.2" 2024-01-16</span></div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
         <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> JAVA: 17 &rarr; 21 (JAVA_HOME AUTO)</span>
         <span class="terminal-window__statusbar-tag">TASK: [tasks.dev]</span>
-        <span class="terminal-window__statusbar-tag">LATENCY: 5ms <span class="petscii-cursor">█</span></span>
+        <span class="terminal-window__statusbar-tag">DOSSIER: COURANT <span class="petscii-cursor">█</span></span>
       </div>
     </div>
   </div>
@@ -7423,16 +7535,16 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span>[ 01 // REGISTRY ]</span>
           <span class="petscii-hatch-strip">[!]</span>
         </div>
-        <h3 class="concept-card__title">Fusion descendante obligatoire (HKLM &gt; HKCU)</h3>
-        <p class="concept-card__desc">&Agrave; la cr&eacute;ation de session (<code>CreateEnvironmentBlock</code>), Windows concat&egrave;ne le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Impossible d'inverser ce comportement sans droits administrateur.</p>
+        <h3 class="concept-card__title">HKLM passe avant HKCU</h3>
+        <p class="concept-card__desc">&Agrave; la cr&eacute;ation de session (<code>CreateEnvironmentBlock</code>), Windows concat&egrave;ne le PATH <strong>Machine</strong> (HKLM) <em>avant</em> le PATH <strong>Utilisateur</strong> (HKCU). Changer cet ordre exige de modifier HKLM, donc des droits administrateur : sans eux, on agit sur la session ou le profil.</p>
       </div>
       <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ 02 // COLLISION ]</span>
           <span class="petscii-hatch-strip">[!]</span>
         </div>
-        <h3 class="concept-card__title">Le masquage silencieux (Shadowing)</h3>
-        <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> d&eacute;clar&eacute; au niveau Machine, votre Python 3.12 install&eacute; proprement via Mise ne sera <strong>jamais appel&eacute;</strong> par d&eacute;faut dans vos scripts !</p>
+        <h3 class="concept-card__title">Masquage silencieux</h3>
+        <p class="concept-card__desc">Si l'image entreprise contient un vieux Python 3.9 dans <code>C:\Python39</code> d&eacute;clar&eacute; au niveau Machine, votre Python 3.12 installé via Mise passe après lui : dans un terminal ordinaire, c'est l'exécutable machine qui répond.</p>
       </div>
     </div>
 
@@ -7441,7 +7553,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
 ║ <span style="color:var(--red); font-weight:700;">[1] HKLM (Machine PATH)</span>  <span style="color:var(--red);">████████████████████████████████</span>  <span style="color:var(--ansi-bright-white); font-weight:700;">ÉVALUÉ EN PREMIER</span>                 ║
 ║     &gt; <span style="color:var(--red);">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- [!] MASQUE VOS VERSIONS RÉCENTES !</span>       ║
 ║ <span style="color:var(--accent3); font-weight:700;">[2] HKCU (User PATH)</span>     <span style="color:var(--text-subtitle);">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span>  <span style="color:var(--text-dim);">ÉVALUÉ EN SECOND</span>                  ║
-║     &gt; <span style="color:var(--text-dim);">~\AppData\Local\mise\shims\python.exe</span>     <span style="color:var(--ansi-yellow);">&lt;-- [X] JAMAIS ATTEINT PAR DÉFAUT !</span>          ║
+║     &gt; <span style="color:var(--text-dim);">~\AppData\Local\mise\shims\python.exe</span>     <span style="color:var(--ansi-yellow);">&lt;-- [X] PASSE APRÈS HKLM           </span>          ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
@@ -7474,23 +7586,23 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span class="terminal-block__ctrl">□</span>
           <span class="terminal-block__ctrl">✕</span>
         </div>
-        <div class="terminal-block__title">MS-DOS Prompt &middot; PATH Diagnostics (where.exe)</div>
+        <div class="terminal-block__title">SIMULATION (poste préparé) &middot; PATH Diagnostics (where.exe)</div>
         <div class="terminal-block__badge" style="color:var(--accent2); background:var(--accent2-dim);">PATH Precedence</div>
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
           <div class="terminal-cmd" data-type-effect="true" data-cmd-text="where.exe python">where.exe python</div>
-          <div class="terminal-out"><span style="color:var(--red); font-weight:700;">C:\Python39\python.exe</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM Machine (Prend la main !)</span>
-<span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU User (Masqu&eacute; !)</span></div>
+          <div class="terminal-out"><span style="color:var(--red); font-weight:700;">C:\Python39\python.cmd</span>                    <span style="color:var(--ansi-bright-black);">&lt;-- HKLM Machine (prend la main)</span>
+<span style="color:var(--text-dim);">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- HKCU User (masqué)</span></div>
         </div>
         <div class="terminal-step" data-step="2">
           <div class="terminal-cmd" data-type-effect="true" data-cmd-text="$env:PATH = &quot;$env:LOCALAPPDATA\mise\shims;$HOME\scoop\shims;$env:PATH&quot;">$env:PATH = "$env:LOCALAPPDATA\mise\shims;$HOME\scoop\shims;$env:PATH"</div>
-          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">[OK] User shims prepended at index 0 of session PATH</span></div>
+          <div class="terminal-out"><span style="color:var(--text);">PATH de la session redéfini : shims Mise, puis shims Scoop, placés avant le reste du PATH (donc avant C:\Python39).</span></div>
         </div>
         <div class="terminal-step" data-step="3">
           <div class="terminal-cmd" data-type-effect="true" data-cmd-text="where.exe python">where.exe python</div>
-          <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- Prioritaire d&eacute;sormais !</span>
-<span style="color:var(--text-dim);">C:\Python39\python.exe</span></div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">C:\Users\alexis\AppData\Local\mise\shims\python.exe  &lt;-- en premier</span>
+<span style="color:var(--text-dim);">C:\Python39\python.cmd</span></div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
@@ -7502,58 +7614,66 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
   </div>
 </section>
 
-  <!-- Slide 10: DevRecipe : L'onboarding en PR -->
-<section class="slide slide--content slide--concept-cards" data-part="4" data-nav="DevRecipe : L'onboarding en PR">
+  <!-- Slide 10: DevRecipe : fonctionnement -->
+<section class="slide slide--content slide--concept-cards" data-part="4" data-nav="DevRecipe : fonctionnement">
   <!-- Cadre décoratif périphérique PETSCII -->
   <div class="petscii-slide-frame" aria-hidden="true">
     <div class="petscii-slide-frame__tl">
-      <span class="petscii-glyph-green">╔═[</span> <span>REX::DEVRECIPE_AS_CODE</span> <span class="petscii-glyph-green">]</span>
+      <span class="petscii-glyph-green">╔═[</span> <span>REX::DEVRECIPE_FLOW</span> <span class="petscii-glyph-green">]</span>
     </div>
     <div class="petscii-slide-frame__tr">
-      <span class="petscii-glyph-green">[</span> <span>ORCHESTRATION D'ÉQUIPE</span> <span class="petscii-glyph-green">]═╗</span>
+      <span class="petscii-glyph-green">[</span> <span>4 ÉTAPES</span> <span class="petscii-glyph-green">]═╗</span>
     </div>
     <div class="petscii-slide-frame__bl">
-      <span class="petscii-glyph-green">╚═[</span> <span>PREFLIGHT + DRY-RUN</span> <span class="petscii-glyph-green">]</span>
+      <span class="petscii-glyph-green">╚═[</span> <span>DÉCISION HUMAINE</span> <span class="petscii-glyph-green">]</span>
     </div>
   </div>
 
   <div class="slide__header reveal">
-    <p class="slide__label">&gt; 04 // DEVRECIPE &middot; L'ORCHESTRATION D'&Eacute;QUIPE</p>
-    <h2 class="slide__heading">DevRecipe : combler les limites de Scoop et Mise</h2>
+    <p class="slide__label">&gt; 04 // DEVRECIPE &middot; FONCTIONNEMENT</p>
+    <h2 class="slide__heading">DevRecipe : manifeste, pr&eacute;flight, d&eacute;cision</h2>
   </div>
   <div class="slide__inner">
-    <div class="concept-grid concept-grid--3 reveal">
+    <div class="concept-grid concept-grid--2 reveal">
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
-          <span>[ 01 // UNIFICATION ]</span>
+          <span>[ 01 // MANIFESTE ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Manifeste devrecipe.toml partag&eacute;</h3>
-        <p class="concept-card__desc">Scoop et Mise s'ignorent mutuellement. DevRecipe les rassemble dans un fichier partag&eacute;, versionn&eacute; et relu en PR pour r&eacute;pondre aux besoins collectifs de l'&eacute;quipe.</p>
+        <h3 class="concept-card__title">Un manifeste relu en PR</h3>
+        <p class="concept-card__desc"><code>DevRecipe_windows.toml</code> liste, par profil, les paquets Scoop et les runtimes Mise. <code>-Validate</code> contr&ocirc;le la syntaxe sans toucher au poste.</p>
       </div>
       <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
-          <span>[ 02 // PREFLIGHT ]</span>
-          <span class="petscii-hatch-strip">[OK]</span>
+          <span>[ 02 // PR&Eacute;FLIGHT ]</span>
+          <span class="petscii-hatch-strip">[!]</span>
         </div>
-        <h3 class="concept-card__title">Contr&ocirc;le pr&eacute;alable des conflits</h3>
-        <p class="concept-card__desc">Ni Scoop ni Mise n'inspectent les logiciels d&eacute;j&agrave; pr&eacute;sents. DevRecipe scanne le registre, AppX et le PATH pour alerter avant toute modification.</p>
+        <h3 class="concept-card__title">Chercher les traces avant d'&eacute;crire</h3>
+        <p class="concept-card__desc"><code>-DryRun</code> parcourt le registre, AppX, les services et les t&acirc;ches. Il ne modifie rien et s'arr&ecirc;te si une installation existe d&eacute;j&agrave;.</p>
       </div>
       <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
-          <span>[ 03 // PRECEDENCE ]</span>
+          <span>[ 03 // D&Eacute;CISION ]</span>
+          <span class="petscii-hatch-strip">[?]</span>
+        </div>
+        <h3 class="concept-card__title">Vous cochez ce que vous forcez</h3>
+        <p class="concept-card__desc">Si le préflight trouve une installation existante, une liste s'affiche : chaque conflit est coché ou refusé. Rien n'est forcé par défaut. Sans terminal interactif, DevRecipe s'arrête (code 3).</p>
+      </div>
+      <div class="concept-card concept-card--green">
+        <div class="petscii-card-header" style="color:var(--green);">
+          <span>[ 04 // ENVIRONNEMENT ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Pr&eacute;c&eacute;dence du PATH garantie</h3>
-        <p class="concept-card__desc">DevRecipe injecte les shims en priorit&eacute; 0 dans PowerShell et dans <code>cmd.exe</code> (via <code>AutoRun</code>), neutralisant le masquage machine HKLM.</p>
+        <h3 class="concept-card__title">Outils et runtimes en place</h3>
+        <p class="concept-card__desc">Scoop installe les paquets, Mise les runtimes. DevRecipe place aussi les shims en t&ecirc;te de PATH, dans PowerShell et dans <code>cmd.exe</code> via AutoRun.</p>
       </div>
     </div>
 
-    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(14px, 2vh, 24px) auto 0 auto; width:100%; display:flex; justify-content:center;">
-      <pre style="margin:0 auto; text-align:left;"><code><span style="color:var(--text-subtitle);">╔═ [DEVRECIPE : LA PASSERELLE ENTRE LE CODE ET LE POSTE WINDOWS] ══════════════════════════════════╗
-║ <span style="color:var(--accent); font-weight:700;">SCOOP (Outils CLI)</span>  +  <span style="color:var(--accent3); font-weight:700;">MISE (Runtimes)</span>  +  <span style="color:var(--accent2); font-weight:700;">CONTRÔLE DU PATH</span>  +  <span style="color:var(--green); font-weight:700;">PR COLLECTIVE (devrecipe.toml)</span>   ║
-║ > Validation syntaxique (-Validate)    -->  Simulation sans risque (-DryRun -Review)             ║
-╚══════════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
+    <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(14px, 2vh, 24px) auto 0 auto; width:100%;">
+      <pre><code><span style="color:var(--text-subtitle);">╔═ [CE QUE VOUS VOYEZ] ══════════════════════════════════════════════════════════════════════════════╗</span>
+<span style="color:var(--text-subtitle);">║ manifeste  ->  -Validate  ->  préflight (traces)  ->  choix (cocher)  ->  Scoop + Mise + shims     ║</span>
+<span style="color:var(--text-subtitle);">║ lecture     lecture     lecture seule        décision humaine (vous)          environnement        ║</span>
+<span style="color:var(--text-subtitle);">╚════════════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
 </section>
@@ -7563,51 +7683,109 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
   <!-- Cadre décoratif périphérique PETSCII -->
   <div class="petscii-slide-frame" aria-hidden="true">
     <div class="petscii-slide-frame__tl">
-      <span class="petscii-glyph-green">╔═[</span> <span>LIVE::DEVRECIPE_DRYRUN</span> <span class="petscii-glyph-green">]</span>
+      <span class="petscii-glyph-green">╔═[</span> <span>LIVE::DEVRECIPE_LOG</span> <span class="petscii-glyph-green">]</span>
     </div>
     <div class="petscii-slide-frame__tr">
-      <span class="petscii-glyph-green">[</span> <span>PREFLIGHT AUDIT</span> <span class="petscii-glyph-green">]═╗</span>
+      <span class="petscii-glyph-green">[</span> <span>PREFLIGHT + CHOIX</span> <span class="petscii-glyph-green">]═╗</span>
     </div>
     <div class="petscii-slide-frame__bl">
-      <span class="petscii-glyph-green">╚═[</span> <span>0 MUTATIONS</span> <span class="petscii-glyph-green">]</span>
+      <span class="petscii-glyph-green">╚═[</span> <span>RIEN N'EST FORC&Eacute; PAR D&Eacute;FAUT</span> <span class="petscii-glyph-green">]</span>
     </div>
   </div>
 
   <div class="slide__header reveal">
     <p class="slide__label">&gt; 04 // DEVRECIPE &middot; D&Eacute;MO EN DIRECT</p>
-    <h2 class="slide__heading">En direct : validation et simulation d'un manifeste</h2>
+    <h2 class="slide__heading">Récap : installer Java 11 et grep dans un existant</h2>
   </div>
   <div class="slide__inner">
-    <div class="terminal-block reveal" data-shell="pwsh">
+    <div class="terminal-block terminal-block--scroll reveal" data-shell="pwsh">
       <div class="terminal-block__header">
         <div class="terminal-block__controls">
           <span class="terminal-block__ctrl">_</span>
           <span class="terminal-block__ctrl">□</span>
           <span class="terminal-block__ctrl">✕</span>
         </div>
-        <div class="terminal-block__title">MS-DOS Prompt &middot; DevRecipe Engine (Preflight)</div>
-        <div class="terminal-block__badge" style="color:var(--green); background:var(--green-dim);">0 Risque &middot; Preflight</div>
+        <div class="terminal-block__title">PowerShell &middot; DevRecipe Engine</div>
+        <div class="terminal-block__badge" style="color:var(--green); background:var(--green-dim);">Pr&eacute;flight &rarr; choix</div>
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text=".\devrecipe.ps1 -Validate">.\devrecipe.ps1 -Validate</div>
-          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">[OK] Manifest syntax valid (profile: default)</span></div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text=".\DevRecipe_windows.ps1">.\DevRecipe_windows.ps1</div>
+          <div class="terminal-out">--- PREFLIGHT CONFLICT EVIDENCE (read-only) ---
+Scanning requested tools and checking your system for existing traces to prevent installation conflicts.
+threshold=90/100; potential collisions resolved from name similarity
+[1/2 (50%)] grep
+[2/2 (100%)] java</div>
         </div>
         <div class="terminal-step" data-step="2">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text=".\devrecipe.ps1 -DryRun -Review">.\devrecipe.ps1 -DryRun -Review</div>
-          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[Preflight] Scanning system software and registry paths...</span>
-<span style="color:var(--ansi-yellow); font-weight:700;">[WARN] Existing system Git found at 'C:\Program Files\Git\cmd' (version 2.38)</span>
-<span style="color:var(--ansi-blue);">[DryRun] Plan:</span>
-<span style="color:var(--text-dim);">  + Scoop packages to install : [ripgrep, fzf, jq, lazygit]</span>
-<span style="color:var(--text-dim);">  + Mise runtimes to install  : [node@22.14.0, python@3.12.2]</span>
-<span style="color:var(--text-dim);">  + Environment actions      : Prepend user shims in PowerShell &amp; cmd AutoRun</span>
-<span style="color:var(--green); font-weight:700;">[OK] DryRun complete (exit code 0). No system changes applied.</span></div>
+          <div class="terminal-out">--- PREFLIGHT CHECK: java ---
+<span data-highlight="true">  provider-conflict | provider=Mise | application=java | declared-version=11 | installed-version=21.0.2,26.0.2 | reason=provider-version-mismatch</span>
+Traces found for 'java':
+  evidence | source=os-location-metadata | scope=user | location=~\AppData\Microsoft\Windows\Recent\java-coffee-cup-logo.jpg.lnk | ...
+  evidence | source=os-location-metadata | scope=user | location=~\AppData\Local\DBeaver\jre\bin\java.dll | ...
+  evidence | source=os-location-metadata | scope=user | location=~\AppData\Local\DBeaver\jre\bin\java.exe | ...</div>
+        </div>
+        <div class="terminal-step" data-step="3">
+          <div class="terminal-out">--- PREFLIGHT COVERAGE NOTE (read-only) ---
+  coverage | scopes=machine,user | incomplete-checks=5 | ...
+--- PREFLIGHT CONFLICT SELECTION ---
+Detected existing system installations. Check tools to force Mise/Scoop installation and supersede existing installs (unchecked are declined):
+Up/Down: move/scroll | Space: toggle | A: all | Left/Right or Tab: buttons | Enter: confirm | Escape: cancel
+  <span style="color:var(--text);">[x] runtimes | mise | java | 11</span>
+  <span style="color:var(--text);">&gt; [ Force selected (1) ]  [ Cancel ]</span>
+<span data-highlight="true">  decision=force | application=java</span></div>
+        </div>
+        <div class="terminal-step" data-step="4">
+          <div class="terminal-out">--- FINAL INSTALLATION PLAN AFTER PREFLIGHT ---
+Scoop: scoop install grep
+...
+Mise: mise install java@11
+Mise: mise reshim.
+Mise: add %LOCALAPPDATA%\mise\shims to the user PATH for cmd.exe and new processes.
+Command Processor: configure AutoRun in HKCU to prepend Mise and Scoop shims for cmd.exe and sub-processes.
+Shell startup files: add Mise shims activation commands for available compatible shells: PowerShell, Nushell, Bash, Zsh, ...
+Open a new terminal after installation; already-running processes keep their existing PATH.
+Selected profiles: default</div>
+        </div>
+        <div class="terminal-step" data-step="5">
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">[1/2 (50%)] grep</span>
+Installing 'grep' (3.11) [64bit] from 'main' bucket
+Checking hash of grep-3.11-x64.exe... OK.
+Linking ~\scoop\apps\grep\current =&gt; ~\scoop\apps\grep\3.11
+<span style="color:var(--green); font-weight:700;">'grep' (3.11) was installed successfully!</span></div>
+        </div>
+        <div class="terminal-step" data-step="6">
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">[2/2 (100%)] java</span>
+mise by @jdx – installing 1 tool
+mise █████████████░░░ 0/1 · ...
+  java@11.0.2  java -version  21.0s
+mise java@11.0.2 openjdk version "11.0.2" 2019-01-15
+mise java@11.0.2 OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+mise ✓ java@11.0.2  22.2s  openjdk-11.0.2_windows-x64_bin.zip
+<span style="color:var(--green); font-weight:700;">mise ████████████████ 1/1 · installed 1 tool in 22.2s</span></div>
+        </div>
+        <div class="terminal-step" data-step="7">
+          <div class="terminal-out">Global activation skipped for 'java': existing installation or configuration detected.
+Mise shims path is already first in the user PATH: ~\AppData\Local\mise\shims.
+Mise shims activation is already present in ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1.
+Mise shims activation is already present in ~\AppData\Roaming\nushell\...
+Mise shims activation configured for available compatible shells. Open new shell sessions to use Mise-managed commands.
+cmd.exe AutoRun already contains DevRecipe shim precedence.</div>
+        </div>
+        <div class="terminal-step" data-step="8">
+          <div class="terminal-out"><span style="color:var(--ansi-bright-black);">============================================================
+INSTALLATION SUMMARY
+============================================================</span>
+Installed:
+  - grep (latest)
+  <span style="color:var(--green); font-weight:700;">- java (11)</span>
+Full execution log: logs/devrecipe-windows-20261016-115523.log</div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
-        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> PREFLIGHT: 1 WARN / 0 BLOCKERS</span>
-        <span class="terminal-window__statusbar-tag">PLAN: 4 PKGS / 2 RUNTIMES</span>
-        <span class="terminal-window__statusbar-tag">EXIT: 0 <span class="petscii-cursor">█</span></span>
+        <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">&#9679;</span> 2 PAQUETS : GREP, JAVA 11</span>
+        <span class="terminal-window__statusbar-tag">CHOIX : JAVA FORC&Eacute;</span>
+        <span class="terminal-window__statusbar-tag">LOG <span class="petscii-cursor">█</span></span>
       </div>
     </div>
   </div>
@@ -7639,8 +7817,8 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span>[ 01 // DEFENSE ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">EDR &amp; AppLocker restent actifs</h3>
-        <p class="concept-card__desc">Installer en espace utilisateur ne contourne aucun antivirus d'entreprise, ni WDAC ni restrictions. Tout binaire non autoris&eacute; reste bloqu&eacute;.</p>
+        <h3 class="concept-card__title">EDR, AppLocker et WDAC si la DSI les active</h3>
+        <p class="concept-card__desc">Scoop ne contourne aucun antivirus ni aucune règle. AppLocker ou WDAC n'appliquent rien tant qu'une stratégie n'est pas déployée. Une fois déployée, elle peut bloquer un outil installé dans votre profil : la levée du blocage relève de la DSI.</p>
       </div>
       <div class="concept-card concept-card--yellow">
         <div class="petscii-card-header" style="color:var(--accent);">
@@ -7648,23 +7826,23 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Catalogues d'entreprise approuv&eacute;s</h3>
-        <p class="concept-card__desc">L'entreprise peut h&eacute;berger son propre bucket Git priv&eacute; de manifests valid&eacute;s par la cybers&eacute;curit&eacute; et des miroirs internes d'artifactory.</p>
+        <p class="concept-card__desc">Bucket Git privé de manifests validés par la cybersécurité, et proxy d'entreprise configuré pour Scoop et Mise.</p>
       </div>
       <div class="concept-card concept-card--blue">
         <div class="petscii-card-header" style="color:var(--accent3);">
           <span>[ 03 // AUDIT ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Auditabilit&eacute; &amp; inventaire complet</h3>
-        <p class="concept-card__desc"><code>scoop export</code> et <code>mise ls --json</code> g&eacute;n&egrave;rent un inventaire machine instantan&eacute; pour la conformit&eacute; et les revues s&eacute;curit&eacute;.</p>
+        <h3 class="concept-card__title">Auditabilité et inventaire</h3>
+        <p class="concept-card__desc"><code>scoop export</code> liste les paquets Scoop (JSON), <code>mise ls --json</code> les runtimes. Utile pour les revues de conformité.</p>
       </div>
     </div>
 
     <div class="ansi-diagram-block reveal" style="max-width:980px; margin:clamp(12px, 1.8vh, 20px) auto 0 auto; width:100%;">
       <pre><code><span style="color:var(--text-subtitle);">╔═ [CONFORMITÉ & SÉCURITÉ ENTREPRISE : CONTRÔLE PLEIN ET ENTIER] ══════════════════════════════╗
-║ <span style="color:var(--green); font-weight:700;">[OK] EDR &amp; Antivirus</span> : Analyse temps réel de tout binaire décompressé dans ~/scoop/apps      ║
-║ <span style="color:var(--green); font-weight:700;">[OK] AppLocker / WDAC</span>: Les règles de hash bloquent tout exécutable illégitime                ║
-║ <span style="color:var(--green); font-weight:700;">[OK] Inventaire CI/CD</span>: scoop export &gt; tools.json exporte l'état complet en 1 commande        ║
+║ <span style="color:var(--green); font-weight:700;">[OK] EDR &amp; Antivirus</span> : Surveillent les binaires extraits dans ~/scoop/apps                   ║
+║ <span style="color:var(--accent); font-weight:700;">[!!] AppLocker / WDAC</span>: actifs seulement si la DSI les déploie (exception DSI)                ║
+║ <span style="color:var(--green); font-weight:700;">[OK] Inventaire CI/CD</span>: scoop export &gt; scoop.json liste les paquets                           ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════╝</span></code></pre>
     </div>
   </div>
@@ -7705,14 +7883,14 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Runtimes dans le d&eacute;p&ocirc;t Git</h3>
-        <p class="concept-card__desc">Figez les runtimes dans un <code>mise.toml</code> versionn&eacute;. Vos coll&egrave;gues d&eacute;marrent le projet en 1 seconde.</p>
+        <p class="concept-card__desc">Figez les runtimes dans un <code>mise.toml</code> versionné. Vos collègues obtiennent les mêmes versions, sans reconfiguration.</p>
       </div>
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
           <span>[ 03 // SHIMS ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Relais shims prioritaires</h3>
+        <h3 class="concept-card__title">Relais shims à vérifier</h3>
         <p class="concept-card__desc">V&eacute;rifiez vos shims avec <code>where.exe</code> pour vous assurer que les outils HKLM syst&egrave;me ne prennent pas le pas.</p>
       </div>
     </div>
@@ -7729,13 +7907,11 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step is-visible" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="irm get.scoop.sh | iex ; scoop install mise">irm get.scoop.sh | iex ; scoop install mise</div>
-          <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">[OK] Scoop &amp; Mise installés avec succès en espace utilisateur !</span>
-<span style="color:var(--text-dim);">Prêt pour le développement sans droits administrateur.</span></div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force; irm get.scoop.sh | iex; scoop install mise">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force; irm get.scoop.sh | iex; scoop install mise</div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
-        <span class="terminal-window__statusbar-tag">[OK] READY FOR DEPLOYMENT</span>
+        <span class="terminal-window__statusbar-tag">1 COMMANDE &middot; SANS ADMIN</span>
         <span class="terminal-window__statusbar-tag">TARGET: HKCU\scoop</span>
         <span class="terminal-window__statusbar-tag">READY <span class="petscii-cursor">█</span></span>
       </div>
@@ -7776,7 +7952,7 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
       <div class="ansi-diagram-block reveal" style="padding:10px 14px; font-size:clamp(10px,1vw,12.5px); line-height:1.45; margin-top:12px; border-color:var(--accent); background:var(--code-bg); text-align:left;">
         <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:6px; margin-bottom:8px; font-family:var(--font-mono); font-weight:700;">
           <span style="color:var(--accent);">ANTISÈCHE &middot; COMMANDES DU QUOTIDIEN</span>
-          <span style="color:var(--text-subtitle);">LIENS : scoop.sh/#/apps &middot; mise.jdx.dev</span>
+          <span style="color:var(--text); font-size:clamp(13px, 1.25vw, 17px); font-weight:700;">LIENS : <a href="https://scoop.sh/#/apps" style="color:var(--accent); font-weight:700; text-decoration:underline;">scoop.sh</a> &middot; <a href="https://mise.jdx.dev" style="color:var(--accent); font-weight:700; text-decoration:underline;">mise.jdx.dev</a> &middot; <a href="https://github.com/a-scolan/DevRecipe" style="color:var(--accent); font-weight:700; text-decoration:underline;">DevRecipe</a></span>
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-family:var(--font-mono);">
           <div>
@@ -7801,13 +7977,24 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
     <div class="outro-qr-pane reveal">
       <div class="outro-qr-card" style="position:relative; text-align:center;">
         <div class="petscii-card-header" style="color:var(--accent); width:100%; margin: -20px -20px 14px -20px; padding: 6px 14px;">
-          <span>[ QR // SUPPORT &amp; CODE ]</span>
+          <span>[ QR // SUPPORT &amp; FEEDBACK ]</span>
           <span class="petscii-hatch-strip">[SCAN]</span>
         </div>
-        <div class="qr-spotlight">
-          <img src="assets/presentation-qr.png" alt="QR code vers le support de la pr&eacute;sentation" loading="eager">
+        <div class="outro-qr-duo">
+          <figure class="outro-qr-item">
+            <div class="qr-spotlight">
+              <img src="assets/presentation-qr.png" alt="QR code vers le support de la pr&eacute;sentation" loading="eager">
+            </div>
+            <figcaption>Slides &amp; code</figcaption>
+          </figure>
+          <figure class="outro-qr-item">
+            <div class="qr-spotlight">
+              <img src="assets/feedback-qr.png" alt="QR code vers le formulaire de feedback" loading="eager">
+            </div>
+            <figcaption>Feedback</figcaption>
+          </figure>
         </div>
-        <p style="font-family:var(--font-mono); font-size:11.5px; color:var(--text-dim); margin-top:10px;">Scannez pour retrouver les slides et le code</p>
+        <p style="font-family:var(--font-mono); font-size:11.5px; color:var(--text-dim); margin-top:10px;">Scannez pour retrouver le support et laisser votre feedback</p>
       </div>
     </div>
   </div>
@@ -8391,8 +8578,34 @@ html:not([data-theme*="light"])[data-readability="high-contrast"] {
           outEl.style.opacity = '1';
         }
       });
+
+      var hasPendingStep = Array.prototype.some.call(steps, function(s) {
+        var n = parseInt(s.getAttribute('data-step'), 10);
+        return !isNaN(n) && n > stepNum;
+      });
+      term.classList.toggle('is-advanceable', hasPendingStep);
     });
   }
+
+  // Un clic (ou tap) sur une console avance d'une étape, pour les lecteurs sur mobile
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    if (!target || typeof target.closest !== 'function') return;
+    var term = target.closest('.terminal-block.is-advanceable');
+    if (!term || target.closest('a, button, input, select, textarea')) return;
+
+    var engine = window.deckEngine;
+    if (!engine || engine.isInIframe) return;
+
+    var slide = term.closest('.slide');
+    var current = parseInt(slide.getAttribute('data-active-step'), 10);
+    var nextStep = engine.getSlideSteps(slide).filter(function(s) {
+      return parseInt(s, 10) > current;
+    })[0];
+    if (nextStep !== undefined) {
+      engine.setSlideStep(slide, nextStep, true);
+    }
+  });
 
   function runTypeEffect(el) {
     if (!el) return;

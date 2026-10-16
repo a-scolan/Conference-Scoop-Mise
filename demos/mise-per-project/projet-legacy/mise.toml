@@ -1,2 +1,2 @@
-﻿[tools]
-node = "18"
+[tools]
+java = "17"

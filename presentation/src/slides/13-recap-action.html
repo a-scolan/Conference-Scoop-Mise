@@ -32,14 +32,14 @@
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
         <h3 class="concept-card__title">Runtimes dans le d&eacute;p&ocirc;t Git</h3>
-        <p class="concept-card__desc">Figez les runtimes dans un <code>mise.toml</code> versionn&eacute;. Vos coll&egrave;gues d&eacute;marrent le projet en 1 seconde.</p>
+        <p class="concept-card__desc">Figez les runtimes dans un <code>mise.toml</code> versionné. Vos collègues obtiennent les mêmes versions, sans reconfiguration.</p>
       </div>
       <div class="concept-card concept-card--green">
         <div class="petscii-card-header" style="color:var(--green);">
           <span>[ 03 // SHIMS ]</span>
           <span class="petscii-hatch-strip">[OK]</span>
         </div>
-        <h3 class="concept-card__title">Relais shims prioritaires</h3>
+        <h3 class="concept-card__title">Relais shims à vérifier</h3>
         <p class="concept-card__desc">V&eacute;rifiez vos shims avec <code>where.exe</code> pour vous assurer que les outils HKLM syst&egrave;me ne prennent pas le pas.</p>
       </div>
     </div>
@@ -56,13 +56,11 @@
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step is-visible" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="irm get.scoop.sh | iex ; scoop install mise">irm get.scoop.sh | iex ; scoop install mise</div>
-          <div class="terminal-out" data-highlight="true"><span style="color:var(--green); font-weight:700;">[OK] Scoop &amp; Mise installés avec succès en espace utilisateur !</span>
-<span style="color:var(--text-dim);">Prêt pour le développement sans droits administrateur.</span></div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force; irm get.scoop.sh | iex; scoop install mise">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force; irm get.scoop.sh | iex; scoop install mise</div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
-        <span class="terminal-window__statusbar-tag">[OK] READY FOR DEPLOYMENT</span>
+        <span class="terminal-window__statusbar-tag">1 COMMANDE &middot; SANS ADMIN</span>
         <span class="terminal-window__statusbar-tag">TARGET: HKCU\scoop</span>
         <span class="terminal-window__statusbar-tag">READY <span class="petscii-cursor">█</span></span>
       </div>

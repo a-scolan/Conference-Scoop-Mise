@@ -17,7 +17,8 @@
 
   <div class="slide__header reveal">
     <p class="slide__label">&gt; 02 // MISE &middot; D&Eacute;MO EN DIRECT</p>
-    <h2 class="slide__heading">En direct : bascule de version automatique au &laquo; cd &raquo;</h2>
+    <h2 class="slide__heading">Récap : bascule de version automatique au &laquo; cd &raquo;</h2>
+    <p class="slide__subtitle reveal" style="color:var(--text-dim); margin-top:8px;">Chaque dossier a son <code>mise.toml</code> : projet-legacy demande Java 17, projet-moderne demande Java 21. Mise lit le fichier du dossier courant.</p>
   </div>
   <div class="slide__inner">
     <div class="terminal-block reveal" data-shell="pwsh">
@@ -32,24 +33,25 @@
       </div>
       <div class="terminal-block__content">
         <div class="terminal-step" data-step="1">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-legacy ; java -version">cd C:\workspace\projet-legacy &amp;&amp; java -version</div>
-          <div class="terminal-out"><span style="color:var(--ansi-yellow); font-weight:700;">openjdk version "17.0.12" (Temurin-17)</span>
-<span style="color:var(--text-dim);">(d&eacute;fini par mise.toml : java = "17" &middot; $env:JAVA_HOME mis &agrave; jour)</span></div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-legacy ; java -version">cd C:\workspace\projet-legacy ; java -version</div>
+          <div class="terminal-out"><span style="color:var(--ansi-yellow); font-weight:700;">openjdk version "17.0.2" 2022-01-18</span>
+<span style="color:var(--text-dim);">(défini par mise.toml : java = "17" · JAVA_HOME suit le runtime 17.0.2)</span></div>
         </div>
         <div class="terminal-step" data-step="2">
-          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-moderne ; java -version">cd C:\workspace\projet-moderne &amp;&amp; java -version</div>
-          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">openjdk version "21.0.4" (Temurin-21)</span>
-<span style="color:var(--text-dim);">(d&eacute;fini par mise.toml : java = "21" &middot; $env:JAVA_HOME bascul&eacute; en 5 ms !)</span></div>
+          <div class="terminal-cmd" data-type-effect="true" data-cmd-text="cd C:\workspace\projet-moderne ; java -version">cd C:\workspace\projet-moderne ; java -version</div>
+          <div class="terminal-out"><span style="color:var(--green); font-weight:700;">openjdk version "21.0.2" 2024-01-16</span>
+<span style="color:var(--text-dim);">(défini par mise.toml : java = "21" · JAVA_HOME bascule sur 21.0.2)</span></div>
         </div>
         <div class="terminal-step" data-step="3">
           <div class="terminal-cmd" data-type-effect="true" data-cmd-text="mise run dev">mise run dev</div>
-          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[dev] ./mvnw spring-boot:run --quiet</span></div>
+          <div class="terminal-out" data-highlight="true"><span style="color:var(--ansi-bright-black);">[dev] $ java -version</span>
+<span style="color:var(--green);">openjdk version "21.0.2" 2024-01-16</span></div>
         </div>
       </div>
       <div class="terminal-window__statusbar">
         <span class="terminal-window__statusbar-tag"><span class="petscii-glyph-green">●</span> JAVA: 17 &rarr; 21 (JAVA_HOME AUTO)</span>
         <span class="terminal-window__statusbar-tag">TASK: [tasks.dev]</span>
-        <span class="terminal-window__statusbar-tag">LATENCY: 5ms <span class="petscii-cursor">█</span></span>
+        <span class="terminal-window__statusbar-tag">DOSSIER: COURANT <span class="petscii-cursor">█</span></span>
       </div>
     </div>
   </div>

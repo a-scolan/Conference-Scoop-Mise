@@ -1169,7 +1169,7 @@
   {
     "index": 0,
     "title": "Titre",
-    "duration": "25 s",
+    "duration": "28 s",
     "action": "Accueil de la salle, regard direct vers le public, attendre le calme avant de déclencher le chrono.",
     "checklist": [],
     "keywords": [
@@ -1183,21 +1183,21 @@
   {
     "index": 1,
     "title": "Speaker",
-    "duration": "30 s",
+    "duration": "36 s",
     "action": "Rythme vif, posture de praticien terrain.",
     "checklist": [],
     "keywords": [
       "Alexis Scolan · Architecte technique onepoint",
-      "Créateur de DevRecipe · REX poste de travail"
+      "Modernisations progressives · Pratiques de conception"
     ],
     "beat": "Praticien parlant à des praticiens.",
-    "substance": "Crédibilité terrain et confrontation aux contraintes réelles.",
-    "verbatim": "« Je m'appelle Alexis Scolan, je suis architecte technique chez onepoint. J'accompagne des équipes de développement sur des postes Windows souvent très verrouillés par des politiques de sécurité strictes. Tout ce que je vous présente aujourd'hui est issu de retours d'expérience réels et de l'outil DevRecipe qu'on utilise pour fluidifier l'intégration des développeurs sur leurs projets. »"
+    "substance": "Crédibilité terrain, ancrée dans les contraintes réelles.",
+    "verbatim": "« Je m'appelle Alexis Scolan. Architecte technique, je mets mon bagage d'expertise à profit dans des modernisations progressives et judicieuses des systèmes et des pratiques de conception. Je travaille sur des postes Windows souvent très verrouillés par les politiques de sécurité, et ce que je vous présente vient de retours d'expérience réels, dont l'outil DevRecipe que j'ai créé pour l'onboarding des équipes. »"
   },
   {
     "index": 2,
     "title": "Les 4 erreurs du quotidien",
-    "duration": "45 s",
+    "duration": "31 s",
     "action": "Faire lever la main dans la salle sur les messages affichés.",
     "checklist": [],
     "keywords": [
@@ -1210,77 +1210,80 @@
   },
   {
     "index": 3,
-    "title": "La promesse",
-    "duration": "40 s",
-    "action": "Balayer les 4 réponses d'un geste clair de la main.",
+    "title": "La promesse : déléguer le PATH et l'espace utilisateur, rendre l'équipe reproductible",
+    "duration": "32 s",
+    "action": "Balayer les réponses une à une, en les reliant à leur blocage.",
     "checklist": [],
     "keywords": [
-      "Scoop (Espace utilisateur) · Mise (Projet) · Shims (PATH) · DevRecipe (PR)"
+      "Scoop (Espace utilisateur) · Mise (Projet) · Shims (PATH) · Outils GNU · DevRecipe (équipe)"
     ],
     "beat": "Bascule du problème vers la solution.",
-    "substance": "Contrat de la conférence : 4 problèmes, 4 solutions.",
-    "verbatim": "« La bonne nouvelle, c'est qu'il existe un écosystème moderne pour régler définitivement chacun de ces 4 points : Scoop pour installer sans admin dans son profil, Mise pour basculer automatiquement de version au changement de dossier, la maîtrise des relais pour dompter le PATH Windows, et DevRecipe pour formaliser tout ça dans une revue d'équipe. Voyons comment ça marche. »"
+    "substance": "Contrat de la conférence : chaque réponse vise un blocage de la slide précédente (UAC, PATH, versions, scripts Linux) ; DevRecipe répond au besoin d'équipe.",
+    "verbatim": "« La bonne nouvelle, c'est qu'on peut déléguer ces tâches. Scoop prend en charge l'espace utilisateur, sans admin. Mise prend en charge les versions, et les relais du PATH qui vont avec. Pour les scripts Linux, Scoop fournit les outils GNU. Et DevRecipe rend le tout reproductible : le poste se décrit dans un manifeste, relu en revue d'équipe. Voyons comment ça marche. »"
   },
   {
     "index": 4,
     "title": "Scoop : Le User Space",
-    "duration": "60 s",
-    "action": "Insister sur la simplicité des shims et l'absence d'élévation de privilèges.",
+    "duration": "109 s",
+    "action": "Insister sur l'absence d'élévation pour ces paquets, et sur ce que Scoop ne contourne pas.",
     "checklist": [],
     "keywords": [
-      "Scoop · Espace utilisateur · Zéro UAC · Shims (Relais) · Buckets Git",
+      "Scoop · Espace utilisateur · Pas d'UAC pour Scoop · Shims (Relais) · Buckets Git",
       "scoop.sh/#/apps · scoop bucket add · scoop search",
       "« Mes outils s'installent dans mon profil, sans admin. »"
     ],
     "beat": "Découverte du premier pilier d'émancipation.",
-    "substance": "Démonstration du mécanisme d'isolation en espace utilisateur et première limite identifiée.",
-    "verbatim": "« Premier réflexe : Scoop. Contrairement aux installeurs traditionnels ou aux gestionnaires système, Scoop installe tout dans votre profil utilisateur, typiquement ~/scoop/apps. Aucun droit administrateur n'est requis. Pour trouver des paquets parmi des milliers d'outils, la commande 'scoop search' ou le site scoop.sh/#/apps liste l'ensemble de l'écosystème. Scoop s'appuie sur des dépôts Git appelés 'buckets' : on ajoute en une ligne les outils complémentaires avec 'scoop bucket add extras', ou le dépôt privé Git de votre entreprise. Et au quotidien, la maintenance est triviale : 'scoop update *' met tout à jour, et 'scoop hold' fige une version pour éviter les régressions. Première limite cependant : Scoop ne sait pas ce qui est déjà installé ailleurs sur votre machine. »"
+    "substance": "Installation en espace utilisateur, buckets, et première limite identifiée.",
+    "verbatim": "« Premier réflexe : Scoop. Contrairement aux installeurs traditionnels ou aux gestionnaires système, Scoop installe tout dans votre profil utilisateur, typiquement ~/scoop/apps. Aucun droit administrateur n'est requis pour ces paquets. Pour trouver des paquets parmi des milliers d'outils, la commande 'scoop search' ou le site scoop.sh/#/apps liste l'ensemble de l'écosystème. Scoop s'appuie sur des dépôts Git appelés 'buckets'. Le bucket principal ne suffit pas toujours : certains outils communautaires vivent dans 'extras'. On l'ajoute avec 'scoop bucket add extras'. En entreprise, ce peut être un dépôt privé approuvé par la DSI. Et au quotidien, la maintenance est triviale : 'scoop update *' met tout à jour, et 'scoop hold' fige une version pour éviter les régressions. Et ce n'est pas réservé aux petits outils : gcc, make et coreutils, qui fournit bash, sed et awk, s'installent aussi dans votre profil. Plus besoin de monter MinGW à la main pour compiler ou lancer un script shell : c'est ce qui rend l'outillage quasi natif pour les agents et les LLM en ligne de commande. Première limite cependant : Scoop ne sait pas ce qui est déjà installé ailleurs sur votre machine. »"
   },
   {
     "index": 5,
     "title": "Démo Scoop",
-    "duration": "50 s",
-    "action": "Montrer l'exécution de la commande et la création instantanée du shim.",
+    "duration": "27 s",
+    "action": "Lancer l'installation de git, sans commentaire sur le résultat.",
     "checklist": [],
     "keywords": [
-      "scoop install · lazygit · where.exe · shim vérifié"
+      "scoop install git",
+      "« Mes outils s'installent dans mon profil, sans admin. »"
     ],
-    "beat": "Preuve par l'exemple en direct.",
-    "substance": "Démo concrète d'installation sans popup UAC.",
-    "verbatim": "« Regardez en direct : je lance un simple 'scoop install lazygit' dans mon PowerShell standard. Scoop télécharge l'archive, vérifie son empreinte SHA256, extrait les binaires dans mon profil, et crée automatiquement le relais dans ~/scoop/shims/lazygit.exe. La commande where.exe le confirme immédiatement : lazygit est prêt à l'emploi, sans que Windows n'ait jamais demandé un mot de passe administrateur. »"
+    "beat": "Preuve par l'exemple, la limite est annoncée pour plus tard.",
+    "substance": "Installation sans élévation dans le profil utilisateur.",
+    "verbatim": "« En direct, dans mon PowerShell standard : scoop install git. Scoop télécharge l'archive, vérifie son empreinte, l'extrait dans mon profil et crée le relais dans ~/scoop/shims. Aucune élévation n'a été demandée. Scoop ne regarde pas ce qui est déjà installé sur la machine : on verra ce point avec DevRecipe. »"
   },
   {
     "index": 6,
     "title": "Mise : Runtimes par projet",
-    "duration": "60 s",
-    "action": "Opposer la gestion globale manuelle et la gestion contextuelle par dossier.",
+    "duration": "68 s",
+    "action": "Dérouler le bloc « comment Mise choisit la version », point par point, sans démo.",
     "checklist": [],
     "keywords": [
       "Mise · Runtimes polyglottes · mise.toml · env & tasks",
+      "Détection · Hook · Shims · cmd.exe",
       "mise.jdx.dev · mise registry · mise upgrade",
       "« La version du runtime suit le projet, pas le poste. »"
     ],
     "beat": "Deuxième pilier : fin du casse-tête multi-versions.",
-    "substance": "Fichier de configuration déclaratif traçable dans Git et limite shell identifiée.",
-    "verbatim": "« Maintenant qu'on a nos outils CLI, comment gère-t-on les langages ? Pendant des années, on a empilé nvm pour Node, pyenv pour Python, sdkman pour Java. Mise regroupe tout cela en un seul binaire écrit en Rust, ultra-performant. Pour explorer les langages et outils supportés, le site mise.jdx.dev et la commande 'mise registry' référencent l'ensemble des runtimes. On peut aussi déclarer des plugins ou backends personnalisés comme aqua ou npm directement dans son fichier. Le secret ? Un fichier 'mise.toml' placé à la racine du dépôt Git. Quand vous naviguez dans vos dossiers, Mise ajuste instantanément les versions de vos runtimes et vos variables d'environnement. Et pour les montées de versions : un simple 'mise upgrade'. Mais attention à sa limite sous Windows : Mise fonctionne grâce à un hook dans votre shell, mais il ne s'active pas dans cmd.exe ni pour les outils qui appellent directement des processus fils. »"
+    "substance": "Un fichier versionné, un hook, des shims. Le mécanisme tient en trois points, et sa limite shell est identifiée.",
+    "verbatim": "« Maintenant qu'on a nos outils CLI, comment gère-t-on les langages ? Pendant des années, on a empilé nvm pour Node, pyenv pour Python, sdkman pour Java. Mise regroupe cela dans un seul binaire écrit en Rust. Le principe tient en trois points. Un : Mise lit le mise.toml du dossier, puis ceux des dossiers parents. Deux : Mise s'accroche au shell, PowerShell, bash ou zsh. Le shell le relance après chaque commande et à chaque cd. Résultat : le PATH, les variables [env] et JAVA_HOME sont réglés pour ce dossier. Trois : cmd.exe n'a pas de hook. On ajoute alors le dossier des shims au PATH, et chaque shim appelle mise pour choisir la version. Pour les montées de version, un simple 'mise upgrade'. La limite à connaître : un IDE déjà ouvert garde l'environnement qu'il avait au lancement. »"
   },
   {
     "index": 7,
     "title": "Démo Mise",
-    "duration": "55 s",
-    "action": "Pointer la commande 'cd' et le changement de version automatique de Node.",
+    "duration": "42 s",
+    "action": "Pointer le mise.toml de chaque dossier : c'est lui qui décide de la JVM, pas le cd lui-même.",
     "checklist": [],
     "keywords": [
-      "cd projet · node --version · mise.toml · mise run dev"
+      "cd projet · java -version · mise.toml · mise run dev",
+      "« Le fichier du dossier décide de la version. »"
     ],
-    "beat": "L'effet 'magique' mais robuste pour le développeur.",
-    "substance": "Bascule instantanée en 5 ms au changement de répertoire.",
-    "verbatim": "« Démonstration : je suis dans projet-legacy, node --version m'affiche Node 18. Je fais simplement 'cd projet-moderne', et sans rien toucher, node --version bascule automatiquement sur Node 22.14. Mieux encore : la commande 'mise run dev' lit notre bloc [tasks] pour exécuter le serveur de dev avec les bonnes variables d'environnement. Tout est transparent et standardisé pour l'équipe. »"
+    "beat": "L'effet « magique », expliqué par un fichier qu'on peut lire.",
+    "substance": "Bascule de Java 17 à 21 au changement de répertoire, JAVA_HOME compris, pilotée par le mise.toml du dossier.",
+    "verbatim": "« Démonstration : je suis dans projet-legacy. Mise lit son mise.toml, qui demande Java 17 : java -version affiche 17, et JAVA_HOME pointe sur ce runtime. Je fais cd projet-moderne. Le hook relance Mise, qui trouve le mise.toml de ce dossier, lequel demande Java 21 : java -version affiche 21, sans rien toucher. Et mise run dev lance la tâche avec les variables de [env] et le bon runtime. Tout est transparent pour l'équipe, parce que la version est dans le dépôt et non dans ma mémoire. »"
   },
   {
     "index": 8,
     "title": "Le piège du PATH Windows",
-    "duration": "60 s",
+    "duration": "52 s",
     "action": "Hausser le ton sur le piège HKLM vs HKCU, moment révélateur pour la salle.",
     "checklist": [],
     "keywords": [
@@ -1288,66 +1291,68 @@
       "« Le PATH machine passe avant le PATH utilisateur. »"
     ],
     "beat": "Révélation de l'obstacle caché.",
-    "substance": "Règle interne de Windows documentée et méconnue.",
-    "verbatim": "« Mais attention, sous Windows, il y a un piège que beaucoup ignorent : la priorité du PATH. Lors de la création d'une session, Windows appelle CreateEnvironmentBlock qui applique une règle mathématique immuable : PATH effectif = PATH Machine (dans HKLM) suivi du PATH Utilisateur (dans HKCU). Si votre poste d'entreprise possède un vieux Python 3.9 système dans C:\\Python39, vos versions modernes installées proprement en espace utilisateur seront silencieusement masquées ! Et ni Scoop ni Mise seuls ne peuvent modifier HKLM sans droits administrateur. »"
+    "substance": "Ordre de fusion du PATH, souvent méconnu.",
+    "verbatim": "« Mais attention, sous Windows, il y a un piège que beaucoup ignorent : la priorité du PATH. Lors de la création d'une session, Windows assemble l'environnement : le PATH machine (dans HKLM) vient d'abord, suivi du PATH utilisateur (dans HKCU). C'est la fonction CreateEnvironmentBlock qui construit ce bloc. Si votre poste d'entreprise possède un vieux Python 3.9 système dans C:\\Python39, vos versions modernes installées en espace utilisateur sont masquées dans un terminal ordinaire : where.exe le montre immédiatement. Et ni Scoop ni Mise seuls ne peuvent modifier HKLM sans droits administrateur. »"
   },
   {
     "index": 9,
     "title": "Démo PATH",
-    "duration": "55 s",
-    "action": "Montrer la sortie de where.exe avant et après la parade des shims.",
+    "duration": "42 s",
+    "action": "Montrer where.exe avant et après : la commande redéfinit le PATH de la session, les shims Mise et Scoop passent en tête.",
     "checklist": [],
     "keywords": [
-      "where.exe · masquage identifié · AutoRun cmd · $env:PATH prepend"
+      "where.exe · masquage identifié · PATH redéfini · AutoRun cmd",
+      "« Le PATH de la session est réordonné, HKLM reste intact. »"
     ],
-    "beat": "Victoire technique sur la contrainte système.",
-    "substance": "Inversion prouvée de l'ordre de résolution par injection en début de session.",
-    "verbatim": "« Observons ce masquage avec where.exe : le Python machine apparaît en première ligne, notre version Mise est ignorée en deuxième ligne. Pour contourner cette fatalité sans modifier HKLM, la solution consiste à préfixer nos shims au tout début du PATH de session : dans le profil PowerShell, et via la clé AutoRun de cmd.exe. Après injection, where.exe confirme que notre runtime moderne reprend immédiatement la priorité absolue. »"
+    "beat": "Compenser la contrainte.",
+    "substance": "Inversion de l'ordre de résolution dans la session, sur le poste préparé. HKLM n'est pas modifié.",
+    "verbatim": "« Sur le poste préparé pour cette démo, observons le masquage avec where.exe : le Python machine apparaît en première ligne, notre version Mise en deuxième. Pour compenser sans modifier HKLM, on redéfinit le PATH de la session : les shims Mise, puis ceux de Scoop, passent en tête, avant le reste du PATH. On fait de même dans le profil PowerShell, et via la clé AutoRun de cmd.exe. Après cette commande, where.exe confirme que notre runtime moderne passe devant, dans cette session. »"
   },
   {
     "index": 10,
-    "title": "DevRecipe : L'onboarding en PR",
-    "duration": "60 s",
-    "action": "Présenter DevRecipe comme le liant qui comble les limites de Scoop et Mise.",
+    "title": "DevRecipe : fonctionnement",
+    "duration": "72 s",
+    "action": "Dérouler les quatre étapes du diagramme, sans taper de commande.",
     "checklist": [],
     "keywords": [
-      "DevRecipe · devrecipe.toml · Revue de code · Contrôle préalable · Précédence",
-      "« L'onboarding devient une commande relue en PR. »"
+      "DevRecipe · DevRecipe_windows.toml · Préflight · Choix (cocher) · Environnement",
+      "« Le manifeste décrit le poste ; le préflight dit ce qui existe déjà. »"
     ],
-    "beat": "Synthèse d'ingénierie : passer des astuces isolées à une chaîne complète.",
-    "substance": "Justification claire du rôle de DevRecipe pour compléter la suite d'outils.",
-    "verbatim": "« Vous voyez le tableau : Scoop et Mise sont deux excellents outils, mais ils travaillent chacun de leur côté. Ni l'un ni l'autre ne vérifient si votre machine a déjà un outil en conflit, et aucun ne résout la priorité pour l'ensemble des terminaux. DevRecipe a été créé précisément pour combler ces trois manques : 1) un manifeste d'équipe unique qui réunit Scoop et Mise dans une Pull Request ; 2) un contrôle préalable ou 'preflight check' qui inspecte le registre et le PATH avant d'installer ; 3) l'injection automatique des shims en tête de PATH dans PowerShell ET dans cmd.exe via AutoRun. »"
+    "beat": "Donner le modèle mental avant de montrer la commande.",
+    "substance": "Parcours du dépôt DevRecipe : validation, préflight en lecture seule, choix explicite par conflit, puis installation Scoop et Mise.",
+    "verbatim": "« Scoop et Mise ne se parlent pas, et aucun des deux ne vérifie ce qui est déjà installé. DevRecipe ajoute une couche, en quatre étapes. Un : un manifeste, DevRecipe_windows.toml, relu en pull request, qui liste les paquets Scoop et les runtimes Mise par profil. -Validate contrôle la syntaxe. Deux : le préflight cherche les traces d'installations existantes dans le registre, AppX, les services et les tâches. Il ne modifie rien. Trois : votre choix. Si une installation existe, une liste s'affiche : vous cochez ce que vous voulez forcer, et rien n'est forcé par défaut. Sans terminal interactif, DevRecipe s'arrête. Quatre : l'environnement se monte, paquets Scoop, runtimes Mise, et les shims passent en tête de PATH dans PowerShell et dans cmd.exe. Dans la démo suivante, le poste a Java 21 et 26 alors que mon manifeste déclare Java 11 : je coche Java 11 et je force. »"
   },
   {
     "index": 11,
     "title": "Démo DevRecipe",
-    "duration": "50 s",
-    "action": "Montrer le scan préalable et l'absence d'altération en simulation à blanc.",
+    "duration": "51 s",
+    "action": "Lancer `.\\DevRecipe_windows.ps1`, puis laisser le log défiler. Ne pas lire chaque ligne : pointer la décision (liste à cocher, Java 11 coché) et l'avertissement de version.",
     "checklist": [],
     "keywords": [
-      "devrecipe -Validate · -DryRun -Review · Bilan préalable · Simulation sans risque"
+      "Préflight · provider-conflict · Java 21 et 26 déjà là · liste à cocher",
+      "« Le préflight signale, la décision reste humaine. »"
     ],
-    "beat": "Sérénité et professionnalisme de l'outillage.",
-    "substance": "Démonstration d'audit préalable déterministe avant exécution.",
-    "verbatim": "« Regardons le contrôle préalable : avant toute installation, DevRecipe inspecte le poste. Il détecte par exemple un vieux Git système déjà installé et émet un avertissement. Avec le commutateur -DryRun, il affiche le plan complet d'exécution sans toucher à votre machine. Zéro surprise, zéro régression, vous gardez la maîtrise intégrale de votre environnement. »"
+    "beat": "Sérénité : l'outil montre, l'humain décide.",
+    "substance": "Log réel de DevRecipe, dans un terminal qui défile. Le conflit est un écart de version Mise, plus parlant qu'une simple installation présente.",
+    "verbatim": "« Voici un lancement réel de DevRecipe, passages coupés. Je lance l'installation sans option. Le préflight compte deux paquets : grep, et java à la version 11. Pour Java, il trouve une conséquence : Mise déclare 11, mais le poste a déjà Java 21 et 26. C'est un conflit de versions entre le manifeste et ce qui est installé. Il me présente la liste à cocher : je coche java 11, je valide. Rien n'est forcé par défaut. Ensuite, DevRecipe installe grep, installe Java 11 avec Mise, configure les shims dans les shells, puis résume ce qui a été fait. Le préflight signale, c'est moi qui décide. »"
   },
   {
     "index": 12,
     "title": "Gouvernance & Sécurité",
-    "duration": "50 s",
-    "action": "Rassurer fermement sur la sécurité d'entreprise, désamorcer l'objection du 'Shadow IT'.",
+    "duration": "54 s",
+    "action": "Rassurer sans promettre : dire que ces contrôles n'existent que si la DSI les active, et désamorcer l'objection du 'Shadow IT'.",
     "checklist": [],
     "keywords": [
-      "Espace utilisateur != Shadow IT · EDR & AppLocker respectés · Dépôts approuvés · Audit"
+      "Espace utilisateur != Shadow IT · EDR & AppLocker à négocier · Dépôts approuvés · Proxy · Audit"
     ],
     "beat": "Légitimité institutionnelle et sérénité DSI.",
-    "substance": "Compatibilité totale avec les règles de cybersécurité d'entreprise.",
-    "verbatim": "« Une question revient souvent : est-ce que cette approche contourne la DSI ? Absolument pas. L'espace utilisateur respecte scrupuleusement les politiques de sécurité : l'EDR, l'antivirus et AppLocker restent 100 % actifs et bloqueront tout binaire suspect. Mieux : l'entreprise peut héberger son propre dépôt de paquets Git privé avec des manifests audités, et scoop export fournit un inventaire complet pour les revues de conformité. »"
+    "substance": "Compatibilité avec les règles de cybersécurité, y compris là où elles bloquent et doivent être négociées.",
+    "verbatim": "« Une question revient souvent : est-ce que cette approche contourne la DSI ? Non. Scoop et Mise ne contournent aucune règle : l'EDR et l'antivirus restent actifs. AppLocker ou WDAC n'agissent que si la DSI a déployé une stratégie. Dans ce cas, un outil installé dans votre profil peut être bloqué, et la levée du blocage relève de la DSI : autoriser un chemin ou un éditeur précis. Sur les postes que j'ai utilisés, je n'ai pas eu ce blocage : c'est une vérification à faire avec votre DSI, pas une fatalité. Côté entreprise, un dépôt Git privé de manifests audités, un proxy configuré, et scoop export pour l'inventaire des revues de conformité. »"
   },
   {
     "index": 13,
     "title": "Démarrer dès aujourd'hui",
-    "duration": "40 s",
+    "duration": "31 s",
     "action": "Pointer la commande de démarrage en bas de slide, donner une impulsion d'action.",
     "checklist": [],
     "keywords": [
@@ -1355,21 +1360,21 @@
       "« Commencez dès aujourd'hui : une ligne de commande. »"
     ],
     "beat": "Passage à l'action immédiat.",
-    "substance": "Commande d'installation vérifiée exécutable immédiatement sans admin.",
+    "substance": "Commande unique pour Scoop puis Mise, sans droits admin. Vérifiée contre la documentation officielle ; à rejouer sur un poste vierge avant la session.",
     "verbatim": "« Pour récapituler nos 3 règles d'or : 1) privilégiez l'espace utilisateur pour vos outils CLI, 2) versionnez vos runtimes dans vos dépôts avec Mise, et 3) surveillez la priorité de vos relais avec where.exe. Votre première action dès ce soir : une seule ligne PowerShell pour installer Scoop et Mise, et commencer à reprendre le contrôle de votre poste. »"
   },
   {
     "index": 14,
     "title": "Merci",
-    "duration": "25 s",
-    "action": "Pointer l'antisèche de commandes affichée à gauche, montrer le QR code à droite, ouvrir chaleureusement aux questions.",
+    "duration": "37 s",
+    "action": "Pointer l'antisèche de commandes à gauche, les liens Scoop, Mise et DevRecipe, puis les deux QR codes à droite (support à gauche, feedback à droite). Ouvrir aux questions.",
     "checklist": [],
     "keywords": [
-      "Questions / Réponses · QR Code · scoop.sh/#/apps · mise.jdx.dev · Antisèche commandes"
+      "Questions / Réponses · QR Support · QR Feedback · scoop.sh · mise.jdx.dev · github.com/a-scolan/DevRecipe · Antisèche commandes"
     ],
     "beat": "Clôture élégante et ouverture des échanges.",
-    "substance": "Antisèche de commandes concrètes et annuaires officiels directement projetés.",
-    "verbatim": "« Merci infiniment pour votre attention ! Vous avez sur cette slide récapitulative l'antisèche des commandes essentielles, les deux annuaires pour piocher vos paquets — scoop.sh et mise.jdx.dev —, et comment brancher vos propres dépôts de recettes d'entreprise. Retrouvez l'intégralité du support et le code source via le QR code. Je suis à votre écoute pour toutes vos questions ! »"
+    "substance": "Antisèche de commandes concrètes, annuaires officiels et dépôt DevRecipe directement projetés.",
+    "verbatim": "« Merci infiniment pour votre attention ! Vous avez sur cette slide l'antisèche des commandes essentielles, et les trois liens à garder : scoop.sh et mise.jdx.dev pour piocher vos paquets et vos runtimes, et le dépôt DevRecipe pour brancher vos propres recettes d'entreprise. Retrouvez l'intégralité du support et le code source via le premier QR code, et donnez-moi votre avis via le second. Je suis à votre écoute pour toutes vos questions ! »"
   }
 ]
 </script>

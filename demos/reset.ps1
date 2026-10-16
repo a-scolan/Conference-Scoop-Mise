@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   Remet l'environnement utilisateur à zéro pour une nouvelle répétition ou démonstration.
 .DESCRIPTION
@@ -13,7 +13,7 @@ Write-Host "=== Réinitialisation de l'environnement de démo Scoop & Mise ===" 
 
 # 1. Nettoyer les packages Scoop installés pendant la démo
 if (Get-Command scoop -ErrorAction SilentlyContinue) {
-  $toolsToClean = @('lazygit', 'ripgrep', 'fzf', 'jq')
+  $toolsToClean = @('git', 'ripgrep', 'fzf', 'jq')
   foreach ($tool in $toolsToClean) {
     if (Test-Path "$HOME\scoop\apps\$tool") {
       Write-Host "Nettoyage package Scoop : $tool..." -ForegroundColor Yellow
@@ -27,22 +27,9 @@ $demosRoot = $PSScriptRoot
 $legacyMise = Join-Path $demosRoot "mise-per-project\projet-legacy\mise.toml"
 $moderneMise = Join-Path $demosRoot "mise-per-project\projet-moderne\mise.toml"
 
-Set-Content -Path $legacyMise -Value @'
-[tools]
-node = "18"
-'@ -Encoding UTF8
+[IO.File]::WriteAllText($legacyMise, "[tools]`njava = `"17`"`n", (New-Object System.Text.UTF8Encoding($false)))
 
-Set-Content -Path $moderneMise -Value @'
-[tools]
-node = "22"
-
-[env]
-API_URL = "http://localhost:8080"
-
-[tasks.dev]
-description = "Démarre le serveur de développement"
-run = "node -e 'console.log(`[dev] Serveur démarré avec ${process.env.API_URL} sous Node ${process.version}`)'"
-'@ -Encoding UTF8
+[IO.File]::WriteAllText($moderneMise, "[tools]`njava = `"21`"`n`n[env]`nAPI_URL = `"http://localhost:8080`"`n`n[tasks.dev]`ndescription = `"Démarre le serveur de développement`"`nrun = `"java -version`"`n", (New-Object System.Text.UTF8Encoding($false)))
 
 # 3. Réinitialiser les variables de session utilisateur
 $userPathKey = 'HKCU:\Environment'
