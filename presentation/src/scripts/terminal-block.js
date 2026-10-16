@@ -46,8 +46,34 @@
           outEl.style.opacity = '1';
         }
       });
+
+      var hasPendingStep = Array.prototype.some.call(steps, function(s) {
+        var n = parseInt(s.getAttribute('data-step'), 10);
+        return !isNaN(n) && n > stepNum;
+      });
+      term.classList.toggle('is-advanceable', hasPendingStep);
     });
   }
+
+  // Un clic (ou tap) sur une console avance d'une étape, pour les lecteurs sur mobile
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    if (!target || typeof target.closest !== 'function') return;
+    var term = target.closest('.terminal-block.is-advanceable');
+    if (!term || target.closest('a, button, input, select, textarea')) return;
+
+    var engine = window.deckEngine;
+    if (!engine || engine.isInIframe) return;
+
+    var slide = term.closest('.slide');
+    var current = parseInt(slide.getAttribute('data-active-step'), 10);
+    var nextStep = engine.getSlideSteps(slide).filter(function(s) {
+      return parseInt(s, 10) > current;
+    })[0];
+    if (nextStep !== undefined) {
+      engine.setSlideStep(slide, nextStep, true);
+    }
+  });
 
   function runTypeEffect(el) {
     if (!el) return;
