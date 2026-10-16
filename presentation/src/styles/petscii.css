@@ -516,9 +516,10 @@
   font-family: var(--font-mono) !important;
 }
 
-/* Hachures modscene / ANSI des blocs */
+/* Hachures modscene / ANSI des blocs.
+   Pas de display !important ici : sinon le masquage mobile de decorations.css est annulé. */
 .card-hatch-strip-wrap {
-  display: block !important;
+  display: block;
   position: absolute !important;
   bottom: 8px !important;
   right: 14px !important;
